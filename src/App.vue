@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'colorFront', 'colorBack', 'showHardwareButtons', 'radio'
+      'colorFront', 'colorBack', 'showHardwareButtons', 'radio',
     ]),
     ...mapGetters({ currentRadio: 'radio/current' }),
   },
