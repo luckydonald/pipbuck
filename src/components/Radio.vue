@@ -1,9 +1,6 @@
 <template>
   <div>
-    <audio
-      ref="radio" :src="track" autoplay="autoplay" controls="controls"
-      :line-color="colorFront"></audio>
-    <av-line v-if="track != null" ref-link="radio" :lineColor="color"
+    <av-line ref-link="radio" :lineColor="color"
       :audioClass="audioClass"
       :audioControls="audioControls"
       :audioSrc="audioSrc"
@@ -17,6 +14,7 @@
       :lineWidth="lineWidth"
       :refLink="refLink"
     />
+
   </div>
 </template>
 
@@ -24,7 +22,6 @@
 export default {
   name: 'Radio',
   props: {
-    file: {},
     color: {
       default: '#dc5990',
     },
@@ -45,11 +42,6 @@ export default {
       lineWidth: 2,
       refLink: 'radio',
     };
-  },
-  computed: {
-    track() {
-      return `radio/${encodeURIComponent(this.file)}`;
-    },
   },
 };
 </script>

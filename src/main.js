@@ -12,8 +12,68 @@ Vue.config.productionTip = false;
 Vue.use(Vuex);
 Vue.use(AudioVisual);
 
+const radio = {
+  debug: process.env.NODE_ENV !== 'production',
+  strict: process.env.NODE_ENV !== 'production',
+  state: {
+    selected: null,
+    // current: computed
+    tracks: {
+      'Galaxy News Radio': {
+        file: 'radio/gnr.mp3',
+        disabled: false,
+        hidden: false,
+        position: 0,
+      },
+      'Diamond City Radio': {
+        file: 'radio/dcr.mp3',
+        disabled: false,
+        hidden: false,
+        position: 0,
+      },
+      'Test Track': {
+        file: 'radio/test.mp3',
+        disabled: false,
+        hidden: false,
+        position: 0,
+      },
+    },
+  },
+  mutations: {
+    selectTrack(state, name) {
+      state.selected = name;
+    },
+  },
+  getters: {
+    // eslint-disable-next-line no-unused-vars
+    currentOrNull: (state, getters) => {
+      console.log('currentOrNull()');
+      if (state.selected === null) {
+        return null;
+      }
+      return state.tracks[state.selected];
+    },
+    current: (state, getters) => {
+      console.log('current()');
+      if (getters.currentOrNull === null) {
+        return {
+          file: null, disabled: null, hidden: null, position: null,
+        };
+      }
+      return getters.currentOrNull;
+    },
+  },
+};
+
 const store = new Vuex.Store({
-  debug: true,
+  debug: process.env.NODE_ENV !== 'production',
+  strict: process.env.NODE_ENV !== 'production',
+  modules: {
+    radio: {
+      ...radio,
+      namespaced: true,
+    },
+  },
   state: {
     colorFront: '#9ef8bd',
     colorBack: '#08401f',
@@ -32,6 +92,8 @@ const store = new Vuex.Store({
       console.log('mutating toggleHardwareButtons state: ', value);
       state.showHardwareButtons = value;
     },
+  },
+  getters: {
   },
 });
 

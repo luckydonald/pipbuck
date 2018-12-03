@@ -9,12 +9,13 @@
       <router-link to="/settings">S</router-link>
     </div>
     <router-view />
-    <hardware-buttons v-if="showHardwareButtons"/>
+    <hardware-buttons v-if="showHardwareButtons" />
+    <audio ref="radio" :src="currentRadio.file" autoplay="autoplay"></audio>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import HardwareButtons from './components/HardwareButtons.vue';
 
 export default {
@@ -26,8 +27,9 @@ export default {
   },
   computed: {
     ...mapState([
-      'colorFront', 'colorBack', 'showHardwareButtons',
+      'colorFront', 'colorBack', 'showHardwareButtons', 'radio'
     ]),
+    ...mapGetters({ currentRadio: 'radio/current' }),
   },
   watched: {
     colorFront(newColor) {
