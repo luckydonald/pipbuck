@@ -1,13 +1,14 @@
 <template>
   <div id="app" :style="{ '--color-front': colorFront, '--color-back': colorBack }">
     <div id="nav">
+      <a @click.native="location.reload()" href="/">Reload</a>
       <router-link to="/about">Status</router-link>
       <router-link to="/">S.P.E.C.I.A.L.</router-link>
       <router-link to="/skills">Skills</router-link>
       <router-link to="/perks">Perks</router-link>
       <router-link to="/general">General</router-link>
     </div>
-    <router-view/>
+    <router-view :color-front="colorFront" :color-back="colorBack"/>
   </div>
 </template>
 
@@ -72,6 +73,8 @@ body {
 
     &.active, &.router-link-exact-active {
       border: var(--color-front) 2px solid;
+      background-color: rgba(255,225,255, 0.1);
+
     }
   }
 }
