@@ -25,6 +25,16 @@ const props = {
     default: null,
   },
   /**
+   * prop: 'ref-element'
+   * Refrence to Audio element. When provided, then local audio element
+   * is not created and use refrence to the element. You need to search where that is,
+   * and provide via :ref-element scripted prop.
+   */
+  refElement: {
+    type: Element,
+    default: null,
+  },
+  /**
    * prop: 'audio-controls'
    * Audio element controls attribute. When provided should
    * display audio element with controls
@@ -107,7 +117,9 @@ const methods = {
     let audioDiv = null;
     let audio = null;
 
-    if (this.refLink) {
+    if (this.refElement !== null) {
+      audio = this.refElement;
+    } else if (this.refLink) {
       audio = this.$parent.$refs[this.refLink];
     } else {
       audio = document.createElement('audio');

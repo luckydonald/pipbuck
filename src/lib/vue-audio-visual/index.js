@@ -1,13 +1,15 @@
-import {
+/* import {
   AvBars, AvCircle, AvWaveform,
-} from 'vue-audio-visual';
-// import AvBars from './components/AvBars'
-// import AvLine from './components/AvLine'
-// import AvCircle from './components/AvCircle'
-// import AvWaveform from './components/AvWaveform'
+} from 'vue-audio-visual'; */
+
+import AvBars from 'vue-audio-visual/src/components/AvBars';
+import AvCircle from 'vue-audio-visual/src/components/AvCircle';
+import AvWaveform from 'vue-audio-visual/src/components/AvWaveform';
+import AvLine from './components/AvLine';
 
 const AVPlugin = {};
 
+// eslint-disable-next-line func-names
 AVPlugin.install = function (Vue) {
   // browsers compatibility
   // eslint-disable-next-line max-len
