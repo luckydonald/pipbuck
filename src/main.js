@@ -4,7 +4,7 @@
 /* eslint no-param-reassign: ["error", { "props": false }] */
 import Vue from 'vue';
 import Vuex from 'vuex';
-import AudioVisual from 'vue-audio-visual';
+import AudioVisual from './lib/vue-audio-visual';
 import App from './App.vue';
 import router from './router';
 
