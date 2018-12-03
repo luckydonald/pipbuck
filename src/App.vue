@@ -1,26 +1,31 @@
 <template>
   <div id="app" :style="{ '--color-front': colorFront, '--color-back': colorBack }">
     <div id="nav">
-      <a @click.native="location.reload()" href="/">Reload</a>
       <router-link to="/about">Status</router-link>
       <router-link to="/">S.P.E.C.I.A.L.</router-link>
       <router-link to="/skills">Skills</router-link>
       <router-link to="/perks">Perks</router-link>
       <router-link to="/general">General</router-link>
+      <router-link to="/settings">S</router-link>
     </div>
     <router-view :color-front="colorFront" :color-back="colorBack"/>
+    <hardware-buttons v-if="showHardwareButtons"/>
   </div>
 </template>
 
 <script>
+import HardwareButtons from './components/HardwareButtons.vue';
+
 export default {
   name: 'app',
+  components: { HardwareButtons },
   data() {
     return {
       colorFront: '#9ef8bd',
       colorFront2: '#1bff80',
       colorBack: '#08401f',
       colorBack2: '#1d2c24',
+      showHardwareButtons: true,
     };
   },
   mounted() {
@@ -41,6 +46,10 @@ export default {
       },
       { immediate: true },
     );
+    // event listeners
+    this.$on('showHardwareButtons', function eventShowHardwareButtons(value) {
+      this.showHardwareButtons = value;
+    });
   },
 };
 
@@ -76,6 +85,10 @@ body {
       background-color: rgba(255,225,255, 0.1);
 
     }
+  }
+
+  ul li {
+    list-style: none;
   }
 }
 #nav {

@@ -7,7 +7,7 @@
         v-if="!track.disabled"
         @click="selected = name"
       >
-        <a>{{ name }}</a>
+        <a :class="{ active: selected === name }">{{ name }}</a>
       </li>
     </ul>
     <radio v-if="selected !== null" :color="colorFront" :file="selectedTrack.file"/>
