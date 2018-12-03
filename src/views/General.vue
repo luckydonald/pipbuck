@@ -16,15 +16,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Radio from '../components/Radio.vue';
 
 export default {
   name: 'general',
   components: { Radio },
-  props: {
-    colorFront: {},
-    colorBack: {},
-  },
   data() {
     return {
       selected: null,
@@ -54,6 +51,9 @@ export default {
       }
       return this.tracks[this.selected];
     },
+    ...mapState([
+      'colorFront',
+    ]),
   },
 };
 </script>

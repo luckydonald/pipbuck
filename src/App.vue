@@ -8,12 +8,13 @@
       <router-link to="/general">General</router-link>
       <router-link to="/settings">S</router-link>
     </div>
-    <router-view :color-front="colorFront" :color-back="colorBack"/>
+    <router-view />
     <hardware-buttons v-if="showHardwareButtons"/>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import HardwareButtons from './components/HardwareButtons.vue';
 
 export default {
@@ -21,12 +22,17 @@ export default {
   components: { HardwareButtons },
   data() {
     return {
-      colorFront: '#9ef8bd',
-      colorFront2: '#1bff80',
-      colorBack: '#08401f',
-      colorBack2: '#1d2c24',
-      showHardwareButtons: true,
     };
+  },
+  computed: {
+    ...mapState([
+      'colorFront', 'colorBack', 'showHardwareButtons',
+    ]),
+  },
+  watched: {
+    colorFront(newColor) {
+      console.log('color changed', newColor);
+    },
   },
   mounted() {
     // watch colorFront and colorBack to update the <body> element styles.
@@ -56,6 +62,10 @@ export default {
 </script>
 
 <style lang="scss">
+@font-face {
+  font-family: 'Monofonto';
+  src: url('/fonts/monofonto.ttf');
+}
 body {
   margin: 0;
   padding: 0;
@@ -67,7 +77,7 @@ body {
   left: 0;
   right: 0;
   position: absolute;
-  font-family: 'Monofonto', Helvetica, Arial, sans-serif;
+  font-family: 'Monofonto', 'Droid Sans', 'Arial Rounded', 'Courier New', 'Courier', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
