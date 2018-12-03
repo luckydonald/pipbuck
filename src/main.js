@@ -62,6 +62,12 @@ const radio = {
       }
       return getters.currentOrNull;
     },
+    isPlaying: (state, getters) => {
+      if (getters.currentOrNull === null) {
+        return false;
+      }
+      return true;
+    },
   },
 };
 

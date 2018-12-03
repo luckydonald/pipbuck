@@ -1,6 +1,7 @@
 <template>
   <div>
-    <av-line ref-link="radio" :lineColor="color"
+    <av-line v-if="isPlaying" :lineColor="color"
+      :ref-element="this.$root.$children[0].$refs.radio"
       :audioClass="audioClass"
       :audioControls="audioControls"
       :audioSrc="audioSrc"
@@ -14,11 +15,14 @@
       :lineWidth="lineWidth"
       :refLink="refLink"
     />
-
+    <div v-if="isPlaying">PLAYING!</div>
+    <div v-else>PAUSED!</div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Radio',
   props: {
@@ -42,6 +46,9 @@ export default {
       lineWidth: 2,
       refLink: 'radio',
     };
+  },
+  computed: {
+    ...mapGetters({ isPlaying: 'radio/isPlaying' }),
   },
 };
 </script>
