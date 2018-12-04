@@ -3,17 +3,19 @@
     <favicon><stable-colt :hair="hair" :back="back"/></favicon>
     <div class="wrapper">
       <hardware-buttons
-        class="hardware" v-if="showHardwareButtons"
+        class="hardware noscroll" v-if="showHardwareButtons"
         @scroll.prevent @wheel.prevent @touchstart.prevent @touchmove.prevent @drag.prevent
       />
       <div class="crt">
         <div id="nav">
+          <a>{{ scroll }}</a>
           <router-link to="/about">Status</router-link>
           <router-link to="/">S.P.E.C.I.A.L.</router-link>
           <router-link to="/skills">Skills</router-link>
           <router-link to="/perks">Perks</router-link>
           <router-link to="/general">General</router-link>
           <router-link to="/settings" v-if="!showHardwareButtons">S</router-link>
+          <a>{{ display }}</a>
         </div>
         <router-view />
       </div>
@@ -37,11 +39,139 @@ import HardwareButtons from './components/HardwareButtons.vue';
 import Favicon from './components/Favicon.vue';
 import StableColt from './components/StableColt.vue';
 
-export default {
+
+function parentWithClass(el, clazz) {
+  if (!!el && el !== document) {
+    if (el.classList.contains(clazz)) {
+      return el;
+    }
+  } else {
+    return null;
+  }
+  return parentWithClass(el.parentNode, clazz);
+}
+
+class ScrollPrevent {
+  constructor(appObj) {
+    this.app = appObj;
+    console.log('ÄPP', appObj);
+    this.start = null;
+    this.timeout = null;
+    // eslint-disable-next-line no-underscore-dangle
+    this._touchstart = this._touchstart.bind(this);
+    // eslint-disable-next-line no-underscore-dangle
+    this._touchmove = this._touchmove.bind(this);
+    // eslint-disable-next-line no-underscore-dangle
+    this._touchend = this._touchend.bind(this);
+  }
+
+  _touchstart(event) {
+    console.log('äpp', this.app);
+    this.start = event.touches[0].pageY;
+    this.timeout = null;
+
+    const noscroll = parentWithClass(event.target, 'noscroll');
+    if (noscroll) {
+      this.app.display += ' S1';
+      event.preventDefault();
+      return false;
+    }
+    if (event.touches.length !== 1) {
+      // empty/multitouch
+      return true;
+    }
+    if (event.changedTouches.length !== 1) {
+      // empty/multitouch
+      return true;
+    }
+    // eslint-disable-next-line no-underscore-dangle
+    document.body.addEventListener('touchmove', this._touchmove);
+    return false;
+  }
+
+  _touchmove(event2) {
+    clearTimeout(this.timeout);
+    const noscroll2 = parentWithClass(event2.target, 'noscroll');
+    if (noscroll2) {
+      this.app.display += ' S2';
+      event2.preventDefault();
+      return false;
+    }
+    const end = event2.touches[0].pageY;
+    const distance = this.start !== null ? this.start - end : 0;
+    this.start = end;
+    if (distance > 0) {  // empty/multitouch
+      // eslint-disable-next-line no-alert
+      this.app.display = `up   ${distance}`;
+    }
+    if (distance < 0) {  // empty/multitouch
+      // eslint-disable-next-line no-alert
+      this.app.display = `down ${distance}`;
+    }
+    // eslint-disable-next-line no-unused-vars
+    const crt = parentWithClass(event2.target, 'crt');
+    if (event2.touches.length !== 1) {
+      // empty/multitouch
+      this.app.display += ' 3';
+      return true;
+    }
+    if (event2.changedTouches.length !== 1) {
+      // empty/multitouch
+      this.app.display += ' 4';
+      return true;
+    }
+    if (crt && crt.scrollTop === 0 && distance < 0) {
+      // don't pull the page down when already at top.
+      this.app.display += ' ⟙'; // ⟘
+      event2.preventDefault();
+      return false;
+    }
+    this.app.display += ' X';
+    // scroll by half the speed, also don't scroll under 0.
+    this.app.scroll = Math.max(this.app.scroll + (distance * 0.6), 0);
+    crt.scroll({
+      top: this.app.scroll,
+      left: 0,
+      behavior: 'smooth',
+    });
+    event2.preventDefault();
+    return false;
+  }
+
+  _touchend() {
+    this.start = null;
+    // eslint-disable-next-line no-underscore-dangle
+    document.body.removeEventListener('touchmove', this._touchmove);
+    // eslint-disable-next-line no-underscore-dangle
+    document.body.removeEventListener('touchend', this._touchend);
+  }
+
+  install() {
+    console.log('INSTALL');
+    // eslint-disable-next-line no-underscore-dangle
+    document.body.addEventListener('touchstart', this._touchstart);
+    return this; // chain me
+  }
+
+  deinstall() {
+    console.log('DEINSTALL');
+    // eslint-disable-next-line no-underscore-dangle
+    document.body.removeEventListener('touchstart', this._touchstart);
+    // eslint-disable-next-line no-underscore-dangle
+    this._touchend();
+    return this; // chain me
+  }
+}
+
+
+const app = {
   name: 'app',
   components: { HardwareButtons, Favicon, StableColt },
   data() {
     return {
+      display: 'test',
+      scroll: 0.00,
+      scroll_prevent: null,
     };
   },
   computed: {
@@ -83,9 +213,18 @@ export default {
     this.$on('showHardwareButtons', function eventShowHardwareButtons(value) {
       this.showHardwareButtons = value;
     });
+    this.scroll_prevent = new ScrollPrevent(this);
+    console.log(this.scroll_prevent);
+    this.scroll_prevent.install();
+  },
+  beforeDestroy() {
+    if (this.scroll_prevent !== null) {
+      this.scroll_prevent.deinstall();
+      this.scroll_prevent = null;
+    }
   },
 };
-
+export default app;
 </script>
 
 <style lang="scss">
