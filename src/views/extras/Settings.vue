@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div><a @click.native="location.reload()" href="/">Reload</a></div>
+    <div><a @click="location.reload()" href="/settings">Reload</a></div>
     <div>
       <label>Hardware buttons</label>
       <a @click="leToggleHardwareButtons(true)" class="active">ON</a>
