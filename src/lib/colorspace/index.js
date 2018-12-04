@@ -105,8 +105,8 @@ export function RGBtoHSL(r, g, b) {
  * returns r, g, and b in the set [0, 255].
  *
  * @param h {number|{h: number, s: number,  l: number }} The hue
- * @param s {number|undefined} The saturation
- * @param l {number|undefined} The lightness
+ * @param s {number?} The saturation
+ * @param l {number?} The lightness
  * @return {{r: number, g: number, b: number}} The RGB representation
  * @see http://hsl2rgb.nichabi.com/javascript-function.php
  */// eslint-disable-next-line no-unused-vars
@@ -248,29 +248,27 @@ function HSBtoRGB(h, s, v) {
 
 
 /**
- * Converts RGB (0.0 - 255.0) to HSL (0.0 - 1.0).
+ * Converts HSL to a css string.
  *
  * @param h {number|{h: number, s: number, l: number, a: number}|{h:number,s:number,l:number}} Hue.
- * @param s {number} Saturation.
- * @param l {number} Luminescence.
- * @param a {number} Alpha.
+ * @param s {number?} Saturation. 0° - 359°.
+ * @param l {number?} Luminescence. 0% - 100%.
+ * @param a {number?} Alpha. 0% - 100%.
  * @returns {string}
  */
 export function hsl(h, s, l, a) {
   if (typeof h === 'object' && s === undefined && l === undefined && a === undefined) {
     return hsl(h.h, h.s, h.l, h.a || undefined);
   }
-  const HSL = { h, s, l };
+  const HSL = {
+    h: Number.isFinite(h) ? h % 360 : 0,  // 0° - 359°, 360° == 0°
+    s: Number.isFinite(s) ? Math.min(Math.max(s, 0), 100) : 0, // 0% - 100%
+    l: Number.isFinite(l) ? Math.min(Math.max(l, 0), 100) : 0, // 0% - 100%
+  };
   const RGB = HSLtoRGB(HSL);
-  if (a === undefined || a === null) {
+  if (a === undefined || a === null || !Number.isFinite(a)) {
     // use hex "#RRGGBB"
-    const hex = RGBtoHex(RGB);
-    console.log({
-      '0_input': HSL,
-      '1_rgb': RGB,
-      '2_hex': hex,
-    });
-    return hex;
+    return RGBtoHex(RGB);
   }
   // use hex "rgba(R, G, B, A)"
   const { r, g, b } = RGB;
@@ -278,17 +276,10 @@ export function hsl(h, s, l, a) {
 }
 
 /**
- * @return {number}
+ * @return {{h: number, s: number, l: number}}
  */
-export function HexToHue(hex) {
+export function HexToHSL(hex) {
   const RGB = HexToRGB(hex);
   const HSL = RGBtoHSL(RGB);
-  const hue = HSL.h;
-  console.log({
-    '0_input': hex,
-    '1_rgb': RGB,
-    '2_hsk': HSL,
-    '3_hue': hue,
-  });
-  return hue;
+  return HSL;
 }
