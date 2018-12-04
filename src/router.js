@@ -3,6 +3,9 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import General from './views/General.vue';
 import Settings from './views/Settings.vue';
+import ExtraItems from './views/extras/ExtraItems.vue';
+import ExtraStats from './views/extras/ExtraStats.vue';
+import ExtraData from './views/extras/ExtraData.vue';
 
 Vue.use(Router);
 
@@ -32,6 +35,21 @@ export default new Router({
       path: '/settings',
       name: 'Settings',
       component: Settings,
+    },
+    {
+      path: '/stats/extra',
+      name: 'Stats Extra',
+      component: ExtraStats,
+    },
+    {
+      path: '/items/extra',
+      name: 'Items Extra',
+      component: ExtraItems,
+    },
+    {
+      path: '/data/extra',
+      name: 'Data Extra',
+      component: ExtraData,
     },
   ],
 });
