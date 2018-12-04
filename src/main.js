@@ -19,6 +19,12 @@ const radio = {
     selected: null,
     // current: computed
     tracks: {
+      null: {
+        file: null,
+        disabled: null,
+        hidden: null,
+        position: null,
+      },
       'Galaxy News Radio': {
         file: 'radio/gnr.mp3',
         disabled: false,
@@ -45,23 +51,24 @@ const radio = {
     },
   },
   getters: {
-    // eslint-disable-next-line no-unused-vars
+    /**
+     * returns the file or null
+     * @return {null|{file: string, disabled: string, hidden: string, position: string}}
+     */// eslint-disable-next-line no-unused-vars
     currentOrNull: (state, getters) => {
-      console.log('currentOrNull()');
       if (state.selected === null) {
         return null;
       }
-      return state.tracks[state.selected];
+      return getters.current;
     },
-    current: (state, getters) => {
-      console.log('current()');
-      if (getters.currentOrNull === null) {
-        return {
-          file: null, disabled: null, hidden: null, position: null,
-        };
-      }
-      return getters.currentOrNull;
-    },
+
+    /**
+     * returns the file or object filled with null
+     * @return {{file: null|string, disabled: null|string,
+     *           hidden: null|string, position: null|string}}
+     */// eslint-disable-next-line no-unused-vars
+    current: (state, getters) => state.tracks[state.selected],
+
     isPlaying: (state, getters) => {
       if (getters.currentOrNull === null) {
         return false;
