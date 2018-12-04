@@ -1,6 +1,6 @@
 <template>
   <div>
-    <av-line v-if="isPlaying" :lineColor="color"
+    <!--<av-line v-if="isPlaying" :lineColor="color"
       :ref-element="radioElement"
       :audioClass="audioClass"
       :audioControls="audioControls"
@@ -14,7 +14,7 @@
       :fftSize="fftSize"
       :lineWidth="lineWidth"
       :refLink="refLink"
-    />
+    />-->
     <div v-if="isPlaying">PLAYING!</div>
     <div v-else>PAUSED!</div>
   </div>
