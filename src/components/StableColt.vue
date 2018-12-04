@@ -6,36 +6,36 @@
 </template>
 
 <script>
+import { hsl } from '../lib/colorspace';
+
 export default {
   name: 'StableColt',
   props: {
-    hairBright: {
-      type: String,
-      default: '#48f564',
+    hue: {
+      default: 145,
     },
-    hairNormal: {
-      type: String,
-      default: '#39c64b',
+  },
+  computed: {
+    hairBright() {
+      return hsl(this.hue + 20, 90, 62); // '#48f564'; Original hue: 130 instead of 145 = -15
     },
-    hairDark: {
-      type: String,
-      default: '#299432',
+    hairNormal() {
+      return hsl(this.hue + 20, 55, 50); // '#39c64b'; Original hue: 128 instead of 145 = -17
     },
-    outlines: {
-      type: String,
-      default: '#09310f',
+    hairDark() {
+      return hsl(this.hue + 20, 57, 37); // '#299432'; Original hue: 125 instead of 145 = -20
     },
-    bodyBright: {
-      type: String,
-      default: '#0c5128',
+    outlines() {
+      return hsl(this.hue, 69, 11); // '#09310f'; Original hue: 129 instead of 145 = -16
     },
-    bodyNormal: {
-      type: String,
-      default: '#08401f',
+    bodyBright() {
+      return hsl(this.hue, 74, 18); // '#0c5128'; Original hue: 144 instead of 145 = -01
     },
-    bodyDark: {
-      type: String,
-      default: '#063016',
+    bodyNormal() {
+      return hsl(this.hue, 78, 14); // '#08401f'; Original hue: 145  is equal  145 = ±00
+    },
+    bodyDark() {
+      return hsl(this.hue, 88, 19); // '#063016'; Original hue: 143 instead of 145 = -02
     },
   },
 };
