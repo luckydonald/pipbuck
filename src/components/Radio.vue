@@ -1,7 +1,7 @@
 <template>
   <div>
     <av-line v-if="isPlaying" :lineColor="color"
-      :ref-element="this.$root.$children[0].$refs.radio"
+      :ref-element="radioElement"
       :audioClass="audioClass"
       :audioControls="audioControls"
       :audioSrc="audioSrc"
@@ -29,6 +29,7 @@ export default {
     color: {
       default: '#dc5990',
     },
+    radioElement: {},
   },
   data() {
     return {

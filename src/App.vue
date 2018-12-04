@@ -8,9 +8,15 @@
       <router-link to="/general">General</router-link>
       <router-link to="/settings">S</router-link>
     </div>
-    <router-view />
+    <router-view :radio-element="this.$root.$children[0].$refs.radio"/>
     <hardware-buttons v-if="showHardwareButtons" />
-    <audio ref="radio" :src="currentRadio.file" autoplay="autoplay"></audio>
+    <audio
+      ref="radio"
+      :src="currentRadio.file"
+      autoplay="autoplay"
+      autobuffer
+      preload="auto"
+    ></audio>
   </div>
 </template>
 
