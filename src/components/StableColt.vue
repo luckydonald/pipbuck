@@ -11,31 +11,47 @@ import { hsl } from '../lib/colorspace';
 export default {
   name: 'StableColt',
   props: {
-    hue: {
-      default: 145,
+    hair: {
+      type: Object,
+      default() {
+        return { h: 145, s: 85, l: 79 };
+      },
+    },
+    back: {
+      type: Object,
+      default() {
+        return { h: 145, s: 78, l: 14 };
+      },
     },
   },
   computed: {
     hairBright() {
-      return hsl(this.hue + 20, 90, 62); // '#48f564'; Original hue: 130 instead of 145 = -15
+      return hsl(this.hair.h, this.hair.s, this.hair.l);
+      // '#48f564' | Original: h: 130, s: 90, l: 62 | s - 5, l - 17
     },
     hairNormal() {
-      return hsl(this.hue + 20, 55, 50); // '#39c64b'; Original hue: 128 instead of 145 = -17
+      return hsl(this.hair.h, this.hair.s - 25, this.hair.l - 12);
+      // '#39c64b' | Original: h: 128, s: 55, l: 50 | s - 30, l - 29
     },
     hairDark() {
-      return hsl(this.hue + 20, 57, 37); // '#299432'; Original hue: 125 instead of 145 = -20
+      return hsl(this.hair.h, this.hair.s - 23, this.hair.l - 25);
+      // '#299432' | Original: h: 125, s: 57, l: 37 | s - 28, l - 42
     },
     outlines() {
-      return hsl(this.hue, 69, 11); // '#09310f'; Original hue: 129 instead of 145 = -16
+      return hsl(this.back.h, this.back.s + 9, this.back.l - 3);
+      // '#09310f' | Original: h: 129, s: 69, l: 11 | s + 9, l - 3
     },
     bodyBright() {
-      return hsl(this.hue, 74, 18); // '#0c5128'; Original hue: 144 instead of 145 = -01
+      return hsl(this.back.h, this.back.s + 4, this.back.l + 4);
+      // '#0c5128' | Original: h: 144, s: 74, l: 18 | s + 4, l + 4
     },
     bodyNormal() {
-      return hsl(this.hue, 78, 14); // '#08401f'; Original hue: 145  is equal  145 = ±00
+      return hsl(this.back.h, this.back.s, this.back.l);
+      // '#08401f' | Original: h: 145, s: 78, l: 14 | s + 0, l + 0
     },
     bodyDark() {
-      return hsl(this.hue, 88, 19); // '#063016'; Original hue: 143 instead of 145 = -02
+      return hsl(this.back.h, this.back.s - 10, this.back.l + 5);
+      // '#063016' | Original: h: 143, s: 88, l: 19 | s - 10, l + 5
     },
   },
 };
