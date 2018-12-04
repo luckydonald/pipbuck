@@ -1,5 +1,6 @@
 <template>
   <div id="app" :style="{ '--color-front': colorFront, '--color-back': colorBack }">
+    <favicon><stable-colt :hair="hair" :back="back"/></favicon>
     <div id="nav">
       <router-link to="/about">Status</router-link>
       <router-link to="/">S.P.E.C.I.A.L.</router-link>
@@ -22,11 +23,14 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex';
+import { HexToHSL } from './lib/colorspace';
 import HardwareButtons from './components/HardwareButtons.vue';
+import Favicon from './components/Favicon.vue';
+import StableColt from './components/StableColt.vue';
 
 export default {
   name: 'app',
-  components: { HardwareButtons },
+  components: { HardwareButtons, Favicon, StableColt },
   data() {
     return {
     };
@@ -36,6 +40,12 @@ export default {
       'colorFront', 'colorBack', 'showHardwareButtons', 'radio',
     ]),
     ...mapGetters({ currentRadio: 'radio/current' }),
+    hair() {
+      return HexToHSL(this.$store.state.colorFront);
+    },
+    back() {
+      return HexToHSL(this.$store.state.colorBack);
+    },
   },
   watched: {
     colorFront(newColor) {
