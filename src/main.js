@@ -83,6 +83,25 @@ const store = new Vuex.Store({
   state: {
     colorFront: '#9ef8bd',
     colorBack: '#08401f',
+
+    // color_hair_bright: '#9ef8bd',
+    // color_hair_normal: '#1bff80',
+    // color_outlines: '#1bff80',
+
+
+    color_hair_bright: '#48f564',
+    color_hair_normal: '#39c64b',
+    color_hair_dark: '#299432',
+
+    color_outlines: '#09310f',
+
+    color_body_bright: '#0c5128',
+    color_body_normal: '#08401f',
+    color_body_dark: '#063016',
+
+    color_bg: '#021709',
+
+
     showHardwareButtons: true,
     // colorFront2: '#1bff80',
     // colorBack2: '#1d2c24',
