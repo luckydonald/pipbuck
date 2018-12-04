@@ -1,16 +1,23 @@
 <template>
   <div id="app" :style="{ '--color-front': colorFront, '--color-back': colorBack }">
     <favicon><stable-colt :hair="hair" :back="back"/></favicon>
-    <div id="nav">
-      <router-link to="/about">Status</router-link>
-      <router-link to="/">S.P.E.C.I.A.L.</router-link>
-      <router-link to="/skills">Skills</router-link>
-      <router-link to="/perks">Perks</router-link>
-      <router-link to="/general">General</router-link>
-      <router-link to="/settings" v-if="!showHardwareButtons">S</router-link>
+    <div class="wrapper">
+      <hardware-buttons
+        class="hardware" v-if="showHardwareButtons"
+        @scroll.prevent @wheel.prevent @touchstart.prevent @touchmove.prevent @drag.prevent
+      />
+      <div class="crt">
+        <div id="nav">
+          <router-link to="/about">Status</router-link>
+          <router-link to="/">S.P.E.C.I.A.L.</router-link>
+          <router-link to="/skills">Skills</router-link>
+          <router-link to="/perks">Perks</router-link>
+          <router-link to="/general">General</router-link>
+          <router-link to="/settings" v-if="!showHardwareButtons">S</router-link>
+        </div>
+        <router-view />
+      </div>
     </div>
-    <router-view />
-    <hardware-buttons v-if="showHardwareButtons" />
     <keep-alive><audio
       ref="radio"
       :src="currentRadio.file || ''"
@@ -86,9 +93,19 @@ export default {
   font-family: 'Monofonto';
   src: url('/fonts/monofonto.ttf');
 }
-body {
-  margin: 0;
+* {  // Minimalist Reset 3
+  vertical-align: baseline;
+  font-weight: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  border: 0 none;
+  outline: 0;
   padding: 0;
+  margin: 0;
+}
+body {
+  user-select: none;
 }
 #app {
   width: 100%;
@@ -119,6 +136,51 @@ body {
 
   ul li {
     list-style: none;
+  }
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .crt {
+    justify-content: flex-start;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    // overflow-scrolling: touch;
+    width: 100%;
+    height: 100%;
+    &::before {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+
+      background: linear-gradient(
+          rgba(18, 16, 16, 0) 50%,
+          rgba(0, 0, 0, 0.25) 50%
+      ), linear-gradient(
+          90deg,
+          rgba(255, 0, 0, 0.06),
+          rgba(0, 255, 0, 0.02),
+          rgba(0, 0, 255, 0.06)
+      );
+      z-index: 2;
+      background-size: 100% 2px, 3px 100%;
+      pointer-events: none;
+    }
+  }
+  .hardware {
+    // flex-flow: row wrap;
+    justify-content: flex-end;
+    z-index: 20;
+    //bottom: 0;
+    //left: 0;
+    //right: 0;
   }
 }
 #nav {

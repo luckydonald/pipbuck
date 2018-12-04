@@ -99,17 +99,13 @@ export default {
 <style scoped lang="scss">
   .hardware {
     background: #7e6d5b;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
     text-align: center;
   }
   .hardware-button {
     user-select: none;
     // background/border
     width: 32px;
-    height: 31px;
+    height: 32px;
     background: #000;
     display: inline-block;
     margin-left: 1rem;
