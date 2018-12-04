@@ -34,7 +34,7 @@ export default {
         data: { count: 0, timeout: null, last_type: null },
       },
       tab_timeouts: {},
-      tab_timeout_ms: 3000,
+      tab_timeout_ms: 500,
       tab_needs: 5,
     };
   },
