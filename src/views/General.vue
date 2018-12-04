@@ -29,9 +29,6 @@ const radioNamespace = createNamespacedHelpers('radio');
 export default {
   name: 'general',
   components: { Radio },
-  props: {
-    radioElement: {},
-  },
   data() {
     return {
     };
@@ -41,6 +38,9 @@ export default {
       'colorFront', 'radio',
     ]),
     ...radioNamespace.mapGetters(['current']),
+    radioElement() {
+      return this.$parent.$refs.radio;
+    },
   },
   methods: {
     playTrack(file) {

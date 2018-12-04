@@ -9,7 +9,7 @@
       <router-link to="/general">General</router-link>
       <router-link to="/settings" v-if="!showHardwareButtons">S</router-link>
     </div>
-    <router-view class="crt" :radio-element="this.$refs.radio"/>
+    <router-view />
     <hardware-buttons v-if="showHardwareButtons" />
     <keep-alive><audio
       ref="radio"
