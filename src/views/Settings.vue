@@ -19,15 +19,33 @@
 </template>
 
 <script>
+import { hsl } from '../lib/colorspace';
+
 export default {
   name: 'Settings',
   data() {
     return {
       colors: [
-        { name: 'Green', foreground: '#9ef8bd', background: '#08401f' },
-        { name: 'Amber', foreground: '#f7da9e', background: '#402d08' },
-        { name: 'Red', foreground: '#f59d9e', background: '#400809' },
-        { name: 'White', foreground: '#f5f5f5', background: '#404040' },
+        {
+          name: 'Green',
+          foreground: hsl(145, 85, 79, '#9cf7c2'),
+          background: hsl(145, 78, 14, '#08401f'),
+        },
+        {
+          name: 'Amber',
+          foreground: hsl(40, 85, 79, '#f7da9e'),
+          background: hsl(40, 78, 14, '#402d08'),
+        },
+        {
+          name: 'Red',
+          foreground: hsl(359, 85, 79, '#f79c9d'),
+          background: hsl(359, 78, 14, '#400809'),
+        },
+        {
+          name: 'White',
+          foreground: hsl(0, 0, 96, '#f5f5f5'),
+          background: hsl(0, 0, 25, '#404040'),
+        },
       ],
     };
   },
