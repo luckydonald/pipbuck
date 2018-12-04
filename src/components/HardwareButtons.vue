@@ -106,6 +106,7 @@ export default {
     text-align: center;
   }
   .hardware-button {
+    user-select: none;
     // background/border
     width: 32px;
     height: 31px;
