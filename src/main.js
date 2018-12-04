@@ -81,7 +81,7 @@ const store = new Vuex.Store({
     },
   },
   state: {
-    colorFront: '#9ef8bd',
+    colorFront: '#a0f8c5', // '#9ef8bd',
     colorBack: '#08401f',
 
     // color_hair_bright: '#9ef8bd',
