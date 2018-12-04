@@ -14,6 +14,7 @@
     <radio
       :color="colorFront"
       class="right-content"
+      :radio-element="radioElement"
     />
 
   </div>
@@ -28,6 +29,9 @@ const radioNamespace = createNamespacedHelpers('radio');
 export default {
   name: 'general',
   components: { Radio },
+  props: {
+    radioElement: {},
+  },
   data() {
     return {
     };
@@ -39,6 +43,10 @@ export default {
     ...radioNamespace.mapGetters(['current']),
   },
   methods: {
+    playTrack(file) {
+      this.selectTrack(file);
+      this.radioElement.play();
+    },
     ...radioNamespace.mapMutations(['selectTrack']),
   },
 };
