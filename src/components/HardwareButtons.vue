@@ -4,21 +4,21 @@
       class="hardware-button" id="stats"
       @touchstart="multitabHandler"
       @click="multitabHandler"
-    ><label for="stats">Stats<br>{{ tab_counter.stats.count }}</label>
+    ><label for="stats">Stats</label>
     </div>
 
     <div
       class="hardware-button" id="items"
       @touchstart="multitabHandler"
       @click="multitabHandler"
-    ><label for="items">Items<br>{{ tab_counter.items.count }}</label>
+    ><label for="items">Items</label>
     </div>
 
     <div
       class="hardware-button" id="data"
       @touchstart="multitabHandler"
       @click="multitabHandler"
-    ><label for="data"> Data<br>{{ tab_counter.data.count }}</label>
+    ><label for="data"> Data</label>
     </div>
   </div>
 </template>
