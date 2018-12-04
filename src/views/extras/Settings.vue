@@ -15,14 +15,19 @@
       <!-- :style="{ borderColor: color.foreground, color: color.foreground,
         backgroundColor: color.background }"-->
     </div>
+    <div>
+        <stable-colt :hair="hair" :back="back"/>
+    </div>
   </div>
 </template>
 
 <script>
-import { hsl } from '../lib/colorspace';
+import { hsl, HexToHSL } from '../../lib/colorspace';
+import StableColt from '../../components/StableColt.vue';
 
 export default {
   name: 'Settings',
+  components: { StableColt },
   data() {
     return {
       colors: [
@@ -42,12 +47,30 @@ export default {
           background: hsl(359, 78, 14, '#400809'),
         },
         {
+          name: 'Violet',
+          foreground: hsl(270, 85, 79, '#ca9ff5'),
+          background: hsl(270, 78, 14, '#240840'),
+        },
+        {
+          name: 'Blue',
+          foreground: hsl(180, 85, 79, '#9ff5f5'),
+          background: hsl(180, 78, 14, '#084040'),
+        },
+        {
           name: 'White',
           foreground: hsl(0, 0, 96, '#f5f5f5'),
           background: hsl(0, 0, 25, '#404040'),
         },
       ],
     };
+  },
+  computed: {
+    hair() {
+      return HexToHSL(this.$store.state.colorFront);
+    },
+    back() {
+      return HexToHSL(this.$store.state.colorBack);
+    },
   },
   methods: {
     leToggleHardwareButtons(state) {

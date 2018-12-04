@@ -6,7 +6,7 @@
       <router-link to="/skills">Skills</router-link>
       <router-link to="/perks">Perks</router-link>
       <router-link to="/general">General</router-link>
-      <router-link to="/settings">S</router-link>
+      <router-link to="/settings" v-if="!showHardwareButtons">S</router-link>
     </div>
     <router-view :radio-element="this.$root.$children[0].$refs.radio"/>
     <hardware-buttons v-if="showHardwareButtons" />

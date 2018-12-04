@@ -1,22 +1,10 @@
 <template>
-  <stable-colt :hair="hair" :back="back"/>
+  <h6>Nothing here yet.</h6>
 </template>
 
 <script>
-import StableColt from '../../components/StableColt.vue';
-import { HexToHSL } from '../../lib/colorspace';
-
 export default {
   name: 'ExtraData',
-  components: { StableColt },
-  computed: {
-    hair() {
-      return HexToHSL(this.$store.state.colorFront);
-    },
-    back() {
-      return HexToHSL(this.$store.state.colorBack);
-    },
-  },
 };
 </script>
 

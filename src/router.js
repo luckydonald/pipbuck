@@ -2,10 +2,9 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 import General from './views/General.vue';
-import Settings from './views/Settings.vue';
+import Settings from './views/extras/Settings.vue'; // ExtraData
 import ExtraItems from './views/extras/ExtraItems.vue';
 import ExtraStats from './views/extras/ExtraStats.vue';
-import ExtraData from './views/extras/ExtraData.vue';
 
 Vue.use(Router);
 
@@ -49,7 +48,7 @@ export default new Router({
     {
       path: '/data/extra',
       name: 'Data Extra',
-      component: ExtraData,
+      redirect: { name: 'Settings' },
     },
   ],
 });
