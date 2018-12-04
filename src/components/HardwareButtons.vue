@@ -1,14 +1,98 @@
 <template>
   <div class="hardware">
-    <div class="hardware-button" id="stats"><label for="stats">Stats</label></div>
-    <div class="hardware-button" id="items"><label for="items">Items</label></div>
-    <div class="hardware-button" id="data"> <label for="data"> Data</label></div>
+    <div
+      class="hardware-button" id="stats"
+      @touchstart="multitabHandler"
+      @click="multitabHandler"
+    ><label for="stats">Stats<br>{{ tab_counter.stats.count }}</label>
+    </div>
+
+    <div
+      class="hardware-button" id="items"
+      @touchstart="multitabHandler"
+      @click="multitabHandler"
+    ><label for="items">Items<br>{{ tab_counter.items.count }}</label>
+    </div>
+
+    <div
+      class="hardware-button" id="data"
+      @touchstart="multitabHandler"
+      @click="multitabHandler"
+    ><label for="data"> Data<br>{{ tab_counter.data.count }}</label>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HardwareButtons',
+  data() {
+    return {
+      tab_counter: {
+        stats: { count: 0, timeout: null, last_type: null },
+        items: { count: 0, timeout: null, last_type: null },
+        data: { count: 0, timeout: null, last_type: null },
+      },
+      tab_timeouts: {},
+      tab_timeout_ms: 3000,
+      tab_needs: 5,
+    };
+  },
+  methods: {
+    multitabHandler(event) {
+      const key = event.target.id;
+      console.log(
+        'inner', {
+          key, event, self: this, counter: this.tab_counter[key],
+        },
+      );
+      if (this.tab_counter[key] === undefined) {
+        this.$set(this.tab_counter, key, { count: 0, timeout: null, last_type: event.type });
+      }
+      if (
+        this.tab_counter[key].last_type === null
+        || this.tab_counter[key].last_type === undefined
+      ) {
+        this.$set(this.tab_counter[key], 'last_type', event.type);
+        this.tab_counter[key].last_type = event.type;
+      } else if (
+        this.tab_counter[key].last_type !== event.type
+      ) {
+        console.log(
+          `ignoring event: last event was type ${this.tab_counter[key].last_type},`
+          + `but we got ${event.type}.`,
+        );
+        return false;
+      }
+      this.tab_counter[key].count = this.tab_counter[key].count + 1;
+      // this.$set(this.tab_counter, `${key}.count`, this.tab_counter[key].count + 1);
+
+      if (this.tab_counter[key].count < this.tab_needs) {
+        // we are still counting
+        clearTimeout(this.tab_counter[key].timeout);
+        this.tab_counter[key].timeout = setTimeout(() => {
+          // failed counting
+          this.tab_counter[key] = { count: 0, timeout: null, last_type: null };
+          this.$emit(event.type, event);
+          this.multitabFail(event, key);
+        }, this.tab_timeout_ms);
+        return false; // needs another round
+      }
+      // action on successful multi-tap goes below
+      clearTimeout(this.tab_counter[key].timeout);
+      this.tab_counter[key] = { count: 0, timeout: null };
+      event.preventDefault();
+      this.multitabSucceed(event, key);
+      return true;
+    },
+    multitabSucceed(event, key) { // (event, key)
+      console.log('success', event, key);
+      this.$router.push({ path: `/${key}/extra` });
+    },
+    multitabFail(event, key) {
+      console.log('fail', event, key);
+    },
+  },
 };
 </script>
 
@@ -67,7 +151,7 @@ export default {
     border-radius: 150px;
     margin-left: 5px;
     margin-top: 6px;
-    animation: hardware-button-flicker;
+    // animation: hardware-button-flicker;
     animation-duration: 4s;
     animation-iteration-count: infinite;
 }
