@@ -21,12 +21,12 @@
 
 <script>
 import { mapState, createNamespacedHelpers } from 'vuex';
-import Oscilloscope from '../components/Oscilloscope.vue';
+import Oscilloscope from '../../components/Oscilloscope.vue';
 
 const radioNamespace = createNamespacedHelpers('radio');
 
 export default {
-  name: 'general',
+  name: 'radio',
   components: { Oscilloscope },
   data() {
     return {

@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import General from './views/General.vue';
-import Settings from './views/extras/Settings.vue'; // ExtraData
-import ExtraItems from './views/extras/ExtraItems.vue';
-import ExtraStats from './views/extras/ExtraStats.vue';
+import Radio from './views/data/Radio.vue';
+import Settings from './views/xtras/Settings.vue'; // ExtraData
+import ExtraItems from './views/xtras/ExtraItems.vue';
+import ExtraStats from './views/xtras/ExtraStats.vue';
 
 Vue.use(Router);
 
@@ -15,7 +15,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
+      redirect: { name: 'Status' },
     },
     {
       path: '/about',
@@ -26,9 +26,29 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
     },
     {
-      path: '/general',
+      path: '/stats/status',
+      name: 'Status',
+      component: Home,
+    },
+    {
+      path: '/stats/special',
+      name: 'S.P.E.C.I.A.L.',
+      component: Home,
+    },
+    {
+      path: '/stats/skills',
+      name: 'Skills',
+      component: Home,
+    },
+    {
+      path: '/stats/perks',
+      name: 'Perks',
+      component: Home,
+    },
+    {
+      path: '/stats/general',
       name: 'General',
-      component: General,
+      component: Home,
     },
     {
       path: '/settings',
@@ -44,6 +64,11 @@ export default new Router({
       path: '/items/extra',
       name: 'Items Extra',
       component: ExtraItems,
+    },
+    {
+      path: '/data/radio',
+      name: 'Radio',
+      component: Radio,
     },
     {
       path: '/data/extra',

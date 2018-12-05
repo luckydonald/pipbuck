@@ -12,11 +12,11 @@
       <div class="crt">
         <div class="error-effect"></div>
         <div id="nav">
-          <router-link to="/about">Status</router-link>
-          <router-link to="/">S.P.E.C.I.A.L.</router-link>
-          <router-link to="/skills">Skills</router-link>
-          <router-link to="/perks">Perks</router-link>
-          <router-link to="/general">General</router-link>
+          <router-link to="/stats/status">Status</router-link>
+          <router-link to="/stats/special">S.P.E.C.I.A.L.</router-link>
+          <router-link to="/stats/skills">Skills</router-link>
+          <router-link to="/stats/perks">Perks</router-link>
+          <router-link to="/stats/general">General</router-link>
           <router-link to="/settings" v-if="!showHardwareButtons">S</router-link>
         </div>
         <router-view />
