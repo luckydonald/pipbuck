@@ -1,5 +1,8 @@
 <template>
-  <div id="app" :style="{ '--color-front': colorFront, '--color-back': colorBack }">
+  <div
+    id="app"
+   :style="{ '--color-front': colorFront, '--color-back': colorBack, 'text-shadow': shadow }"
+  >
     <favicon><stable-colt :hair="hair" :back="back"/></favicon>
     <div class="wrapper">
       <hardware-buttons
@@ -21,11 +24,12 @@
     </div>
     <keep-alive><audio
       ref="radio"
-      :src="currentRadio.file || ''"
+      :src="currentRadioFile"
       autoplay="autoplay"
       autobuffer playsinline
       loop="loop"
       preload="auto"
+      controls="controls"
       @load="this.play()"
     ></audio></keep-alive>
   </div>
@@ -160,7 +164,7 @@ const app = {
     ...mapState([
       'colorFront', 'colorBack', 'showHardwareButtons', 'radio',
     ]),
-    ...mapGetters({ currentRadio: 'radio/current' }),
+    ...mapGetters({ currentRadio: 'radio/current', currentRadioFile: 'radio/currentFile' }),
     hair() {
       return HexToHSL(this.$store.state.colorFront);
     },
@@ -294,6 +298,13 @@ body {
 
     }
   }
+}
+audio {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  display: none;
 }
 </style>
 

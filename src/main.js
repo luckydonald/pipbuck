@@ -26,19 +26,25 @@ const radio = {
         position: null,
       },
       'Galaxy News Radio': {
-        file: 'radio/gnr.mp3',
+        file: '/radio/gnr.mp3',
         disabled: false,
         hidden: false,
         position: 0,
       },
       'Diamond City Radio': {
-        file: 'radio/dcr.mp3',
+        file: '/radio/dcr.mp3',
         disabled: false,
         hidden: false,
         position: 0,
       },
       'Test Track': {
-        file: 'radio/test.mp3',
+        file: '/radio/test.mp3',
+        disabled: false,
+        hidden: false,
+        position: 0,
+      },
+      Stream: {
+        file: 'https://pony.fm/t21076/stream.mp3',
         disabled: false,
         hidden: false,
         position: 0,
@@ -60,6 +66,20 @@ const radio = {
         return null;
       }
       return getters.current;
+    },
+
+    currentFile(state, getters) {
+      if (getters.current.file == null) {
+        return '';
+      }
+      if (
+        getters.current.file.length >= 1 && getters.current.file[0] === '/' // starts with slash
+        && getters.current.file.length >= 2 && getters.current.file[1] !== '/' // but not double
+      ) {
+        // is relative path
+        return window.location.origin + getters.current.file;
+      }
+      return getters.current.file;
     },
 
     /**
