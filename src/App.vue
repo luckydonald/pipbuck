@@ -7,6 +7,7 @@
         @scroll.prevent @wheel.prevent @touchstart.prevent @touchmove.prevent @drag.prevent
       />
       <div class="crt">
+        <div class="error-effect"></div>
         <div id="nav">
           <router-link to="/about">Status</router-link>
           <router-link to="/">S.P.E.C.I.A.L.</router-link>
@@ -52,7 +53,6 @@ function parentWithClass(el, clazz) {
 class ScrollPrevent {
   constructor(appObj) {
     this.app = appObj;
-    console.log('ÄPP', appObj);
     this.start = null;
     this.timeout = null;
     // eslint-disable-next-line no-underscore-dangle
@@ -73,12 +73,11 @@ class ScrollPrevent {
       return false;
     }
     if (event.touches.length !== 1) {
-      // empty/multitouch
-      return true;
+      event.preventDefault();
     }
     if (event.changedTouches.length !== 1) {
       // empty/multitouch
-      return true;
+      event.preventDefault();
     }
     // eslint-disable-next-line no-underscore-dangle
     document.body.addEventListener('touchmove', this._touchmove);
@@ -98,11 +97,13 @@ class ScrollPrevent {
     const crt = parentWithClass(event2.target, 'crt');
     if (event2.touches.length !== 1) {
       // empty/multitouch
-      return true;
+      event2.preventDefault();
+      return false;
     }
     if (event2.changedTouches.length !== 1) {
       // empty/multitouch
-      return true;
+      event2.preventDefault();
+      return false;
     }
     if (crt && crt.scrollTop === 0 && distance < 0) {
       // don't pull the page down when already at top.
@@ -271,28 +272,6 @@ body {
     // overflow-scrolling: touch;
     width: 100%;
     height: 100%;
-    &::before {
-      content: " ";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-
-      background: linear-gradient(
-          rgba(18, 16, 16, 0) 50%,
-          rgba(0, 0, 0, 0.25) 50%
-      ), linear-gradient(
-          90deg,
-          rgba(255, 0, 0, 0.06),
-          rgba(0, 255, 0, 0.02),
-          rgba(0, 0, 255, 0.06)
-      );
-      z-index: 2;
-      background-size: 100% 2px, 3px 100%;
-      pointer-events: none;
-    }
   }
   .hardware {
     // flex-flow: row wrap;
@@ -316,4 +295,176 @@ body {
     }
   }
 }
+</style>
+
+<style lang="scss">
+.error-effect {
+  pointer-events:none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  // border-radius: 50% / 5%;
+  // background: #111;
+  // background-size: 80%;
+  // -moz-animation: noise 200ms infinite linear;
+  // -o-animation: noise 200ms infinite linear;
+  // -webkit-animation: noise 200ms infinite linear;
+  // animation: noise 200ms infinite linear;
+}
+
+
+.error-effect::before {
+  content: " ";
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(255,255,255,0.2) 0%,
+    rgba(255,255,255,0.144) 11%,
+    rgba(255,255,255,0.124) 31%,
+    rgba(255,255,255,0.102) 35%,
+    rgba(255,255,255,0.028) 61%,
+    rgba(255,255,255,0.008) 79%,
+    rgba(255,255,255,0.000) 100%
+  );
+  // ~0:06 run time, ~0:02 screen time
+  animation: scanline 6300ms infinite linear;
+  border-radius: 50% / 5%;
+}
+
+
+@keyframes scanline {
+  0% { // 0%
+    top: -40%;
+    opacity: 0;
+  }
+  6% { // 20%
+    opacity: 0.2;
+  }
+  15% { // 50%
+    opacity: 0.3;
+  }
+  24% { // 80%
+    opacity: 0.2;
+  }
+  30% { // 100%
+      top: 100%;
+      opacity: 0;
+  }
+  100% {
+      top: 100%;
+      opacity: 0;
+  }
+}
+
+.crt::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+  );
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.crt::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.27861;
+  }
+  5% {
+    opacity: 0.34769;
+  }
+  10% {
+    opacity: 0.23604;
+  }
+  15% {
+    opacity: 0.90626;
+  }
+  20% {
+    opacity: 0.18128;
+  }
+  25% {
+    opacity: 0.83891;
+  }
+  30% {
+    opacity: 0.65583;
+  }
+  35% {
+    opacity: 0.67807;
+  }
+  40% {
+    opacity: 0.26559;
+  }
+  45% {
+    opacity: 0.84693;
+  }
+  50% {
+    opacity: 0.96019;
+  }
+  55% {
+    opacity: 0.08594;
+  }
+  60% {
+    opacity: 0.20313;
+  }
+  65% {
+    opacity: 0.71988;
+  }
+  70% {
+    opacity: 0.53455;
+  }
+  75% {
+    opacity: 0.37288;
+  }
+  80% {
+    opacity: 0.71428;
+  }
+  85% {
+    opacity: 0.70419;
+  }
+  90% {
+    opacity: 0.7003;
+  }
+  95% {
+    opacity: 0.36108;
+  }
+  100% {
+    opacity: 0.24387;
+  }
+}
+
+
 </style>
