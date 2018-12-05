@@ -5,18 +5,17 @@
         v-for="(track, name) in radio.tracks" :key="track.file"
         class="track" :class="{ disabled: track.disabled }"
         v-if="!track.disabled"
-        @click="selectTrack(name)"
+        @click="playTrack(name)"
       >
         <a :class="{ active: current.file === track.file }">{{ name }}</a>
       </li>
     </ul>
-    <!--<div>Playing: {{ current }}</div>-->
+    <div>Playing: <a :href="currentFile">{{ currentFile }}</a></div>
     <radio
       :color="colorFront"
       class="right-content"
       :radio-element="radioElement"
     />
-
   </div>
 </template>
 
@@ -37,15 +36,27 @@ export default {
     ...mapState([
       'colorFront', 'radio',
     ]),
-    ...radioNamespace.mapGetters(['current']),
+    ...radioNamespace.mapState(['selected']),
+    ...radioNamespace.mapGetters(['current', 'currentFile']),
     radioElement() {
       return this.$parent.$refs.radio;
     },
   },
   methods: {
     playTrack(file) {
-      this.selectTrack(file);
-      this.radioElement.play();
+      console.log('<radio-element>', this.radioElement);
+      console.log('file', this.current.file, file);
+      if (this.selected !== null && this.current.file !== file) {
+        // is already playing something else.
+        // turn off
+        this.selectTrack(null);
+        this.radioElement.stop();
+      } else {
+        // is not playing
+        // load track
+        this.selectTrack(file);
+        this.radioElement.load();
+      }
     },
     ...radioNamespace.mapMutations(['selectTrack']),
   },
