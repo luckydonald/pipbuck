@@ -16,7 +16,8 @@ yarn run serve --port 8082
 ### Compiles and minifies for production
 ```
 yarn run build
-docker build .
+rm dist/stable_colt*.svg
+docker build . -t pipbuck:latest
 ```
 
 ### Run your tests

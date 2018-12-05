@@ -1,0 +1,9 @@
+# Ignore everything:
+*
+
+# Except for the dist directory and
+!dist/
+
+# Except for the Docker files
+!./Dockerfile
+!./nginx.conf
