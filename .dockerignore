@@ -3,6 +3,9 @@
 
 # Except for the dist directory and
 !dist/
+# dist/radio/dcr.mp3
+# dist/radio/gnr.mp3
+# dist/radio/test.mp3
 
 # Except for the Docker files
 !./Dockerfile

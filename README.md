@@ -18,12 +18,18 @@ yarn run serve --port 8082
 yarn run build
 rm dist/stable_colt*.svg
 docker build . -t pipbuck:latest
+docker stop pipbuck
+docker rm pipbuck
 docker run  \
     --detach \
     --name pipbuck \
     --restart always \
     --network dockertgbot_web \
     pipbuck:latest
+```
+
+```
+docker build . -t pipbuck:latest; docker stop pipbuck; docker rm pipbuck; docker run --detach --name pipbuck --restart always --network dockertgbot_web pipbuck:latest && docker logs -ft --tail 100 pipbuck
 ```
 
 ### Run your tests
