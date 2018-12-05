@@ -25,7 +25,7 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'Radio',
+  name: 'oscilloscope',
   props: {
     color: {
       default: '#dc5990',
@@ -55,7 +55,7 @@ export default {
       src: null, // audio file
       context: null, // audio context
       analyser: null, // audio analyser
-      // [c] canvas_2d: null, // canvas 2D context // computed
+      // canvas_2d: COMPUTED
     };
   },
   methods: {
@@ -137,6 +137,7 @@ export default {
       return this.$props.canvas;
     },
     canvas_2d() {
+      console.log('canvas access');
       return this.canvas_2d.this.canvasElement.getContext('2d');
     },
   },

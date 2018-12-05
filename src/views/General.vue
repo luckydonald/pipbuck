@@ -11,7 +11,7 @@
       </li>
     </ul>
     <div>Playing: <a :href="currentFile">{{ currentFile }}</a></div>
-    <radio
+    <oscilloscope
       :color="colorFront"
       class="right-content"
       :radio-element="radioElement"
@@ -21,13 +21,13 @@
 
 <script>
 import { mapState, createNamespacedHelpers } from 'vuex';
-import Radio from '../components/Radio.vue';
+import Oscilloscope from '../components/Oscilloscope.vue';
 
 const radioNamespace = createNamespacedHelpers('radio');
 
 export default {
   name: 'general',
-  components: { Radio },
+  components: { Oscilloscope },
   data() {
     return {
     };
