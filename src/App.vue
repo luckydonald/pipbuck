@@ -127,12 +127,15 @@ class ScrollPrevent {
         left: 0,
         behavior: 'smooth',
       });
-    } else {
+    } else if (crt.scrollTo !== undefined) {
       crt.scrollTo({
         top: this.app.scroll,
         left: 0,
         behavior: 'smooth',
       });
+    } else {
+      crt.scrollLeft = 0;
+      crt.scrollTop = this.app.scroll;
     }
     event2.preventDefault();
     return false;
