@@ -99,6 +99,11 @@ class ScrollPrevent {
     const distance = this.start !== null ? this.start - end : 0;
     this.start = end;
     const crt = parentWithClass(event2.target, 'crt');
+    if (!crt) {
+      // scrolled something else
+      event2.preventDefault();
+      return false;
+    }
     if (event2.touches.length !== 1) {
       // empty/multitouch
       event2.preventDefault();
@@ -116,11 +121,19 @@ class ScrollPrevent {
     }
     // scroll by half the speed, also don't scroll under 0.
     this.app.scroll = Math.max(this.app.scroll + (distance * 0.6), 0);
-    crt.scroll({
-      top: this.app.scroll,
-      left: 0,
-      behavior: 'smooth',
-    });
+    if (crt.scroll !== undefined) {
+      crt.scroll({
+        top: this.app.scroll,
+        left: 0,
+        behavior: 'smooth',
+      });
+    } else {
+      crt.scrollTo({
+        top: this.app.scroll,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
     event2.preventDefault();
     return false;
   }
