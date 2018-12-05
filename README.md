@@ -16,6 +16,7 @@ yarn run serve --port 8082
 ### Compiles and minifies for production
 ```
 yarn run build
+docker build .
 ```
 
 ### Run your tests
