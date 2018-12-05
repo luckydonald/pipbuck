@@ -37,7 +37,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex';
-import { HexToHSL } from './lib/colorspace';
+import { HexToHSL, hsl } from './lib/colorspace';
 import HardwareButtons from './components/HardwareButtons.vue';
 import Favicon from './components/Favicon.vue';
 import StableColt from './components/StableColt.vue';
@@ -170,6 +170,13 @@ const app = {
     },
     back() {
       return HexToHSL(this.$store.state.colorBack);
+    },
+    shadow() {
+      const color1 = this.hair;
+      const color2 = this.hair;
+      color1.s /= 2;
+      color2.s /= 2;
+      return `2px 0 ${hsl(color1)}, -2px 0 ${hsl(color1)};`;
     },
   },
   watched: {
