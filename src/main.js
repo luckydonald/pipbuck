@@ -16,6 +16,7 @@ const radio = {
   debug: process.env.NODE_ENV !== 'production',
   strict: process.env.NODE_ENV !== 'production',
   state: {
+    current_time: 0, // audio.currentTime = 60;
     selected: null,
     // current: computed
     tracks: {
