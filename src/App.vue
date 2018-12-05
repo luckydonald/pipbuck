@@ -8,14 +8,12 @@
       />
       <div class="crt">
         <div id="nav">
-          <a>{{ scroll }}</a>
           <router-link to="/about">Status</router-link>
           <router-link to="/">S.P.E.C.I.A.L.</router-link>
           <router-link to="/skills">Skills</router-link>
           <router-link to="/perks">Perks</router-link>
           <router-link to="/general">General</router-link>
           <router-link to="/settings" v-if="!showHardwareButtons">S</router-link>
-          <a>{{ display }}</a>
         </div>
         <router-view />
       </div>
@@ -66,13 +64,11 @@ class ScrollPrevent {
   }
 
   _touchstart(event) {
-    console.log('äpp', this.app);
     this.start = event.touches[0].pageY;
     this.timeout = null;
 
     const noscroll = parentWithClass(event.target, 'noscroll');
     if (noscroll) {
-      this.app.display += ' S1';
       event.preventDefault();
       return false;
     }
@@ -93,40 +89,26 @@ class ScrollPrevent {
     clearTimeout(this.timeout);
     const noscroll2 = parentWithClass(event2.target, 'noscroll');
     if (noscroll2) {
-      this.app.display += ' S2';
       event2.preventDefault();
       return false;
     }
     const end = event2.touches[0].pageY;
     const distance = this.start !== null ? this.start - end : 0;
     this.start = end;
-    if (distance > 0) {  // empty/multitouch
-      // eslint-disable-next-line no-alert
-      this.app.display = `up   ${distance}`;
-    }
-    if (distance < 0) {  // empty/multitouch
-      // eslint-disable-next-line no-alert
-      this.app.display = `down ${distance}`;
-    }
-    // eslint-disable-next-line no-unused-vars
     const crt = parentWithClass(event2.target, 'crt');
     if (event2.touches.length !== 1) {
       // empty/multitouch
-      this.app.display += ' 3';
       return true;
     }
     if (event2.changedTouches.length !== 1) {
       // empty/multitouch
-      this.app.display += ' 4';
       return true;
     }
     if (crt && crt.scrollTop === 0 && distance < 0) {
       // don't pull the page down when already at top.
-      this.app.display += ' ⟙'; // ⟘
       event2.preventDefault();
       return false;
     }
-    this.app.display += ' X';
     // scroll by half the speed, also don't scroll under 0.
     this.app.scroll = Math.max(this.app.scroll + (distance * 0.6), 0);
     crt.scroll({
@@ -169,7 +151,6 @@ const app = {
   components: { HardwareButtons, Favicon, StableColt },
   data() {
     return {
-      display: 'test',
       scroll: 0.00,
       scroll_prevent: null,
     };
