@@ -1,25 +1,25 @@
 <template>
   <div class="hardware">
-    <router-link tag="div" to="/stats"
+    <div
       class="hardware-button" id="stats"
       @touchstart="multitabHandler"
       @click="multitabHandler"
     ><label for="stats">Stats</label>
-    </router-link>
+    </div>
 
-    <router-link tag="div" to="/items"
+    <div
       class="hardware-button" id="items"
       @touchstart="multitabHandler"
       @click="multitabHandler"
     ><label for="items">Items</label>
-    </router-link>
+    </div>
 
-    <router-link tag="div" to="/data"
+    <div
       class="hardware-button" id="data"
       @touchstart="multitabHandler"
       @click="multitabHandler"
     ><label for="data"> Data</label>
-    </router-link>
+    </div>
   </div>
 </template>
 
@@ -41,6 +41,7 @@ export default {
   methods: {
     multitabHandler(event) {
       const key = event.target.id;
+      this.$router.push({ path: `/${key}` });
       console.log(
         'inner', {
           key, event, self: this, counter: this.tab_counter[key],
