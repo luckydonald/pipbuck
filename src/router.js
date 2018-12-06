@@ -104,29 +104,29 @@ export default new Router({
       redirect: { name: 'Local Map' },
       children: [
         {
-          path: '/stats/local_map',
+          path: '/data/local_map',
           name: 'Local Map',
           component: Boot,
         },
         {
-          path: '/stats/world_map',
+          path: '/data/world_map',
           name: 'World Map',
           component: Boot,
         },
         {
-          path: '/stats/quests',
+          path: '/data/quests',
           name: 'Quests',
           component: Boot,
         },
         {
-          path: '/stats/notes',
+          path: '/data/notes',
           name: 'Notes',
           component: Boot,
         },
         {
-          path: '/stats/general',
-          name: 'General',
-          component: Boot,
+          path: '/data/radio',
+          name: 'Radio',
+          component: Radio,
         },
       ],
     },
@@ -144,11 +144,6 @@ export default new Router({
       path: '/items/extra',
       name: 'Items Extra',
       component: ExtraItems,
-    },
-    {
-      path: '/data/radio',
-      name: 'Radio',
-      component: Radio,
     },
     {
       path: '/data/extra',
