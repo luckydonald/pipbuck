@@ -64,7 +64,8 @@ export default {
   },
   methods: {
     attachAnalyser(startLoop) {
-      console.log('attachAnalyser');
+      console.log('attachAnalyser()');
+      console.log('BaseAudioContext: create');
       this.context = new (
         window.AudioContext
         || window.webkitAudioContext
@@ -83,16 +84,61 @@ export default {
         console.log('audioElement empty. Not loading.');
         return;
       }
+      console.log('AnalyserNode: create');
       this.analyser = this.context.createAnalyser();
       console.log('HTMLMediaElement', this.audioElement);
+      console.log('MediaElementAudioSourceNode: create');
       this.src = this.context.createMediaElementSource(this.audioElement);
+      console.log('MediaElementAudioSourceNode: connect');
       this.src.connect(this.analyser);
       this.analyser.fftSize = 32;
+      console.log('AnalyserNode: connect');
       this.analyser.connect(this.context.destination);
       this.audioData = new Uint8Array(this.analyser.frequencyBinCount);
       if (startLoop) {
         this.loopRunning = true;
         this.$nextTick(() => requestAnimationFrame(this.mainLoop));
+      }
+    },
+    detachAnalyser() {
+      this.loopRunning = false;
+      cancelAnimationFrame(this.loopRequest);
+      this.loopRequest = null;
+      console.log('detachAnalyser');
+      if (this.src) {
+        if (this.analyser) {
+          console.log('MediaElementAudioSourceNode: disconnect (anal)');
+          this.src.disconnect(this.analyser);
+        } else {
+          console.log('no analyser to disconnect MediaElementAudioSourceNode from.');
+        }
+        console.log('MediaElementAudioSourceNode: disconnect (glob)');
+        this.src.disconnect();
+
+        console.log('MediaElementAudioSourceNode: deleted');
+        this.src = null;
+      }
+      if (this.analyser) {
+        if (this.context && this.context.destination) {
+          console.log('AnalyserNode: disconnect (dest)');
+          this.analyser.disconnect(this.context.destination);
+        } else {
+          console.log('no destination to disconnect AnalyserNode from.');
+        }
+        console.log('AnalyserNode: disconnect (glob)');
+        this.analyser.disconnect();
+        if (this.analyser.close !== undefined) {
+          console.log('AnalyserNode: close');
+          this.analyser.close();
+        }
+        this.analyser = null;
+      }
+      if (this.context) {
+        if (this.context.disconnect !== undefined) {
+          this.context.disconnect();
+        }
+        this.context.close();
+        this.context = null;
       }
     },
     mainLoop() {
@@ -116,36 +162,6 @@ export default {
 
       if (this.loopRunning) {
         this.loopRequest = requestAnimationFrame(this.mainLoop);
-      }
-    },
-    detachAnalyser() {
-      this.loopRunning = false;
-      cancelAnimationFrame(this.loopRequest);
-      this.loopRequest = null;
-      console.log('detachAnalyser');
-      if (this.src) {
-        if (this.analyser) {
-          this.src.disconnect(this.analyser);
-        } else {
-          console.warn('no analyser to disconnect, disconnecting all');
-          this.src.disconnect();
-        }
-
-        this.src = null;
-      }
-      if (this.analyser) {
-        if (this.context && this.context.destination) {
-          this.analyser.disconnect(this.context.destination);
-        } else {
-          this.analyser.disconnect();
-        }
-        this.analyser.close();
-        this.analyser = null;
-      }
-      if (this.context) {
-        this.context.disconnect();
-        this.context.close();
-        this.context = null;
       }
     },
     /**
