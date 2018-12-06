@@ -128,12 +128,12 @@ export default new Router({
           name: 'Radio',
           component: Radio,
         },
+        {
+          path: '/settings',
+          name: 'Settings',
+          component: Settings,
+        },
       ],
-    },
-    {
-      path: '/settings',
-      name: 'Settings',
-      component: Settings,
     },
     {
       path: '/stats/extra',
