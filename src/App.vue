@@ -11,14 +11,6 @@
       />
       <div class="crt">
         <div class="error-effect"></div>
-        <div id="nav">
-          <router-link to="/stats/status">Status</router-link>
-          <router-link to="/stats/special">S.P.E.C.I.A.L.</router-link>
-          <router-link to="/stats/skills">Skills</router-link>
-          <router-link to="/stats/perks">Perks</router-link>
-          <router-link to="/stats/general">General</router-link>
-          <router-link to="/settings" v-if="!showHardwareButtons">S</router-link>
-        </div>
         <router-view />
       </div>
     </div>
@@ -36,6 +28,8 @@
 </template>
 
 <script>
+import Shake from 'shake.js';
+
 import { mapState, mapGetters } from 'vuex';
 import { HexToHSL, hsl } from './lib/colorspace';
 import HardwareButtons from './components/HardwareButtons.vue';
@@ -219,17 +213,20 @@ const app = {
       { immediate: true },
     );
     // event listeners
-    this.$on('showHardwareButtons', function eventShowHardwareButtons(value) {
-      this.showHardwareButtons = value;
-    });
     this.scroll_prevent = new ScrollPrevent(this);
-    console.log(this.scroll_prevent);
+    this.shake_instance = new Shake({
+      threshold: 15, // optional shake strength threshold
+      timeout: 1000, // optional, determines the frequency of event generation
+    });
     this.scroll_prevent.install();
+    this.shake_instance.start();
   },
   beforeDestroy() {
     if (this.scroll_prevent !== null) {
       this.scroll_prevent.deinstall();
       this.scroll_prevent = null;
+      this.shake_instance.stop();
+      this.shake_instance = null;
     }
   },
 };

@@ -1,8 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import Boot from './views/Boot.vue';
+import Data from './views/Data.vue';
+import Items from './views/Items.vue';
+import Stats from './views/Stats.vue';
 import Radio from './views/data/Radio.vue';
-import Settings from './views/xtras/Settings.vue'; // ExtraData
+import About from './views/About.vue';
+import Settings from './views/xtras/Settings.vue';
 import ExtraItems from './views/xtras/ExtraItems.vue';
 import ExtraStats from './views/xtras/ExtraStats.vue';
 
@@ -15,7 +19,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      redirect: { name: 'Status' },
+      component: () => import(/* webpackChunkName: "boot" */ './views/Boot.vue'),
     },
     {
       path: '/about',
@@ -23,32 +27,106 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      component: About,
     },
     {
-      path: '/stats/status',
-      name: 'Status',
-      component: Home,
+      path: '/stats',
+      name: 'Stats',
+      component: Stats,
+      redirect: { name: 'Status' },
+      children: [
+        {
+          path: '/stats/status',
+          name: 'Status',
+          component: Boot,
+        },
+        {
+          path: '/stats/special',
+          name: 'S.P.E.C.I.A.L.',
+          component: Boot,
+        },
+        {
+          path: '/stats/skills',
+          name: 'Skills',
+          component: Boot,
+        },
+        {
+          path: '/stats/perks',
+          name: 'Perks',
+          component: Boot,
+        },
+        {
+          path: '/stats/general',
+          name: 'General',
+          component: Boot,
+        },
+      ],
     },
     {
-      path: '/stats/special',
-      name: 'S.P.E.C.I.A.L.',
-      component: Home,
+      path: '/items',
+      name: 'Items',
+      component: Items,
+      redirect: { name: 'Weapons' },
+      children: [
+        {
+          path: '/items/weapons',
+          name: 'Weapons',
+          component: Boot,
+        },
+        {
+          path: '/items/apparel',
+          name: 'Apparel',
+          component: Boot,
+        },
+        {
+          path: '/items/aid',
+          name: 'Aid',
+          component: Boot,
+        },
+        {
+          path: '/items/misc',
+          name: 'Misc',
+          component: Boot,
+        },
+        {
+          path: '/items/ammo',
+          name: 'Ammo',
+          component: Boot,
+        },
+      ],
     },
     {
-      path: '/stats/skills',
-      name: 'Skills',
-      component: Home,
-    },
-    {
-      path: '/stats/perks',
-      name: 'Perks',
-      component: Home,
-    },
-    {
-      path: '/stats/general',
-      name: 'General',
-      component: Home,
+      path: '/data',
+      name: 'Data',
+      component: Data,
+      redirect: { name: 'Local Map' },
+      children: [
+        {
+          path: '/stats/local_map',
+          name: 'Local Map',
+          component: Boot,
+        },
+        {
+          path: '/stats/world_map',
+          name: 'World Map',
+          component: Boot,
+        },
+        {
+          path: '/stats/quests',
+          name: 'Quests',
+          component: Boot,
+        },
+        {
+          path: '/stats/notes',
+          name: 'Notes',
+          component: Boot,
+        },
+        {
+          path: '/stats/general',
+          name: 'Radio',
+          component: Boot,
+        },
+      ],
     },
     {
       path: '/settings',
