@@ -1,11 +1,12 @@
-import Vue from 'vue';
 import Router from 'vue-router';
+import Vue from 'vue';
 import Boot from './views/Boot.vue';
 import Data from './views/Data.vue';
 import Items from './views/Items.vue';
 import Stats from './views/Stats.vue';
-import Radio from './views/data/Radio.vue';
 import About from './views/About.vue';
+import Radio from './views/data/Radio.vue';
+import Status from './views/stats/Status.vue';
 import Settings from './views/xtras/Settings.vue';
 import ExtraItems from './views/xtras/ExtraItems.vue';
 import ExtraStats from './views/xtras/ExtraStats.vue';
@@ -20,6 +21,7 @@ export default new Router({
       path: '/',
       name: 'home',
       component: () => import(/* webpackChunkName: "boot" */ './views/Boot.vue'),
+      redirect: { name: 'Status' },
     },
     {
       path: '/about',
@@ -38,7 +40,7 @@ export default new Router({
         {
           path: '/stats/status',
           name: 'Status',
-          component: Boot,
+          component: Status,
         },
         {
           path: '/stats/special',
@@ -123,7 +125,7 @@ export default new Router({
         },
         {
           path: '/stats/general',
-          name: 'Radio',
+          name: 'General',
           component: Boot,
         },
       ],
