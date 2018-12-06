@@ -34,7 +34,9 @@ export default {
   },
   computed: {
     img() {
+      console.log('created img.');
       const img = document.createElement('img');
+      img.onload = this.imageLoaded;
       img.src = this.src;
       return img;
     },
@@ -47,18 +49,18 @@ export default {
   methods: {
     loadImage() {
       console.log('computing img.', this.src, this.hue);
-      // remove old onload listener.
-      this.img.onload = null;
-      // remove old image
-      this.img.src = null;
-      // add new onload
-      this.img.onload = this.imageLoaded;
       // update src to force loading
       this.img.src = this.src;
+      // check if already loaded
+      if (this.img.complete) {
+        // if already loaded, no onload event will be triggered.
+        // we handle that case here, by calling the function directly.
+        this.applyImage();
+      }
     },
     imageLoaded(event) {
       console.log('loaded img.', event);
-      this.applyImage();
+      this.applyImage(this.img);
     },
     applyImage() {
       console.log('applying img.');
@@ -99,6 +101,11 @@ export default {
       console.log('done.');
       this.computedSrc = canvas.toDataURL('image/png');
     },
+  },
+  mounted() {
+    if (this.src) {
+      this.loadImage();
+    }
   },
 };
 </script>

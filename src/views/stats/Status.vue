@@ -18,7 +18,7 @@ export default {
   components: { Colorized },
   data() {
     return {
-      hue: 0.08,
+      hue: 70,
       level: 7,
       name: 'Gunther',
     };
