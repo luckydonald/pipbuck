@@ -5,9 +5,11 @@
         v-for="(track, name) in radio.tracks" :key="track.file"
         class="track" :class="{ disabled: track.disabled }"
         v-if="!track.disabled"
-        @click="playTrack(name)"
       >
-        <a :class="{ active: current.file === track.file }">{{ name }}</a>
+        <a
+          :class="{ active: current.file === track.file }"
+          @click="playTrack(name)"
+        >{{ name }}</a>
       </li>
     </ul>
     <div>Playing: <a :href="currentFile">{{ currentFile }}</a></div>
@@ -43,18 +45,20 @@ export default {
     },
   },
   methods: {
-    playTrack(file) {
+    playTrack(name) {
       console.log('<radio-element>', this.audioElement);
-      console.log('file', this.current.file, file);
-      if (this.selected !== null && this.current.file !== file) {
+      console.log('file', this.selected, name);
+      if (this.selected !== null && this.selected !== name) {
         // is already playing something else.
         // turn off
+        console.log('pause', name);
         this.selectTrack(null);
-        this.audioElement.stop();
+        this.audioElement.pause();
       } else {
         // is not playing
         // load track
-        this.selectTrack(file);
+        console.log('play', name);
+        this.selectTrack(name);
         this.audioElement.load();
       }
     },
