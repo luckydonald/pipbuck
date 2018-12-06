@@ -30,10 +30,11 @@ export default {
     color: {
       default: '#dc5990',
     },
-    radioElement: {},
+    audioElement: {},  // supply a reference to an audio element.
 
     // canvas settings
-    canvasHeight: { default: 200 },
+    canvasHeight: { default: 200 },  // pixel of the render,
+    canvasWidth: { default: 200 },  // pixel of the render.
   },
   data() {
     return {
@@ -52,14 +53,18 @@ export default {
       refLink: 'radio',
 
       // audio variables
-      src: null, // audio file
+      src: null, // audio element's createMediaElementSource
       context: null, // audio context
       analyser: null, // audio analyser
+      audioData: null, // audio data
       // canvas_2d: COMPUTED
+      loopRunning: false,  // if the loop function is running. Set false to stop the loop.
+      loopRequest: null,  // to be able to cancel the next loop request.
     };
   },
   methods: {
-    attachAnalyser() {
+    attachAnalyser(startLoop) {
+      console.log('attachAnalyser');
       this.context = new (
         window.AudioContext
         || window.webkitAudioContext
@@ -73,36 +78,60 @@ export default {
       //
       // AudioContext::suspendContext
       // AudioContext::resumeContex
+      if (this.audioElement === undefined || this.audioElement === null) {
+        debugger;
+        console.log('audioElement empty. Not loading.');
+        return;
+      }
       this.analyser = this.context.createAnalyser();
-      this.src = this.context.createMediaElementSource(this.audio);
+      console.log('HTMLMediaElement', this.audioElement);
+      this.src = this.context.createMediaElementSource(this.audioElement);
       this.src.connect(this.analyser);
       this.analyser.fftSize = 32;
       this.analyser.connect(this.context.destination);
+      this.audioData = new Uint8Array(this.analyser.frequencyBinCount);
+      if (startLoop) {
+        this.loopRunning = true;
+        this.$nextTick(() => requestAnimationFrame(this.mainLoop));
+      }
     },
     mainLoop() {
-      const frqBits = this.analyser.frequencyBinCount;
-      const step = (this.canvWidth / 2.0) / frqBits;
-      const data = new Uint8Array(frqBits);
-      let x = 0;
+      const step = (this.canvasWidth / 2.0) / this.audioData.length;
 
-      this.analyser.getByteFrequencyData(data);
+      this.analyser.getByteTimeDomainData(this.audioData);
       this.canvas_2d.lineWidth = this.lineWidth;
       this.canvas_2d.strokeStyle = this.lineColor;
+      // ready for next paint.
+      this.clearCanvas();
       this.canvas_2d.beginPath();
 
-      data.reverse();
-      this.canvas_2d.moveTo(x, this.canvHeight / 2);
-      x = this.canvasDrawLine(data, x, step);
-      data.reverse();
-      x = this.canvasDrawLine(data, x, step);
-      this.canvas_2d.lineTo(this.canvWidth, this.canvHeight / 2);
+      // drawing loop (skipping every second record)
+      for (let i = 0; i < this.audioData.length; i += 2) {
+        const percent = this.audioData[i] / 256;
+        const x = (i * step);
+        const y = (this.canvasHeight * percent);
+        this.canvas_2d.lineTo(x, y);
+      }
       this.canvas_2d.stroke();
 
-      requestAnimationFrame(this.mainLoop);
+      if (this.loopRunning) {
+        this.loopRequest = requestAnimationFrame(this.mainLoop);
+      }
     },
     detachAnalyser() {
-      if (this.src && this.analyser) {
-        this.src.disconnect(this.analyser);
+      this.loopRunning = false;
+      cancelAnimationFrame(this.loopRequest);
+      this.loopRequest = null;
+      console.log('detachAnalyser');
+      if (this.src) {
+        if (this.analyser) {
+          this.src.disconnect(this.analyser);
+        } else {
+          console.warn('no analyser to disconnect, disconnecting all');
+          this.src.disconnect();
+        }
+
+        this.src = null;
       }
       if (this.analyser) {
         if (this.context && this.context.destination) {
@@ -111,6 +140,12 @@ export default {
           this.analyser.disconnect();
         }
         this.analyser.close();
+        this.analyser = null;
+      }
+      if (this.context) {
+        this.context.disconnect();
+        this.context.close();
+        this.context = null;
       }
     },
     /**
@@ -125,21 +160,39 @@ export default {
         // (h / 2) - v / 255 * (h / 2)
         calculatedY = h * (255 - v) / 510;
         if (i % 2) calculatedY = h - calculatedY;
-        this.ctx.lineTo(x, calculatedY);
+        this.canvas_2d.lineTo(x, calculatedY);
         calculatedX += step;
       });
       return calculatedX;
+    },
+    clearCanvas() {
+      const w = this.canvWidth;
+      const h = this.canvHeight;
+      this.canvas_2d.clearRect(0, 0, w, h);
     },
   },
   computed: {
     ...mapGetters({ isPlaying: 'radio/isPlaying' }),
     canvasElement() {
-      return this.$props.canvas;
+      return this.$refs.canvas;
     },
     canvas_2d() {
-      console.log('canvas access');
-      return this.canvas_2d.this.canvasElement.getContext('2d');
+      console.log('canvas access', this.canvasElement);
+      return this.canvasElement.getContext('2d');
     },
+  },
+  watch: {
+    audioElement() {
+      // if the audio element changed, we need to detach and reattach.
+      this.detachAnalyser();
+      this.attachAnalyser(true);
+    },
+  },
+  mounted() {
+    this.attachAnalyser(true);
+  },
+  beforeDestroy() {
+    this.detachAnalyser();
   },
 };
 </script>

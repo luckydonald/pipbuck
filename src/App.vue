@@ -4,6 +4,17 @@
    :style="{ '--color-front': colorFront, '--color-back': colorBack, 'text-shadow': shadow }"
   >
     <favicon><stable-colt :hair="hair" :back="back"/></favicon>
+    <keep-alive><audio
+      ref="radio"
+      :src="currentFile"
+      autoplay="autoplay"
+      autobuffer playsinline
+      loop="loop"
+      preload="auto"
+      controls="controls"
+      crossorigin="anonymous"
+      @load="this.play()"
+    ></audio></keep-alive> <!-- :crossorigin="currentFile.anonymousCrossorigin" -->
     <div class="wrapper">
       <hardware-buttons
         class="hardware noscroll" v-if="showHardwareButtons"
@@ -14,19 +25,8 @@
         <router-view />
       </div>
     </div>
-    <keep-alive><audio
-      ref="radio"
-      :src="currentRadioFile"
-      autoplay="autoplay"
-      autobuffer playsinline
-      loop="loop"
-      preload="auto"
-      controls="controls"
-      @load="this.play()"
-    ></audio></keep-alive>
   </div>
 </template>
-
 <script>
 import Shake from 'shake.js';
 
@@ -174,7 +174,10 @@ const app = {
     ...mapState([
       'colorFront', 'colorBack', 'showHardwareButtons', 'radio',
     ]),
-    ...mapGetters({ currentRadio: 'radio/current', currentRadioFile: 'radio/currentFile' }),
+    ...mapGetters({ currentRadio: 'radio/current', currentFile: 'radio/currentFile' }),
+    currentRadioAnonymousCrossorigin() {
+
+    },
     hair() {
       return HexToHSL(this.$store.state.colorFront);
     },

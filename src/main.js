@@ -44,8 +44,8 @@ const radio = {
         hidden: false,
         position: 0,
       },
-      Stream: {
-        file: 'https://pony.fm/t21076/stream.mp3',
+      'Fillydelphia Radio': {
+        file: 'https://fillyradio.com/stream-320k',
         disabled: false,
         hidden: false,
         position: 0,

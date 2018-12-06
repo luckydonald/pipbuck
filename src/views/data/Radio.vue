@@ -14,7 +14,7 @@
     <oscilloscope
       :color="colorFront"
       class="right-content"
-      :radio-element="radioElement"
+      :audio-element="audioElement"
     />
   </div>
 </template>
@@ -38,24 +38,24 @@ export default {
     ]),
     ...radioNamespace.mapState(['selected']),
     ...radioNamespace.mapGetters(['current', 'currentFile']),
-    radioElement() {
-      return this.$parent.$refs.radio;
+    audioElement() {
+      return this.$parent.$parent.$refs.radio;
     },
   },
   methods: {
     playTrack(file) {
-      console.log('<radio-element>', this.radioElement);
+      console.log('<radio-element>', this.audioElement);
       console.log('file', this.current.file, file);
       if (this.selected !== null && this.current.file !== file) {
         // is already playing something else.
         // turn off
         this.selectTrack(null);
-        this.radioElement.stop();
+        this.audioElement.stop();
       } else {
         // is not playing
         // load track
         this.selectTrack(file);
-        this.radioElement.load();
+        this.audioElement.load();
       }
     },
     ...radioNamespace.mapMutations(['selectTrack']),
