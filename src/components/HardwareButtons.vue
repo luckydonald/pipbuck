@@ -1,25 +1,25 @@
 <template>
   <div class="hardware">
-    <div
+    <router-link tag="div" to="/stats"
       class="hardware-button" id="stats"
       @touchstart="multitabHandler"
       @click="multitabHandler"
     ><label for="stats">Stats</label>
-    </div>
+    </router-link>
 
-    <div
+    <router-link tag="div" to="/items"
       class="hardware-button" id="items"
       @touchstart="multitabHandler"
       @click="multitabHandler"
     ><label for="items">Items</label>
-    </div>
+    </router-link>
 
-    <div
+    <router-link tag="div" to="/data"
       class="hardware-button" id="data"
       @touchstart="multitabHandler"
       @click="multitabHandler"
     ><label for="data"> Data</label>
-    </div>
+    </router-link>
   </div>
 </template>
 
