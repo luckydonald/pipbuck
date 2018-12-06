@@ -26,6 +26,7 @@ docker run  \
     --restart always \
     --network dockertgbot_web \
     pipbuck:latest
+# done
 ```
 
 ```
@@ -44,3 +45,9 @@ yarn run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Credits
+###### Stats logo
+Created by rhodarein.
+Modified by luckydonald.
+`fo_e_littlepip__cleaned_up__by_rhodarein-d4qerji-Wiederhergestellt_cloudbackup_5.png`

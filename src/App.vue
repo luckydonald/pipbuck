@@ -292,6 +292,7 @@ body {
   .crt {
     justify-content: flex-start;
     overflow-y: scroll;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     // overflow-scrolling: touch;
     width: 100%;

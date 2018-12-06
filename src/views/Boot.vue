@@ -2,7 +2,7 @@
   <div class="home">
     Here would be something later.
     <br><br><br>
-    <stable-colt class="svg"/>
+    <stable-colt class="svg" />
   </div>
 </template>
 
