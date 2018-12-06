@@ -5,7 +5,8 @@
 import AvBars from 'vue-audio-visual/src/components/AvBars';
 import AvCircle from 'vue-audio-visual/src/components/AvCircle';
 import AvWaveform from 'vue-audio-visual/src/components/AvWaveform';
-import AvLine from './components/AvLine';
+import AvLine from 'vue-audio-visual/src/components/AvLine';
+// import AvLine from './components/AvLine';
 
 const AVPlugin = {};
 

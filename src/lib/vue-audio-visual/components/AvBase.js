@@ -155,8 +155,7 @@ const methods = {
     let ctx = null;
     if (this.refLink) {
       if (this.$avAudioRefs[this.refLink]) {
-        src = this.$avAudioRefs[this.refLink].src;
-        ctx = this.$avAudioRefs[this.refLink].ctx;
+        ({ src, ctx } = this.$avAudioRefs[this.refLink]);
         this.analyser = ctx.createAnalyser();
       } else {
         ctx = new AudioContext();
