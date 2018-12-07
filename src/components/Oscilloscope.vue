@@ -142,13 +142,20 @@ export default {
       }
     },
     mainLoop() {
-      const step = (this.canvasWidth / 2.0) / this.audioData.length;
-
       this.analyser.getByteTimeDomainData(this.audioData);
+
+      this.clearCanvas();
+      this.drawCanvas();
+
+      if (this.loopRunning) {
+        this.loopRequest = requestAnimationFrame(this.mainLoop);
+      }
+    },
+    drawCanvas() {
+      const step = (this.canvasWidth / 2.0) / this.audioData.length;
       this.canvas_2d.lineWidth = this.lineWidth;
       this.canvas_2d.strokeStyle = this.lineColor;
       // ready for next paint.
-      this.clearCanvas();
       this.canvas_2d.beginPath();
 
       // drawing loop (skipping every second record)
@@ -159,10 +166,6 @@ export default {
         this.canvas_2d.lineTo(x, y);
       }
       this.canvas_2d.stroke();
-
-      if (this.loopRunning) {
-        this.loopRequest = requestAnimationFrame(this.mainLoop);
-      }
     },
     clearCanvas() {
       const w = this.canvWidth;
@@ -185,6 +188,9 @@ export default {
       // if the audio element changed, we need to detach and reattach.
       this.detachAnalyser();
       this.attachAnalyser(true);
+    },
+    colorFront() {
+      this.drawCanvas();
     },
   },
   mounted() {

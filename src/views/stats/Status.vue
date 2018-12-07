@@ -1,34 +1,38 @@
 <template>
   <div>
-    <input type="number" min="0" max="360" v-model.number="hue" /> lol
     <colorized
       :src="require('../../assets/pip.png')"
-      alt="best pony" title="pip" class="img"
+      alt="<best pony>" title="that's a pony" class="img"
       :hue="hue"
     />
-    {{ name }} - Level {{ level }}
+    <div class="player">{{ name }} - Level {{ level }}</div>
   </div>
 </template>
 
 <script>
 import Colorized from '../../components/Colorized.vue';
+import { HexToHSL } from '../../lib/colorspace';
 
 export default {
   name: 'Status',
   components: { Colorized },
   data() {
     return {
-      hue: 70,
       level: 7,
       name: 'Gunther',
     };
+  },
+  computed: {
+    hue() {
+      return HexToHSL(this.$store.state.colorFront).h;
+    },
   },
 };
 </script>
 
 <style scoped>
 .img {
-  max-width: 20rem;
-  max-height: 20rem;
+  max-width: 10rem;
+  max-height: 10rem;
 }
 </style>

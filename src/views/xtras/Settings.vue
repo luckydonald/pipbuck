@@ -42,6 +42,11 @@ export default {
           background: hsl(40, 78, 14, '#402d08'),
         },
         {
+          name: 'Orange',
+          foreground: hsl(20, 100, 50),
+          background: hsl(40, 78, 14, '#402d08'),
+        },
+        {
           name: 'Red',
           foreground: hsl(359, 85, 79, '#f79c9d'),
           background: hsl(359, 78, 14, '#400809'),
