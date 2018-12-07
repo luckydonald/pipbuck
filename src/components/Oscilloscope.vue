@@ -164,23 +164,6 @@ export default {
         this.loopRequest = requestAnimationFrame(this.mainLoop);
       }
     },
-    /**
-     * Draw line and return last X
-     * @private
-     */
-    canvasDrawLine(data, x, step) {
-      const h = this.canvasHeight;
-      let calculatedX = x;
-      let calculatedY = 0;
-      data.forEach((v, i) => {
-        // (h / 2) - v / 255 * (h / 2)
-        calculatedY = h * (255 - v) / 510;
-        if (i % 2) calculatedY = h - calculatedY;
-        this.canvas_2d.lineTo(x, calculatedY);
-        calculatedX += step;
-      });
-      return calculatedX;
-    },
     clearCanvas() {
       const w = this.canvWidth;
       const h = this.canvHeight;
