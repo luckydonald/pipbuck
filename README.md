@@ -15,6 +15,7 @@ yarn run serve --port 8082
 
 ### Compiles and minifies for production
 ```
+# d-start-las-pegasus
 yarn run build
 rm dist/stable_colt*.svg
 docker build . -t pipbuck:latest
