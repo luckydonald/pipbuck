@@ -4,13 +4,12 @@
 /* eslint no-param-reassign: ["error", { "props": false }] */
 import Vue from 'vue';
 import Vuex from 'vuex';
-import AudioVisual from './lib/vue-audio-visual';
+import './lib/audiocontect-patch';
 import App from './App.vue';
 import router from './router';
 
 Vue.config.productionTip = false;
 Vue.use(Vuex);
-Vue.use(AudioVisual);
 
 const radio = {
   debug: process.env.NODE_ENV !== 'production',
