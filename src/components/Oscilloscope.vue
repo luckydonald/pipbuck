@@ -64,7 +64,6 @@ export default {
       context: null, // audio context
       analyser: null, // audio analyser
       audioData: null, // audio data
-      lastPercent: 0.5, // last point of audio data.
       // canvas_2d: COMPUTED
       loopRunning: false,  // if the loop function is running. Set false to stop the loop.
       loopRequest: null,  // to be able to cancel the next loop request.
@@ -167,8 +166,8 @@ export default {
       const h = this.getHeight();
 
       const stepSize = w / this.audioData.length;
-      let percentOld = this.lastPercent;
-      let heightOld = Math.round(h * this.lastPercent);
+      let percentOld = this.audioData[0] / 256;
+      let heightOld = Math.round(h * percentOld);
       let stepOld = 0;
       // ready for next paint.
       this.canvas_2d.moveTo(stepOld, heightOld);
@@ -261,7 +260,6 @@ export default {
       }
       // flush it
       this.canvas_2d.stroke();
-      this.lastPercent = percentOld;
     },
     getWidth() {
       return this.canvasWidth || this.canvasElement.clientWidth;
