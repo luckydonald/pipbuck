@@ -2,15 +2,12 @@
  * Main app; data store. Loads App.vue.
  */
 import Vue from 'vue';
-import Vuex from 'vuex';
 import './lib/audiocontect-patch';
 import App from './App.vue';
 import router from './router';
 import store from './state';
 
 Vue.config.productionTip = false;
-Vue.use(Vuex);
-
 
 const ignored = new Vue({
   router,
