@@ -14,8 +14,8 @@
     </ul>
     <oscilloscope
       :color="colorFront"
-      :fftSize="32"
-      :fftEach="4"
+      :fftSize="fftSize"
+      :fftEach="fftEach"
       :rounded="rounded"
       :squared="squared"
       :zigzagg="zigzagg"
@@ -40,6 +40,8 @@ export default {
       rounded: true,
       squared: false,
       zigzagg: false,
+      fftSize: 32,
+      fftEach: 1,
     };
   },
   computed: {

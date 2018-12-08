@@ -45,7 +45,7 @@ export default {
 
     // canvas settings
     canvasHeight: { default: 200 },  // Pixel of the render.
-    canvasWidth: { default: 200 },   // Pixel of the render.
+    canvasWidth: { default: 400 },   // Pixel of the render.
     fftSize: { default: 32 }, // Increases Audio resolution. Must be of range [32, 32768]
     fftEach: { default: 1 },  // Decreases Audio resolution. Use only every x data point.
   },
@@ -163,16 +163,20 @@ export default {
       }
     },
     drawCanvas() {
+      const w = this.getWidth();
+      const h = this.getHeight();
+
       const iterationStep = this.fftEach;
       const stepSize = (
-        ((this.canvasWidth / iterationStep) / this.audioData.length - 1) * iterationStep
+        ((w / iterationStep) / this.audioData.length - 1) * iterationStep
       );
       let percentOld = this.lastPercent;
-      let heightOld = Math.round(this.canvasHeight * this.lastPercent);
+      let heightOld = Math.round(h * this.lastPercent);
       let stepOld = 0;
       // ready for next paint.
       this.canvas_2d.moveTo(stepOld, heightOld);
       this.canvas_2d.beginPath();
+      this.canvas_2d.moveTo(stepOld, heightOld);
       this.canvas_2d.lineJoin = 'round';
       this.canvas_2d.lineWidth = this.lineWidth;
       this.canvas_2d.strokeStyle = this.color;
@@ -184,7 +188,7 @@ export default {
         const stepNew = Math.round(i * stepSize);
         const stepMid = Math.round((stepOld + stepNew) / 2);
         const percentNew = this.audioData[i] / 256;
-        const heightNew = Math.round(this.canvasHeight * percentNew);
+        const heightNew = Math.round(h * percentNew);
 
         // Great explanation of Bezier curves: http://en.wikipedia.org/wiki/Bezier_curve#Quadratic_curves
         //
@@ -249,9 +253,15 @@ export default {
       this.canvas_2d.stroke();
       this.lastPercent = percentOld;
     },
+    getWidth() {
+      return this.canvasWidth || this.canvasElement.clientWidth;
+    },
+    getHeight() {
+      return this.canvasHeight || this.canvasElement.clientHeight;
+    },
     clearCanvas() {
-      const w = this.canvasWidth;
-      const h = this.canvasHeight;
+      const w = this.getWidth();
+      const h = this.getHeight();
       this.canvas_2d.clearRect(0, 0, w, h);
       // this.canvas_2d.rect(0, 0, dimensions.width, dimensions.height);
       // this.canvas_2d.clip();
@@ -278,6 +288,12 @@ export default {
     },
     color() {
       this.drawCanvas();
+    },
+    canvasWidth(newVal) {
+      console.log('new size:', newVal, this.canvasElement.clientWidth);
+    },
+    canvasHeight(newVal) {
+      console.log('new size:', newVal, this.canvasElement.clientHeight);
     },
   },
   mounted() {
