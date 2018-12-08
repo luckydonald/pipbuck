@@ -15,7 +15,10 @@
       :lineWidth="lineWidth"
       :refLink="refLink"
     />-->
-    <canvas ref="canvas"></canvas>
+    <canvas
+      ref="canvas"
+      :style="{ borderBottom: canvasBorderStyle, 'border-right': canvasBorderStyle }"
+    ></canvas>
     <div v-if="isPlaying">PLAYING!</div>
     <div v-else>PAUSED!</div>
   </div>
@@ -23,6 +26,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+// import { hsl } from '../lib/colorspace';
 
 export default {
   name: 'oscilloscope',
@@ -30,14 +34,22 @@ export default {
     // needed settings
     audioElement: {},  // supply a reference to an audio element.
 
+    // display settings
+    rounded: { default: true },
+    squared: { default: false },
     // styling
     color: { default: '#dc5990' },
     lineWidth: { default: 2 },
 
+
     // canvas settings
     canvasHeight: { default: 200 },  // pixel of the render,
     canvasWidth: { default: 200 },  // pixel of the render.
-    fftSize: { default: 32 },  // Audio resolution. Min seems to be 32.
+    fftSize: { default: 32 },  // Audio resolution. Must be of range [32, 32768]
+    fftSkip: { default: 0 }, // Audio resolution. Skip every x data point. Example:
+    // 0 means no skippin': use every value.
+    // 1 means skip one, use one: use every second value.
+    // 2 means skip two, use one: use every third value.
   },
   data() {
     return {
@@ -45,9 +57,7 @@ export default {
       audioControls: true,
       audioSrc: null,
       canvClass: null,
-      canvHeight: 200,
       canvTop: false,
-      canvWidth: 200,
       corsAnonym: false,
       refLink: 'radio',
 
@@ -56,6 +66,7 @@ export default {
       context: null, // audio context
       analyser: null, // audio analyser
       audioData: null, // audio data
+      lastPercent: 0.5, // last point of audio data.
       // canvas_2d: COMPUTED
       loopRunning: false,  // if the loop function is running. Set false to stop the loop.
       loopRequest: null,  // to be able to cancel the next loop request.
@@ -83,7 +94,6 @@ export default {
       // AudioContext::suspendContext
       // AudioContext::resumeContex
       if (this.audioElement === undefined || this.audioElement === null) {
-        debugger;
         console.log('audioElement empty. Not loading.');
         return;
       }
@@ -94,7 +104,7 @@ export default {
       this.src = this.context.createMediaElementSource(this.audioElement);
       console.log('MediaElementAudioSourceNode: connect');
       this.src.connect(this.analyser);
-      this.analyser.fftSize = 32;
+      this.analyser.fftSize = this.fftSize;
       console.log('AnalyserNode: connect');
       this.analyser.connect(this.context.destination);
       this.audioData = new Uint8Array(this.analyser.frequencyBinCount);
@@ -155,25 +165,91 @@ export default {
       }
     },
     drawCanvas() {
-      const step = (this.canvasWidth / 2.0) / this.audioData.length;
+      const iterationStep = this.fftSkip + 1;
+      const stepSize = (
+        ((this.canvasWidth / iterationStep) / this.audioData.length - 1) * iterationStep
+      );
+      let percentOld = this.lastPercent;
+      let heightOld = Math.round(this.canvasHeight * this.lastPercent);
+      let stepOld = 0;
+      // ready for next paint.
+      this.canvas_2d.moveTo(stepOld, heightOld);
+      this.canvas_2d.beginPath();
+      this.canvas_2d.lineJoin = 'round';
       this.canvas_2d.lineWidth = this.lineWidth;
       this.canvas_2d.strokeStyle = this.color;
-      // ready for next paint.
-      this.canvas_2d.beginPath();
-
+      // this.canvas_2d.strokeStyle = hsl(Math.floor(Math.random() * 360), 100, 50);
       // drawing loop (skipping every second record)
-      for (let i = 0; i < this.audioData.length; i += 2) {
-        const percent = this.audioData[i] / 256;
-        const x = (i * step);
-        const y = (this.canvasHeight * percent);
-        this.canvas_2d.lineTo(x, y);
+
+      for (let i = 1; i < this.audioData.length; i += iterationStep) {
+        // calculates new coordinates
+        const stepNew = Math.round((i + 1) * stepSize);
+        const stepMid = Math.round((stepOld + stepNew) / 2);
+        const percentNew = this.audioData[i] / 256;
+        const heightNew = Math.round(this.canvasHeight * percentNew);
+
+        // Great explanation of Bezier curves: http://en.wikipedia.org/wiki/Bezier_curve#Quadratic_curves
+        //
+        // Assuming A was the last point in the line plotted and B is the new point,
+        // we draw a curve with control points P and Q as below.
+        //
+        // A---P
+        //     |
+        //     |
+        //     |
+        //     Q---B
+        //
+        //
+        // A_  P
+        //    \
+        //     |
+        //      \
+        //     Q '-B
+        //
+        // Point: (X, Y)
+        // A: (stepOld, heightOld)
+        // P: (stepMid, heightOld)
+        // Q: (stepMid, heightNew)
+        // B: (stepNew, heightNew)
+        //
+        // Importantly, A and P are at the same y coordinate, as are B and Q. This is
+        // so adjacent curves appear to flow as one.
+        //
+        // Thanks to the folks at
+        // smoothie.js
+        // who worked that out!
+        //
+        // https://github.com/joewalnes/smoothie/blob/02b90c411658cb37fd2a76cef56d54fa78833956/smoothie.js#L935
+        //
+        if (this.rounded) {
+          this.canvas_2d.bezierCurveTo( // startPoint (A) is implicit from last iteration of loop
+            stepMid, heightOld, // controlPoint1 (P)
+            stepMid, heightNew, // controlPoint2 (Q)
+            stepNew, heightNew, // endPoint (B)
+          );
+        }
+        if (this.squared && this.rounded) {
+          this.canvas_2d.moveTo(stepOld, heightOld); // startPoint (A)
+        }
+        if (this.squared) {
+          this.canvas_2d.lineTo(stepMid, heightOld); // controlPoint1 (P)
+          this.canvas_2d.lineTo(stepMid, heightNew); // controlPoint2 (Q)
+          this.canvas_2d.lineTo(stepNew, heightNew); // endPoint (B)
+        }
+        stepOld = stepNew;
+        heightOld = heightNew;
+        percentOld = percentNew;
       }
+      // flush it
       this.canvas_2d.stroke();
+      this.lastPercent = percentOld;
     },
     clearCanvas() {
-      const w = this.canvWidth;
-      const h = this.canvHeight;
+      const w = this.canvasWidth;
+      const h = this.canvasHeight;
       this.canvas_2d.clearRect(0, 0, w, h);
+      // this.canvas_2d.rect(0, 0, dimensions.width, dimensions.height);
+      // this.canvas_2d.clip();
     },
   },
   computed: {
@@ -184,6 +260,9 @@ export default {
     canvas_2d() {
       console.log('canvas access', this.canvasElement);
       return this.canvasElement.getContext('2d');
+    },
+    canvasBorderStyle() {
+      return `1px solid ${this.color}`;
     },
   },
   watch: {
@@ -206,5 +285,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

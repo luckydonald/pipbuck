@@ -12,13 +12,16 @@
         >{{ name }}</a>
       </li>
     </ul>
-    <div>Playing: <a :href="currentFile">{{ currentFile }}</a></div>
     <oscilloscope
       :color="colorFront"
-      :fftSize="128"
+      :fftSize="32"
+      :fftSkip="3"
+      :rounded="rounded"
+      :squared="squared"
       class="right-content"
       :audio-element="audioElement"
     />
+    <div>Playing: <a :href="currentFile">{{ currentFile }}</a></div>
   </div>
 </template>
 
@@ -33,6 +36,8 @@ export default {
   components: { Oscilloscope },
   data() {
     return {
+      rounded: true,
+      squared: false,
     };
   },
   computed: {
