@@ -250,8 +250,9 @@ function HSBtoRGB(h, s, v) {
 /**
  * Converts HSL to a css string.
  *
- * @param h {number|{h: number, s: number, l: number, a: number}|{h:number,s:number,l:number}} Hue.
- * @param s {number?} Saturation. 0° - 359°.
+ * @param h {number|{h: number, s: number, l: number, a: number}|{h:number,s:number,l:number}}
+ *        Hue. 0° - 359°
+ * @param s {number?} Saturation. 0% - 100%.
  * @param l {number?} Luminescence. 0% - 100%.
  * @param a {number?} Alpha. 0% - 100%.
  * @returns {string}
