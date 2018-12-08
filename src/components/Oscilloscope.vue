@@ -46,7 +46,7 @@ export default {
     // canvas settings
     canvasHeight: { default: 200 },  // Pixel of the render.
     canvasWidth: { default: 400 },   // Pixel of the render.
-    fftSize: { default: 32 }, // Increases Audio resolution. Must be of range [32, 32768]
+    fftSize: { default: 32 }, // Increases Audio resolution. Must be power of 2, range [32, 32768].
     fftEach: { default: 1 },  // Decreases Audio resolution. Use only every x data point.
   },
   data() {
@@ -274,6 +274,28 @@ export default {
       // this.canvas_2d.rect(0, 0, dimensions.width, dimensions.height);
       // this.canvas_2d.clip();
     },
+    nearestPowerOfTwo(n) {
+      // https://stackoverflow.com/a/45859570/3423324
+      let v = n;
+
+      v -= 1;
+      // eslint-disable-next-line no-bitwise
+      v |= v >> 1;
+      // eslint-disable-next-line no-bitwise
+      v |= v >> 2;
+      // eslint-disable-next-line no-bitwise
+      v |= v >> 4;
+      // eslint-disable-next-line no-bitwise
+      v |= v >> 8;
+      // eslint-disable-next-line no-bitwise
+      v |= v >> 16;
+      v += 1; // next power of 2
+
+      // eslint-disable-next-line no-bitwise
+      const x = v >> 1; // previous power of 2
+
+      return (v - n) > (n - x) ? x : v;
+    },
   },
   computed: {
     ...mapGetters({ isPlaying: 'radio/isPlaying' }),
@@ -290,6 +312,9 @@ export default {
     iterationStep() {
       return Math.max(this.fftEach, 1);
     },
+    correctedFftSize() {
+      return Math.min(Math.max(32, this.nearestPowerOfTwo(this.fftSize)), 32768);
+    },
   },
   watch: {
     audioElement() {
@@ -299,6 +324,10 @@ export default {
     },
     color() {
       this.drawCanvas();
+    },
+    correctedFftSize(newSize) {
+      this.analyser.fftSize = newSize;
+      this.audioData = new Uint8Array(this.analyser.frequencyBinCount);
     },
     canvasWidth(newVal) {
       console.log('new size:', newVal, this.canvasElement.clientWidth);
