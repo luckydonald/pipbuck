@@ -27,10 +27,12 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'oscilloscope',
   props: {
-    color: {
-      default: '#dc5990',
-    },
+    // needed settings
     audioElement: {},  // supply a reference to an audio element.
+
+    // styling
+    color: { default: '#dc5990' },
+    lineWidth: { default: 2 },
 
     // canvas settings
     canvasHeight: { default: 200 },  // pixel of the render,
@@ -42,7 +44,6 @@ export default {
       audioControls: true,
       audioSrc: null,
       canvClass: null,
-      canvFillColor: null,
       canvHeight: 200,
       canvTop: false,
       canvWidth: 200,
@@ -60,6 +61,10 @@ export default {
       // canvas_2d: COMPUTED
       loopRunning: false,  // if the loop function is running. Set false to stop the loop.
       loopRequest: null,  // to be able to cancel the next loop request.
+
+      // styling
+      // color: PROPERTY
+      // lineWidth: PROPERTY
     };
   },
   methods: {
@@ -154,7 +159,7 @@ export default {
     drawCanvas() {
       const step = (this.canvasWidth / 2.0) / this.audioData.length;
       this.canvas_2d.lineWidth = this.lineWidth;
-      this.canvas_2d.strokeStyle = this.lineColor;
+      this.canvas_2d.strokeStyle = this.color;
       // ready for next paint.
       this.canvas_2d.beginPath();
 
@@ -189,7 +194,7 @@ export default {
       this.detachAnalyser();
       this.attachAnalyser(true);
     },
-    colorFront() {
+    color() {
       this.drawCanvas();
     },
   },
