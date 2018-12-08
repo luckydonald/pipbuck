@@ -166,10 +166,7 @@ export default {
       const w = this.getWidth();
       const h = this.getHeight();
 
-      const iterationStep = this.fftEach;
-      const stepSize = (
-        ((w / iterationStep) / this.audioData.length - 1) * iterationStep
-      );
+      const stepSize = w / this.audioData.length;
       let percentOld = this.lastPercent;
       let heightOld = Math.round(h * this.lastPercent);
       let stepOld = 0;
@@ -183,7 +180,9 @@ export default {
       // this.canvas_2d.strokeStyle = hsl(Math.floor(Math.random() * 360), 100, 50);
       // drawing loop (skipping every second record)
 
-      for (let i = 1; i < this.audioData.length; i += iterationStep) {
+      const max = this.audioData.length - 1;
+      let i = Math.min(this.iterationStep, max);
+      while (i <= max) {
         // calculates new coordinates
         const stepNew = Math.round(i * stepSize);
         const stepMid = Math.round((stepOld + stepNew) / 2);
@@ -248,6 +247,17 @@ export default {
         stepOld = stepNew;
         heightOld = heightNew;
         percentOld = percentNew;
+
+        // if we just hit max on this iteration, we're done.
+        if (i === max) {
+          break;
+        }
+        // increment as usual
+        i += this.iterationStep;
+        if (i >= max) {
+          // we would skip the last element, forcefully include that.
+          i = max;
+        }
       }
       // flush it
       this.canvas_2d.stroke();
@@ -278,6 +288,9 @@ export default {
     },
     canvasBorderStyle() {
       return `1px solid ${this.color}`;
+    },
+    iterationStep() {
+      return Math.max(this.fftEach, 1);
     },
   },
   watch: {
