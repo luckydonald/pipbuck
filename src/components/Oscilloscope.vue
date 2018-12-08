@@ -37,19 +37,17 @@ export default {
     // display settings
     rounded: { default: true },
     squared: { default: false },
+    zigzagg: { default: false },
     // styling
     color: { default: '#dc5990' },
     lineWidth: { default: 2 },
 
 
     // canvas settings
-    canvasHeight: { default: 200 },  // pixel of the render,
-    canvasWidth: { default: 200 },  // pixel of the render.
-    fftSize: { default: 32 },  // Audio resolution. Must be of range [32, 32768]
-    fftSkip: { default: 0 }, // Audio resolution. Skip every x data point. Example:
-    // 0 means no skippin': use every value.
-    // 1 means skip one, use one: use every second value.
-    // 2 means skip two, use one: use every third value.
+    canvasHeight: { default: 200 },  // Pixel of the render.
+    canvasWidth: { default: 200 },   // Pixel of the render.
+    fftSize: { default: 32 }, // Increases Audio resolution. Must be of range [32, 32768]
+    fftEach: { default: 1 },  // Decreases Audio resolution. Use only every x data point.
   },
   data() {
     return {
@@ -165,7 +163,7 @@ export default {
       }
     },
     drawCanvas() {
-      const iterationStep = this.fftSkip + 1;
+      const iterationStep = this.fftEach;
       const stepSize = (
         ((this.canvasWidth / iterationStep) / this.audioData.length - 1) * iterationStep
       );
@@ -183,7 +181,7 @@ export default {
 
       for (let i = 1; i < this.audioData.length; i += iterationStep) {
         // calculates new coordinates
-        const stepNew = Math.round((i + 1) * stepSize);
+        const stepNew = Math.round(i * stepSize);
         const stepMid = Math.round((stepOld + stepNew) / 2);
         const percentNew = this.audioData[i] / 256;
         const heightNew = Math.round(this.canvasHeight * percentNew);
@@ -236,6 +234,13 @@ export default {
           this.canvas_2d.lineTo(stepMid, heightNew); // controlPoint2 (Q)
           this.canvas_2d.lineTo(stepNew, heightNew); // endPoint (B)
         }
+        if ((this.squared || this.rounded) && this.zigzagg) {
+          this.canvas_2d.moveTo(stepOld, heightOld); // startPoint (A)
+        }
+        if (this.zigzagg) {
+          this.canvas_2d.lineTo(stepNew, heightNew);
+        }
+
         stepOld = stepNew;
         heightOld = heightNew;
         percentOld = percentNew;

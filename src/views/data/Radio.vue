@@ -15,9 +15,10 @@
     <oscilloscope
       :color="colorFront"
       :fftSize="32"
-      :fftSkip="3"
+      :fftEach="4"
       :rounded="rounded"
       :squared="squared"
+      :zigzagg="zigzagg"
       class="right-content"
       :audio-element="audioElement"
     />
@@ -38,6 +39,7 @@ export default {
     return {
       rounded: true,
       squared: false,
+      zigzagg: false,
     };
   },
   computed: {
