@@ -37,6 +37,7 @@ export default {
     // canvas settings
     canvasHeight: { default: 200 },  // pixel of the render,
     canvasWidth: { default: 200 },  // pixel of the render.
+    fftSize: { default: 32 },  // Audio resolution. Min seems to be 32.
   },
   data() {
     return {
@@ -48,9 +49,6 @@ export default {
       canvTop: false,
       canvWidth: 200,
       corsAnonym: false,
-      fftSize: 32, // 128
-      lineColor: '#9ef8bd',
-      lineWidth: 2,
       refLink: 'radio',
 
       // audio variables

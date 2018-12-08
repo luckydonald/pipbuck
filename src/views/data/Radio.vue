@@ -15,6 +15,7 @@
     <div>Playing: <a :href="currentFile">{{ currentFile }}</a></div>
     <oscilloscope
       :color="colorFront"
+      :fftSize="128"
       class="right-content"
       :audio-element="audioElement"
     />
