@@ -41,7 +41,7 @@ export default {
       squared: false,
       zigzagg: false,
       fftSize: 32,
-      fftEach: 1,
+      fftEach: 3,
     };
   },
   computed: {
