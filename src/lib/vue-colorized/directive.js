@@ -1,4 +1,4 @@
-import commAon from './common';
+import common from './common';
 
 export default {
   inserted(el, binding, vnode) {                     // eslint-disable-line no-unused-vars

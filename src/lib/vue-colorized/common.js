@@ -1,6 +1,6 @@
 import { HSLtoRGB, RGBtoHSL } from '../colorspace';
 
-export default {
+const common = {
   /**
    * creates a callback which will get supplied the arguments you already give in.
    * */
@@ -10,15 +10,16 @@ export default {
     };
   },
   createImage(src, onDone) {
+    console.log('create|img', this);
     const img = document.createElement('img');
-    img.onload = this.createOnloadCallback(onDone);
+    img.onload = this.createCallback(onDone);
     img.src = src;
     return img;
   },
   updateImage(img, src, onDone, ...args) {
     // update src to force loading
     img.src = src;                                    // eslint-disable-line no-param-reassign
-    img.onload = this.createOnloadCallback(onDone, ...args);  // eslint-disable-line no-param-reassign, max-len
+    img.onload = this.createCallback(onDone, ...args);  // eslint-disable-line no-param-reassign, max-len
 
     // check if already loaded
     if (img.complete) {
@@ -71,3 +72,9 @@ export default {
     return canvas.toDataURL('image/png');
   },
 };
+// common.this = common
+Object.keys(common).forEach((key) => {
+  common[key] = common[key].bind(common);
+});
+
+export default common;

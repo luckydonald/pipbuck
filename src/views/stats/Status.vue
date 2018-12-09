@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Colorized from '../../components/Colorized.vue';
+import Colorized from '../../lib/vue-colorized/component.vue';
 import { HexToHSL } from '../../lib/colorspace';
 
 export default {

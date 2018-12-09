@@ -39,7 +39,7 @@ export default {
   computed: {
     img() {
       console.log('created img.');
-      return common.createImage.call(this.src, this.imageLoaded);
+      return common.createImage(this.src, this.imageLoaded);
     },
   },
   watch: {
