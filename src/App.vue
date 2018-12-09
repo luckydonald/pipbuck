@@ -21,7 +21,8 @@
         @scroll.prevent @wheel.prevent @touchstart.prevent @touchmove.prevent @drag.prevent
       />
       <div class="crt">
-        <div class="error-effect"></div>
+        <div class="effect display-animations"></div>
+        <div class="effect display-beam"></div>
         <router-view />
       </div>
     </div>
@@ -332,8 +333,9 @@ audio {
 }
 </style>
 
-<style lang="scss">
-.error-effect {
+<!-- effects -->
+<style lang="scss" scoped>
+.effect {
   pointer-events:none;
   position: absolute;
   width: 100%;
@@ -348,13 +350,26 @@ audio {
   // -webkit-animation: noise 200ms infinite linear;
   // animation: noise 200ms infinite linear;
 }
+.display-beam {
+  background: radial-gradient(
+      rgba(0,255,0,.3) 0%,
+      rgba(0,255,0,0) 70%);
+  border-radius: 50%;
+  top: 2.5vh;
+  right: -14vw;
 
+  width: 100vw;
+  height: 15vh;
+  // margin-top: -14px;
+  // margin-left: -1100px;
+  z-index: 1;
+}
 
-.error-effect::before {
+.display-animations::before {
   content: " ";
   position: absolute;
-  width: 100%;
-  height: 40%;
+  width: 100vw;
+  height: 40vh;
   left: 0;
   right: 0;
   background: linear-gradient(
