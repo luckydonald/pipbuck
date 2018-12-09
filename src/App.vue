@@ -14,15 +14,21 @@
       controls="controls"
       crossorigin="anonymous"
       @load="this.play()"
-    ></audio></keep-alive> <!-- :crossorigin="currentFile.anonymousCrossorigin" -->
+    ></audio></keep-alive> <!-- :crossorigin="currentFile.anonymousCrossorigin"
+    @timeupdate="this.updated()" -->
     <div class="wrapper">
+      <div
+        class="effect display-background"
+        v-colorized-bg="{
+          src: require('./assets/bg.png'), hue: hair.h,
+        }"
+      ></div>
       <hardware-buttons
         class="hardware noscroll" v-if="showHardwareButtons"
         @scroll.prevent @wheel.prevent @touchstart.prevent @touchmove.prevent @drag.prevent
       />
       <div class="crt">
         <div class="effect display-animations"></div>
-        <div class="effect display-beam"></div>
         <router-view />
       </div>
     </div>
@@ -36,6 +42,7 @@ import { HexToHSL, hsl } from './lib/colorspace';
 import HardwareButtons from './components/HardwareButtons.vue';
 import Favicon from './components/Favicon.vue';
 import StableColt from './components/StableColt.vue';
+import ColorizedBg from './lib/vue-colorized/directive';
 
 
 function parentWithClass(el, clazz) {
@@ -165,6 +172,7 @@ class ScrollPrevent {
 const app = {
   name: 'app',
   components: { HardwareButtons, Favicon, StableColt },
+  directives: { ColorizedBg },
   data() {
     return {
       scroll: 0.00,
@@ -197,6 +205,8 @@ const app = {
     colorFront(newColor) {
       console.log('color changed', newColor);
     },
+  },
+  methods: {
   },
   mounted() {
     // watch colorFront and colorBack to update the <body> element styles.
@@ -293,15 +303,6 @@ body {
     display: flex;
     flex-direction: column-reverse;
   }
-  .crt {
-    justify-content: flex-start;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    // overflow-scrolling: touch;
-    width: 100%;
-    height: 100%;
-  }
   .hardware {
     // flex-flow: row wrap;
     justify-content: flex-end;
@@ -335,20 +336,34 @@ audio {
 
 <!-- effects -->
 <style lang="scss" scoped>
+.crt {
+  justify-content: flex-start;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  // overflow-scrolling: touch;
+  width: 100%;
+  height: 100%;
+}
 .effect {
-  pointer-events:none;
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+.display-background {
+  pointer-events:none;
+  z-index: -1;
 
-  // border-radius: 50% / 5%;
-  // background: #111;
-  // background-size: 80%;
-  // -moz-animation: noise 200ms infinite linear;
-  // -o-animation: noise 200ms infinite linear;
-  // -webkit-animation: noise 200ms infinite linear;
-  // animation: noise 200ms infinite linear;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+
 }
 .display-beam {
   background: radial-gradient(
