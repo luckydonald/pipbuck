@@ -1,6 +1,7 @@
 /* eslint no-param-reassign: ["error", { "props": false }] */
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { hsl } from './lib/colorspace';
 
 Vue.use(Vuex);
 
@@ -102,8 +103,10 @@ const store = new Vuex.Store({
     },
   },
   state: {
-    colorFront: '#a0f8c5', // '#9ef8bd',
-    colorBack: '#08401f',
+    colorFront: hsl(147, 100, 55, '#1aff80'), // rgb(26, 255, 128)
+    colorBack: hsl(147, 78, 14, '#084021'),
+    // colorFront: '#a0f8c5', // '#9ef8bd',
+    // colorBack: '#08401f',
 
     // color_hair_bright: '#9ef8bd',
     // color_hair_normal: '#1bff80',
