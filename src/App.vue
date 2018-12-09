@@ -346,13 +346,13 @@ audio {
   height: 100%;
 }
 .effect {
+  pointer-events:none;
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 .display-background {
-  pointer-events:none;
   z-index: -1;
 
   background-size: 100% 100%;
