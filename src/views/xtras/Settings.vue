@@ -31,13 +31,38 @@ export default {
   data() {
     return {
       colors: [
+        // Original colors:
+        // https://www.reddit.com/r/Fallout/comments/40hpkr/classic_hud_colors/
+        //
+        // Converter:
+        // https;//rgb.to/hex/RRGGBB
+        {
+          name: 'Amber',
+          foreground: hsl(37, 100, 63, '#ffb642'), // rgb(255, 182, 66)
+          background: hsl(37, 78, 14, '#402a08'),
+        },
+        {
+          name: 'Blue',
+          foreground: hsl(194, 100, 59, '#2ecfff'), // rgb(46, 207, 255)
+          background: hsl(194, 78, 14, '#083340'),
+        },
         {
           name: 'Green',
+          foreground: hsl(147, 100, 55, '#1aff80'), // rgb(26, 255, 128)
+          background: hsl(147, 78, 14, '#084021'),
+        },
+        {
+          name: 'White',
+          foreground: hsl(180, 100, 88, '#c0ffff'), // rgb(192, 255, 255)
+          background: hsl(180, 100, 14, '#004747'),
+        },
+        {
+          name: 'Light Green',
           foreground: hsl(145, 85, 79, '#9cf7c2'),
           background: hsl(145, 78, 14, '#08401f'),
         },
         {
-          name: 'Amber',
+          name: 'Light Amber',
           foreground: hsl(40, 85, 79, '#f7da9e'),
           background: hsl(40, 78, 14, '#402d08'),
         },
@@ -57,7 +82,7 @@ export default {
           background: hsl(270, 78, 14, '#240840'),
         },
         {
-          name: 'Blue',
+          name: 'Light Blue',
           foreground: hsl(180, 85, 79, '#9ff5f5'),
           background: hsl(180, 78, 14, '#084040'),
         },
