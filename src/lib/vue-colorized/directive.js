@@ -46,13 +46,13 @@ const directive = {
         typeof binding.value === 'object' && typeof binding.value.cssAttribute !== 'undefined'
           ? binding.value.cssAttribute
           // eslint-disable-next-line no-shadow, no-unused-vars
-          : (image, options) => 'background'
+          : (image, options) => 'background-image'
       ),
       cssTemplate: (
         typeof binding.value === 'object' && typeof binding.value.cssTemplate === 'function'
           ? binding.value.cssTemplate
           // eslint-disable-next-line no-shadow, no-unused-vars
-          : (image, options) => `${image} no-repeat`
+          : (image, options) => `url("${image}")`
       ),
       img: el.colorized.img,
       target: el,
@@ -72,8 +72,10 @@ const directive = {
         ? options.cssAttribute
         : options.cssAttribute(computedSrc, options)
     );
+    const value = options.cssTemplate(computedSrc, options);
+    console.log(`options.target.style[${attribute}] = `, value, options);
     // eslint-disable-next-line no-param-reassign
-    options.target.style[attribute] = options.cssTemplate(computedSrc, options);
+    options.target.style[attribute] = value;
   },
 };
 // directive.this = directive
