@@ -1,6 +1,7 @@
 import common from './common';
 
-export default {
+const directive = {
+  name: 'colorized-bg',
   inserted(el, binding, vnode) {                     // eslint-disable-line no-unused-vars
     // eslint-disable-next-line no-param-reassign
     el.colorized = {
@@ -40,7 +41,7 @@ export default {
     const options = {
       hue: binding.value.hue,
       src: binding.value.src,
-      fullScale: binding.modifier.fullScale || false,
+      fullScale: (binding.modifier || {}).fullScale || false,
       cssAttribute: binding.arg || (
         typeof binding.value === 'object' && typeof binding.value.cssAttribute !== 'undefined'
           ? binding.value.cssAttribute
@@ -75,3 +76,12 @@ export default {
     options.target.style[attribute] = options.cssTemplate(computedSrc, options);
   },
 };
+// directive.this = directive
+Object.keys(directive).forEach((key) => {
+  if (typeof directive[key] !== 'function') {
+    return;
+  }
+  directive[key] = directive[key].bind(directive);
+});
+
+export default directive;

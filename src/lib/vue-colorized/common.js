@@ -74,6 +74,9 @@ const common = {
 };
 // common.this = common
 Object.keys(common).forEach((key) => {
+  if (typeof common[key] !== 'function') {
+    return;
+  }
   common[key] = common[key].bind(common);
 });
 
