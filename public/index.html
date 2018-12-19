@@ -2,13 +2,153 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico?3">
     <meta
      name='viewport'
-     content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+     content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
     />
-    <title>pipbuck</title>
+    <title>PipBuck</title>
+
+    <link rel="icon" href="/favicon.ico?3">
+
+    <!-- Icon in the highest resolution we need it for -->
+    <link rel="icon" sizes="192x192" href="/icons/192.png">
+    <link rel="icon" sizes="256x256" href="/icons/256.png">
+    <link rel="icon" sizes="512x512" href="/icons/512.png">
+    <meta name="msapplication-TileImage" content="/icons/512.png">
+
+    <!-- Apple Touch Icon (reuse 192px icon.png) -->
+    <link rel="apple-touch-icon" href="/icons/192.png">
+
+    <!-------------------
+
+    MULTI BROWSER
+
+    ------------------->
+
+    <!-- Links to a JSON file that specifies "installation" credentials for the web applications -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Links to information about the author(s) of the document -->
+    <link rel="author" href="https://github.com/luckydonald">
+
+    <!-- Provides information about an author or another person -->
+    <link rel="me" href="https://github.com/luckydonald" type="text/html">
+
+    <!-- Name of web application (only should be used if the website is used as an app) -->
+    <meta name="application-name" content="Application Name">
+
+    <!-- Theme Color for Chrome, Firefox OS and Opera -->
+    <!--<meta name="theme-color" content="#4285f4">-->
+
+    <!-- Short description of the document (limit to 150 characters) -->
+    <!-- This content *may* be used as a part of search engine results. -->
+    <meta name="description" content="Mobile interactive Fallout Pipboy, Fallout Equestria flavored">
+
+    <!-- Tells Google not to show the sitelinks search box -->
+    <meta name="google" content="nositelinkssearchbox">
+
+    <!-- Tells Google not to provide a translation for this document -->
+    <meta name="google" content="notranslate">
+
+    <!-- Identify the software used to build the document (i.e. - WordPress, Dreamweaver) -->
+    <meta name="generator" content="PipBuck OS v2.69">
+
+    <!-- Gives a general age rating based on the document's content -->
+    <meta name="rating" content="General">
+
+    <!-- Disable automatic detection and formatting of possible phone numbers -->
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- disallow Twitter from using your site's info for personalization purposes -->
+    <meta name="twitter:dnt" content="on">
+
+    <!-- disallow Pinning on pinterest -->
+    <meta name="pinterest" content="nopin">
+
+    <!-------------------
+
+    Mobile iOS Safari
+
+    ------------------->
+
+    <!-- Disable automatic detection and formatting of possible phone numbers -->
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- Launch Icon Title -->
+    <meta name="apple-mobile-web-app-title" content="PipBuck">
+
+    <!-- Enable standalone (full-screen) mode -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Status bar appearance (has no effect unless standalone mode is enabled) -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+
+    <!-------------------
+
+    Mobile Android Chrome
+
+    ------------------->
+
+    <meta name="application-name" content="PipBuck">
+
+    <!-- Add to home screen -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- More info: https://developer.chrome.com/multidevice/android/installtohomescreen -->
+
+
+    <!-------------------
+
+    Internet Explorer <3
+
+    ------------------->
+
+    <!-- Force IE 8/9/10 to use its latest rendering engine -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Disable automatic detection and formatting of possible phone numbers by Skype Toolbar browser extension -->
+    <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
+
+    <!-------------------
+
+    Chinese Browsers
+
+    ------------------->
+
+    <!-- 360 Browser: Select rendering engine order: webkit|ie-comp|ie-stand -->
+    <meta name="renderer" content="webkit">
+
+
+    <!-- QQ Mobile Browser: Locks the screen into the specified orientation: landscape|portrait-->
+    <meta name="x5-orientation" content="landscape">
+
+    <!-- QQ Mobile Browser: Display this document in fullscreen -->
+    <meta name="x5-fullscreen" content="true">
+
+    <!-- QQ Mobile Browser: Document will be displayed in "application mode" (fullscreen, etc.) -->
+    <meta name="x5-page-mode" content="app">
+
+    <!-- UC Mobile Browser: Locks the screen into the specified orientation: landscape|portrait -->
+    <meta name="screen-orientation" content="landscape">
+
+    <!-- UC Mobile Browser: Display this document in fullscreen -->
+    <meta name="full-screen" content="yes">
+
+    <!-- UC Mobile Browser: UC browser will display images even if in "text mode" -->
+    <meta name="imagemode" content="force">
+
+    <!-- UC Mobile Browser: Document will be displayed in "application mode"(fullscreen, forbidding gesture, etc.) -->
+    <meta name="browsermode" content="application">
+
+    <!-- UC Mobile Browser: Disabled the UC browser's "night mode" for this document -->
+    <meta name="nightmode" content="disable">
+
+    <!-- UC Mobile Browser: Simplify the document to reduce data transfer -->
+    <meta name="layoutmode" content="fitscreen">
+
+    <!-- UC Mobile Browser: Disable the UC browser's feature of "scaling font up when there are many words in this document" -->
+    <meta name="wap-font-scale" content="no">
   </head>
   <body>
     <noscript>

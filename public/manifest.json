@@ -1,0 +1,31 @@
+{
+    "name": "PipBuck",
+    "short_name": "PipBuck",
+    "start_url": "/?app",
+    "version": "0",
+    "default_locale": "en",
+    "description": "A plain text description",
+    "author": "luckydonald",
+    "display": "standalone",
+    "orientation": "landscape",
+    "scope": "/",
+    "background-color": "#084021",
+    "theme_color": "#1aff80",
+    "icons": [
+        {
+            "src": "/icons/192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/icons/256.png",
+            "type": "image/png",
+            "sizes": "256x256"
+        },
+        {
+            "src": "/icons/512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
