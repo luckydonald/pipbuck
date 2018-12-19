@@ -2,6 +2,9 @@
   <div>
     <div><a @click="location.reload()" href="/">Reload</a></div>
     <div>
+      <a @click="screenfull.toggle()" :class="{ active: screenfull.isFullscreen }">Fullscreen</a>
+    </div>
+    <div>
       <label>Hardware buttons</label>
       <a @click="leToggleHardwareButtons(true)" class="active">ON</a>
       <a @click="leToggleHardwareButtons(false)" class="active">OFF</a>
@@ -24,8 +27,10 @@
 </template>
 
 <script>
+import * as screenfull from 'screenfull';
 import { hsl, HexToHSL } from '../../lib/colorspace';
 import StableColt from '../../components/StableColt.vue';
+
 
 export default {
   name: 'Settings',
@@ -106,6 +111,9 @@ export default {
     },
     back() {
       return HexToHSL(this.$store.state.colorBack);
+    },
+    screenfull() {
+      return screenfull;
     },
   },
   methods: {
