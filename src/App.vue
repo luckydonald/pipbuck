@@ -189,7 +189,7 @@ const app = {
     return {
       scroll: 0.00,
       scroll_prevent: null,
-      hardwareButtonPosition: 'right',
+      hardwareButtonPosition: this.calculateHardwareButtonPosition(),
     };
   },
   computed: {
@@ -233,6 +233,38 @@ const app = {
     },
   },
   methods: {
+    updateHardwareButtonPosition() {
+      this.hardwareButtonPosition = this.calculateHardwareButtonPosition();
+    },
+    calculateHardwareButtonPosition() {
+      const orientation = window.screen.msOrientation
+        || (window.screen.orientation || window.screen.mozOrientation || {}).type;
+      if (orientation !== undefined) {
+        switch (orientation) {
+          default:
+          case 'portrait-primary':
+            return 'bottom';
+          case 'landscape-primary':
+            return 'right';
+          case 'landscape-secondary':
+            return 'left';
+          case 'portrait-secondary':
+            return 'top';
+        }
+      } else {
+        switch (window.orientation) {
+          default:
+          case 0:
+            return 'bottom';
+          case 90:
+            return 'left';
+          case -90:
+            return 'right';
+          case 180:
+            return 'top';
+        }
+      }
+    },
   },
   mounted() {
     // watch colorFront and colorBack to update the <body> element styles.
@@ -260,6 +292,7 @@ const app = {
     });
     this.scroll_prevent.install();
     this.shake_instance.start();
+    window.addEventListener('orientationchange', this.updateHardwareButtonPosition.bind(this));
   },
   beforeDestroy() {
     if (this.scroll_prevent !== null) {
@@ -268,6 +301,7 @@ const app = {
       this.shake_instance.stop();
       this.shake_instance = null;
     }
+    window.removeEventListener('orientationchange', this.updateHardwareButtonPosition.bind(this));
   },
 };
 export default app;
