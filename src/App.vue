@@ -16,7 +16,7 @@
       @load="this.play()"
     ></audio></keep-alive> <!-- :crossorigin="currentFile.anonymousCrossorigin"
     @timeupdate="this.updated()" -->
-    <div class="wrapper">
+    <div class="wrapper" :style="{ flexDirection: wrapperFlex }">
       <div
         class="effect display-background"
         v-colorized-bg="{
@@ -24,7 +24,9 @@
         }"
       ></div>
       <hardware-buttons
-        class="hardware noscroll" v-if="showHardwareButtons"
+        v-if="showHardwareButtons"
+        class="hardware noscroll"
+        :position="hardwareButtonPosition"
         @scroll.prevent @wheel.prevent @touchstart.prevent @touchmove.prevent @drag.prevent
       />
       <div class="crt">
@@ -187,6 +189,7 @@ const app = {
     return {
       scroll: 0.00,
       scroll_prevent: null,
+      hardwareButtonPosition: 'right',
     };
   },
   computed: {
@@ -209,6 +212,19 @@ const app = {
       color1.s /= 2;
       color2.s /= 2;
       return `2px 0 ${hsl(color1)}, -2px 0 ${hsl(color1)};`;
+    },
+    wrapperFlex() {
+      switch (this.hardwareButtonPosition) {
+        case 'top':
+          return 'column';
+        case 'left':
+          return 'row';
+        case 'right':
+          return 'row-reverse';
+        case 'bottom':
+        default:
+          return 'column-reverse';
+      }
     },
   },
   watched: {
@@ -312,14 +328,6 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column-reverse;
-  }
-  .hardware {
-    // flex-flow: row wrap;
-    justify-content: flex-end;
-    z-index: 20;
-    //bottom: 0;
-    //left: 0;
-    //right: 0;
   }
 }
 #nav {

@@ -1,5 +1,5 @@
 <template>
-  <div class="hardware">
+  <div class="hardware bottom" :class="position">
     <div
       class="hardware-button" id="stats"
       @touchstart="multitabHandler"
@@ -26,6 +26,11 @@
 <script>
 export default {
   name: 'HardwareButtons',
+  props: {
+    position: {
+      default: 'bottom',
+    },
+  },
   data() {
     return {
       tab_counter: {
@@ -101,6 +106,15 @@ export default {
   .hardware {
     background: #7e6d5b;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    z-index: 20;
+  }
+  .hardware.bottom, .hardware.top {
+    flex-direction: row;
+  }
+  .hardware.left, .hardware.right {
+    flex-direction: column;
   }
   .hardware-button {
     user-select: none;
@@ -109,24 +123,53 @@ export default {
     height: 32px;
     background: #000;
     display: inline-block;
+    position: relative;
+    border-radius: 150px;
+
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: 1rem;
-    margin-bottom: 2rem;
-    position: relative;
-    //position: absolute;
-    //bottom: 25px;
-    //right: 88px;
-    border-radius: 150px;
+    margin-bottom: 1rem;
+
+    .hardware.top > & {
+      margin-top: 2rem;
+    }
+    .hardware.bottom > & {
+      margin-bottom: 2rem;
+    }
+    .hardware.left > & {
+      margin-left: 2rem;
+      transform: rotate(90deg);
+    }
+    .hardware.right > & {
+      margin-right: 2rem;
+      transform: rotate(-90deg);
+    }
+
 
     label {
       position: absolute;
       text-align: center;
-      top: 2rem;
-      left: -25%;
-      right: -25%;
       width: auto;
       color: #d8c99e;
+
+      .hardware.bottom > & {
+        top: 2rem;
+        bottom: auto;
+        left: -25%;
+        right: -25%;
+      }
+      .hardware.top > & {
+        top: auto;
+        bottom: 2rem;
+        left: -25%;
+        right: -25%;
+      }
+      .hardware.right > & {
+        top: 2rem;
+        left: -25%;
+        right: -25%;
+      }
     }
   }
   .hardware-button.power::before {
