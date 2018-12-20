@@ -173,6 +173,16 @@ const app = {
   name: 'app',
   components: { HardwareButtons, Favicon, StableColt },
   directives: { ColorizedBg },
+  head() {
+    return {
+      meta: [
+        // Theme Color for Chrome, Firefox OS and Opera
+        { 'm-key': 'theme-color', name: 'theme-color', content: this.colorFront },
+        // Color for windows tiles
+        { 'm-key': 'msapplication-TileColor', name: 'msapplication-TileColor', content: this.colorFront },
+      ],
+    };
+  },
   data() {
     return {
       scroll: 0.00,

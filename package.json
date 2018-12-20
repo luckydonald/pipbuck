@@ -11,6 +11,7 @@
     "screenfull": "^4.0.0",
     "shake.js": "^1.2.2",
     "vue": "^2.5.17",
+    "vue-meta": "^1.5.8",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
