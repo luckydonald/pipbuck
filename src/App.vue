@@ -13,7 +13,6 @@
       preload="auto"
       controls="controls"
       crossorigin="anonymous"
-      @load="this.play()"
     ></audio></keep-alive> <!-- :crossorigin="currentFile.anonymousCrossorigin"
     @timeupdate="this.updated()" -->
     <div class="wrapper" :style="{ flexDirection: wrapperFlex }">
@@ -22,10 +21,11 @@
         class="hardware noscroll"
         :position="hardwareButtonPosition"
         @scroll.prevent @wheel.prevent @touchstart.prevent @touchmove.prevent @drag.prevent
+        @pipbuck-play="pipbuckSound"
       />
       <div class="crt">
         <div class="effect display-animations"></div>
-        <router-view />
+        <router-view @pipbuck-play="pipbuckSound" />
         <div
           class="effect display-background"
           v-colorized-bg="{
@@ -39,13 +39,13 @@
 <script>
 import { mapState, mapGetters } from 'vuex';
 import Shake from 'shake.js';
+import { pipbuckSprites } from './sound';
 import ScrollPrevent from './lib/scroll_prevent';
 import { HexToHSL, hsl } from './lib/colorspace';
 import HardwareButtons from './components/HardwareButtons.vue';
 import Favicon from './components/Favicon.vue';
 import StableColt from './components/StableColt.vue';
 import ColorizedBg from './lib/vue-colorized/directive';
-
 
 const app = {
   name: 'app',
@@ -109,6 +109,10 @@ const app = {
     },
   },
   methods: {
+    pipbuckSound(sound) {
+      console.log('pipbuckSound', sound);
+      pipbuckSprites.play(sound);
+    },
     updateHardwareButtonPosition() {
       this.hardwareButtonPosition = this.calculateHardwareButtonPosition();
     },

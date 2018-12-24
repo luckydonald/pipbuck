@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { sounds } from '../sound';
+
 export default {
   name: 'HardwareButtons',
   props: {
@@ -45,6 +47,7 @@ export default {
   },
   methods: {
     multitabHandler(event) {
+      this.$emit('pipbuck-play', sounds.nav_mode);
       const key = event.target.id;
       this.$router.push({ path: `/${key}` });
       console.log(

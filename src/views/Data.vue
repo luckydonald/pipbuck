@@ -1,11 +1,11 @@
 <template>
   <div>
     <div id="nav">
-      <router-link to="/data/local_map">Local Map</router-link>
-      <router-link to="/data/world_map">World Map</router-link>
-      <router-link to="/data/quests">Quests</router-link>
-      <router-link to="/data/notes">Notes</router-link>
-      <router-link to="/data/radio">Radio</router-link>
+      <router-link to="/data/local_map" @click.native="playTab">Local Map</router-link>
+      <router-link to="/data/world_map" @click.native="playTab">World Map</router-link>
+      <router-link to="/data/quests" @click.native="playTab">Quests</router-link>
+      <router-link to="/data/notes" @click.native="playTab">Notes</router-link>
+      <router-link to="/data/radio" @click.native="playTab">Radio</router-link>
       <router-link to="/settings" v-if="!showHardwareButtons">S</router-link>
     </div>
     <router-view />
@@ -14,6 +14,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import { sounds } from '../sound';
 
 export default {
   name: 'Data',
@@ -21,6 +22,11 @@ export default {
     ...mapState([
       'showHardwareButtons',
     ]),
+  },
+  methods: {
+    playTab(event) {
+      this.$emit('pipbuck-play', sounds.nav_tab);
+    },
   },
 };
 </script>

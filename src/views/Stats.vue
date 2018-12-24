@@ -1,19 +1,26 @@
 <template>
   <div>
     <div id="nav">
-      <router-link to="/stats/status">Status</router-link>
-      <router-link to="/stats/special">S.P.E.C.I.A.L.</router-link>
-      <router-link to="/stats/skills">Skills</router-link>
-      <router-link to="/stats/perks">Perks</router-link>
-      <router-link to="/stats/general">General</router-link>
+      <router-link to="/stats/status" @click.native="playTab">Status</router-link>
+      <router-link to="/stats/special" @click.native="playTab">S.P.E.C.I.A.L.</router-link>
+      <router-link to="/stats/skills" @click.native="playTab">Skills</router-link>
+      <router-link to="/stats/perks" @click.native="playTab">Perks</router-link>
+      <router-link to="/stats/general" @click.native="playTab">General</router-link>
     </div>
     <router-view />
   </div>
 </template>
 
 <script>
+import { sounds } from '../sound';
+
 export default {
   name: 'Stats',
+  methods: {
+    playTab(event) {
+      this.$emit('pipbuck-play', sounds.nav_tab);
+    },
+  },
 };
 </script>
 
