@@ -14,4 +14,12 @@ const pipbuckSprites = new Howl({
   sprite: pipbuckConfig.sprite,
 });
 
-export { Howler, pipbuckSprites, sounds };
+
+const ui = {
+  config: pipbuckConfig,
+  sprite: pipbuckSprites,
+  sounds,
+};
+
+
+export { Howler, ui };

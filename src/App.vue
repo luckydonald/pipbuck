@@ -39,7 +39,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex';
 import Shake from 'shake.js';
-import { pipbuckSprites } from './sound';
+import { ui } from './sound';
 import ScrollPrevent from './lib/scroll_prevent';
 import { HexToHSL, hsl } from './lib/colorspace';
 import HardwareButtons from './components/HardwareButtons.vue';
@@ -111,7 +111,7 @@ const app = {
   methods: {
     pipbuckSound(sound) {
       console.log('pipbuckSound', sound);
-      pipbuckSprites.play(sound);
+      ui.sprite.play(sound);
     },
     updateHardwareButtonPosition() {
       this.hardwareButtonPosition = this.calculateHardwareButtonPosition();

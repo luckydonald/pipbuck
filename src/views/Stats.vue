@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import { sounds } from '../sound';
+import { ui } from '../sound';
 
 export default {
   name: 'Stats',
   methods: {
     playTab(event) {
-      this.$emit('pipbuck-play', sounds.nav_tab);
+      this.$emit('pipbuck-play', ui.sounds.nav_tab);
     },
   },
 };
