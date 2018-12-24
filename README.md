@@ -30,6 +30,15 @@ docker run  \
 # done
 ```
 
+### Compile and serve locally
+```
+cd ./dist/
+cd ../ && yarn run build && cd dist/ && python -m http.server 8080
+open http://localhost:8080
+# now running
+
+```
+
 ```
 docker build . -t pipbuck:latest; docker stop pipbuck; docker rm pipbuck; docker run --detach --name pipbuck --restart always --network dockertgbot_web pipbuck:latest && docker logs -ft --tail 100 pipbuck
 ```
