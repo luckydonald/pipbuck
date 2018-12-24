@@ -20,19 +20,19 @@ const radio = {
         position: null,
       },
       'Galaxy News Radio': {
-        file: '/radio/gnr.mp3',
+        file: '/audio/radio/gnr.mp3',
         disabled: false,
         hidden: false,
         position: 0,
       },
       'Diamond City Radio': {
-        file: '/radio/dcr.mp3',
+        file: '/audio/radio/dcr.mp3',
         disabled: false,
         hidden: false,
         position: 0,
       },
       'Test Track': {
-        file: '/radio/test.mp3',
+        file: '/audio/radio/test.mp3',
         disabled: false,
         hidden: false,
         position: 0,
