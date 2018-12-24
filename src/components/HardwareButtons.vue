@@ -116,8 +116,11 @@ export default {
   .hardware.bottom, .hardware.top {
     flex-direction: row;
   }
-  .hardware.left, .hardware.right {
+  .hardware.left {
     flex-direction: column;
+  }
+  .hardware.right {
+    flex-direction: column-reverse;
   }
   .hardware-button {
     user-select: none;
