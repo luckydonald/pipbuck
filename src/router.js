@@ -20,7 +20,8 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: () => import(/* webpackChunkName: "boot" */ './views/Boot.vue'),
+      // component: () => import(/* s webpackChunkName: "boot" */ './views/Boot.vue'),
+      component: Boot,
       // redirect: { name: 'Status' },
     },
     {
