@@ -17,12 +17,6 @@
     ></audio></keep-alive> <!-- :crossorigin="currentFile.anonymousCrossorigin"
     @timeupdate="this.updated()" -->
     <div class="wrapper" :style="{ flexDirection: wrapperFlex }">
-      <div
-        class="effect display-background"
-        v-colorized-bg="{
-          src: require('./assets/bg.png'), hue: hair.h,
-        }"
-      ></div>
       <hardware-buttons
         v-if="showHardwareButtons"
         class="hardware noscroll"
@@ -32,6 +26,12 @@
       <div class="crt">
         <div class="effect display-animations"></div>
         <router-view />
+        <div
+          class="effect display-background"
+          v-colorized-bg="{
+            src: require('./assets/bg.png'), hue: hair.h,
+          }"
+        ></div>
       </div>
     </div>
   </div>
@@ -272,6 +272,7 @@ audio {
   // overflow-scrolling: touch;
   width: 100%;
   height: 100%;
+  position: relative;
 }
 .effect {
   pointer-events:none;
@@ -286,12 +287,11 @@ audio {
   background-size: 100% 100%;
   background-repeat: no-repeat;
 
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
   filter: blur(5px);
-
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 .display-beam {
   background: radial-gradient(
