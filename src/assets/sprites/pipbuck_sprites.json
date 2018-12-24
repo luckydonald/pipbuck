@@ -1,0 +1,179 @@
+{
+  "urls": [
+    "/audio/pipbuck_sprites.ogg",
+    "/audio/pipbuck_sprites.m4a",
+    "/audio/pipbuck_sprites.mp3",
+    "/audio/pipbuck_sprites.ac3"
+  ],
+  "sprite": {
+    "silence": [
+      0,
+      1000,
+      true
+    ],
+    "ui_pipboy_mode": [
+      2000,
+      150.7256235827663
+    ],
+    "ui_pipboy_select": [
+      4000,
+      169.1383219954652
+    ],
+    "ui_pipboy_tab": [
+      6000,
+      206.8027210884358
+    ],
+    "ui_pipboy_tuner": [
+      8000,
+      120.88435374149675
+    ],
+    "UI_PipBoy_RotaryHorizontal_01": [
+      10000,
+      417.95918367346906
+    ],
+    "UI_PipBoy_RotaryHorizontal_02": [
+      12000,
+      417.95918367346906
+    ],
+    "UI_PipBoy_BootSequence_A": [
+      14000,
+      5093.877551020409
+    ],
+    "UI_PipBoy_BootSequence_B": [
+      21000,
+      5433.4693877551035
+    ],
+    "UI_PipBoy_BootSequence_C": [
+      28000,
+      5746.938775510202
+    ],
+    "ui_radio_static_lp": [
+      35000,
+      5253.4240362811815
+    ],
+    "UI_Pipboy_Radio_StaticBackground_LP": [
+      42000,
+      5303.900226757371
+    ],
+    "UI_Radio_Static_LP": [
+      49000,
+      5253.4240362811815
+    ],
+    "ui_pipboy_hum_lp": [
+      56000,
+      2310.385487528343
+    ],
+    "UI_PipBoy_Hum_LP": [
+      60000,
+      3577.3015873015906
+    ],
+    "ui_static_c_01": [
+      65000,
+      772.97052154195
+    ],
+    "ui_static_c_02": [
+      67000,
+      465.75963718821356
+    ],
+    "ui_static_c_03": [
+      69000,
+      269.75056689342125
+    ],
+    "ui_static_c_04": [
+      71000,
+      214.33106575963734
+    ],
+    "ui_static_c_05": [
+      73000,
+      473.10657596371186
+    ],
+    "ui_static_d_01": [
+      75000,
+      633.6054421768722
+    ],
+    "ui_static_d_02": [
+      77000,
+      1170.83900226757
+    ],
+    "ui_static_d_03": [
+      80000,
+      599.5011337868448
+    ],
+    "ui_static_d_04": [
+      82000,
+      480.2267573696213
+    ],
+    "ui_static_d_05": [
+      84000,
+      861.7233560090654
+    ],
+    "UI_PipBoy_BurstStatic_01": [
+      86000,
+      548.5714285714351
+    ],
+    "UI_PipBoy_BurstStatic_02": [
+      88000,
+      914.285714285711
+    ],
+    "UI_PipBoy_BurstStatic_03": [
+      90000,
+      783.6734693877503
+    ],
+    "UI_PipBoy_BurstStatic_04": [
+      92000,
+      548.5714285714351
+    ],
+    "UI_PipBoy_BurstStatic_05": [
+      94000,
+      548.5714285714351
+    ],
+    "UI_PipBoy_BurstStatic_06": [
+      96000,
+      731.428571428566
+    ],
+    "UI_PipBoy_BurstStatic_07": [
+      98000,
+      522.448979591843
+    ],
+    "UI_PipBoy_BurstStatic_08": [
+      100000,
+      679.1836734693817
+    ],
+    "UI_PipBoy_BurstStatic_09": [
+      102000,
+      548.5714285714351
+    ],
+    "UI_PipBoy_BurstStatic_10": [
+      104000,
+      731.428571428566
+    ],
+    "UI_PipBoy_BurstStatic_12": [
+      106000,
+      365.7142857142901
+    ],
+    "UI_PipBoy_BurstStatic_13": [
+      108000,
+      313.4693877551058
+    ],
+    "UI_PipBoy_BurstStatic_16": [
+      110000,
+      548.5714285714351
+    ],
+    "UI_PipBoy_BurstStatic_17": [
+      112000,
+      496.32653061225085
+    ],
+    "UI_Discover_Location_01": [
+      114000,
+      11159.999999999996
+    ],
+    "ui_pipboy_holotape_start": [
+      127000,
+      458.48072562358766
+    ],
+    "ui_pipboy_holotape_stop": [
+      129000,
+      443.76417233559096
+    ]
+  }
+}
