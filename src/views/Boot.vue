@@ -60,7 +60,7 @@ export default {
     doneBooting() {
       console.log('3 done');
       this.loading = true;
-      this.$router.push({ name: 'Status' });
+      // this.$router.push({ name: 'Status' });
     },
   },
 };
