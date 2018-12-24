@@ -8,6 +8,11 @@ audiosprite \
     --silence 1 \
     --gap 1 \
     --channels 2 \
+    --loop ui_radio_static_lp \
+    --loop UI_Pipboy_Radio_StaticBackground_LP \
+    --loop UI_Radio_Static_LP \
+    --loop ui_pipboy_hum_lp \
+    --loop UI_PipBoy_Hum_LP \
     $FALLOUT3NW/sound/fx/ui/pipboy/ui_pipboy_mode.wav \
     $FALLOUT3NW/sound/fx/ui/pipboy/ui_pipboy_select.wav \
     $FALLOUT3NW/sound/fx/ui/pipboy/ui_pipboy_tab.wav \
