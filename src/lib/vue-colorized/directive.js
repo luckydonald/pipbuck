@@ -61,7 +61,6 @@ const directive = {
   },
   // eslint-disable-line no-param-reassign
   applyImage(options) {
-    console.log('applying img.');
     const { width, height } = common.calculateScale(options.preScale, options.target, options.img);
     const computedSrc = common.calculateImage(options.img, width, height, options.hue);
     if (!computedSrc) {
@@ -73,7 +72,6 @@ const directive = {
         : options.cssAttribute(computedSrc, options)
     );
     const value = options.cssTemplate(computedSrc, options);
-    console.log(`options.target.style[${attribute}] = `, value, options);
     // eslint-disable-next-line no-param-reassign
     options.target.style[attribute] = value;
   },

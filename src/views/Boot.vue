@@ -40,25 +40,20 @@ export default {
   },
   methods: {
     prepareBoot() {
-      console.log('1 playing boot', ui, ui.play);
       /** @var {PlayingSprite} */
       const play = ui.play(ui.sounds.boot);
-      console.log('PlayingSprite', play);
       play.once('play', this.bootSequence);
       // play.once('end', this.doneBooting);
       play.once('play', () => {
-        console.log('duration', play.duration());
         setTimeout(this.doneBooting, Math.max(100, play.duration() * 1000 - 200));
       });
     },
     bootSequence() {
-      console.log('2 booting');
       this.off = false;
     },
     doneBooting() {
-      console.log('3 done');
       this.loading = true;
-      // this.$router.push({ name: 'Status' });
+      this.$router.push({ name: 'Status' });
     },
   },
 };

@@ -38,7 +38,6 @@ export default {
   },
   computed: {
     img() {
-      console.log('created img.');
       return common.createImage(this.src, this.imageLoaded);
     },
   },
@@ -49,7 +48,6 @@ export default {
   },
   methods: {
     loadImage() {
-      console.log('computing img.', this.src, this.hue);
       // update src to force loading
       this.img.src = this.src;
       // check if already loaded
@@ -60,11 +58,9 @@ export default {
       }
     },
     imageLoaded(event) {
-      console.log('loaded img.', event);
       this.applyImage(this.img);
     },
     applyImage() {
-      console.log('applying img.');
       const { width, height } = common.calculateScale(this.preScale, this.$refs.img, this.img);
       const computedSrc = common.calculateImage(this.img, width, height, this.hue);
       if (!computedSrc) {

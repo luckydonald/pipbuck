@@ -118,21 +118,16 @@ const pipbuckSprites = new Howl({
  */
 // eslint-disable-next-line no-unused-vars
 function playPromise(selectedSound) {
-  console.log('this.sprite.play 1a', selectedSound);
   const id = this.sprite.play(selectedSound);
   const sprite = new PlayingSprite({ id, audio: this.sprite });
-  console.log('this.sprite.play 1b', this, sprite);
 
   function promiseExecutor(resolve, reject) {
     sprite.once('play', () => {
       sprite.off('loaderror', undefined);
-      console.log('on play');
-      // eslint-disable-next-line no-unused-vars
       resolve(sprite);
     });
     sprite.once('loaderror', (...args) => {
       sprite.off('play', undefined);
-      console.log('on loaderror', ...args);
       reject(new Error('loaderror', sprite));
     });
   }
@@ -141,17 +136,13 @@ function playPromise(selectedSound) {
 
 
 function play(soundParam) {
-  console.log('play func');
   let sound = soundParam;
   if (Array.isArray(sound)) {
     // https://stackoverflow.com/a/4550514/3423324#getting-a-random-value-from-a-javascript-array
     const selection = Math.floor(Math.random() * sound.length);
     console.log('selection', sound, `[${selection}]`);
-    sound = sound[Math.floor(Math.random() * sound.length)];
+    sound = sound[selection];
   }
-  console.log('playing', soundParam, sound);
-
-  console.log('this.sprite.play 1', this);
   return new PlayingSprite({ name: sound, audio: this.sprite });
 }
 
@@ -160,7 +151,6 @@ const ui = {
   sprite: pipbuckSprites,
   sounds,
   play(sound) {
-    console.log('ui.play', sound, this);
     return play.bind(this)(sound);
   },
 };
