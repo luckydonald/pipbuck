@@ -3,6 +3,7 @@
 </template>
 
 <script>
+// https://stackoverflow.com/a/42956086/3423324#how-to-reference-text-thats-in-slot-in-vue-js
 const getChildrenTextContent = function getChildrenTextContent(children) {
   // eslint-disable-next-line arrow-body-style
   return children.map((node) => {
@@ -51,6 +52,7 @@ export default {
   },
   computed: {
     slotText() {
+      // https://stackoverflow.com/a/42956086/3423324#how-to-reference-text-thats-in-slot-in-vue-js
       return getChildrenTextContent(this.$slots.default);
     },
     slotTextLength() {
