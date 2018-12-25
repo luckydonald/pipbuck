@@ -41,17 +41,15 @@ export default {
   methods: {
     prepareBoot() {
       console.log('1 playing boot', ui, ui.play);
-      const playPromise = ui.play(ui.sounds.boot);
-      console.log('playPromise', playPromise);
-      playPromise.catch(console.error);
-      const playedPromise = playPromise.then((...args) => {
-        console.log('playPromise.then', ...args);
-        this.bootSequence();
-        return args;
+      /** @var {PlayingSprite} */
+      const play = ui.play(ui.sounds.boot);
+      console.log('PlayingSprite', play);
+      play.once('play', this.bootSequence);
+      // play.once('end', this.doneBooting);
+      play.once('play', () => {
+        console.log('duration', play.duration());
+        setTimeout(this.doneBooting, Math.max(100, play.duration() * 1000 - 200));
       });
-      console.log('playedPromise', playedPromise);
-      playedPromise.catch(console.error);
-      playedPromise.then(this.doneBooting);
     },
     bootSequence() {
       console.log('2 booting');

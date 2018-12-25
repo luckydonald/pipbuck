@@ -1,5 +1,100 @@
 import { Howl, Howler } from 'howler';
 
+class PlayingSprite {
+  constructor({
+    audio,
+    name = null,
+    id = null,
+  }) {
+    if (!audio) {
+      throw new Error('audio must be set.');
+    }
+    if (!name && (id === undefined || id === null)) {
+      throw new Error('either id or name must be set.');
+    }
+    if (id === null) {
+      this.id = audio.play(name);
+    } else {
+      this.id = id;
+    }
+    this.name = name;
+    this.audio = audio;
+  }
+
+  play() {
+    this.audio.play(this.id);
+    return this;
+  }
+
+  pause() {
+    this.audio.pause(this.id);
+    return this;
+  }
+
+  stop() {
+    this.audio.stop(this.id);
+    return this;
+  }
+
+  volume(level) {
+    this.audio.volume(level, this.id);
+    return this;
+  }
+
+  fade(from, to, duration) {
+    this.audio.fade(from, to, duration, this.id);
+    return this;
+  }
+
+  rate(rate) {
+    this.audio.rate(rate, this.id);
+    return this;
+  }
+
+  seek(seconds = undefined) {
+    if (seconds === undefined) {
+      return this.audio.seek(this.id);
+    }
+    this.audio.seek(seconds, this.id);
+    return this;
+  }
+
+  loop(flag = undefined) {
+    if (flag === undefined) {
+      return this.audio.loop(this.id);
+    }
+    this.audio.loop(flag, this.id);
+    return this;
+  }
+
+  state() {
+    return this.audio.state();
+  }
+
+  playing() {
+    return this.audio.playing(this.id);
+  }
+
+  duration() {
+    return this.audio.duration(this.id);
+  }
+
+  on(type, func) {
+    this.audio.on(type, func, this.id);
+    return this;
+  }
+
+  once(type, func) {
+    this.audio.once(type, func, this.id);
+    return this;
+  }
+
+  off(type, func) {
+    this.audio.off(type, func, this.id);
+    return this;
+  }
+}
+
 const sounds = {
   nav_tab: 'ui_pipboy_tab',
   nav_mode: 'ui_pipboy_mode',
@@ -16,61 +111,48 @@ const pipbuckSprites = new Howl({
   sprite: pipbuckConfig.sprite,
 });
 
+/**
+ * Returns a promise which will be resolved on succesfull play.
+ * @param selectedSound
+ * @return {Promise<PlayingSprite>}
+ */
+// eslint-disable-next-line no-unused-vars
 function playPromise(selectedSound) {
   console.log('this.sprite.play 1a', selectedSound);
   const id = this.sprite.play(selectedSound);
-  console.log('this.sprite.play 1b', this);
-  return [
-    id,
-    new Promise((resolve, reject) => {
-      this.sprite.once('play', () => {
-        this.sprite.off('loaderror', undefined, id);
-        console.log('on play');
-        // eslint-disable-next-line no-unused-vars
-        const playEndPromise = new Promise((resolve2, reject2) => {
-          this.sprite.once('end', () => {
-            console.log('resolve 2.1');
-            resolve2(id);
-            console.log('resolved 2.1');
-          }, id);
-        });
-        console.log('playEndPromise created', playEndPromise);
-        console.log('resolve 2');
-        resolve(playEndPromise, 'test');
-        console.log('resolved 2');
-      }, id);
-      this.sprite.once('loaderror', (...args) => {
-        this.sprite.off('play', undefined, id);
-        console.log('on loaderror', ...args);
-        reject(new Error('loaderror'));
-      });
-    }),
-  ];
+  const sprite = new PlayingSprite({ id, audio: this.sprite });
+  console.log('this.sprite.play 1b', this, sprite);
+
+  function promiseExecutor(resolve, reject) {
+    sprite.once('play', () => {
+      sprite.off('loaderror', undefined);
+      console.log('on play');
+      // eslint-disable-next-line no-unused-vars
+      resolve(sprite);
+    });
+    sprite.once('loaderror', (...args) => {
+      sprite.off('play', undefined);
+      console.log('on loaderror', ...args);
+      reject(new Error('loaderror', sprite));
+    });
+  }
+  return new Promise(promiseExecutor);
 }
 
-function play(sound) {
+
+function play(soundParam) {
   console.log('play func');
-  let selectedSound = sound;
-  if (Array.isArray(selectedSound)) {
+  let sound = soundParam;
+  if (Array.isArray(sound)) {
     // https://stackoverflow.com/a/4550514/3423324#getting-a-random-value-from-a-javascript-array
-    const selection = Math.floor(Math.random() * selectedSound.length);
-    console.log('selection', selectedSound, `[${selection}]`);
-    selectedSound = selectedSound[Math.floor(Math.random() * selectedSound.length)];
+    const selection = Math.floor(Math.random() * sound.length);
+    console.log('selection', sound, `[${selection}]`);
+    sound = sound[Math.floor(Math.random() * sound.length)];
   }
-  console.log('playing', sound, selectedSound);
+  console.log('playing', soundParam, sound);
 
   console.log('this.sprite.play 1', this);
-  const [id, promise] = playPromise.bind(this)(selectedSound);
-
-  this.sprite.once('playerror', (...args) => {
-    console.log('playerror', ...args);
-    this.sprite.once('unlock', () => {
-      this.sprite.off('play', undefined, id);
-      this.sprite.off('end', undefined, id);
-      promise.resolve(playPromise.bind(this)(selectedSound));
-    });
-  });
-  return promise;
+  return new PlayingSprite({ name: sound, audio: this.sprite });
 }
 
 const ui = {
