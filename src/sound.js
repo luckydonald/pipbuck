@@ -111,30 +111,13 @@ const pipbuckSprites = new Howl({
   sprite: pipbuckConfig.sprite,
 });
 
+
 /**
- * Returns a promise which will be resolved on succesfull play.
- * @param selectedSound
- * @return {Promise<PlayingSprite>}
+ * Returns a `PlayingSprite` as proxy to the Howler, filling in the id automatically.
+ *
+ * @param soundParam {string}
+ * @return {PlayingSprite}
  */
-// eslint-disable-next-line no-unused-vars
-function playPromise(selectedSound) {
-  const id = this.sprite.play(selectedSound);
-  const sprite = new PlayingSprite({ id, audio: this.sprite });
-
-  function promiseExecutor(resolve, reject) {
-    sprite.once('play', () => {
-      sprite.off('loaderror', undefined);
-      resolve(sprite);
-    });
-    sprite.once('loaderror', (...args) => {
-      sprite.off('play', undefined);
-      reject(new Error('loaderror', sprite));
-    });
-  }
-  return new Promise(promiseExecutor);
-}
-
-
 function play(soundParam) {
   let sound = soundParam;
   if (Array.isArray(sound)) {
