@@ -13,9 +13,9 @@ export default new Router({
       path: '/',
       name: 'home',
       // route level code-splitting
-      // this generates a separate chunk (main.[hash].js) for this route
+      // this generates a separate chunk (boot.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "main" */ './views/Boot.vue'),
+      component: () => import(/* webpackChunkName: "boot" */ './views/Boot.vue'),
       // component: Boot,
       // redirect: { name: 'Status' },
     },
