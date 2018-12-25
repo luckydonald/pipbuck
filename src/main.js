@@ -3,10 +3,12 @@
  */
 import Vue from 'vue';
 import Meta from 'vue-meta';
+import screenfull from 'screenfull';
 import './lib/audiocontect-patch';
 import App from './App.vue';
 import router from './router';
 import store from './state';
+
 
 Vue.use(Meta, {
   keyName: 'head', // the component option name that vue-meta looks for meta info on.
@@ -22,3 +24,5 @@ const ignored = new Vue({
   // el: '#app',
   render: h => h(App),
 }).$mount('#app');
+
+screenfull.request();

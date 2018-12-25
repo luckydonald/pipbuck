@@ -1,5 +1,5 @@
 <template>
-  <div class="page" @click="prepareBoot">
+  <div class="page" @click="prepareBoot" @mouseup="screenfull.request()">
     <div class="off" v-if="off">
       <button>Turn on</button>
     </div>
@@ -26,13 +26,12 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import screenfull from 'screenfull';
 import StableColt from '../components/StableColt.vue';
 import Typer from '../components/Typer.vue';
 import { ui } from '../sound';
 
 // https://stackoverflow.com/a/40460122/3423324#showing-loading-spinner-for-async-vue-2-components
-
 export default {
   name: 'boot',
   components: { StableColt, Typer },
@@ -40,6 +39,7 @@ export default {
     return {
       off: true,  // is turned off, waiting for turning on
       loading: false,  // is turned on, and the animation has ended. Now displays 'Initialising...'
+      screenfull,
     };
   },
   methods: {
@@ -57,7 +57,7 @@ export default {
     },
     doneBooting() {
       this.loading = true;
-      setTimeout(this.doneLoading, 10);
+      setTimeout(this.doneLoading, 1000);
     },
     doneLoading() {
       this.$nextTick(this.$router.push({ name: 'Status' }));
