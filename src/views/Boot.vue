@@ -6,7 +6,7 @@
     <div class="animation" v-if="!off && !loading">
       <div class="headline">Pip-OS(R) v10 build 4458</div>
       <typer
-        :interval="50"
+        :interval="200"
         class="text"
       >
         Copyright 2075 Robronco(R)<br>
@@ -57,7 +57,7 @@ export default {
     },
     doneBooting() {
       this.loading = true;
-      setTimeout(this.doneLoading, 1000);
+      setTimeout(this.doneLoading, 500);
     },
     doneLoading() {
       this.$nextTick(this.$router.push({ name: 'Status' }));
