@@ -1,22 +1,33 @@
 <template>
   <div>
-    <div id="waveform"></div>
-
-    <!-- Sprite Click Areas -->
-    <div class="sprites">
+    <canvas ref="canvas"></canvas>
+    <div
+      class="waveform"
+      :class="orientation"
+      :style="{ [styleKeySizing]: `${fullLength * 0.050}px` }"
+    >
+      <!-- Sprite Click Areas -->
       <div
         v-for="(sprite, name) in audio.config.sprite" :key="name"
         class="sprite"
+        :style="{
+          [styleKeyOffset]: `${sprite[0] * 0.050}px`,
+          [styleKeySizing]: `${sprite[1] * 0.050}px`,
+        }"
         @click="play(name)"
       >
+        {{ sprite }}
         <div class="sprite-label">{{ name }} > {{ sprite }}</div>
         <div
-          v-for="(sound, id) in sounds[name]" :key="id"
+          v-for="(data, id) in sounds[name]" :key="id"
           class="progress"
-          :style="{ width: (((sound.seek / sound.duration) * 100) || 0) + '%' }"
-        >{{id}}|{{ sound }}</div>
+          :style="{ width: ((data.seek * 100000 / data.length) || 0) + '%' }"
+        >
+          {{id}}|{{data}}
+        </div>
       </div>
     </div>
+
     Meh.<br>
     {{ sounds }}
     Mehgh.<br>
@@ -43,6 +54,7 @@ export default {
     return {
       sounds: this.createSoundsArray(),
       plays: [],
+      orientation: 'down',  // 'left', 'right', 'down', 'up'
     };
   },
   methods: {
@@ -93,10 +105,43 @@ export default {
         for (let ii = 0; ii < ids.length; ii++) {
           const id = ids[ii];
           const elem = this.sounds[key][id];
-          elem.seek = (this.audio.audio.seek(id) || 0) - (elem.offset / 1000);
+          elem.seek = (this.audio.audio.seek(parseInt(id, 10)) || 0) - (elem.offset / 1000);
         }
       }
       requestAnimationFrame(this.updateTick.bind(this));
+    },
+  },
+  computed: {
+    fullLength() {
+      return this.audio.audio.duration() * 1000;
+    },
+    styleKeyOffset() {
+      switch (this.orientation) {
+        case 'top':
+          return 'bottom';
+        case 'left':
+          return 'right';
+        case 'right':
+          return 'left';
+        default:
+        case 'bottom':
+          return 'top';
+      }
+    },
+    styleKeySizing() {
+      switch (this.orientation) {
+        case 'left':
+        case 'right':
+          return 'width';
+        default:
+        case 'top':
+        case 'bottom':
+          return 'height';
+      }
+    },
+    waveBackground() {
+      // not yet
+      return null;
     },
   },
   mounted() {
@@ -107,14 +152,45 @@ export default {
 };
 </script>
 
-<style scoped>
-.sprites {
+<style scoped lang="scss">
+.waveform {
+  opacity: 0.5;
   position: relative;
 }
+.sprite {
+  position: absolute;
+  overflow: hidden;
+  background-color: deeppink;
+
+  .left &,
+  .right & {
+    height: 100%;
+  }
+  .up &,
+  .down & {
+    width: 100%;
+  }
+}
+
 .progress {
   position: absolute;
-  top: 0;
-  height: 100%;
   background-color: hotpink;
+
+  .up & {
+    bottom: 0;
+    height: 100%;
+  }
+  .left & {
+    right: 0;
+    width: 100%;
+  }
+  .left & {
+    left: 0;
+    width: 100%;
+  }
+  .down & {
+    top: 0;
+    height: 100%;
+  }
 }
 </style>
