@@ -7,7 +7,8 @@
       <div class="headline">Pip-OS(R) v10 build 4458</div>
       <typer-css
         :chars="1"
-        :duration="4000"
+        :duration="3500"
+        :running="!off && !loading"
         class="text"
       >
         Copyright 2075 Robronco(R)<br>
@@ -40,6 +41,7 @@ export default {
     return {
       off: true,  // is turned off, waiting for turning on
       loading: false,  // is turned on, and the animation has ended. Now displays 'Initialising...'
+      bootTextDuration: 4000, // default: 4s in ms
       screenfull,
     };
   },
@@ -47,6 +49,7 @@ export default {
     prepareBoot() {
       /** @var {PlayingSprite} */
       const play = ui.play(ui.sounds.boot);
+      this.bootTextDuration = play.duration() * 1000;
       play.once('play', this.bootSequence);
       // play.once('end', this.doneBooting);
       play.once('play', () => {

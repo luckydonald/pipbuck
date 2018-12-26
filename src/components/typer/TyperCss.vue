@@ -9,18 +9,12 @@
           class="animated"
           :class="{ running: running }"
           :style="{
-            'animation-timing-function': `steps(${lengths[i]}, start)`,
+            'animation-timing-function': `steps(${lengths[i]}, end)`,
             'animation-play-state': paused ? 'paused' : 'running',
             'animation-delay': `${offsetMilliseconds[i].toFixed(0)}ms`,
             'animation-duration': `${durationMilliseconds[i].toFixed(0)}ms`,
           }"
         >{{ line }}</div>
-        {{ {
-            'animation-timing-function': `steps(${lengths[i]}, start)`,
-            'animation-play-state': paused ? 'paused' : 'running',
-            'animation-delay': `${offsetMilliseconds[i].toFixed(0)}ms`,
-            'animation-duration': `${durationMilliseconds[i].toFixed(0)}ms`,
-        } }}
       </div>
     </div>
   </div>
@@ -41,13 +35,14 @@ export default {
       type: Number,
       default: 4000, // 4s
     },
-  },
-  data() {
-    return {
-      pos: 0,
-      running: false,
-      paused: true,
-    };
+    running: {
+      type: Boolean,
+      default: true,
+    },
+    paused: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     /**
@@ -154,17 +149,16 @@ export default {
   display: inline;
 }
 .banana-for-scale {
-  color: royalblue;
-  // background-color: ;
+  color: transparent;
 }
 /* The typing effect */
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  0% { width: 0; opacity: 0 }
+  0.1% { opacity: 1 }  // opacity hack to not show the first character.
+  100% { width: 100% }
 }
 
 .animated {
-  color: var(--color-front);
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   position: absolute;
   top: 0;
@@ -177,5 +171,6 @@ export default {
   // animation-direction: alternate;
   animation-fill-mode: both;
   animation-play-state: paused;
+  width: 100%;
 }
 </style>
