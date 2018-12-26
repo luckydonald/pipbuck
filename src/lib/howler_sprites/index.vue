@@ -10,7 +10,7 @@
       }"
     >
       <!-- Sprite Click Areas -->
-      <div
+      <div class="sprite-wrapper"
         v-for="(sprite, name) in audio.config.sprite" :key="name"
       >
         <div
@@ -63,12 +63,15 @@ export default {
       default: '#46a0ba',
       type: String,
     },
+    orientation: {
+      default: 'right',  // 'left', 'right', 'down', 'up'
+      type: String,
+    },
   },
   data() {
     return {
       sounds: this.createSoundsArray(),
       plays: [],
-      orientation: 'down',  // 'left', 'right', 'down', 'up'
       buffer: null,  // the audio buffer
     };
   },
@@ -222,8 +225,8 @@ export default {
 
       // context.globalAlpha = 0.6 ; // lineOpacity ;
       context.lineWidth = 1;
-      const totallength = leftChannel.length;
-      const eachBlock = Math.floor(totallength / drawLines);
+      const totalLength = leftChannel.length;
+      const eachBlock = Math.floor(totalLength / drawLines);
       const lineGap = (maxTime / drawLines);
 
       context.beginPath();
@@ -245,15 +248,32 @@ export default {
             break;
         }
       }
+      // draw center line
+      switch (this.orientation) {
+        case 'up':  // invert ?
+        case 'down':
+          context.moveTo(0, 0);
+          context.lineTo(maxTime, 0);
+          context.lineTo(maxTime, 1);
+          context.lineTo(0, 1);
+          break;
+        default:
+        case 'left':  // invert ?
+        case 'right':
+          context.moveTo(0, 0);
+          context.lineTo(0, maxTime);
+          context.lineTo(1, maxTime);
+          context.lineTo(1, 0);
+          break;
+      }
       context.stroke();
       context.restore();
       return canvas.toDataURL('image/png');
     },
   },
   mounted() {
-    // Begin the progress step tick.
-    console.log('Wooooop');
     this.loadWaveform();
+    // Begin the progress step tick.
     requestAnimationFrame(this.updateTick.bind(this));
   },
 };
@@ -263,6 +283,10 @@ export default {
 .waveform {
   opacity: 0.5;
   position: relative;
+}
+.sprite-wrapper {
+  position: absolute;
+  width: 100%;
 }
 .sprite {
   position: absolute;

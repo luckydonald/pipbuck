@@ -1,5 +1,6 @@
 <template>
   <howler-sprites
+    class="howler-sprites"
     :audio="ui"
     :color="color"
     :orientation="orientation"
@@ -28,3 +29,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+/**
+ * Styling the label in the howler-sprites.
+ * See https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
+ */
+.howler-sprites >>> .label {
+  left: 5px;
+  transform: translate(0, -50%);
+  position: absolute;
+}
+</style>
