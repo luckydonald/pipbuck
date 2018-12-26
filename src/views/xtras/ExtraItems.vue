@@ -9,22 +9,30 @@
       <!-- Sprite Click Areas -->
       <div
         v-for="(sprite, name) in audio.config.sprite" :key="name"
+      >
+        <div
         class="sprite"
         :style="{
           [styleKeyOffset]: `${sprite[0] * 0.050}px`,
           [styleKeySizing]: `${sprite[1] * 0.050}px`,
         }"
         @click="play(name)"
-      >
-        {{ sprite }}
-        <div class="sprite-label">{{ name }} > {{ sprite }}</div>
-        <div
-          v-for="(data, id) in sounds[name]" :key="id"
-          class="progress"
-          :style="{ width: ((data.seek * 100000 / data.length) || 0) + '%' }"
         >
-          {{id}}|{{data}}
+          <div
+            v-for="(data, id) in sounds[name]" :key="id"
+            class="progress"
+            :style="{ width: ((data.seek * 100000 / data.length) || 0) + '%' }"
+          >
+            {{name}}
+          </div>
         </div>
+        <div
+          class="label"
+          :style="{
+            [styleKeyOffset]: `${(sprite[0] + (sprite[1] / 2)) * 0.050}px`,
+          }"
+          @click="play(name)"
+        >{{ name }}</div>
       </div>
     </div>
 
@@ -160,7 +168,10 @@ export default {
 .sprite {
   position: absolute;
   overflow: hidden;
-  background-color: deeppink;
+  //background-color: deeppink;
+
+  border: var(--color-front) 2px solid;
+  background-color: rgba(255,225,255, 0.1);
 
   .left &,
   .right & {
@@ -171,10 +182,20 @@ export default {
     width: 100%;
   }
 }
+.label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2px 4px;
+  border: var(--color-front) 2px solid;
+  background-color: rgba(255,225,255, 0.1);
+}
 
 .progress {
   position: absolute;
-  background-color: hotpink;
+  background-color: rgba(255,225,255, 0.1);
+  // background-color: hotpink;
 
   .up & {
     bottom: 0;
