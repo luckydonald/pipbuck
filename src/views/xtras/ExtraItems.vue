@@ -38,10 +38,6 @@
         >{{ name }}</div>
       </div>
     </div>
-
-    Meh.<br>
-    {{ sounds }}
-    Mehgh.<br>
   </div>
 </template>
 
