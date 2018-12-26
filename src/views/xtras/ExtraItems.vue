@@ -14,13 +14,9 @@
           v-for="(sound, id) in sounds[name]" :key="id"
           class="progress"
           :style="{ width: (((sound.seek / sound.duration) * 100) || 0) + '%' }"
-        >{{ sound }}</div>
+        >{{id}}|{{ sound }}</div>
       </div>
     </div>
-    Moop.<br>
-    <div
-      v-for="(value, key) in sounds" :key="key"
-    >{{ key }}|{{ value }}</div>
     Meh.<br>
     {{ sounds }}
     Mehgh.<br>
@@ -46,6 +42,7 @@ export default {
   data() {
     return {
       sounds: this.createSoundsArray(),
+      plays: [],
     };
   },
   methods: {
@@ -72,7 +69,6 @@ export default {
       const offset = this.audio.config.sprite[key][0];
       const length = this.audio.config.sprite[key][1];
       const data = {
-        play,
         offset,
         length,
         seek: (play.seek() || 0) - (offset / 1000),
@@ -97,7 +93,7 @@ export default {
         for (let ii = 0; ii < ids.length; ii++) {
           const id = ids[ii];
           const elem = this.sounds[key][id];
-          elem.seek = (elem.play.seek() || 0) - (elem.offset / 1000);
+          elem.seek = (this.audio.audio.seek(id) || 0) - (elem.offset / 1000);
         }
       }
       requestAnimationFrame(this.updateTick.bind(this));
