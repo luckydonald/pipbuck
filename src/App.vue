@@ -111,7 +111,7 @@ const app = {
   methods: {
     pipbuckSound(sound) {
       console.log('pipbuckSound', sound);
-      ui.sprite.play(sound);
+      ui.audio.play(sound);
     },
     updateHardwareButtonPosition() {
       this.hardwareButtonPosition = this.calculateHardwareButtonPosition();
