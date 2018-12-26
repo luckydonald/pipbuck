@@ -1,10 +1,13 @@
 <template>
   <div>
-    <canvas ref="canvas"></canvas>
     <div
+      ref="waveform"
       class="waveform"
       :class="orientation"
-      :style="{ [styleKeySizing]: `${fullLength * 0.050}px` }"
+      :style="{
+        [styleKeySizing]: `${fullLength * 0.050}px`,
+        'background-image': `url(${waveBackground})`,
+      }"
     >
       <!-- Sprite Click Areas -->
       <div
@@ -42,7 +45,7 @@
 </template>
 
 <script>
-import { ui } from '../../sound';
+import { ui, Howler } from '../../sound';
 
 export default {
   name: 'ExtraData',
@@ -56,12 +59,17 @@ export default {
       },
       type: Object,
     },
+    color: {
+      default: '#46a0ba',
+      type: String,
+    },
   },
   data() {
     return {
       sounds: this.createSoundsArray(),
       plays: [],
       orientation: 'down',  // 'left', 'right', 'down', 'up'
+      buffer: null,  // the audio buffer
     };
   },
   methods: {
@@ -80,7 +88,8 @@ export default {
       const play = this.audio.play(key);
       play.loop(false);
 
-      if (Object.keys(this.sounds).indexOf(key) < 0) {
+      if (Object.keys(this.sounds)
+        .indexOf(key) < 0) {
         // create list if not there yet.
         // this.sounds[key] = {};
         this.$set(this.sounds, key, {});
@@ -117,6 +126,21 @@ export default {
       }
       requestAnimationFrame(this.updateTick.bind(this));
     },
+    loadWaveform() {
+      // https://www.html5rocks.com/en/tutorials/webaudio/intro/#toc-load
+      const request = new XMLHttpRequest();
+      // eslint-disable-next-line no-underscore-dangle
+      request.open('GET', this.audio.audio._src, true);
+      request.responseType = 'arraybuffer';
+
+      // Decode asynchronously
+      request.onload = () => {
+        Howler.ctx.decodeAudioData(request.response, (buffer) => {
+          this.buffer = buffer;
+        }); // }, onError);
+      };
+      request.send();
+    },
   },
   computed: {
     fullLength() {
@@ -147,13 +171,83 @@ export default {
       }
     },
     waveBackground() {
-      // not yet
-      return null;
+      // https://stackoverflow.com/a/41129912/3423324#web-audio-api-create-waveform-of-full-track
+      if (!this.buffer) {
+        return '';
+      }
+      const width = this.$refs.waveform.clientWidth;
+      const height = this.$refs.waveform.clientHeight;
+
+      let maxAmpl;
+      let maxTime;
+
+      switch (this.orientation) {
+        case 'up':
+        case 'down':
+          maxAmpl = width;
+          maxTime = height;
+          break;
+        default:
+        case 'left':
+        case 'right':
+          maxTime = width;
+          maxAmpl = height;
+          break;
+      }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const context = canvas.getContext('2d');
+      const drawLines = this.fullLength * 0.050;
+      const leftChannel = this.buffer.getChannelData(0); // Float32Array describing left channel
+      context.save();
+      // context.fillStyle = '#080808';
+      context.fillRect(0, 0, width, height);
+      context.strokeStyle = this.color;
+      context.globalCompositeOperation = 'lighter';
+
+      // we want half resolution, as it is in the middle
+      if (['left', 'right'].indexOf(this.orientation) !== -1) {
+        context.translate(0, height / 2);
+      } else {
+        context.translate(width / 2, 0);
+      }
+
+      // context.globalAlpha = 0.6 ; // lineOpacity ;
+      context.lineWidth = 1;
+      const totallength = leftChannel.length;
+      const eachBlock = Math.floor(totallength / drawLines);
+      const lineGap = (maxTime / drawLines);
+
+      context.beginPath();
+      for (let i = 0; i <= drawLines; i++) {
+        const audioBuffKey = Math.floor(eachBlock * i);
+        const time = i * lineGap;
+        const ampl = leftChannel[audioBuffKey] * maxAmpl / 2;
+        switch (this.orientation) {
+          case 'up':  // invert ?
+          case 'down':
+            context.moveTo(ampl, time);
+            context.lineTo((ampl * -1), time);
+            break;
+          default:
+          case 'left':  // invert ?
+          case 'right':
+            context.moveTo(time, ampl);
+            context.lineTo(time, (ampl * -1));
+            break;
+        }
+      }
+      context.stroke();
+      context.restore();
+      return canvas.toDataURL('image/png');
     },
   },
   mounted() {
     // Begin the progress step tick.
     console.log('Wooooop');
+    this.loadWaveform();
     requestAnimationFrame(this.updateTick.bind(this));
   },
 };
