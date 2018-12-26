@@ -3,18 +3,10 @@
 </template>
 
 <script>
-// https://stackoverflow.com/a/42956086/3423324#how-to-reference-text-thats-in-slot-in-vue-js
-const getChildrenTextContent = function getChildrenTextContent(children) {
-  // eslint-disable-next-line arrow-body-style
-  return children.map((node) => {
-    return node.children
-      ? getChildrenTextContent(node.children)
-      : node.text;
-  }).join('').trim();
-};
+import { getChildrenTextContent } from './helper';
 
 export default {
-  name: 'Typer',
+  name: 'typer-js',
   props: {
     /** @var {Number} in ms. */
     interval: {
