@@ -105,7 +105,7 @@ const pipbuckConfig = require('./assets/sprites/pipbuck_sprites.json');
 
 // Setup the new Howl.
 const pipbuckSprites = new Howl({
-  html5: false,
+  html5: !!navigator.userAgent.toLowerCase().match(/iphone|ipad|safari/),
   autoUnlock: true,
   src: pipbuckConfig.urls,
   sprite: pipbuckConfig.sprite,
@@ -126,13 +126,19 @@ function play(soundParam) {
     console.log('selection', sound, `[${selection}]`);
     sound = sound[selection];
   }
-  return new PlayingSprite({ name: sound, audio: this.sprite });
+  return new PlayingSprite({ name: sound, audio: this.audio });
 }
 
 const ui = {
   config: pipbuckConfig,
-  sprite: pipbuckSprites,
+  audio: pipbuckSprites,
   sounds,
+  /**
+   * Returns a `PlayingSprite` as proxy to the Howler, filling in the id automatically.
+   *
+   * @param sound {string}
+   * @return {PlayingSprite}
+   */
   play(sound) {
     return play.bind(this)(sound);
   },
