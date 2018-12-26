@@ -21,7 +21,7 @@
           <div
             v-for="(data, id) in sounds[name]" :key="id"
             class="progress"
-            :style="{ width: ((data.seek * 100000 / data.length) || 0) + '%' }"
+            :style="{ [styleKeySizing]: ((data.seek * 100000 / data.length) || 0) + '%' }"
           >
             <div class="time">
               &nbsp;{{data.seek.toFixed(2)}}<br>
@@ -167,18 +167,19 @@ export default {
 .sprite {
   position: absolute;
   overflow: hidden;
-  //background-color: deeppink;
 
   border: var(--color-front) 2px solid;
   background-color: rgba(255,225,255, 0.1);
 
   .left &,
   .right & {
-    height: 100%;
+    top: 1px;
+    bottom: 1px;
   }
   .up &,
   .down & {
-    width: 100%;
+    left: 1px;
+    right: 1px;
   }
 }
 .label {
@@ -196,31 +197,33 @@ export default {
   position: absolute;
   background-color: rgba(255,225,255, 0.1);
 
-  border-right: var(--color-front) 1px solid;  // TODO: fix orientation
   .up & {
     bottom: 0;
-    height: 100%;
+    width: 100%;
+    border-top: var(--color-front) 1px solid;
   }
   .left & {
     right: 0;
-    width: 100%;
+    height: 100%;
+    border-left: var(--color-front) 1px solid;
   }
-  .left & {
+  .right & {
     left: 0;
-    width: 100%;
+    height: 100%;
+    border-right: var(--color-front) 1px solid;
   }
   .down & {
     top: 0;
-    height: 100%;
+    width: 100%;
+    border-bottom: var(--color-front) 1px solid;
   }
 }
 .time {
   position: absolute;
   display: block;
 
-  right: 0;  // TODO: fix orientation
-  /* .up & {
-    bottom: 0;
+  .up & {
+    top: 0;
   }
   .left & {
     right: 0;
@@ -229,7 +232,7 @@ export default {
     left: 0;
   }
   .down & {
-    top: 0;
-  } */
+    bottom: 0;
+  }
 }
 </style>
