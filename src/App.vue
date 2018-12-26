@@ -23,16 +23,16 @@
         @scroll.prevent @wheel.prevent @touchstart.prevent @touchmove.prevent @drag.prevent
         @pipbuck-play="pipbuckSound"
       />
+      <div class="effect display-animations"></div>
       <div class="crt">
-        <div class="effect display-animations"></div>
         <router-view @pipbuck-play="pipbuckSound" />
-        <div
-          class="effect display-background"
-          v-colorized-bg="{
-            src: require('./assets/bg.png'), hue: hair.h,
-          }"
-        ></div>
       </div>
+      <div
+        class="effect display-background"
+        v-colorized-bg="{
+          src: require('./assets/bg.png'), hue: hair.h,
+        }"
+      ></div>
     </div>
   </div>
 </template>
@@ -359,7 +359,8 @@ audio {
   }
 }
 
-.crt::before {
+.wrapper::before {
+  // the display lines
   content: " ";
   display: block;
   position: absolute;
