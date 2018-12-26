@@ -23,7 +23,10 @@
             class="progress"
             :style="{ width: ((data.seek * 100000 / data.length) || 0) + '%' }"
           >
-            {{name}}
+            <div class="time">
+              &nbsp;{{data.seek.toFixed(2)}}<br>
+              {{(data.seek - (data.length/1000)).toFixed(2)}}<br>
+            </div>
           </div>
         </div>
         <div
@@ -189,14 +192,15 @@ export default {
   transform: translate(-50%, -50%);
   padding: 2px 4px;
   border: var(--color-front) 2px solid;
-  background-color: rgba(255,225,255, 0.1);
+  background-color: var(--color-front);
+  color: var(--color-back);
 }
 
 .progress {
   position: absolute;
   background-color: rgba(255,225,255, 0.1);
-  // background-color: hotpink;
 
+  border-right: var(--color-front) 1px solid;  // TODO: fix orientation
   .up & {
     bottom: 0;
     height: 100%;
@@ -213,5 +217,23 @@ export default {
     top: 0;
     height: 100%;
   }
+}
+.time {
+  position: absolute;
+  display: block;
+
+  right: 0;  // TODO: fix orientation
+  /* .up & {
+    bottom: 0;
+  }
+  .left & {
+    right: 0;
+  }
+  .left & {
+    left: 0;
+  }
+  .down & {
+    top: 0;
+  } */
 }
 </style>
