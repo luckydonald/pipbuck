@@ -30,7 +30,7 @@
       <div
         class="effect display-background"
         v-colorized-bg="{
-          src: require('./assets/bg.png'), hue: hair.h,
+          src: require('./assets/img/bg.png'), hue: hair.h,
         }"
       ></div>
     </div>
