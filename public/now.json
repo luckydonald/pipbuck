@@ -13,5 +13,6 @@
       {"src": "^/css/(.*)", "dest": "/css/$1"},
       {"src": "^/img/(.*)", "dest": "/img/$1"},
       {"src": ".*", "dest": "/index.html"}
-    ]
+    ],
+    "alias": ["pipbuck.now.sh"]
 }
