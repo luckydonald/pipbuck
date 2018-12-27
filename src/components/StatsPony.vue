@@ -161,43 +161,20 @@ export default {
   props: {
     mane: {
       type: String,
-      default: 'blueviolet',
+      default: '#8A2BE2', // blueviolet
     },
     body: {
       type: String,
-      default: 'gold',
+      default: '#FFD700', // gold
     },
     bars: {
       type: String,
-      default: 'orangered',
+      default: '#FF4500', // orangered
     },
     eyes: {
       type: String,
-      default: 'deepskyblue',
+      default: '#00BFFF', // deepskyblue
     },
   },
 };
 </script>
-
-<style scoped lang="scss">
-path {
-  transition: fill 0.5s ease-in-out, stroke 0.5s ease-in-out;
-}
-//  fill-opacity: 0.5;
-.hair-f {
-  fill: blueviolet;
-}
-.hair-s {
-  stroke: blueviolet;
-}
-.color-f {
-  fill: deepskyblue;
-}
-.outline-f {
-  fill: gold;
-}
-.outline-s {
-  stroke: orangered;
-}
-
-</style>
