@@ -3,7 +3,7 @@
     "name": "pipbuck",
     "public": true,
     "builds": [
-        { "src": "package.json", "use": "@now/static-build", "config": { "distDir": "dist" }}
+        {"src": "./dist/", "use": "@now/static"}
     ],
     "routes": [
       {"src": "^/audio/(.*)", "dest": "/audio/$1"},
@@ -13,6 +13,5 @@
       {"src": "^/css/(.*)", "dest": "/css/$1"},
       {"src": "^/img/(.*)", "dest": "/img/$1"},
       {"src": ".*", "dest": "/index.html"}
-    ],
-  "alias": ["pipboy"]
+    ]
 }
