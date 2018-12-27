@@ -13,8 +13,8 @@ export default {
   components: { StatsPony },
   data() {
     return {
-      level: 7,
-      name: 'Gunther',
+      level: 1,
+      name: 'Littlepip',
     };
   },
   computed: {
