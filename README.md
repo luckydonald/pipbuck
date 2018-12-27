@@ -43,26 +43,27 @@ now dist
 
 #### combined
 ```
-git push
-d-start-las-pegasus
-yarn run build
-rm dist/stable_colt*.svg
-docker build . -t pipbuck:latest
-docker stop pipbuck
-docker rm pipbuck
+# d-start-las-pegasus && \
+git push && \
+yarn run build && \
+&& ( echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.4; echo -e "\a";sleep 0.2; echo -e "\a" ) && \
+rm dist/stable_colt*.svg && \
+docker build . -t pipbuck:latest && \
+docker stop pipbuck && \
+docker rm pipbuck && \
 docker run  \
     --detach \
     --name pipbuck \
     --restart always \
     --network dockertgbot_web \
     pipbuck:latest
-echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.4; echo -e "\a";sleep 0.2; echo -e "\a";
-# done
-now dist
-WEB_URL="https://pip.bonbotics.me"
-WEB_PERMA=$(pbpaste)
-WEB_GIT="https://github.com/luckydonald/pipbuck/tree/$(git rev-parse HEAD)"
-tg-send -1001015621407 "I%20just%20pushed%20an%20#update%20to%20#pipbuck:%0D%0ALive%20Link:%20${WEB_URL}%0D%0APermalink:%20${WEB_PERMA}%0D%0ASource:%20${WEB_GIT}"
+(echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.4; echo -e "\a";sleep 0.2; echo -e "\a" ) && \
+now dist && \
+WEB_URL="https://pip.bonbotics.me" && \
+WEB_PERMA=$(pbpaste) && \
+WEB_GIT="https://github.com/luckydonald/pipbuck/tree/$(git rev-parse HEAD)" && \
+tg-send -1001015621407 "I%20just%20pushed%20an%20#update%20to%20#pipbuck:%0D%0ALive%20Link:%20${WEB_URL}%0D%0APermalink:%20${WEB_PERMA}%0D%0ASource:%20${WEB_GIT}" && \
+echo "Done."
 # done
 ```
 
