@@ -1,21 +1,16 @@
 <template>
   <div>
-    <colorized
-      :src="require('../../assets/pip.png')"
-      alt="<best pony>" title="that's a pony" class="img"
-      :hue="hue"
-    />
+    <stats-pony class="img" :mane="front" :body="front" :accent="front" />
     <div class="player">{{ name }} - Level {{ level }}</div>
   </div>
 </template>
 
 <script>
-import Colorized from '../../lib/vue-colorized/component.vue';
-import { HexToHSL } from '../../lib/colorspace';
+import StatsPony from '../../components/StatsPony.vue';
 
 export default {
   name: 'Status',
-  components: { Colorized },
+  components: { StatsPony },
   data() {
     return {
       level: 7,
@@ -23,8 +18,8 @@ export default {
     };
   },
   computed: {
-    hue() {
-      return HexToHSL(this.$store.state.colorFront).h;
+    front() {
+      return this.$store.state.colorFront;
     },
   },
 };
