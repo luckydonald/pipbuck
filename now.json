@@ -1,0 +1,18 @@
+{
+    "version": 2,
+    "name": "pipbuck",
+    "public": true,
+    "builds": [
+        { "src": "package.json", "use": "@now/static-build", "config": { "distDir": "dist" }}
+    ],
+    "routes": [
+      {"src": "^/audio/(.*)", "dest": "/audio/$1"},
+      {"src": "^/fonts/(.*)", "dest": "/fonts/$1"},
+      {"src": "^/icons/(.*)", "dest": "/icons/$1"},
+      {"src": "^/js/(.*)", "dest": "/js/$1"},
+      {"src": "^/css/(.*)", "dest": "/css/$1"},
+      {"src": "^/img/(.*)", "dest": "/img/$1"},
+      {"src": ".*", "dest": "/index.html"}
+    ],
+  "alias": ["pipboy"]
+}

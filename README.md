@@ -18,6 +18,7 @@ yarn run serve --port 8082
 ```
 
 ### Compiles and minifies for production
+#### Docker
 ```
 # d-start-las-pegasus
 yarn run build
@@ -34,6 +35,11 @@ docker run  \
 echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.4; echo -e "\a";sleep 0.2; echo -e "\a";
 # done
 ```
+#### zeit.co
+```
+now
+```
+
 
 ### Compile and serve locally
 ```
