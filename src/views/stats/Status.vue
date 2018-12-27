@@ -1,6 +1,6 @@
 <template>
   <div>
-    <stats-pony class="img" :mane="front" :body="front" :accent="front" />
+    <stats-pony class="img" :mane="front" :body="front" :eyes="front" :bars="front" />
     <div class="player">{{ name }} - Level {{ level }}</div>
   </div>
 </template>
