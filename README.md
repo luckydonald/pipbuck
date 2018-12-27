@@ -43,6 +43,7 @@ now dist
 
 #### combined
 ```
+git push
 d-start-las-pegasus
 yarn run build
 rm dist/stable_colt*.svg
