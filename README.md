@@ -2,6 +2,10 @@
 
 Pipboy mobile webapp, with a hint of Fallout Equestria.
 
+## Try it out
+
+Demo at https://pip.bonbotics.com.
+
 
 ## Project setup
 ```
@@ -34,7 +38,7 @@ echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -
 ### Compile and serve locally
 ```
 cd ./dist/
-cd ../ && yarn run build && cd dist/ && python -m http.server 8080
+cd ../ && yarn run build && cd dist/ && ( echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.4; echo -e "\a";sleep 0.2; echo -e "\a" ) && python -m http.server 8080
 open http://localhost:8080
 # now running
 
@@ -58,7 +62,16 @@ yarn run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Credits
-###### Stats logo
-Created by rhodarein.
+###### Stats logo (v1)
+Created by rhodarein. Artist deleted all his pony related works from his deviantart.
 Modified by luckydonald.
-`fo_e_littlepip__cleaned_up__by_rhodarein-d4qerji-Wiederhergestellt_cloudbackup_5.png`
+Reference for myself: On my filesystem that's `fo_e_littlepip__cleaned_up__by_rhodarein-d4qerji-Wiederhergestellt_cloudbackup_5.png`.
+
+###### Stats logo (v2)
+
+ATG Day1 - Reflection by king-koder
+https://www.deviantart.com/king-koder/art/ATG-Day1-Reflection-497883053
+
+SVG version by EM120X:
+https://www.deviantart.com/em120x/art/Littlepip-king-koder-style-vector-499037570
+https://sta.sh/0zk8ver1zys
