@@ -40,7 +40,6 @@
 import { mapState, mapGetters } from 'vuex';
 import Shake from 'shake.js';
 import { ui } from './sound';
-import ScrollPrevent from './lib/scroll_prevent';
 import { HexToHSL, hsl } from './lib/colorspace';
 import HardwareButtons from './components/HardwareButtons.vue';
 import Favicon from './components/Favicon.vue';
@@ -165,19 +164,15 @@ const app = {
       { immediate: true },
     );
     // event listeners
-    this.scroll_prevent = new ScrollPrevent(this);
     this.shake_instance = new Shake({
       threshold: 15, // optional shake strength threshold
       timeout: 1000, // optional, determines the frequency of event generation
     });
-    this.scroll_prevent.install();
     this.shake_instance.start();
     window.addEventListener('orientationchange', this.updateHardwareButtonPosition.bind(this));
   },
   beforeDestroy() {
     if (this.scroll_prevent !== null) {
-      this.scroll_prevent.deinstall();
-      this.scroll_prevent = null;
       this.shake_instance.stop();
       this.shake_instance = null;
     }
