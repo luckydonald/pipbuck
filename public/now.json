@@ -3,7 +3,7 @@
     "name": "pipbuck",
     "public": true,
     "builds": [
-        {"src": "./dist/", "use": "@now/static"}
+        {"src": "**", "use": "@now/static"}
     ],
     "routes": [
       {"src": "^/audio/(.*)", "dest": "/audio/$1"},

@@ -1,9 +1,0 @@
-# Ignore everything:
-*
-# Except for the dist directory
-!dist
-!dist/
-# but don't include the biggest radio file
-dist/radio/dcr.mp3
-dist/radio/gcr.mp3
-dist/radio/*.mp3

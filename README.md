@@ -37,7 +37,8 @@ echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -
 ```
 #### zeit.co
 ```
-now
+yarn run build
+now dist
 ```
 
 
