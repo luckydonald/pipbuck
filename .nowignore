@@ -1,0 +1,7 @@
+# Ignore everything:
+*
+# Except for the dist directory and
+!dist/
+dist/radio/dcr.mp3
+
+!package.json
