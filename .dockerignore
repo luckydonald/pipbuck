@@ -10,3 +10,7 @@
 # Except for the Docker files
 !./Dockerfile
 !./nginx.conf
+
+# Remove stupid zeit.co / now.sh files
+dist/.nowignore
+dist/now.json

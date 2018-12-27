@@ -14,5 +14,5 @@
       {"src": "^/img/(.*)", "dest": "/img/$1"},
       {"src": ".*", "dest": "/index.html"}
     ],
-    "alias": ["pipbuck.now.sh"]
+    "alias": ["pipbuck.now.sh", "pipboy.now.sh"]
 }
