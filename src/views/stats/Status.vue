@@ -2,7 +2,7 @@
   <div>
     <stats-pony
       class="img" :face-name="'auto'"
-      :mane="front" :body="front" :eyes="front" :bars="front"
+      :mane="front" :body="front" :eyes="front" :bars="front" :white="front"
       :hp="{
         head: 0.25 + 0.75 * Math.random(),
         body: 0.25 + 0.75 * Math.random(),

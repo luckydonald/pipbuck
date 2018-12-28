@@ -4,6 +4,7 @@
     <checkbox class="checkbox" v-model="changeColor">Colorize</checkbox>
     <checkbox class="checkbox" v-model="changeHP">Change HP</checkbox>
     <stats-pony class="img"
+      :white="white"
       :mane="mane"
       :body="body"
       :bars="bars"
@@ -26,6 +27,7 @@ export default {
     return {
       changeColor: false,
       changeHP: true,
+      white: '#1aff81',
       mane: '#1aff81',
       body: '#1aff81',
       bars: '#1aff81',
@@ -44,7 +46,7 @@ export default {
   methods: {
     switchColors() {
       if (this.changeColor) {
-        switch (Math.floor(Math.random() * 4)) {
+        switch (Math.floor(Math.random() * 5)) {
           default:
           case 0:
             this.mane = hsl(Math.random() * 360, 100, 55);
@@ -56,8 +58,11 @@ export default {
             this.bars = hsl(Math.random() * 360, 100, 55);
             break;
           case 3:
-          case 4:
             this.eyes = hsl(Math.random() * 360, 100, 55);
+            break;
+          case 4:
+          case 5:
+            this.white = hsl(Math.random() * 360, 100, 55);
             break;
         }
       }
