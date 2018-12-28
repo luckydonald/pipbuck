@@ -1,6 +1,8 @@
 <template>
   <div @click="switchColors">
     <h1>This could contain app usage stats?</h1>
+    <checkbox class="checkbox" v-model="changeColor">Colorize</checkbox>
+    <checkbox class="checkbox" v-model="changeHP">Change HP</checkbox>
     <stats-pony class="img"
       :mane="mane"
       :body="body"
@@ -14,10 +16,11 @@
 <script>
 import { hsl } from '../../lib/colorspace';
 import StatsPony from '../../components/StatsPony.vue';
+import Checkbox from '../../components/Checkbox.vue';
 
 export default {
   name: 'ExtraData',
-  components: { StatsPony },
+  components: { StatsPony, Checkbox },
   data() {
     return {
       changeColor: false,
