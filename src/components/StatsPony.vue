@@ -82,75 +82,115 @@ https://sta.sh/0zk8ver1zys -->
         <path d="m87.278 104.41c7.358-.461 10.718-2.75 12.173-9.3" fill="none" :stroke="body" stroke-width="2"/>
         <path d="m84.915 94.731c3.108-.648 7.154-1.813 8.485-7.425" fill="none" :stroke="body" stroke-width="2"/>
     </g>
+    <!--
+    START [LEGEND RIGHT]
     <path clip-rule="evenodd" d="m323.871-18.994h54.008v10.502h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
     <path d="m397.395-23.494h1.488v2.999h-1.488z" fill-opacity=".2" :fill="bars"/>
     <path d="m395.895-23.494h1.49v2.999h-1.49z" fill-opacity=".4" :fill="bars"/>
     <path d="m394.395-23.494h1.49v2.999h-1.49z" fill-opacity=".6" :fill="bars"/>
     <path d="m392.896-23.494h1.488v2.999h-1.488z" fill-opacity=".8" :fill="bars"/>
-    <path d="m392.879-23.494h-73.508v15.002h3v-12.002h57.008v1.5 3.001 1.499h1.5v-1.499h1.5v-1.501h1.5v-1.5h1.5v-1.5h7.5z"
-          fill-opacity=".8" :fill="bars"/>
+    <path d="m392.879-23.494h-73.508v15.002h3v-12.002h57.008v1.5 3.001 1.499h1.5v-1.499h1.5v-1.501h1.5v-1.5h1.5v-1.5h7.5z" fill-opacity=".8" :fill="bars"/>
+    END [LEGEND RIGHT]
+    -->
+    <!--
+    START [LEGEND NONE]
     <path clip-rule="evenodd" d="m323.871-38.496h54.008v10.501h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
     <path d="m319.371-42.997v15.002h3v-12.002h57.008v12.002h3v-15.002z" fill-opacity=".8" :fill="bars"/>
+    END [LEGEND NONE]
+    -->
+    <!--
+    START [LEGEND LEFT]
     <path clip-rule="evenodd" d="m323.871-57.999h54.008v10.501h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
     <path d="m310.389-62.499h1.49v2.999h-1.49z" fill-opacity=".2" :fill="bars"/>
     <path d="m311.889-62.499h1.49v2.999h-1.49z" fill-opacity=".4" :fill="bars"/>
     <path d="m313.389-62.499h1.49v2.999h-1.49z" fill-opacity=".6" :fill="bars"/>
     <path d="m314.889-62.499h1.49v2.999h-1.49z" fill-opacity=".8" :fill="bars"/>
     <path d="m310.367-62.5v3h6.002v1.501h1.5v1.5h1.502v1.5h1.5v1.5h1.5v-6.001h57.008v12.002h3v-15.002z" fill-opacity=".8" :fill="bars"/>
-    <path clip-rule="evenodd" d="m81.752 294.004h54.008v10.5h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
+    END [LEGEND LEFT]
+    -->
+    <!--
+    START [HIND R 2]
+    -->
+    <path class="healthbar hindleg-right" clip-rule="evenodd" d="m81.752 294.004h54.008v10.5h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
     <path d="m77.252 289.504v15h3v-12h57.008v12h3v-15z" fill-opacity=".8" :fill="bars"/>
+    <!--
+    END [HIND R 2]
+    -->
+    <!--
+    START [HIND L 2]
+    -->
     <path clip-rule="evenodd" d="m209.664 282.084h54.008v10.502h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
     <path d="m190.182 277.584h1.49v3h-1.49z" fill-opacity=".2" :fill="bars"/>
     <path d="m191.682 277.584h1.49v3h-1.49z" fill-opacity=".4" :fill="bars"/>
     <path d="m193.182 277.584h1.49v3h-1.49z" fill-opacity=".6" :fill="bars"/>
     <path d="m194.682 277.584h1.49v3h-1.49z" fill-opacity=".8" :fill="bars"/>
     <path d="m196.16 277.584v3h6.002v1.5h1.5v1.5h1.502v1.5h1.5v1.5h1.5v-6h57.008v12.002h3v-15.002z" fill-opacity=".8" :fill="bars"/>
+    <!--
+    END [HIND L 2]
+    -->
+    <!--
+    START [HIND L 1]
     <path clip-rule="evenodd" d="m208.998 271.752h54.008v10.502h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
     <path d="m189.516 267.252h1.49v3h-1.49z" fill-opacity=".2" :fill="bars"/>
     <path d="m191.016 267.252h1.49v3h-1.49z" fill-opacity=".4" :fill="bars"/>
     <path d="m192.516 267.252h1.49v3h-1.49z" fill-opacity=".6" :fill="bars"/>
     <path d="m194.016 267.252h1.49v3h-1.49z" fill-opacity=".8" :fill="bars"/>
     <path d="m195.494 267.252v3h6.002v1.5h1.5v1.5h1.502v1.5h1.5v1.5h1.5v-6h57.008v12.002h3v-15.002z" fill-opacity=".8" :fill="bars"/>
+    END [HIND L 1]
+    -->
+    <!--
+    START [HIND R 1]
     <path clip-rule="evenodd" d="m65.126 261.254h54.008v10.502h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
     <path d="m138.649 256.754h1.488v2.998h-1.488z" fill-opacity=".2" :fill="bars"/>
     <path d="m137.149 256.754h1.49v2.998h-1.49z" fill-opacity=".4" :fill="bars"/>
     <path d="m135.649 256.754h1.49v2.998h-1.49z" fill-opacity=".6" :fill="bars"/>
     <path d="m134.151 256.754h1.488v2.998h-1.488z" fill-opacity=".8" :fill="bars"/>
-    <g fill-opacity=".8" :fill="bars">
-        <path d="m134.134 256.754h-73.508v15.002h3v-12.002h57.008v1.5 3.002 1.498h1.5v-1.498h1.5v-1.502h1.5v-1.5h1.5v-1.5h7.5z"/>
-        <path clip-rule="evenodd" d="m81.752 294.004h54.008v10.5h-54.008z" fill-rule="evenodd"/>
-        <path d="m77.252 289.504v15h3v-12h57.008v12h3v-15z"/>
-        <path clip-rule="evenodd" d="m183.752 313.004h54.008v10.5h-54.008z" fill-rule="evenodd"/>
-        <path d="m179.252 308.504v15h3v-12h57.008v12h3v-15z"/>
-        <path clip-rule="evenodd" d="m208.998 271.752h54.008v10.502h-54.008z" fill-rule="evenodd"/>
-    </g>
-    <path d="m189.516 267.252h1.49v3h-1.49z" fill-opacity=".2" :fill="bars"/>
-    <path d="m191.016 267.252h1.49v3h-1.49z" fill-opacity=".4" :fill="bars"/>
-    <path d="m192.516 267.252h1.49v3h-1.49z" fill-opacity=".6" :fill="bars"/>
-    <path d="m194.016 267.252h1.49v3h-1.49z" fill-opacity=".8" :fill="bars"/>
-    <path d="m195.494 267.252v3h6.002v1.5h1.5v1.5h1.502v1.5h1.5v1.5h1.5v-6h57.008v12.002h3v-15.002z" fill-opacity=".8" :fill="bars"/>
+    END [START HIND R 1]
+    -->
+    <!--
+    START [FRONT R]
+    -->
     <path clip-rule="evenodd" d="m-39.874 251.254h54.008v10.502h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
     <path d="m33.649 246.754h1.488v2.998h-1.488z" fill-opacity=".2" :fill="bars"/>
     <path d="m32.149 246.754h1.49v2.998h-1.49z" fill-opacity=".4" :fill="bars"/>
     <path d="m30.649 246.754h1.49v2.998h-1.49z" fill-opacity=".6" :fill="bars"/>
     <path d="m29.151 246.754h1.488v2.998h-1.488z" fill-opacity=".8" :fill="bars"/>
-    <path d="m29.134 246.754h-73.508v15.002h3v-12.002h57.008v1.5 3.002 1.498h1.5v-1.498h1.5v-1.502h1.5v-1.5h1.5v-1.5h7.5z"
-          fill-opacity=".8" :fill="bars"/>
+    <path d="m29.134 246.754h-73.508v15.002h3v-12.002h57.008v1.5 3.002 1.498h1.5v-1.498h1.5v-1.502h1.5v-1.5h1.5v-1.5h7.5z" fill-opacity=".8" :fill="bars"/>
+    <!--
+    END [FRONT R]
+    -->
+    <!--
+    START [FRONT L]
+    -->
     <path clip-rule="evenodd" d="m-79.874 181.254h54.008v10.502h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
     <path d="m-6.351 176.754h1.488v2.998h-1.488z" fill-opacity=".2" :fill="bars"/>
     <path d="m-7.851 176.754h1.49v2.998h-1.49z" fill-opacity=".4" :fill="bars"/>
     <path d="m-9.351 176.754h1.49v2.998h-1.49z" fill-opacity=".6" :fill="bars"/>
     <path d="m-10.849 176.754h1.488v2.998h-1.488z" fill-opacity=".8" :fill="bars"/>
-    <path d="m-10.866 176.754h-73.508v15.002h3v-12.002h57.008v1.5 3.002 1.498h1.5v-1.498h1.5v-1.502h1.5v-1.5h1.5v-1.5h7.5z"
-          fill-opacity=".8" :fill="bars"/>
+    <path d="m-10.866 176.754h-73.508v15.002h3v-12.002h57.008v1.5 3.002 1.498h1.5v-1.498h1.5v-1.502h1.5v-1.5h1.5v-1.5h7.5z" fill-opacity=".8" :fill="bars"/>
+    <!--
+    END [FRONT L]
+    -->
+    <!--
+    START [BODY]
+    -->
     <path clip-rule="evenodd" d="m63.252 158.504h54.008v10.5h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
     <path d="m58.752 154.004v15h3v-12h57.008v12h3v-15z" fill-opacity=".8" :fill="bars"/>
+    <!--
+    END [BODY]
+    -->
+    <!--
+    START [HEAD]
+    -->
     <path clip-rule="evenodd" d="m137.998 70.752h54.008v10.501h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
     <path d="m118.516 66.252h1.49v2.999h-1.49z" fill-opacity=".2" :fill="bars"/>
     <path d="m120.016 66.252h1.49v2.999h-1.49z" fill-opacity=".4" :fill="bars"/>
     <path d="m121.516 66.252h1.49v2.999h-1.49z" fill-opacity=".6" :fill="bars"/>
     <path d="m123.016 66.252h1.49v2.999h-1.49z" fill-opacity=".8" :fill="bars"/>
     <path d="m124.494 66.251v3h6.002v1.501h1.5v1.5h1.502v1.5h1.5v1.5h1.5v-6.001h57.008v12.002h3v-15.002z" fill-opacity=".8" :fill="bars"/>
+    <!--
+    END [HEAD]
+    -->
 </svg>
 </template>
 
