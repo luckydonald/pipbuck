@@ -7,8 +7,7 @@
 https://sta.sh/0zk8ver1zys -->
   <!-- Original (SVG): https://sta.sh/0zk8ver1zys -->
   <!-- File: ~/Documents/Projects/PipBuck 3000/graphics/stats pony/littlepip_outlines.wrong_color.with_health.versionC.scale1.optim.svg -->
-<svg height="382.076" viewBox="-149.833 -2.574 547.333 382.076" width="547.333" xmlns="http://www.w3.org/2000/svg"
-     xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg viewBox="-86 2 356 304" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g class="pony" transform="translate(-70.003577 -75.230404)">
         <path d="m167.625 127.187c2.982 22.525 3.758 45.339-5.969 67.188-1.525-1.858-3.036-3.942-4.438-6.656l-1.406-2.688-1.281 2.75c-.508 1.09-.938 1.654-1.375 2.312-.002-2.701.062-5.316.938-7.781l-1.25-.188c-1.626 4.584-1.66 7.96-1.844 11.938l-.125 3.688 1.781-2.375c.943-.93 2.057-2.238 3.219-4.062 1.615 2.728 3.324 5.087 5.094 6.969l1.5 1.594.938-1.969c11.199-23.317 10.298-47.636 7.188-71.125z"
               :fill="mane"/>
