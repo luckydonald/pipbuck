@@ -9,6 +9,7 @@
       :bars="bars"
       :eyes="eyes"
       :hp="hp"
+      :face-name="'auto'"
     />
   </div>
 </template>

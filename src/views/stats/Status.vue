@@ -1,6 +1,17 @@
 <template>
   <div>
-    <stats-pony class="img" :mane="front" :body="front" :eyes="front" :bars="front" />
+    <stats-pony
+      class="img" :face-name="'auto'"
+      :mane="front" :body="front" :eyes="front" :bars="front"
+      :hp="{
+        head: 0.25 + 0.75 * Math.random(),
+        body: 0.25 + 0.75 * Math.random(),
+        legFrontLeft: 0.25 + 0.75 * Math.random(),
+        legFrontRight: 0.25 + 0.75 * Math.random(),
+        legHindLeft: 0.25 + 0.75 * Math.random(),
+        legHindRight: 0.25 + 0.75 * Math.random(),
+      }"
+    />
     <div class="player">{{ name }} - Level {{ level }}</div>
   </div>
 </template>
