@@ -46,7 +46,7 @@ now dist
 # d-start-las-pegasus && \
 git push && \
 yarn run build && \
-( echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.4; echo -e "\a";sleep 0.2; echo -e "\a" ) && \
+echo -e "\a" && sleep 0.2 && echo -e "\a" && sleep 0.2 && echo -e "\a" && \
 rm dist/stable_colt*.svg && \
 docker build . -t pipbuck:latest && \
 docker stop pipbuck && \
@@ -56,9 +56,10 @@ docker run  \
     --name pipbuck \
     --restart always \
     --network dockertgbot_web \
-    pipbuck:latest
-(echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.2; echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a";echo -e "\a";sleep 0.1; echo -e "\a"; sleep 0.2; echo -e "\a"; sleep 0.4; echo -e "\a";sleep 0.2; echo -e "\a" ) && \
+    pipbuck:latest && \
+echo -e "\a" && sleep 0.2 && echo -e "\a" && sleep 0.2 && echo -e "\a" && sleep 0.1 && echo -e "\a" && echo -e "\a" && sleep 0.1 && echo -e "\a" && echo -e "\a" && sleep 0.1 && echo -e "\a" && echo -e "\a" && sleep 0.1 && echo -e "\a" && echo -e "\a" && sleep 0.2 && echo -e "\a" && sleep 0.2 && echo -e "\a" && sleep 0.1 && echo -e "\a" && echo -e "\a" && sleep 0.1 && echo -e "\a" && echo -e "\a" && sleep 0.1 && echo -e "\a" && echo -e "\a" && sleep 0.1 && echo -e "\a" && sleep 0.2 && echo -e "\a" && sleep 0.4 && echo -e "\a" && sleep 0.2 && echo -e "\a" && \
 now dist && \
+echo -e "\a" && sleep 0.2 && echo -e "\a" && sleep 0.2 && echo -e "\a" && \
 WEB_URL="https://pip.bonbotics.com" && \
 WEB_PERMA=$(pbpaste) && \
 WEB_GIT="https://github.com/luckydonald/pipbuck/tree/$(git rev-parse HEAD)" && \
