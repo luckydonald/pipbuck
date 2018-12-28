@@ -45,7 +45,7 @@ https://sta.sh/0zk8ver1zys -->
         <path d="m310.147 335.293c-18.542 3.898-37.904-6.852-46.2-22.859-4.508-8.697-5.959-21.002-2.793-38.76-2.543 2.087-6.322 2.729-9.848 2.525 3.889-11.422 5.811-21.203 5.705-29.289-.186-14.103-7.924-25.301-20.984-29.175-3.807-1.129-12.715-1.8-17.585.225-2.464 1.023-4.499 2.151-6.317 2.833-2.295.86-3.488 2.083-6.275-.656-1.687-1.829-.791-4.208 1.432-6.653 3.957-4.353 12.117-8.911 17.391-10.923 8.191-3.127 17.189-3.998 23.609-3.903 15.712.232 32.403 6.403 43.936 19.207-3.248.114-4.564.217-6.944.758 11.827 16.105 16.106 29.522 16.839 41.192 1.15 18.327-6.445 32.344-7.277 45.687-.614 9.81 2.435 19.26 15.311 29.791z"
               fill="none" :stroke="mane" stroke-width="3"/>
         <path d="m80.539 133.063c-1.836 7.5-2.557 15-.715 22.5" fill="none" :stroke="body" stroke-width="3"/>
-        <path d="m76.36 263.889c-1.396 3.996.201 8.741 1.389 13.385l4.925-.632c.156-4.501.889-9.11-1.516-13.132z"
+        <path class="pipboy screen" d="m76.36 263.889c-1.396 3.996.201 8.741 1.389 13.385l4.925-.632c.156-4.501.889-9.11-1.516-13.132z"
               :fill="eyes"/>
         <path d="m104.824 262.17c-9.506-5.578-19.184-5.817-29.643-2.231-.727.144-1.777 5.104 5.09 3.438 3.061-.304 3.512 13.765.982 13.481-5.923-.023-7.28 5.812-3.93 5.581 4.416-.374 10.467-3.234 15.305-4.022 5.984-.975 9.916-.732 11.125-1.647 2.154-1.196 2.289-4.606 2.331-7.858.043-3.256-.008-6.352-1.26-6.742z"
               fill="none" :stroke="body" stroke-width="2.5"/>
@@ -118,7 +118,7 @@ https://sta.sh/0zk8ver1zys -->
     START [HIND R 2]
     -->
     <g class="health hind leg right">
-      <path class="bar" clip-rule="evenodd" d="m81.752 294.004h54.008v10.5h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
+      <rect x="81.752" y="294.004" :width="54.008 * hp.legHindRight" height="10.501" fill-opacity=".8" :fill="bars" />
       <path class="frame" d="m77.252 289.504v15h3v-12h57.008v12h3v-15z" fill-opacity=".8" :fill="bars"/>
     </g>
     <!--
@@ -128,7 +128,7 @@ https://sta.sh/0zk8ver1zys -->
     START [HIND L 2]
     -->
     <g class="health hind leg left">
-      <path clip-rule="evenodd" d="m209.664 282.084h54.008v10.502h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
+      <rect x="209.664" y="282.084" :width="54.008 * hp.legHindLeft" height="10.501" fill-opacity=".8" :fill="bars" />
       <path d="m190.182 277.584h1.49v3h-1.49z" fill-opacity=".2" :fill="bars"/>
       <path d="m191.682 277.584h1.49v3h-1.49z" fill-opacity=".4" :fill="bars"/>
       <path d="m193.182 277.584h1.49v3h-1.49z" fill-opacity=".6" :fill="bars"/>
@@ -165,7 +165,7 @@ https://sta.sh/0zk8ver1zys -->
     START [FRONT R]
     -->
     <g class="health front leg right">
-      <path clip-rule="evenodd" d="m-39.874 251.254h54.008v10.502h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
+      <rect x="-39.874" y="251.254" :width="54.008 * hp.legFrontRight" height="10.501" fill-opacity=".8" :fill="bars" />
       <path d="m33.649 246.754h1.488v2.998h-1.488z" fill-opacity=".2" :fill="bars"/>
       <path d="m32.149 246.754h1.49v2.998h-1.49z" fill-opacity=".4" :fill="bars"/>
       <path d="m30.649 246.754h1.49v2.998h-1.49z" fill-opacity=".6" :fill="bars"/>
@@ -179,7 +179,7 @@ https://sta.sh/0zk8ver1zys -->
     START [FRONT L]
     -->
     <g class="health front leg left">
-      <path clip-rule="evenodd" d="m-79.874 181.254h54.008v10.502h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
+      <rect x="-79.874" y="181.254" :width="54.008 * hp.legFrontLeft" height="10.501" fill-opacity=".8" :fill="bars" />
       <path d="m-6.351 176.754h1.488v2.998h-1.488z" fill-opacity=".2" :fill="bars"/>
       <path d="m-7.851 176.754h1.49v2.998h-1.49z" fill-opacity=".4" :fill="bars"/>
       <path d="m-9.351 176.754h1.49v2.998h-1.49z" fill-opacity=".6" :fill="bars"/>
@@ -193,7 +193,7 @@ https://sta.sh/0zk8ver1zys -->
     START [BODY]
     -->
     <g class="health body">
-      <path clip-rule="evenodd" d="m63.252 158.504h54.008v10.5h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
+      <rect x="63.252" y="158.504" :width="54.008 * hp.body" height="10.501" fill-opacity=".8" :fill="bars" />
       <path d="m58.752 154.004v15h3v-12h57.008v12h3v-15z" fill-opacity=".8" :fill="bars"/>
     </g>
     <!--
@@ -203,7 +203,7 @@ https://sta.sh/0zk8ver1zys -->
     START [HEAD]
     -->
     <g class="health head">
-      <path clip-rule="evenodd" d="m137.998 70.752h54.008v10.501h-54.008z" fill-opacity=".8" :fill="bars" fill-rule="evenodd"/>
+      <rect x="137.998" y="70.752" :width="54.008 * hp.head" height="10.501" fill-opacity=".8" :fill="bars" />
       <path d="m118.516 66.252h1.49v2.999h-1.49z" fill-opacity=".2" :fill="bars"/>
       <path d="m120.016 66.252h1.49v2.999h-1.49z" fill-opacity=".4" :fill="bars"/>
       <path d="m121.516 66.252h1.49v2.999h-1.49z" fill-opacity=".6" :fill="bars"/>
@@ -236,6 +236,19 @@ export default {
     eyes: {
       type: String,
       default: '#00BFFF', // deepskyblue
+    },
+    hp: {
+      type: Object,
+      default() {
+        return {
+          head: Math.random(),
+          body: Math.random(),
+          legFrontLeft: Math.random(),
+          legFrontRight: Math.random(),
+          legHindLeft: Math.random(),
+          legHindRight: Math.random(),
+        };
+      },
     },
   },
 };
