@@ -77,12 +77,17 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "main" */ './views/Items.vue'),
+      // component: Items,
       redirect: { name: 'Weapons' },
       children: [
         {
           path: '/items/weapons',
           name: 'Weapons',
-          component: Placeholder,
+          // route level code-splitting
+          // this generates a separate chunk (about.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import(/* webpackChunkName: "main" */ './views/items/Weapons.vue'),
+          // component: Weapons,
         },
         {
           path: '/items/apparel',

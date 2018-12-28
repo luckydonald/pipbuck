@@ -213,31 +213,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--color-front);
+}
+a {
+  color: var(--color-front);
+  text-decoration: none;
 
-  a {
-    color: var(--color-front);
-    text-decoration: none;
+  border: transparent 2px solid;
+  padding: 2px 4px;
 
-    border: transparent 2px solid;
-    padding: 2px 4px;
+  &.active, &.router-link-exact-active {
+    border: var(--color-front) 2px solid;
+    background-color: rgba(255,225,255, 0.1);
 
-    &.active, &.router-link-exact-active {
-      border: var(--color-front) 2px solid;
-      background-color: rgba(255,225,255, 0.1);
-
-    }
   }
+}
 
-  ul li {
-    list-style: none;
-  }
-  .wrapper {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column-reverse;
-  }
+ul li {
+  list-style: none;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
 }
 #nav {
   padding: 30px;
