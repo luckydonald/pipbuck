@@ -15,24 +15,26 @@
       crossorigin="anonymous"
     ></audio></keep-alive> <!-- :crossorigin="currentFile.anonymousCrossorigin"
     @timeupdate="this.updated()" -->
-    <div class="wrapper" :style="{ flexDirection: wrapperFlex }">
-      <hardware-buttons
-        v-if="showHardwareButtons"
-        class="hardware noscroll"
-        :position="hardwareButtonPosition"
-        @scroll.prevent @wheel.prevent @touchstart.prevent @touchmove.prevent @drag.prevent
-        @pipbuck-play="pipbuckSound"
-      />
-      <div class="effect display-animations"></div>
-      <div class="crt">
-        <router-view @pipbuck-play="pipbuckSound" />
+    <div class="outer" :style="{ 'flex-direction': wrapperFlex }">
+      <div class="wrapper">
+        <div class="effect display-animations"></div>
+        <div class="crt">
+          <router-view @pipbuck-play="pipbuckSound" />
+        </div>
+        <div
+          class="effect display-background"
+          v-colorized-bg="{
+            src: require('./assets/img/bg.png'), hue: hair.h,
+          }"
+        ></div>
       </div>
-      <div
-        class="effect display-background"
-        v-colorized-bg="{
-          src: require('./assets/img/bg.png'), hue: hair.h,
-        }"
-      ></div>
+      <hardware-buttons
+          v-if="showHardwareButtons"
+          class="hardware noscroll"
+          :position="hardwareButtonPosition"
+          @scroll.prevent @wheel.prevent @touchstart.prevent @touchmove.prevent @drag.prevent
+          @pipbuck-play="pipbuckSound"
+        />
     </div>
   </div>
 </template>
@@ -91,14 +93,14 @@ const app = {
     wrapperFlex() {
       switch (this.hardwareButtonPosition) {
         case 'top':
-          return 'column';
+          return 'column-reverse';
         case 'left':
-          return 'row';
-        case 'right':
           return 'row-reverse';
+        case 'right':
+          return 'row';
         case 'bottom':
         default:
-          return 'column-reverse';
+          return 'column';
       }
     },
   },
@@ -155,14 +157,14 @@ const app = {
       },
       { immediate: true },
     );
-    this.$watch(
+    /* this.$watch(
       'colorBack',
       // eslint-disable-next-line prefer-arrow-callback
       function watchColorBack(newColor) {
         document.body.style.backgroundColor = newColor;
       },
       { immediate: true },
-    );
+    ); */
     // event listeners
     this.shake_instance = new Shake({
       threshold: 15, // optional shake strength threshold
@@ -199,8 +201,10 @@ export default app;
   margin: 0;
 }
 body {
+  background-color: black;
   user-select: none;
 }
+
 #app {
   width: 100%;
   height: 100%;
@@ -227,17 +231,44 @@ a {
 
   }
 }
-
 ul li {
   list-style: none;
 }
-.wrapper {
+</style>
+<style scoped lang="scss">
+.outer {
+  display: flex;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  display: flex;
   flex-direction: column-reverse;
 }
+.wrapper {
+  //width: 100%;
+  //height: 100%;
+  height: 100vmin;
+  width: 133vmin;
+  overflow: hidden;
+  position: relative;
+}
+.crt {
+  justify-content: flex-start;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  // overflow-scrolling: touch;
+  width: 100%;
+  height: 100%;
+  //height: 84.77508651vmin;
+  //left: 0;
+  //top: 0;
+  //position: absolute;
+}
+.hardware {
+  // min-width: 15.22491349vw;
+  // min-height: 15.22491349vh;
+  //width: 100%;
+  flex-grow: 1;
+};
 #nav {
   padding: 30px;
   a {
@@ -262,16 +293,7 @@ audio {
 
 <!-- effects -->
 <style lang="scss" scoped>
-.crt {
-  justify-content: flex-start;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  // overflow-scrolling: touch;
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
+
 .effect {
   pointer-events:none;
   position: absolute;

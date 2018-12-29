@@ -2,7 +2,14 @@
   <div class="page">
     <ul class="list">
       <li v-for="weapon in this.weapons" :key="weapon.baseId">
-        <a class="weapon" @click="selectItem(weapon.baseId)">
+        <a
+          class="weapon"
+          @click="selectItem(weapon.baseId)"
+          @mouseover="selectItem(weapon.baseId)"
+          :class="{
+            equipped: activeWeaponId === weapon.baseId
+          }"
+        >
           {{weapon.name}}<span v-if="weapon.amount > 1"> ({{weapon.amount}})</span>
         </a>
       </li>
@@ -65,6 +72,10 @@ export default {
 <style scoped lang="scss">
 $width: 44vw;
 
+.page {
+  flex-direction: row;
+  height: 100%;
+}
 ul.list {
   position: absolute;
   top: 0;
@@ -90,35 +101,53 @@ ul.list {
       overflow: hidden;
 
       // checkbox: http://jsfiddle.net/nN8k7/1/
-      &:active:after {
+      &:hover:after,
+      &.equipped:after{
         position: absolute;
         left: 0;
-        bottom: 0.2em;
+        bottom: 0.285em;
         font-weight: bold;
-        content: "\2610";
+      }
+      &:hover {
+        border: var(--color-front) 2px solid;
+        background-color: rgba(255,225,255, 0.1);
+        &:after {
+          content: "◻︎︎";
+        }
+      }
+      // checkbox: http://jsfiddle.net/nN8k7/1/
+      &.equipped:after {
+        content: "◼";
       }
     }
   }
 }
 
 .details {
+  width: (80 - $width);
   position: absolute;
   bottom: 0;
   right: 0;
+  .row {
+    display: block;
+  }
 
   .detail {
-     border-right-width: .5vmin;
+    display: inline;
+    // right border is fading
+    border-right-width: .5vmin;
     border-right-style: solid;
     border-right-color: transparent;
-    //border-image: linear-gradient(to bottom, var(--color-front), transparent) 1 100%;
      -webkit-border-image: -webkit-gradient(
         linear, 0 0, 0 100%, from(var(--color-front)), to(rgba(0, 0, 0, 0))
     ) 1 100%;
     border-image: linear-gradient(
         to bottom, var(--color-front), rgba(0, 0, 0, 0)
     ) 1 100%;
+    // prepare for creating a top border per :after
     position: relative;
-    margin-top: .5vmin;
+    margin-top: .5vmin;  // space for border top
+
     &:after {
       position: absolute;
       content: "";
