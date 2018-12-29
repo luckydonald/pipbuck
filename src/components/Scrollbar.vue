@@ -1,6 +1,6 @@
 <template>
-  <div class="track">
-    <div class="bar" :style="{ top: `${scroll * 100}%` }"></div>
+  <div class="track" ref="track">
+    <div class="bar" :style="{ height: cssHeight, top: cssOffset }"></div>
   </div>
 </template>
 
@@ -46,6 +46,21 @@ export default {
         newVal.addEventListener('scroll', this.onScroll);
         newVal.addEventListener('wheel', this.onScroll);
       }
+    },
+  },
+  computed: {
+    height() {
+      // needed space / available space
+      if (!this.element) {
+        return 1;
+      }
+      return this.element.scrollHeight / this.$refs.track.clientHeight;
+    },
+    cssHeight() {
+      return `${100 / this.height}%`;
+    },
+    cssOffset() {
+      return `${this.scroll * (100 - (100 / this.height))}%`;
     },
   },
   mounted() {
