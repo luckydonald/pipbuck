@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <router-view />
+  <div class="page-wrapper">
+    <div class="current">STATS</div>
+    <router-view class="page-content" />
     <div id="nav" class="nav">
+      <div class="edge left" />
       <div class="hr" />
       <router-link class="item" to="/items/weapons" @click.native="playTab">Weapons</router-link>
       <div class="hr" />
@@ -13,6 +15,7 @@
       <div class="hr" />
       <router-link class="item" to="/items/ammo" @click.native="playTab">Ammo</router-link>
       <div class="hr" />
+      <div class="edge right" />
     </div>
   </div>
 </template>
@@ -31,32 +34,64 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.page-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.current {
+  flex-shrink: 0;
+}
+.page-content {
+  flex-shrink: 1;
+  flex-grow: 1;
+  overflow: scroll;
+}
 .nav {
+  flex-shrink: 0;
   display: flex;
+  position: relative;
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
-  background-color: hotpink;
+  padding-left: 2vmin;
+  padding-right: 2vmin;
+  margin-top: -2vmin;
 }
 .item {
   flex-shrink: 0;
   flex-grow: 0;
 }
-hr {
-  display: inline;
-  color: yellow;
-  height: 30px;
-  flex-shrink: 1;
-  flex-grow: 1;
-  color: red;
-  background-color: orangered;
-  height: 1px;
-  align-self: center;
-}
 .hr {
   align-self: center;
-  border-bottom: 2px solid; /* whichever color you prefer */
+  border-bottom: .75vmin solid; /* whichever color you prefer */
   flex-shrink: 1;
   flex-grow: 1;
+}
+.edge {
+  //align-self: flex-start;
+
+   -webkit-border-image: -webkit-gradient(
+      linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0)), to(var(--color-front))
+  ) 1 100%;
+  border-image: linear-gradient(
+      to bottom, rgba(0, 0, 0, 0), var(--color-front)
+  ) 1 100%;
+
+  // prepare for creating a top border per :after
+  position: relative;
+  &.right {
+    transform: scaleY(0.5) translateY(-50%) translateX(-.5vmin);
+    border-right-width: 0.75vmin;
+    border-right-style: solid;
+    border-right-color: transparent;
+  }
+  &.left {
+    transform: scaleY(0.5) translateY(-50%) translateX(.5vmin);
+    border-left-width: 0.75vmin;
+    border-left-style: solid;
+    border-left-color: transparent;
+  }
 }
 </style>
