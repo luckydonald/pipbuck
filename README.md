@@ -62,8 +62,13 @@ now dist && \
 echo -e "\a" && sleep 0.2 && echo -e "\a" && sleep 0.2 && echo -e "\a" && \
 WEB_URL="https://pip.bonbotics.com" && \
 WEB_PERMA=$(pbpaste) && \
-WEB_GIT="https://github.com/luckydonald/pipbuck/tree/$(git rev-parse HEAD)" && \
-tg-send -1001015621407 "I%20just%20pushed%20an%20#update%20to%20#pipbuck:%0D%0ALive%20Link:%20${WEB_URL}%0D%0APermalink:%20${WEB_PERMA}%0D%0ASource:%20${WEB_GIT}" && \
+GIT_HASH=$(git rev-parse HEAD) && \
+NOW_ALIAS="pipbuck-commit-${GIT_HASH}.now.sh" && \
+WEB_ALIAS="https://${NOW_ALIAS}" && \
+WEB_GIT="https://github.com/luckydonald/pipbuck/tree/${GIT_HASH}" && \
+now alias ${NOW_ALIAS} && \
+git tag now_deploy__${NOW_ALIAS} && \
+tg-send -1001015621407 "I%20just%20pushed%20an%20#update%20to%20the%20#pipbuck%20project:%0D%0ALive%20Link:%20${WEB_URL}%0D%0APermalink:%20${WEB_ALIAS}%0D%0ASource:%20${WEB_GIT}" && \
 echo "Done."
 # done
 ```
