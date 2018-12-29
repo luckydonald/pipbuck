@@ -1,6 +1,6 @@
 <template>
   <div class="track">
-    <div class="bar" :style="{ top: `${scroll}%` }"></div>
+    <div class="bar" :style="{ top: `${scroll * 100}%` }"></div>
   </div>
 </template>
 
@@ -20,7 +20,6 @@ export default {
   },
   methods: {
     onScroll() {
-      console.log('scroll!');
       if (this.animationFrameRequest === null) {
         this.animationFrameRequest = requestAnimationFrame(
           this.onScrollFrame.bind(this),
@@ -28,18 +27,22 @@ export default {
       }
     },
     onScrollFrame() {
-      this.scroll = this.element.scrollTop / this.element.scrollHeight;
+      console.log('scroll debounced!');
+      const scrollableWay = this.element.scrollHeight - this.element.clientHeight;
+      this.scroll = this.element.scrollTop / scrollableWay;
       this.animationFrameRequest = null;
     },
   },
   watch: {
     element(newVal, oldVal) {
-      console.log('change', newVal, oldVal, this.element);
+      console.log('change', newVal, oldVal, '@', this.element);
       if (oldVal) {
+        console.log('change, removing old listener', oldVal);
         oldVal.removeEventListener('scroll', this.onScroll);
         oldVal.removeEventListener('wheel', this.onScroll);
       }
       if (newVal) {
+        console.log('change, adding new listener', oldVal);
         newVal.addEventListener('scroll', this.onScroll);
         newVal.addEventListener('wheel', this.onScroll);
       }
@@ -48,12 +51,14 @@ export default {
   mounted() {
     console.log('element', this.element);
     if (this.element) {
+      console.log('mounted listener', this.element);
       this.element.addEventListener('scroll', this.onScroll);
       // this.element.addEventListener('wheel', this.onScroll);
     }
   },
   beforeDestroy() {
     if (this.element) {
+      console.log('destroy listener', this.element);
       this.element.removeEventListener('scroll', this.onScroll);
       this.element.removeEventListener('wheel', this.onScroll);
     }

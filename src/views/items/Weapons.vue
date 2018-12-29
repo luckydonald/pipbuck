@@ -2,8 +2,8 @@
   <div class="page">
     <scrollbar class="scroll" :element="scrollered" />
 
-    <div class="scrollable">
-      <ul class="list" ref="scrollered">
+    <div class="scrollable" ref="scrollered">
+      <ul class="list">
         <li v-for="weapon in this.weapons" :key="weapon.baseId">
           <a
             class="weapon"
@@ -18,6 +18,7 @@
         </li>
       </ul>
     </div>
+
     <div class="details">
       <div class="row">
         <div class="detail damage">
@@ -85,11 +86,26 @@ export default {
       console.log('init scrollered', this.$refs);
       if (this.$refs.scrollered !== undefined) {
         console.log('init scrollered wowsa', this.$refs.scrollered);
-        this.scrollered = this.$refs.scrollered.$el;
+        if (this.$refs.scrollered.$el !== undefined) {
+          console.log('init scrollered wowsafa', this.$refs.scrollered);
+          this.scrollered = this.$refs.scrollered.$el;
+          return;
+        }
+        this.scrollered = this.$refs.scrollered;
         return;
       }
       console.log('init scrollered nopeh', this.$refs);
       this.scrollered = null;
+      return;
+    },
+  },
+  watch: {
+    $refs() {
+      this.$nextTick(this.setScrollered);
+    },
+    // eslint-disable-next-line object-shorthand
+    '$refs.scrollered'() {
+      this.$nextTick(this.setScrollered);
     },
   },
   mounted() {
@@ -100,7 +116,10 @@ export default {
 
 <style scoped lang="scss">
 .scroll {
-  position: fixed!important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
   height: 100%;
 }
 .page {
