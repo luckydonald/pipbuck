@@ -223,11 +223,11 @@ a {
   color: var(--color-front);
   text-decoration: none;
 
-  border: transparent 2px solid;
-  padding: 2px 4px;
+  border: transparent 0.5vmin solid;
+  padding: 0.75vmin 1vmin;
 
   &.active, &.router-link-exact-active {
-    border: var(--color-front) 2px solid;
+    border: var(--color-front) 0.75vmin solid;
     background-color: rgba(255,225,255, 0.1);
 
   }
