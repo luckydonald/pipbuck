@@ -98,6 +98,7 @@ class PlayingSprite {
 const sounds = {
   nav_tab: 'ui_pipboy_tab',
   nav_mode: 'ui_pipboy_mode',
+  select: 'ui_pipboy_select',
   boot: ['UI_PipBoy_BootSequence_A', 'UI_PipBoy_BootSequence_B', 'UI_PipBoy_BootSequence_C'],
 };
 

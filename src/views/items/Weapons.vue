@@ -34,8 +34,8 @@
         </div>
       </div>
       <div class="row">
-          <div class="detail condition">CND [#####  ]</div>
-          <div class="detail ammunition">{{ammunitionText}}</div>
+        <div class="detail condition">CND [####]</div>
+        <div class="detail ammunition">{{ammunitionText}}</div>
       </div>
     </div>
   </div>
@@ -79,7 +79,7 @@ export default {
   methods: {
     selectItem(baseId) {
       this.activeWeaponId = baseId;
-      this.$emit('pipbuck-play', ui.sounds.gui_select);
+      this.$emit('pipbuck-play', ui.sounds.select);
     },
     setScrollered() {
       console.log('init scrollered', this.$refs);
@@ -174,13 +174,17 @@ ul.list {
   }
 
   .detail {
+    padding-bottom: 20vmin;
+    padding: 0.5vmin 1vmin;
+
+    margin-left: 1.2vmin;
     flex-grow: 1;
 
     display: inline-flex;
     justify-content: space-between;
 
     // right border is fading
-    border-right-width: .5vmin;
+    border-right-width: .75vmin;
     border-right-style: solid;
     border-right-color: transparent;
      -webkit-border-image: -webkit-gradient(
@@ -191,7 +195,7 @@ ul.list {
     ) 1 100%;
     // prepare for creating a top border per :after
     position: relative;
-    margin-top: .5vmin;  // space for border top
+    margin-top: .75vmin;  // space for border top
 
     &:after {
       position: absolute;
@@ -201,6 +205,10 @@ ul.list {
       right: -.5vmin;
       height: .5vmin;
       background-color: var(--color-front);
+    }
+
+    &.ammunition {
+      flex-grow: 2;
     }
   }
   .label, .value {
