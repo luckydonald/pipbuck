@@ -34,10 +34,7 @@
         </div>
       </div>
       <div class="row">
-          <div class="detail condition">
-            <span class="label">CND</span>
-            <span class="value">[#####  ]</span>
-          </div>
+          <div class="detail condition">CND [#####  ]</div>
           <div class="detail ammunition">{{ammunitionText}}</div>
       </div>
     </div>
@@ -163,10 +160,11 @@ ul.list {
 }
 
 .details {
-  position: absolute;
-  bottom: 20vmin;
-  right: 2vmin;
-  padding: .75vmin;
+  // position: absolute;
+  padding-bottom: 20vmin;
+  // right: 2vmin;
+  align-self: flex-end;
+  align-content: stretch;
   .row {
     display: block;
   }
