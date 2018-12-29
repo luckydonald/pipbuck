@@ -189,7 +189,7 @@ export default app;
   font-family: 'Monofonto';
   src: url('/fonts/monofonto.ttf');
 }
-* {  // Minimalist Reset 3
+*, *:after, *:before {  // Minimalist Reset 3
   vertical-align: baseline;
   font-weight: inherit;
   font-family: inherit;
@@ -199,6 +199,7 @@ export default app;
   outline: 0;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 body {
   background-color: black;
@@ -252,9 +253,6 @@ ul li {
 }
 .crt {
   justify-content: flex-start;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
   // overflow-scrolling: touch;
   width: 100%;
   height: 100%;

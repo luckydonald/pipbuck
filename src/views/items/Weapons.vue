@@ -1,27 +1,43 @@
 <template>
   <div class="page">
-    <ul class="list">
-      <li v-for="weapon in this.weapons" :key="weapon.baseId">
-        <a
-          class="weapon"
-          @click="selectItem(weapon.baseId)"
-          @mouseover="selectItem(weapon.baseId)"
-          :class="{
-            equipped: activeWeaponId === weapon.baseId
-          }"
-        >
-          {{weapon.name}}<span v-if="weapon.amount > 1"> ({{weapon.amount}})</span>
-        </a>
-      </li>
-    </ul>
+    <scrollbar class="scroll" :element="scrollered" />
+
+    <div class="scrollable">
+      <ul class="list" ref="scrollered">
+        <li v-for="weapon in this.weapons" :key="weapon.baseId">
+          <a
+            class="weapon"
+            @click="selectItem(weapon.baseId)"
+            @mouseover="selectItem(weapon.baseId)"
+            :class="{
+              equipped: activeWeaponId === weapon.baseId
+            }"
+          >
+            {{weapon.name}}<span v-if="weapon.amount > 1"> ({{weapon.amount}})</span>
+          </a>
+        </li>
+      </ul>
+    </div>
     <div class="details">
       <div class="row">
-        <div class="detail damage"><span>DAM {{activeWeapon['Damage per shot']}}</span></div>
-        <div class="detail weight"><span>WG {{activeWeapon['Weapon weight']}}</span></div>
-        <div class="detail value"><span>VAL {{activeWeapon['Weapon value in caps']}}</span></div>
+        <div class="detail damage">
+          <div class="label">DAM</div>
+          <div class="value">{{activeWeapon['Damage per shot']}}</div>
+        </div>
+        <div class="detail weight">
+          <div class="label">WG</div>
+          <div class="value">{{activeWeapon['Weapon weight']}}</div>
+        </div>
+        <div class="detail value">
+          <div class="label">VAL</div>
+          <div class="value">{{activeWeapon['Weapon value in caps']}}</div>
+        </div>
       </div>
       <div class="row">
-          <div class="detail condition">CND [#####  ]</div>
+          <div class="detail condition">
+            <span class="label">CND</span>
+            <span class="value">[#####  ]</span>
+          </div>
           <div class="detail ammunition">{{ammunitionText}}</div>
       </div>
     </div>
@@ -31,14 +47,17 @@
 <script>
 import weapons from '../../data/weapons';
 import { ui } from '../../sound';
+import Scrollbar from '../../components/Scrollbar.vue';
+
 
 export default {
   name: 'Weapons',
-  amount: 1,
+  components: { Scrollbar },
   data() {
     return {
       weapons,
       activeWeaponId: weapons[0].baseId,
+      scrollered: null,
     };
   },
   computed: {
@@ -65,34 +84,54 @@ export default {
       this.activeWeaponId = baseId;
       this.$emit('pipbuck-play', ui.sounds.gui_select);
     },
+    setScrollered() {
+      console.log('init scrollered', this.$refs);
+      if (this.$refs.scrollered !== undefined) {
+        console.log('init scrollered wowsa', this.$refs.scrollered);
+        this.scrollered = this.$refs.scrollered.$el;
+        return;
+      }
+      console.log('init scrollered nopeh', this.$refs);
+      this.scrollered = null;
+    },
+  },
+  mounted() {
+    this.setScrollered();
   },
 };
 </script>
 
 <style scoped lang="scss">
-$width: 44vw;
-
-.page {
-  flex-direction: row;
+.scroll {
+  position: fixed!important;
   height: 100%;
 }
+.page {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  position: relative;
+}
+
+.scrollable {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
 ul.list {
-  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  width: $width;
+  width: 60vmin;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow-x: hidden;
-  overflow-y: scroll;
 
   li {
     text-align: left;
 
     a.weapon {
       box-sizing: border-box;
-      width: $width;
       position: relative;
       padding-left: 1em;
       text-overflow: ellipsis;
@@ -124,16 +163,24 @@ ul.list {
 }
 
 .details {
-  width: (80 - $width);
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 20vmin;
+  right: 2vmin;
+  padding: .75vmin;
   .row {
     display: block;
   }
 
+  .row{
+    display: flex;
+  }
+
   .detail {
-    display: inline;
+    flex-grow: 1;
+
+    display: inline-flex;
+    justify-content: space-between;
+
     // right border is fading
     border-right-width: .5vmin;
     border-right-style: solid;
@@ -158,5 +205,9 @@ ul.list {
       background-color: var(--color-front);
     }
   }
+  .label, .value {
+    display: inline;
+  }
+
 }
 </style>
