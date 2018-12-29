@@ -1,13 +1,19 @@
 <template>
   <div>
-    <div id="nav">
-      <router-link to="/items/weapons" @click.native="playTab">Weapons</router-link>
-      <router-link to="/items/apparel" @click.native="playTab">Apparel</router-link>
-      <router-link to="/items/aid" @click.native="playTab">Aid</router-link>
-      <router-link to="/items/misc" @click.native="playTab">Misc</router-link>
-      <router-link to="/items/ammo" @click.native="playTab">Ammo</router-link>
-    </div>
     <router-view />
+    <div id="nav" class="nav">
+      <div class="hr" />
+      <router-link class="item" to="/items/weapons" @click.native="playTab">Weapons</router-link>
+      <div class="hr" />
+      <router-link class="item" to="/items/apparel" @click.native="playTab">Apparel</router-link>
+      <div class="hr" />
+      <router-link class="item" to="/items/aid" @click.native="playTab">Aid</router-link>
+      <div class="hr" />
+      <router-link class="item" to="/items/misc" @click.native="playTab">Misc</router-link>
+      <div class="hr" />
+      <router-link class="item" to="/items/ammo" @click.native="playTab">Ammo</router-link>
+      <div class="hr" />
+    </div>
   </div>
 </template>
 
@@ -24,6 +30,33 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: hotpink;
+}
+.item {
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+hr {
+  display: inline;
+  color: yellow;
+  height: 30px;
+  flex-shrink: 1;
+  flex-grow: 1;
+  color: red;
+  background-color: orangered;
+  height: 1px;
+  align-self: center;
+}
+.hr {
+  align-self: center;
+  border-bottom: 2px solid; /* whichever color you prefer */
+  flex-shrink: 1;
+  flex-grow: 1;
+}
 </style>
