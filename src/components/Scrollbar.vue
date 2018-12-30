@@ -1,6 +1,10 @@
 <template>
-  <div class="track" ref="track">
-    <div class="bar" :style="{ height: cssHeight, top: cssOffset }"></div>
+  <div class="bar-and-buttons" ref="track">
+    <div class="button up" />
+    <div class="button down" />
+    <div class="track" ref="space">
+      <div class="bar" :style="{ height: cssHeight, top: cssOffset }"></div>
+    </div>
   </div>
 </template>
 
@@ -81,16 +85,53 @@ export default {
 };
 </script>
 
-<style scoped>
-.track {
+<style scoped lang="scss">
+.bar-and-buttons {
   height: 100%;
   width: 20px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
-.bar {
-  background-color: hotpink;
-  width: 100%;
+.button {
+  flex-grow: 0;
+  flex-shrink: 0;
   height: 20px;
-  position: absolute;
+  width: 100%;
+
+  border-style: solid;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+
+  &.up {
+    order: -1;
+    transform: rotate(-135deg);
+  }
+
+  &.down {
+    order: 1;
+    transform: rotate(45deg);
+  }
 }
+
+.track {
+  order: 0;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-self: center;
+}
+
+.bar {
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  width: 1vmin;
+  height: 1vmin;
+  position: absolute;
+
+  background-color: var(--color-front);
+}
+
 </style>
