@@ -180,7 +180,7 @@ export default [
     baseId: '00020420',
   },
   {
-    Name: "Lag-Bolt's combat armor",
+    name: 'Lag-Bolt\'s combat armor',
     DR: 38,
     Weight: 30,
     Health: '500',
@@ -302,7 +302,7 @@ export default [
     baseId: '00061a72',
   },
   {
-    Name: "Ashur's power armor",
+    name: 'Ashur\'s power armor',
     DR: 40,
     Weight: '45 (35)',
     Health: '1000',
@@ -357,7 +357,7 @@ export default [
     baseId: '000cb5f3',
   },
   {
-    Name: "Linden's Outcast power armor",
+    name: 'Linden\'s Outcast power armor',
     DR: 40,
     Weight: '45 (35)',
     Health: '1000',
@@ -368,7 +368,7 @@ export default [
     baseId: '00070877',
   },
   {
-    Name: "Lyons' Pride power armor",
+    name: 'Lyons\' Pride power armor',
     DR: 40,
     Weight: '45 (25)',
     Health: '1000',
@@ -578,7 +578,7 @@ export default [
     baseId: 'xx00a39a',
   },
   {
-    Name: "Sharp-dressed raider's armor",
+    name: 'Sharp-dressed raider\'s armor',
     DR: 15,
     Weight: 15,
     Health: 100,
@@ -755,7 +755,7 @@ export default [
     baseId: 'xx006940',
   },
   {
-    Name: "Wanderer's leather armor",
+    name: 'Wanderer\'s leather armor',
     DR: 24,
     Weight: 15,
     Health: 150,
@@ -933,7 +933,7 @@ export default [
     baseId: '000340d2',
   },
   {
-    Name: "Colonel Autumn's uniform",
+    name: 'Colonel Autumn\'s uniform',
     DR: 10,
     Weight: 3,
     Health: '100',
@@ -977,7 +977,7 @@ export default [
     baseId: '000340cf',
   },
   {
-    Name: "Dirty pre-War kid's outfit",
+    name: 'Dirty pre-War kid\'s outfit',
     DR: 2,
     Weight: 2,
     Health: '100',
@@ -1021,7 +1021,7 @@ export default [
     baseId: '000340d1\n00066c71',
   },
   {
-    Name: "Doctor Li's outfit",
+    name: 'Doctor Li\'s outfit',
     DR: 3,
     Weight: 2,
     Health: '100',
@@ -1032,7 +1032,7 @@ export default [
     baseId: '000340da',
   },
   {
-    Name: "Elder Lyons' robe",
+    name: 'Elder Lyons\' robe',
     DR: 3,
     Weight: 2,
     Health: '100',
@@ -1054,7 +1054,7 @@ export default [
     baseId: '000340de',
   },
   {
-    Name: "Eulogy Jones' suit",
+    name: 'Eulogy Jones\' suit',
     DR: 2,
     Weight: 3,
     Health: '100',
@@ -1065,7 +1065,7 @@ export default [
     baseId: '00034125',
   },
   {
-    Name: "Explorer's gear",
+    name: 'Explorer\'s gear',
     DR: 8,
     Weight: 3,
     Health: '100',
@@ -1076,7 +1076,7 @@ export default [
     baseId: '000cb549',
   },
   {
-    Name: "General Chase's overcoat",
+    name: 'General Chase\'s overcoat',
     DR: 20,
     Weight: 5,
     Health: '250',
@@ -1087,7 +1087,7 @@ export default [
     baseId: 'xx00ad7b',
   },
   {
-    Name: "General Chase's overcoat",
+    name: 'General Chase\'s overcoat',
     DR: 20,
     Weight: 25,
     Health: '250',
@@ -1098,7 +1098,7 @@ export default [
     baseId: 'xx00ab6d',
   },
   {
-    Name: "General Jingwei's uniform",
+    name: 'General Jingwei\'s uniform',
     DR: 25,
     Weight: 2,
     Health: '999,100',
@@ -1109,7 +1109,7 @@ export default [
     baseId: 'xx00c1ca',
   },
   {
-    Name: "Grifter's Fit",
+    name: 'Grifter\'s Fit',
     DR: 2,
     Weight: 2,
     Health: '100',
@@ -1153,7 +1153,7 @@ export default [
     baseId: '000340f9',
   },
   {
-    Name: "Kid's cave rat outfit",
+    name: 'Kid\'s cave rat outfit',
     DR: 2,
     Weight: 2,
     Health: '100',
@@ -1186,7 +1186,7 @@ export default [
     baseId: 'xx00b4b2',
   },
   {
-    Name: "Lesko's lab coat",
+    name: 'Lesko\'s lab coat',
     DR: 4,
     Weight: 1,
     Health: '200',
@@ -1197,7 +1197,7 @@ export default [
     baseId: '000c24f9',
   },
   {
-    Name: "Maple's garb",
+    name: 'Maple\'s garb',
     DR: 15,
     Weight: 2,
     Health: '150',
@@ -1208,7 +1208,7 @@ export default [
     baseId: '0005a6ca',
   },
   {
-    Name: "Mayor MacCready's outfit",
+    name: 'Mayor MacCready\'s outfit',
     DR: 2,
     Weight: 2,
     Health: '100',
@@ -1351,7 +1351,7 @@ export default [
     baseId: 'xx00742f',
   },
   {
-    Name: "Paulson's outfit",
+    name: 'Paulson\'s outfit',
     DR: 5,
     Weight: 3,
     Health: '150',
@@ -1406,7 +1406,7 @@ export default [
     baseId: '000340d0',
   },
   {
-    Name: "Pre-War kid's outfit",
+    name: 'Pre-War kid\'s outfit',
     DR: 1,
     Weight: 2,
     Health: '100',
@@ -1439,7 +1439,7 @@ export default [
     baseId: '0003411b',
   },
   {
-    Name: "Red's jumpsuit",
+    name: 'Red\'s jumpsuit',
     DR: 1,
     Weight: 3,
     Health: '100',
@@ -1505,7 +1505,7 @@ export default [
     baseId: '000340e6',
   },
   {
-    Name: "Sheriff's duster",
+    name: 'Sheriff\'s duster',
     DR: 5,
     Weight: 3,
     Health: '150',
@@ -1538,7 +1538,7 @@ export default [
     baseId: 'xx00087a',
   },
   {
-    Name: "Tenpenny's suit",
+    name: 'Tenpenny\'s suit',
     DR: 2,
     Weight: 2,
     Health: '100',
@@ -1549,7 +1549,7 @@ export default [
     baseId: '00096cb7',
   },
   {
-    Name: "The AntAgonizer's costume",
+    name: 'The AntAgonizer\'s costume',
     DR: 20,
     Weight: 15,
     Health: '100',
@@ -1560,7 +1560,7 @@ export default [
     baseId: '0003411d',
   },
   {
-    Name: "The Mechanist's costume",
+    name: 'The Mechanist\'s costume',
     DR: 20,
     Weight: 15,
     Health: '100',
@@ -1571,7 +1571,7 @@ export default [
     baseId: '0003411e',
   },
   {
-    Name: "The Surgeon's lab coat",
+    name: 'The Surgeon\'s lab coat',
     DR: 2,
     Weight: 1,
     Health: '100',
@@ -1593,7 +1593,7 @@ export default [
     baseId: 'xx00d74f',
   },
   {
-    Name: "Vance's longcoat outfit",
+    name: 'Vance\'s longcoat outfit',
     DR: 10,
     Weight: 4,
     Health: '100',
@@ -1670,7 +1670,7 @@ export default [
     baseId: '0001ba00',
   },
   {
-    Name: "Wastelander's gear",
+    name: 'Wastelander\'s gear',
     DR: 12,
     Weight: 2,
     Health: '100',
@@ -1692,7 +1692,7 @@ export default [
     baseId: 'xx003f3a',
   },
   {
-    Name: "Workman's coveralls",
+    name: 'Workman\'s coveralls',
     DR: 2,
     Weight: 2,
     Health: '100',
@@ -1837,7 +1837,7 @@ export default [
     baseId: '000cb5f7',
   },
   {
-    Name: "Boogeyman's hood",
+    name: 'Boogeyman\'s hood',
     DR: 8,
     Weight: 3,
     Health: '100',
@@ -1870,7 +1870,7 @@ export default [
     baseId: '00033598',
   },
   {
-    Name: "Ledoux's hockey mask",
+    name: 'Ledoux\'s hockey mask',
     DR: 4,
     Weight: 1,
     Health: '25 ‡',
@@ -1947,7 +1947,7 @@ export default [
     baseId: 'xx007fc5',
   },
   {
-    Name: "The Devil's Pigtails",
+    name: 'The Devil\'s Pigtails',
     DR: 3,
     Weight: 3,
     Health: '15',
@@ -1958,7 +1958,7 @@ export default [
     baseId: '000cb5fd',
   },
   {
-    Name: "Torcher's mask",
+    name: 'Torcher\'s mask',
     DR: 2,
     Weight: 3,
     Health: '15',
@@ -1980,7 +1980,7 @@ export default [
     baseId: '0003411c',
   },
   {
-    Name: "Welder's mask",
+    name: 'Welder\'s mask',
     DR: 5,
     Weight: 3,
     Health: '15',
@@ -2003,7 +2003,7 @@ export default [
     baseId: '00073d57',
   },
   {
-    Name: "Button's wig",
+    name: 'Button\'s wig',
     DR: 1,
     Weight: 1,
     Health: '100',
@@ -2069,7 +2069,7 @@ export default [
     baseId: 'xx00de01',
   },
   {
-    Name: "Crow's eyebot helmet",
+    name: 'Crow\'s eyebot helmet',
     DR: 5,
     Weight: 10,
     Health: '25',
@@ -2102,7 +2102,7 @@ export default [
     baseId: '00078647',
   },
   {
-    Name: "Eulogy Jones' hat",
+    name: 'Eulogy Jones\' hat',
     DR: 1,
     Weight: 1,
     Health: '15',
@@ -2146,7 +2146,7 @@ export default [
     baseId: '000cb604',
   },
   {
-    Name: "Kid's baseball cap",
+    name: 'Kid\'s baseball cap',
     DR: 1,
     Weight: 1,
     Health: '150',
@@ -2157,7 +2157,7 @@ export default [
     baseId: '000340c1',
   },
   {
-    Name: "Kid's party hat",
+    name: 'Kid\'s party hat',
     DR: 1,
     Weight: 1,
     Health: '10',
@@ -2168,7 +2168,7 @@ export default [
     baseId: '00028ff8',
   },
   {
-    Name: "Lincoln's hat",
+    name: 'Lincoln\'s hat',
     DR: 1,
     Weight: 1,
     Health: '50',
@@ -2179,7 +2179,7 @@ export default [
     baseId: '0004445b',
   },
   {
-    Name: "MacCready's helmet",
+    name: 'MacCready\'s helmet',
     DR: 6,
     Weight: 1,
     Health: '15',
@@ -2256,7 +2256,7 @@ export default [
     baseId: 'xx0ab491',
   },
   {
-    Name: "Poplar's hood",
+    name: 'Poplar\'s hood',
     DR: 2,
     Weight: 1,
     Health: '50',
@@ -2355,7 +2355,7 @@ export default [
     baseId: '00028ead',
   },
   {
-    Name: "Red's bandana",
+    name: 'Red\'s bandana',
     DR: 2,
     Weight: 1,
     Health: '10',
@@ -2421,7 +2421,7 @@ export default [
     baseId: '000cb5f0',
   },
   {
-    Name: "Sheriff's hat",
+    name: 'Sheriff\'s hat',
     DR: 1,
     Weight: 1,
     Health: '40',
@@ -2432,7 +2432,7 @@ export default [
     baseId: '0002dd80',
   },
   {
-    Name: "Sheriff's hat",
+    name: 'Sheriff\'s hat',
     DR: 1,
     Weight: 1,
     Health: '40',
@@ -2476,7 +2476,7 @@ export default [
     baseId: '000b0278\n000cb5f1',
   },
   {
-    Name: "The AntAgonizer's helmet",
+    name: 'The AntAgonizer\'s helmet',
     DR: 6,
     Weight: 5,
     Health: '50',
@@ -2487,7 +2487,7 @@ export default [
     baseId: '0003411f',
   },
   {
-    Name: "The Mechanist's helmet",
+    name: 'The Mechanist\'s helmet',
     DR: 6,
     Weight: 5,
     Health: '50',
@@ -2498,7 +2498,7 @@ export default [
     baseId: '00034120',
   },
   {
-    Name: "Three Dog's head wrap",
+    name: 'Three Dog\'s head wrap',
     DR: 2,
     Weight: 0,
     Health: '150‡',
@@ -2598,7 +2598,7 @@ export default [
     baseId: 'xx00de12',
   },
   {
-    Name: "Desmond's eyeglasses",
+    name: 'Desmond\'s eyeglasses',
     DR: 1,
     Weight: 0,
     Health: '150',
@@ -2631,7 +2631,7 @@ export default [
     baseId: '0001dc1c',
   },
   {
-    Name: "Lag-Bolt's shades",
+    name: 'Lag-Bolt\'s shades',
     DR: 1,
     Weight: 0,
     Health: '150',
@@ -2686,7 +2686,7 @@ export default [
     baseId: 'xx003473',
   },
   {
-    Name: "Three Dog's glasses",
+    name: 'Three Dog\'s glasses',
     DR: 1,
     Weight: 0,
     Health: '150 ‡',
