@@ -1,9 +1,9 @@
 <template>
   <div class="all-the-stuff">
-    <div class="bar-and-buttons" :class="scrollbarClass" ref="track">
-      <div class="button up" />
-      <div class="button down" />
-      <div class="track" ref="space">
+    <div class="bar-and-buttons" :class="scrollbarClass">
+      <div class="button up" v-show="needScrollbar"/>
+      <div class="button down" v-show="needScrollbar"/>
+      <div class="track" ref="track" v-show="needScrollbar">
         <div class="bar" :style="{ height: cssHeight, top: cssOffset }"></div>
       </div>
     </div>
@@ -31,91 +31,136 @@ export default {
     return {
       element: null,
       scroll: 0,
+      height: 0,
       animationFrameRequest: null,
     };
   },
   computed: {
-    height() {
-      // needed space / available space
-      if (!this.element) {
-        return 1;
-      }
-      return this.element.scrollHeight / this.$refs.track.clientHeight;
+    needScrollbar() {
+      return this.height !== null;
     },
     cssHeight() {
       return `${100 / this.height * 0.50}%`;
     },
     cssOffset() {
-      return `${this.scroll * (100 - (100 / this.height * 0.25))}%`;
+      return `${this.scroll * (100 - (100 / this.height * 0.5))}%`;
     },
   },
   watch: {
+    /**
+     * If the element gets replaced, unregister, and re-register
+     */
     element(newVal, oldVal) {
       console.log('change', newVal, oldVal, '@', this.element);
       if (oldVal) {
         console.log('change, removing old listener', oldVal);
-        oldVal.removeEventListener('scroll', this.onScroll);
-        oldVal.removeEventListener('wheel', this.onScroll);
+        this.unregisterElement(oldVal);
       }
       if (newVal) {
         console.log('change, adding new listener', oldVal);
-        newVal.addEventListener('scroll', this.onScroll);
-        newVal.addEventListener('wheel', this.onScroll);
+        this.registerElement(newVal);
       }
+    },
+    items() {
+      this.$nextTick(() => {
+        console.log('items updated');
+        this.measureElement();
+      });
     },
   },
   methods: {
+    /**
+     * 'scroll' event handler. Calls onScrollFrame(), debounced.
+     */
     onScroll() {
       if (this.animationFrameRequest === null) {
-        this.animationFrameRequest = requestAnimationFrame(
-          this.onScrollFrame.bind(this),
-        );
+        this.animationFrameRequest = requestAnimationFrame(() => {
+          this.onScrollFrame();
+          this.animationFrameRequest = null;
+        });
       }
     },
+    /**
+     * Handles debounced 'scroll' events, calculating this.scroll.
+     */
     onScrollFrame() {
       console.log('scroll debounced!');
       const scrollableWay = this.element.scrollHeight - this.element.clientHeight;
       this.scroll = this.element.scrollTop / scrollableWay;
-      this.animationFrameRequest = null;
     },
-    registerElement() {
-      console.log('registerElement $refs', this.$refs);
+    loadElement() {
+      console.log('loadElement $refs', this.$refs);
       if (this.$refs.element) {
         this.element = this.$refs.element;
       }
-      console.log('registerElement element', this.element);
-      if (this.element) {
-        this.element.addEventListener('scroll', this.onScroll);
+    },
+    registerElement(el) {
+      const element = el || this.element;
+      console.log('registerElement element', element);
+      if (element) {
+        element.addEventListener('scroll', this.onScroll);
         // this.element.addEventListener('wheel', this.onScroll);
       }
+      return element;
     },
-    unregisterElement() {
-      if (this.element) {
-        console.log('unregisterElement', this.element);
-        this.element.removeEventListener('scroll', this.onScroll);
-        this.element.removeEventListener('wheel', this.onScroll);
-        this.element = null;
+    unregisterElement(el) {
+      const element = el || this.element;
+      if (element) {
+        console.log('unregisterElement', element);
+        element.removeEventListener('scroll', this.onScroll);
+        element.removeEventListener('wheel', this.onScroll);
       }
+    },
+    measureElement() {
+      console.log(
+        'measureElement',
+        this.element.scrollHeight,
+        this.element.clientHeight,
+        this.$refs.track.clientHeight,
+      );
+      // needed space / available space
+      if (!this.element) {
+        // no element to measure yet.
+        this.height = null;
+        return;
+      }
+      if (this.element.scrollHeight <= this.element.clientHeight) {
+        // everything already shown
+        this.height = null;
+        return;
+      }
+      this.height = this.element.scrollHeight / this.element.clientHeight;
     },
   },
   updated() {
+    /*
     this.$nextTick(() => {
-      this.clientHeight = this.$el.clientHeight;
-      this.clientHeight = this.$el.clientHeight;
+      console.log('updated');
+      this.measureElement();
     });
+    */
   },
   mounted() {
     // wait one vue tick to have the slot elements rendered.
-    this.$nextTick(this.registerElement);
+    this.$nextTick(() => {
+      console.log('mounted');
+      this.loadElement();
+      this.registerElement();
+      this.measureElement();
+    });
   },
   beforeDestroy() {
+    console.log('beforeDestroy');
     this.unregisterElement();
+    this.element = null;
   },
 };
 </script>
 
 <style scoped lang="scss">
+$track-width: 5vmin;
 $bar-width: 1vmin;
+
 .all-the-stuff {
   display: flex;
   flex-direction: row;
@@ -124,7 +169,7 @@ $bar-width: 1vmin;
     order: 0;
 
     height: 100%;
-    width: 20px;
+    width: $track-width;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -144,13 +189,13 @@ $bar-width: 1vmin;
   flex-shrink: 0;
   align-self: center;
 
-  height: 5vmin;
-  width: 5vmin;
+  height: $track-width;
+  width: $track-width;
   position: relative;
 
   &.up {
     order: -1;
-    margin-bottom: -2.5vmin;
+    margin-bottom: ($track-width * -0.5);
   }
 
   &.down {
@@ -195,6 +240,7 @@ $bar-width: 1vmin;
   position: absolute;
   align-self: center;
   background-color: var(--color-front);
+  background-color: hotpink;
   padding: 0;
   margin: 0;
   border: 0;
@@ -222,10 +268,10 @@ $bar-width: 1vmin;
     background-image: -webkit-gradient(
         linear, 100% 0, 0 0, from(var(--color-front)), to(transparent)
     );
-    background-image: -webkit-linear-gradient(var(--color-front), transparent);
-    background-image: -moz-linear-gradient(var(--color-front), transparent);
-    background-image: -o-linear-gradient(var(--color-front), transparent);
-    background-image: linear-gradient(var(--color-front), transparent);
+    background-image: -webkit-linear-gradient(to top, transparent, var(--color-front));
+    background-image: -moz-linear-gradient(to top, transparent, var(--color-front));
+    background-image: -o-linear-gradient(to top, transparent, var(--color-front));
+    background-image: linear-gradient(to top, transparent, var(--color-front));
   }
 }
 

@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       apparel,
-      items: 20,
+      items: 70,
       activeId: apparel[0].baseId,
       scrollered: null,
     };
