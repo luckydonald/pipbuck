@@ -152,6 +152,38 @@ $bar-width: 1vmin;
   position: absolute;
   align-self: center;
   background-color: var(--color-front);
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    height: 5vmin;
+    left: 0;
+    right: 0;
+  }
+  &:before {
+    bottom: 100%;
+    background-image: -webkit-gradient(
+        linear, 0 100%, 0 0, from(var(--color-front)), to(transparent)
+    );
+    background-image: -webkit-linear-gradient(transparent, var(--color-front));
+    background-image: -moz-linear-gradient(transparent, var(--color-front));
+    background-image: -o-linear-gradient(transparent, var(--color-front));
+    background-image: linear-gradient(transparent, var(--color-front));
+  }
+  &:after {
+    top: 100%;
+    background-image: -webkit-gradient(
+        linear, 100% 0, 0 0, from(var(--color-front)), to(transparent)
+    );
+    background-image: -webkit-linear-gradient(var(--color-front), transparent);
+    background-image: -moz-linear-gradient(var(--color-front), transparent);
+    background-image: -o-linear-gradient(var(--color-front), transparent);
+    background-image: linear-gradient(var(--color-front), transparent);
+  }
 }
 
 </style>
