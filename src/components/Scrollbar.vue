@@ -1,9 +1,18 @@
 <template>
-  <div class="bar-and-buttons" ref="track">
-    <div class="button up" />
-    <div class="button down" />
-    <div class="track" ref="space">
-      <div class="bar" :style="{ height: cssHeight, top: cssOffset }"></div>
+  <div class="all-the-stuff">
+    <div class="bar-and-buttons" :class="scrollbarClass" ref="track">
+      <div class="button up" />
+      <div class="button down" />
+      <div class="track" ref="space">
+        <div class="bar" :style="{ height: cssHeight, top: cssOffset }"></div>
+      </div>
+    </div>
+    <div class="scrollable" ref="element">
+      <ul ref="list" class="list" :class="contentClass">
+        <li v-for="item in items" :key="item.id">
+          <slot v-bind="item"></slot>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -12,29 +21,32 @@
 export default {
   name: 'Scrollbar',
   props: {
-    element: {
-      type: HTMLElement,
+    contentClass: {},
+    scrollbarClass: {},
+    items: {
+      type: Array,
     },
   },
   data() {
     return {
+      element: null,
       scroll: 0,
       animationFrameRequest: null,
     };
   },
-  methods: {
-    onScroll() {
-      if (this.animationFrameRequest === null) {
-        this.animationFrameRequest = requestAnimationFrame(
-          this.onScrollFrame.bind(this),
-        );
+  computed: {
+    height() {
+      // needed space / available space
+      if (!this.element) {
+        return 1;
       }
+      return this.element.scrollHeight / this.$refs.track.clientHeight;
     },
-    onScrollFrame() {
-      console.log('scroll debounced!');
-      const scrollableWay = this.element.scrollHeight - this.element.clientHeight;
-      this.scroll = this.element.scrollTop / scrollableWay;
-      this.animationFrameRequest = null;
+    cssHeight() {
+      return `${100 / this.height * 0.50}%`;
+    },
+    cssOffset() {
+      return `${this.scroll * (100 - (100 / this.height * 0.25))}%`;
     },
   },
   watch: {
@@ -52,50 +64,82 @@ export default {
       }
     },
   },
-  computed: {
-    height() {
-      // needed space / available space
-      if (!this.element) {
-        return 1;
+  methods: {
+    onScroll() {
+      if (this.animationFrameRequest === null) {
+        this.animationFrameRequest = requestAnimationFrame(
+          this.onScrollFrame.bind(this),
+        );
       }
-      return this.element.scrollHeight / this.$refs.track.clientHeight;
     },
-    cssHeight() {
-      return `${100 / this.height}%`;
+    onScrollFrame() {
+      console.log('scroll debounced!');
+      const scrollableWay = this.element.scrollHeight - this.element.clientHeight;
+      this.scroll = this.element.scrollTop / scrollableWay;
+      this.animationFrameRequest = null;
     },
-    cssOffset() {
-      return `${this.scroll * (100 - (100 / this.height))}%`;
+    registerElement() {
+      console.log('registerElement $refs', this.$refs);
+      if (this.$refs.element) {
+        this.element = this.$refs.element;
+      }
+      console.log('registerElement element', this.element);
+      if (this.element) {
+        this.element.addEventListener('scroll', this.onScroll);
+        // this.element.addEventListener('wheel', this.onScroll);
+      }
     },
+    unregisterElement() {
+      if (this.element) {
+        console.log('unregisterElement', this.element);
+        this.element.removeEventListener('scroll', this.onScroll);
+        this.element.removeEventListener('wheel', this.onScroll);
+        this.element = null;
+      }
+    },
+  },
+  updated() {
+    this.$nextTick(() => {
+      this.clientHeight = this.$el.clientHeight;
+      this.clientHeight = this.$el.clientHeight;
+    });
   },
   mounted() {
-    console.log('element', this.element);
-    if (this.element) {
-      console.log('mounted listener', this.element);
-      this.element.addEventListener('scroll', this.onScroll);
-      // this.element.addEventListener('wheel', this.onScroll);
-    }
+    // wait one vue tick to have the slot elements rendered.
+    this.$nextTick(this.registerElement);
   },
   beforeDestroy() {
-    if (this.element) {
-      console.log('destroy listener', this.element);
-      this.element.removeEventListener('scroll', this.onScroll);
-      this.element.removeEventListener('wheel', this.onScroll);
-    }
+    this.unregisterElement();
   },
 };
 </script>
 
 <style scoped lang="scss">
 $bar-width: 1vmin;
-
-.bar-and-buttons {
-  height: 100%;
-  width: 20px;
-  position: relative;
+.all-the-stuff {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+
+  .bar-and-buttons {
+    order: 0;
+
+    height: 100%;
+    width: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .scrollable {
+    order: 1;
+
+    position: relative;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
 }
-.button {
+.all-the-stuff .bar-and-buttons .button {
   flex-grow: 0;
   flex-shrink: 0;
   align-self: center;
@@ -148,7 +192,6 @@ $bar-width: 1vmin;
   flex-shrink: 1;
 
   width: $bar-width;
-  height: 1vmin;
   position: absolute;
   align-self: center;
   background-color: var(--color-front);
@@ -160,7 +203,7 @@ $bar-width: 1vmin;
   &:after {
     content: "";
     position: absolute;
-    height: 5vmin;
+    height: 25%;
     left: 0;
     right: 0;
   }
