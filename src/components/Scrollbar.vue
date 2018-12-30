@@ -40,10 +40,10 @@ export default {
       return this.height !== null;
     },
     cssHeight() {
-      return `${100 / this.height * 0.50}%`;
+      return `${100 / this.height * 0.5}%`;
     },
     cssOffset() {
-      return `${this.scroll * (100 - (100 / this.height * 0.5))}%`;
+      return `${this.scroll * (75 - (100 / this.height * 0.50)) + 12.5}%`;
     },
   },
   watch: {
@@ -129,7 +129,7 @@ export default {
         this.height = null;
         return;
       }
-      this.height = this.element.scrollHeight / this.element.clientHeight;
+      this.height = (this.element.scrollHeight / this.element.clientHeight);
     },
   },
   updated() {
@@ -195,11 +195,12 @@ $bar-width: 1vmin;
 
   &.up {
     order: -1;
-    margin-bottom: ($track-width * -0.5);
+    margin-bottom: (-0.25 * $track-width);
   }
 
   &.down {
     order: 1;
+    margin-top: (-0.25 * $track-width);
   }
 
   &.up:after, &.down:after {
@@ -240,7 +241,6 @@ $bar-width: 1vmin;
   position: absolute;
   align-self: center;
   background-color: var(--color-front);
-  background-color: hotpink;
   padding: 0;
   margin: 0;
   border: 0;
