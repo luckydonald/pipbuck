@@ -4,7 +4,13 @@
       <div class="button up" v-show="needScrollbar"/>
       <div class="button down" v-show="needScrollbar"/>
       <div class="track" ref="track" v-show="needScrollbar">
-        <div class="bar" :style="{ height: cssHeight, top: cssOffset }"></div>
+        <div
+          class="bar"
+          :style="{
+            height: cssHeight,
+            top: cssOffset,
+          }"
+        />
       </div>
     </div>
     <div class="scrollable" ref="element">
@@ -39,11 +45,79 @@ export default {
     needScrollbar() {
       return this.height !== null;
     },
+    calculatedHeight() {
+      return 100 * this.height;
+    },
+    calculatedOffset() {
+      // this.scroll: 0.0 - 1.0
+      // this.height: 0.0 - 1.0
+      //
+      // Example:
+      // height: 0.5
+      // scroll: 0.0
+      // offset = 0
+      // after = 0.5
+      // '<<0.125<< [0.25] >>0.125>>' ------ 0.5 ------
+      // 0.00 = 0.0 * 0.5
+      //
+      // Example:
+      // height: 0.5
+      // scroll: 0.5
+      // offset = 0.25
+      // after = 0.25
+      // --0.25-- '<<0.125<< [0.25] >>0.125>>' --0.25--
+      // 0.25 = 0.5 * 0.5
+      //
+      // Example:
+      // height: 0.5
+      // scroll: 1.0
+      // offset = 0.5
+      // after = 0
+      // ------ 0.5 ------ '<<0.125<< [0.25] >>0.125>>'
+      // 0.50 = 1.0 * 0.5
+
+      return 100 * this.scroll * (1 - this.height);
+    },
     cssHeight() {
-      return `${100 / this.height * 0.5}%`;
+      // The gradient :before and :after both adds 50% to the bar's length,
+      // resulting in something like: '<<0.5<< [1.0] >>0.5>>'
+      // therefore if we want to treat everything as 100%,
+      // we need to adapt the height: '<<0.25<< [0.5] >>0.25>>'
+      return `${this.calculatedHeight * 0.5}%`;
     },
     cssOffset() {
-      return `${this.scroll * (75 - (100 / this.height * 0.50)) + 12.5}%`;
+      // The gradient :before and :after both adds 50% to the bar's length,
+      // resulting in something like:
+      // ------ 0.5 ------ '<<0.5<< [1.0] >>0.5>>'
+      // therefore if we want to treat everything as 100%,
+      // we need to adapt the height:
+      // --------- 0.75 ---'<<0.25<< [0.5] >>0.25>>'
+
+      // Example:
+      // height: 0.5
+      // scroll: 0.0
+      // offset = 0
+      // after = 0.5
+      // '<<0.125<< [0.25] >>0.125>>' ------ 0.5 ------
+      // 0.00 = 0.0 * 0.5
+      //
+      // Example:
+      // height: 0.5
+      // scroll: 0.5
+      // offset = 0.25
+      // realOffs = 0.25+0.125 =
+      // after = 0.25
+      // --0.25-- '<<0.125<< [0.25] >>0.125>>' --0.25--
+      // 0.25 = 0.5 * 0.5
+      //
+      // Example:
+      // height: 0.5
+      // scroll: 1.0
+      // offset = 0.5
+      // after = 0
+      // ------ 0.5 ------ '<<0.125<< [0.25] >>0.125>>'
+      // 0.50 = 1.0 * 0.5
+      return `${this.calculatedOffset + this.calculatedHeight / 4}%`;
     },
   },
   watch: {
@@ -112,10 +186,21 @@ export default {
       }
     },
     measureElement() {
+      /**
+       * the total length of that list we could go,
+       * scrolling up and down if needed
+       */
+      const needed = this.element.scrollHeight;
+
+      /**
+       * the space we allocate to displaying it,
+       * cutting away excess height with overflow: scroll.
+       */
+      const available = this.element.clientHeight;
       console.log(
         'measureElement',
-        this.element.scrollHeight,
-        this.element.clientHeight,
+        available, // the part we display
+        needed,  // the total length we could go
         this.$refs.track.clientHeight,
       );
       // needed space / available space
@@ -124,12 +209,20 @@ export default {
         this.height = null;
         return;
       }
-      if (this.element.scrollHeight <= this.element.clientHeight) {
-        // everything already shown
+      if (available === 0) {
         this.height = null;
         return;
       }
-      this.height = (this.element.scrollHeight / this.element.clientHeight);
+      if (needed === 0) {
+        this.height = null;
+        return;
+      }
+      this.height = available / needed;
+      // Example:
+      // we have a list being 400px long,
+      // but can only display 200px of it
+      // available / needed
+      // 200 / 400 = 0.5 = 50%
     },
   },
   updated() {
@@ -241,6 +334,7 @@ $bar-width: 1vmin;
   position: absolute;
   align-self: center;
   background-color: var(--color-front);
+  //background-color: hotpink;
   padding: 0;
   margin: 0;
   border: 0;
@@ -249,9 +343,10 @@ $bar-width: 1vmin;
   &:after {
     content: "";
     position: absolute;
-    height: 25%;
+    height: 50%;
     left: 0;
     right: 0;
+    //background: orange!important;
   }
   &:before {
     bottom: 100%;
