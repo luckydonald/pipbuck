@@ -86,6 +86,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+$bar-width: 1vmin;
+
 .bar-and-buttons {
   height: 100%;
   width: 20px;
@@ -96,22 +98,39 @@ export default {
 .button {
   flex-grow: 0;
   flex-shrink: 0;
-  height: 20px;
-  width: 100%;
+  align-self: center;
 
-  border-style: solid;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
+  height: 5vmin;
+  width: 5vmin;
+  position: relative;
 
   &.up {
     order: -1;
-    transform: rotate(-135deg);
+    margin-bottom: -2.5vmin;
   }
 
   &.down {
     order: 1;
-    transform: rotate(45deg);
+  }
+
+  &.up:after, &.down:after {
+    content: '';
+    position: absolute;
+    display: block;
+    //height: 10px; width: 10px;
+    height: 50%; width: 50%;
+    left: 25%;
+    align-self: center;
+    border-width: 1vmin 1vmin 0 0;
+    border-style: solid;
+  }
+  &.up:after {
+    bottom: 0;
+    transform: rotate((0   - 45deg));
+  }
+  &.down:after {
+    top: 0;
+    transform: rotate((180 - 45deg));
   }
 }
 
@@ -121,16 +140,17 @@ export default {
   position: relative;
   display: flex;
   align-self: center;
+  width: $bar-width;
 }
 
 .bar {
   flex-grow: 1;
   flex-shrink: 1;
 
-  width: 1vmin;
+  width: $bar-width;
   height: 1vmin;
   position: absolute;
-
+  align-self: center;
   background-color: var(--color-front);
 }
 
