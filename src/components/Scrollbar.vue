@@ -32,7 +32,7 @@
               <svg-list-box v-if="theme === 'fo3'" :style="{
                 fill: 'var(--color-front)',
                 stroke: 'var(--color-front)',
-              }" />
+              }" preserveAspectRatio="xMidYMid meet" />
             </slot>
           </div>
           <!-- the equipped element -->
@@ -41,7 +41,7 @@
               <svg-list-box v-if="theme === 'fo3'" :style="{
                 fill: 'transparent',
                 stroke: 'var(--color-front)',
-              }" />
+              }" preserveAspectRatio="xMidYMid meet" />
             </slot>
           </div>
           <!-- equally sized placeholder if no svg was found-->
@@ -428,6 +428,7 @@ $bar-width: 1vmin;
     width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
 
     .label {
       order: 1;
@@ -435,21 +436,34 @@ $bar-width: 1vmin;
 
     .img {
       order: 0;
+      margin-left: 1vmin;
+      margin-right: 2vmin;
+      width: 2.5vmin;
+      height: 2.5vmin;
 
       > svg {
+        left: 2.4vmin;
         max-width: 2.5vmin;
         max-height: 2.5vmin;
         stroke-width: 2vmin;
-      }
-      &.placeholder {
-        width: 2.5vmin;
-        height: 2.5vmin;
+        position: absolute;
       }
     }
   }
 }
 
 .theme-fo3 {
+  .list {
+    li {
+      border: transparent 1vmin solid;
+      a {
+        border: none;
+      }
+    }
+    li.active {
+      border: var(--color-front) 1vmin solid;
+    }
+  }
 }
 
 </style>
