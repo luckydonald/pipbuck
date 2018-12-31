@@ -33,12 +33,20 @@
                 fill: 'var(--color-front)',
                 stroke: 'var(--color-front)',
               }" preserveAspectRatio="xMidYMid meet" />
+              <svg-list-arrow v-if="theme === 'foe'" :style="{
+                fill: 'var(--color-front)',
+                stroke: 'var(--color-front)',
+              }" preserveAspectRatio="xMidYMid meet" />
             </slot>
           </div>
           <!-- the equipped element -->
           <div v-show="item.id !== selected && item.equipped" class="img equipped">
             <slot name="equipped">
               <svg-list-box v-if="theme === 'fo3'" :style="{
+                fill: 'transparent',
+                stroke: 'var(--color-front)',
+              }" preserveAspectRatio="xMidYMid meet" />
+              <svg-list-arrow v-if="theme === 'foe'" :style="{
                 fill: 'transparent',
                 stroke: 'var(--color-front)',
               }" preserveAspectRatio="xMidYMid meet" />
@@ -54,11 +62,13 @@
 
 <script>
 import SvgListBox from '../assets/img/ui/list/list-fo3-box.svg';
+import SvgListArrow from '../assets/img/ui/list/list-foe-arrow.svg';
 
 export default {
   name: 'Scrollbar',
-  components: { SvgListBox },
+  components: { SvgListBox, SvgListArrow },
   props: {
+    /** Choose a theme. Any of ['foe', 'fo3'] would work.
     theme: {
       default: 'fo3',
       type: String,
@@ -452,7 +462,8 @@ $bar-width: 1vmin;
   }
 }
 
-.theme-fo3 {
+.theme-fo3,
+.theme-foe {
   .list {
     li {
       border: transparent 1vmin solid;
