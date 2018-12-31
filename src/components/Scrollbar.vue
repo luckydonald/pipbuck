@@ -68,7 +68,7 @@ export default {
   name: 'Scrollbar',
   components: { SvgListBox, SvgListArrow },
   props: {
-    /** Choose a theme. Any of ['foe', 'fo3'] would work.
+    /** Choose a theme. Any of ['foe', 'fo3'] would work. */
     theme: {
       default: 'fo3',
       type: String,
