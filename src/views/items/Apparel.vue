@@ -20,20 +20,6 @@
           <span v-if="apparel.amount > 1"> ({{apparel.amount}})</span>
         </a>
       </template>
-      <!--
-      <template slot="active" slot-scope="apparel" :id="`active-${apparel.id}`">
-        <svg-list-box class="apparel-svg" :style="{
-        fill: 'hotpink',
-        stroke: 'hotpink',
-        }" />
-      </template>
-      <template slot="equipped" slot-scope="apparel" :id="`equipped-${apparel.id}`">
-        <svg-list-box class="apparel-svg" :style="{
-        fill: 'transparent',
-        stroke: 'hotpink',
-        }" />
-      </template>
-      -->
     </scrollbar>
     <div class="details">
       <div class="row">

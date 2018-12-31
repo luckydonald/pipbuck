@@ -68,7 +68,25 @@ export default {
   name: 'Scrollbar',
   components: { SvgListBox, SvgListArrow },
   props: {
-    /** Choose a theme. Any of ['foe', 'fo3'] would work. */
+    /**
+     * Choose a theme. Any of ['foe', 'fo3'] if you want a pre-build one.
+     *
+     * Remember, you can also set the list markers via slots instead:
+     * ```
+     * <template slot="active" slot-scope="apparel" :id="`active-${apparel.id}`">
+     *   <svg-list-box class="apparel-svg" :style="{
+     *   fill: 'hotpink',
+     *   stroke: 'hotpink',
+     *   }" />
+     * </template>
+     * <template slot="equipped" slot-scope="apparel" :id="`equipped-${apparel.id}`">
+     *   <svg-list-box class="apparel-svg" :style="{
+     *   fill: 'transparent',
+     *   stroke: 'hotpink',
+     *   }" />
+     * </template>
+     * ```
+     * */
     theme: {
       default: 'fo3',
       type: String,
