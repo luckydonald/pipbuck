@@ -204,6 +204,7 @@ export default app;
 body {
   background-color: black;
   user-select: none;
+  font-size: 4.266666667vmin;
 }
 
 #app {
