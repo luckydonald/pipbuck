@@ -43,7 +43,6 @@
 
 <script>
 import weapons from '../../data/weapons';
-import { ui } from '../../sound';
 import Scrollbar from '../../components/Scrollbar.vue';
 import SvgUnknown from '../../assets/img/ui/items/unknown.svg';
 

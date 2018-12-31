@@ -50,7 +50,6 @@
 
 <script>
 import apparel from '../../data/apparel';
-// import { ui } from '../../sound';
 import Scrollbar from '../../components/Scrollbar.vue';
 import SvgUnknown from '../../assets/img/ui/items/unknown.svg';
 
