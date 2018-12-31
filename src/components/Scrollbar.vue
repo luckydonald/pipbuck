@@ -27,7 +27,7 @@
             <slot v-bind="item"></slot>
           </div>
           <!-- the selected/mouseover element -->
-          <div v-if="item.id === selected" class="img active">
+          <div v-show="item.id === selected" class="img active">
             <slot name="active">
               <svg-list-box v-if="theme === 'fo3'" :style="{
                 fill: 'var(--color-front)',
@@ -36,7 +36,7 @@
             </slot>
           </div>
           <!-- the equipped element -->
-          <div v-else-if="item.equipped" class="img equipped">
+          <div v-show="item.id !== selected && item.equipped" class="img equipped">
             <slot name="equipped">
               <svg-list-box v-if="theme === 'fo3'" :style="{
                 fill: 'transparent',
@@ -45,7 +45,7 @@
             </slot>
           </div>
           <!-- equally sized placeholder if no svg was found-->
-          <div v-else class="img placeholder"></div>
+          <div v-show="item.id !== selected && !item.equipped" class="img placeholder" />
         </li>
       </ul>
     </div>
