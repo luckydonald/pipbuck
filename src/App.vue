@@ -205,6 +205,7 @@ body {
   background-color: black;
   user-select: none;
   font-size: 4.266666667vmin;
+  letter-spacing: -0.05em;
 }
 
 #app {
