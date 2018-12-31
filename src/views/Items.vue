@@ -1,19 +1,23 @@
 <template>
   <div class="page-wrapper">
     <div class="stats">
-      <div class="edge left down" />
-      <div class="hr" />
-      <a class="title">items</a>
-      <div class="hr" />
-      <div class="stat">Wg 118/230</div>
-      <div class="hr" />
-      <div class="stat">HP 290/290</div>
-      <div class="hr" />
-      <div class="stat">DR 24</div>
-      <div class="hr" />
-      <div class="stat">Caps 654</div>
-      <div class="hr" />
-      <div class="edge right down" />
+      <div class="row">
+        <div class="edge left down" />
+        <div class="hr left" />
+        <a class="title">items</a>
+        <div class="hr right" />
+        <div class="edge right down" />
+      </div>
+      <div class="row">
+        <div class="stat">Wg 118/230</div>
+          <div class="hr" />
+          <div class="stat">HP 290/290</div>
+          <div class="hr" />
+          <div class="stat">DR 24</div>
+          <div class="hr" />
+          <div class="stat">Caps 654</div>
+          <div class="hr" />
+      </div>
     </div>
     <div id="nav" class="nav">
       <div class="edge left up" />
@@ -71,7 +75,7 @@ export default {
   padding-right: 2vmin;
 
 }
-.nav, .stats {
+.nav, .stats > .row {
   flex-shrink: 0;
   display: flex;
   position: relative;
@@ -84,7 +88,39 @@ export default {
 .stats {
   order: 0;
   margin-bottom: 1vmin;
+  //align-items: flex-end;
+  flex-direction: column;
+  display: flex;
+  //height: 3em;
+  //background-color: hotpink;
+
+  .row {
+    width: 100%;
+   justify-content: flex-start;
+  }
+  .row:nth-child(1) {  // title
+    justify-content: flex-start;
+
+    .hr.left {
+      flex-grow: 1;
+      flex-shrink: 1;
+      max-width: 7.5vmin;
+    }
+    .hr.right {
+      flex-grow: 2;
+      flex-shrink: 0;
+    }
+  }
+  .row:nth-child(2) {  // stats
+    padding-left: 5vmin;
+    padding-right: 5vmin;
+    .stat {
+      flex-shrink: 1;
+      flex-grow: 1;
+    }
+  }
 }
+
 .nav {
   order: 2;
   margin-top: 1vmin;
@@ -102,6 +138,47 @@ export default {
 .title {
   text-transform: uppercase;
 }
+.stat {
+  padding: 0.5vmin 1vmin;
+
+  width: (100% / 3);
+
+  margin-left: 1.2vmin;
+  flex-grow: 1;
+
+  display: block;
+  justify-content: space-between;
+
+  // right border is fading
+  border-left-width: 0;
+  border-right-width: .75vmin;
+  border-right-style: solid;
+  border-right-color: transparent;
+  -webkit-border-image: -webkit-gradient(
+      linear, 0 0, 0 100%, from(var(--color-front)), to(rgba(0, 0, 0, 0))
+  ) 1 100%;
+  border-image: linear-gradient(
+      to bottom, var(--color-front), rgba(0, 0, 0, 0)
+  ) 1 100%;
+  // prepare for creating a top border per :after
+  position: relative;
+  margin-top: .75vmin;  // space for border top
+
+  &:after {
+    position: absolute;
+    content: "";
+    top: -.5vmin;
+    left: 0;
+    right: -.5vmin;
+    height: .5vmin;
+    background-color: var(--color-front);
+  }
+
+  &.ammunition {
+    flex-grow: 2;
+  }
+}
+
 .hr {
   align-self: center;
   border-bottom: .75vmin solid; /* whichever color you prefer */
