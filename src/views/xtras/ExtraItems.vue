@@ -1,10 +1,12 @@
 <template>
-  <howler-sprites
-    class="howler-sprites"
-    :audio="ui"
-    :color="color"
-    :orientation="orientation"
-  />
+  <div class="page">
+    <howler-sprites
+      class="howler-sprites"
+      :audio="ui"
+      :color="color"
+      :orientation="orientation"
+    />
+  </div>
 </template>
 
 <script>
@@ -31,6 +33,10 @@ export default {
 </script>
 
 <style scoped>
+.page {
+  overflow: auto;
+  height: 100%;
+}
 /**
  * Styling the label in the howler-sprites.
  * See https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
