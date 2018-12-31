@@ -12,7 +12,6 @@
           <div class="stat">DR 24</div>
           <div class="stat">Caps 654</div>
         </div>
-        <div class="hr right" />
         <div class="edge right down" />
       </div>
     </div>
@@ -63,7 +62,7 @@ export default {
   order: -1;
 }
 .page-content {
-  height: 80%;  // why the fuck not 100% ?
+  height: 70%;  // why the fuck not 100% ?
   flex-shrink: 1;
   flex-grow: 1;
   order: 1;
@@ -84,7 +83,7 @@ export default {
 }
 .stats {
   order: 0;
-  margin-bottom: 1vmin;
+  margin-bottom: 5vmin;
   //align-items: flex-end;
   flex-direction: column;
   display: flex;
@@ -141,11 +140,13 @@ export default {
   text-transform: uppercase;
 }
 .stat {
+  position: absolute;
+  top: calc(50% - 1vmin);
+
   padding: 0.5vmin 1vmin;
 
   width: (100% / 3);
 
-  margin-left: 1.2vmin;
   flex-grow: 1;
 
   display: block;
@@ -156,12 +157,6 @@ export default {
   border-right-width: .75vmin;
   border-right-style: solid;
   border-right-color: transparent;
-  &:first-child {
-    border-left-width: .75vmin;
-    border-left-style: solid;
-    border-left-color: transparent;
-    margin-left: 0;
-  }
   -webkit-border-image: -webkit-gradient(
       linear, 0 0, 0 100%, from(var(--color-front)), to(rgba(0, 0, 0, 0))
   ) 1 100%;
