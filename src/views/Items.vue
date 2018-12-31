@@ -118,6 +118,10 @@ export default {
     .stat {
       flex-shrink: 1;
       white-space: nowrap;
+      margin-left: 1.2vmin;
+      &:first-child {
+        margin-left: 0;
+      }
     }
   }
 }
