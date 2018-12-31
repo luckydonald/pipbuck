@@ -100,6 +100,15 @@ const sounds = {
   nav_mode: 'ui_pipboy_mode',
   select: 'ui_menu_prevnext',
   boot: ['UI_PipBoy_BootSequence_A', 'UI_PipBoy_BootSequence_B', 'UI_PipBoy_BootSequence_C'],
+  screen_buzz: [
+    'ui_static_c_01', 'ui_static_c_02', 'ui_static_c_03', 'ui_static_c_04', 'ui_static_c_05',
+    'ui_static_d_01', 'ui_static_d_02', 'ui_static_d_03', 'ui_static_d_04', 'ui_static_d_05',
+    'UI_PipBoy_BurstStatic_01', 'UI_PipBoy_BurstStatic_02', 'UI_PipBoy_BurstStatic_03',
+    'UI_PipBoy_BurstStatic_04', 'UI_PipBoy_BurstStatic_05', 'UI_PipBoy_BurstStatic_06',
+    'UI_PipBoy_BurstStatic_07', 'UI_PipBoy_BurstStatic_08', 'UI_PipBoy_BurstStatic_09',
+    'UI_PipBoy_BurstStatic_10', 'UI_PipBoy_BurstStatic_12', 'UI_PipBoy_BurstStatic_13',
+    'UI_PipBoy_BurstStatic_16', 'UI_PipBoy_BurstStatic_17',
+  ],
 };
 
 const pipbuckConfig = require('./assets/sprites/pipbuck_sprites.json');
