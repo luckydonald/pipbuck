@@ -19,8 +19,8 @@
           <li
             v-for="item in items" :key="item.id"
             :class="{ equipped: item.equipped, active: item.id === selected }"
-            @mouseover="select(item.id)"
-            @click="equip(item.id, !item.equipped)"
+            @mouseenter="select(item.id)"
+            @click.exact="equip(item.id, !item.equipped)"
             @keypress.enter="equip(item.id, !item.equipped)"
           >
             <!-- the text -->
@@ -63,6 +63,7 @@
 </template>
 
 <script>
+import { ui } from '../sound';
 import SvgListBox from '../assets/img/ui/list/list-fo3-box.svg';
 import SvgListArrow from '../assets/img/ui/list/list-foe-arrow.svg';
 
@@ -220,9 +221,15 @@ export default {
   },
   methods: {
     select(id) {
+      console.log('SelectSound', ui.sounds.select, id);
+      ui.audio.play(ui.sounds.select);
+      // this.$emit('pipbuck-play', ui.sounds.select);
       this.$emit('select', id);
     },
     equip(id, flag) {
+      console.log('equipppsound', ui.sounds.select, id, flag, { lel: ui.sounds.select });
+      ui.audio.play(ui.sounds.select);
+      // this.$emit('pipbuck-play', ui.sounds.select);
       this.$emit(flag ? 'equip' : 'unequip', id);
     },
     /**

@@ -98,7 +98,7 @@ class PlayingSprite {
 const sounds = {
   nav_tab: 'ui_pipboy_tab',
   nav_mode: 'ui_pipboy_mode',
-  select: 'ui_pipboy_select',
+  select: 'ui_menu_prevnext',
   boot: ['UI_PipBoy_BootSequence_A', 'UI_PipBoy_BootSequence_B', 'UI_PipBoy_BootSequence_C'],
 };
 
@@ -108,7 +108,7 @@ const pipbuckConfig = require('./assets/sprites/pipbuck_sprites.json');
 const pipbuckSprites = new Howl({
   html5: !!navigator.userAgent.toLowerCase().match(/iphone|ipad|safari/),
   autoUnlock: true,
-  src: pipbuckConfig.urls,
+  src: pipbuckConfig.urls.map(url => url.replace('../public/', '/audio/sprites/')),
   sprite: pipbuckConfig.sprite,
 });
 

@@ -2,13 +2,17 @@ FALLOUT=~/Downloads/Pipboy_\&_UI_Sounds
 FALLOUT4=$FALLOUT/Fallout_4
 FALLOUT3NW=$FALLOUT/Fallout_3\&NV
 
+# selections
 $FALLOUT3NW/sound/fx/ui/pipboy/ui_pipboy_mode.wav
 $FALLOUT3NW/sound/fx/ui/pipboy/ui_pipboy_select.wav
 $FALLOUT3NW/sound/fx/ui/pipboy/ui_pipboy_tab.wav
 $FALLOUT3NW/sound/fx/ui/pipboy/ui_pipboy_tuner.wav
 ${FALLOUT4}/Sound/FX/UI/PipBoy/RotaryHorizontal/UI_PipBoy_RotaryHorizontal_01.mp3
 ${FALLOUT4}/Sound/FX/UI/PipBoy/RotaryHorizontal/UI_PipBoy_RotaryHorizontal_02.mp3
-$FALLOUT3NW/sound/fx/ui/pipboy/.wav
+$FALLOUT3NW/sound/fx/ui/menu/ui_menu_cancel.wav
+$FALLOUT3NW/sound/fx/ui/menu/ui_menu_focus.wav
+$FALLOUT3NW/sound/fx/ui/menu/ui_menu_ok.wav
+$FALLOUT3NW/sound/fx/ui/menu/ui_menu_prevnext.wav
 
 # boot
 ${FALLOUT4}/Sound/FX/UI/PipBoy/BootSequence/UI_PipBoy_BootSequence_A.mp3
@@ -56,3 +60,8 @@ ${FALLOUT4}/Sound/FX/UI/UI_Discover_Location_01.mp3
 # Voice Notes
 $FALLOUT3NW/sound/fx/ui/pipboy/ui_pipboy_holotape_start.wav
 $FALLOUT3NW/sound/fx/ui/pipboy/ui_pipboy_holotape_stop.wav
+
+# Health
+$FALLOUT3NW/sound/fx/ui/health/heartbeat/ui_health_heartbeat_a_lp.wav
+$FALLOUT3NW/sound/fx/ui/health/heartbeat/ui_health_heartbeat_b_lp.wav
+$FALLOUT3NW/sound/fx/ui/health/heartbeat/ui_health_chems_wearoff.wav
