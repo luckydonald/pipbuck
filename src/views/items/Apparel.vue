@@ -5,6 +5,7 @@
       content-class=""
       scrollbar-class="scroll"
       :items="apparelSelection"
+      v-model="activeId"
     >
       <template slot-scope="apparel">
         <a
@@ -19,8 +20,19 @@
           <span v-if="apparel.amount > 1"> ({{apparel.amount}})</span>
         </a>
       </template>
+      <template slot="active" slot-scope="apparel" :id="`active-${apparel.id}`">
+        <svg-list-box class="apparel-svg" :style="{
+        fill: 'hotpink',
+        stroke: 'hotpink',
+        }" />
+      </template>
+      <template slot="equipped" slot-scope="apparel" :id="`equipped-${apparel.id}`">
+        <svg-list-box class="apparel-svg" :style="{
+        fill: 'transparent',
+        stroke: 'hotpink',
+        }" />
+      </template>
     </scrollbar>
-
     <div class="details">
       <div class="row">
         <div class="detail damage">
@@ -48,10 +60,14 @@
 import apparel from '../../data/apparel';
 // import { ui } from '../../sound';
 import Scrollbar from '../../components/Scrollbar.vue';
+import SvgListBox from '../../assets/img/ui/list/list-fo3-box.svg';
 
 export default {
   name: 'Apparel',
-  components: { Scrollbar },
+  components: {
+    Scrollbar,
+    SvgListBox,
+  },
   data() {
     return {
       apparel,
@@ -62,7 +78,12 @@ export default {
   },
   computed: {
     apparelSelection() {
-      return this.apparel.slice(0, this.items);
+      return this.apparel
+        .slice(0, this.items)
+        .map(item => Object.assign(item, {
+          id: item.baseId,
+          equipped: (Math.floor(Math.random() * 10)) === 0,
+        }));
     },
     activeApparel() {
       return apparel.filter(piece => piece.baseId === this.activeId)[0];
@@ -71,7 +92,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .page {
   display: flex;
   flex-direction: row;
@@ -80,6 +101,21 @@ export default {
 .scroll-wrapper {
   order: 0;
 }
+.apparel {
+  text-align: left;
+  width: 100%;
+}
+.apparel-svg {
+  stroke-width: 1vmin;
+  max-width: 1em;
+  max-height: 1em;
+}
+.apparel:before {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+}
+
 .details {
   order: 2;
   width: 30vmin;

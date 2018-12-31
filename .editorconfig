@@ -8,3 +8,9 @@ max_line_length = 100
 
 [.nowignore]
 insert_final_newline = false
+
+[*.svg]
+insert_final_newline = false
+indent_style = tab
+indent_size = 2
+end_of_line = lf

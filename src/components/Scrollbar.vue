@@ -15,8 +15,25 @@
     </div>
     <div class="scrollable" ref="element">
       <ul ref="list" class="list" :class="contentClass">
-        <li v-for="item in items" :key="item.id">
-          <slot v-bind="item"></slot>
+        <li
+          v-for="item in items" :key="item.id"
+          :class="{ equipped: item.equipped, active: item.id === selected }"
+          @mouseover="select(item.id)"
+          @click="equip(item.id, !item.equipped)"
+          @keypress.enter="equip(item.id, !item.equipped)"
+        >
+          <!-- the text -->
+          <div class="label">
+            <slot v-bind="item"></slot>
+          </div>
+          <!-- the selected/mouseover element -->
+          <div v-if="item.id === selected" class="img active">
+            <slot name="active" />
+          </div>
+          <!-- the equipped element -->
+          <div v-else-if="item.equipped" class="img equipped">
+            <slot name="equipped"  />
+          </div>
         </li>
       </ul>
     </div>
@@ -32,6 +49,16 @@ export default {
     items: {
       type: Array,
     },
+    selected: {
+      default() {
+        return this.items[0].id;
+      },
+      type: String,
+    },
+  },
+  model: {
+    prop: 'selected',
+    event: 'select',
   },
   data() {
     return {
@@ -143,6 +170,12 @@ export default {
     },
   },
   methods: {
+    select(id) {
+      this.$emit('select', id);
+    },
+    equip(id, flag) {
+      this.$emit(flag ? 'equip' : 'unequip', id);
+    },
     /**
      * 'scroll' event handler. Calls onScrollFrame(), debounced.
      */
@@ -367,6 +400,18 @@ $bar-width: 1vmin;
     background-image: -moz-linear-gradient(to top, transparent, var(--color-front));
     background-image: -o-linear-gradient(to top, transparent, var(--color-front));
     background-image: linear-gradient(to top, transparent, var(--color-front));
+  }
+}
+.list {
+  text-align: left;
+
+  li {
+    width: 100%;
+    display: flex;
+
+    .img {
+      order: 2;
+    }
   }
 }
 
