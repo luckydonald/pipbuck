@@ -88,6 +88,18 @@ export default {
       return '--';
     },
   },
+  methods: {
+    toogleEquip(id, flag) {
+      console.log('sending equip action', id, flag);
+      this.itemSelection.filter(item => item.id === id)[0].equipped = flag;
+    },
+    onEquip(id) {
+      this.toogleEquip(id, true);
+    },
+    onUnEquip(id) {
+      this.toogleEquip(id, false);
+    },
+  },
 };
 </script>
 
