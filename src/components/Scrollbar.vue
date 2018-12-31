@@ -520,7 +520,7 @@ $bar-width: 1vmin;
       }
     }
     li.active {
-      border: var(--color-front) 1vmin solid;
+      border-color: inherit;
     }
   }
 }
