@@ -5,6 +5,8 @@
       content-class=""
       scrollbar-class="scroll"
       :items="itemSelection"
+      @equip.capture="onEquip"
+      @unequip.passive="onUnEquip"
       v-model="activeId"
     >
       <template slot-scope="apparel">
@@ -13,9 +15,7 @@
           :class="{
             equipped: activeId === apparel.baseId
           }"
-        ><!-- TODO @click="selectItem(apparel.baseId)"
-          @mouseover="selectItem(apparel.baseId)"
-        -->
+        >
           {{ apparel.name }}
           <span v-if="apparel.amount > 1"> ({{apparel.amount}})</span>
         </a>
@@ -77,6 +77,18 @@ export default {
      */
     activeItem() {
       return apparel.filter(piece => piece.baseId === this.activeId)[0];
+    },
+  },
+  methods: {
+    toogleEquip(id, flag) {
+      console.log('sending equip action', id, flag);
+      this.itemSelection.filter(item => item.id === id)[0].equipped = flag;
+    },
+    onEquip(id) {
+      this.toogleEquip(id, true);
+    },
+    onUnEquip(id) {
+      this.toogleEquip(id, false);
     },
   },
 };

@@ -221,16 +221,16 @@ export default {
   },
   methods: {
     select(id) {
-      console.log('SelectSound', ui.sounds.select, id);
+      this.$emit('select', id);
+      console.log('SelectSound', ui.sounds.select, id, this.$listeners);
       ui.audio.play(ui.sounds.select);
       // this.$emit('pipbuck-play', ui.sounds.select);
-      this.$emit('select', id);
     },
     equip(id, flag) {
-      console.log('equipppsound', ui.sounds.select, id, flag, { lel: ui.sounds.select });
+      this.$emit(flag ? 'equip' : 'unequip', id);
+      console.log('equipppsound', flag ? 'equip' : 'unequip', ui.sounds.select, id, flag, { lel: ui.sounds.select });
       ui.audio.play(ui.sounds.select);
       // this.$emit('pipbuck-play', ui.sounds.select);
-      this.$emit(flag ? 'equip' : 'unequip', id);
     },
     /**
      * 'scroll' event handler. Calls onScrollFrame(), debounced.
