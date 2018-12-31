@@ -5,18 +5,15 @@
         <div class="edge left down" />
         <div class="hr left" />
         <a class="title">items</a>
+        <div class="hr middle" />
+        <div class="grouping">
+          <div class="stat">Wg 118/230</div>
+          <div class="stat">HP 290/290</div>
+          <div class="stat">DR 24</div>
+          <div class="stat">Caps 654</div>
+        </div>
         <div class="hr right" />
         <div class="edge right down" />
-      </div>
-      <div class="row">
-        <div class="stat">Wg 118/230</div>
-          <div class="hr" />
-          <div class="stat">HP 290/290</div>
-          <div class="hr" />
-          <div class="stat">DR 24</div>
-          <div class="hr" />
-          <div class="stat">Caps 654</div>
-          <div class="hr" />
       </div>
     </div>
     <div id="nav" class="nav">
@@ -94,29 +91,34 @@ export default {
   //height: 3em;
   //background-color: hotpink;
 
-  .row {
-    width: 100%;
-   justify-content: flex-start;
-  }
-  .row:nth-child(1) {  // title
-    justify-content: flex-start;
+  width: 100%;
+  justify-content: flex-start;
 
-    .hr.left {
-      flex-grow: 1;
-      flex-shrink: 1;
-      max-width: 7.5vmin;
-    }
-    .hr.right {
-      flex-grow: 2;
-      flex-shrink: 0;
-    }
+  .hr.left {
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 7.5vmin;
   }
-  .row:nth-child(2) {  // stats
-    padding-left: 5vmin;
-    padding-right: 5vmin;
+  .hr.middle {
+    flex-grow: 3;
+    flex-shrink: 2;
+  }
+  .hr.right {
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 7.5vmin;
+  }
+  .grouping {  // stats
+    flex-shrink: 4;
+    flex-grow: 1;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+
     .stat {
       flex-shrink: 1;
-      flex-grow: 1;
+      white-space: nowrap;
     }
   }
 }
@@ -154,6 +156,12 @@ export default {
   border-right-width: .75vmin;
   border-right-style: solid;
   border-right-color: transparent;
+  &:first-child {
+    border-left-width: .75vmin;
+    border-left-style: solid;
+    border-left-color: transparent;
+    margin-left: 0;
+  }
   -webkit-border-image: -webkit-gradient(
       linear, 0 0, 0 100%, from(var(--color-front)), to(rgba(0, 0, 0, 0))
   ) 1 100%;
