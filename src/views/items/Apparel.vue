@@ -20,6 +20,7 @@
           <span v-if="apparel.amount > 1"> ({{apparel.amount}})</span>
         </a>
       </template>
+      <!--
       <template slot="active" slot-scope="apparel" :id="`active-${apparel.id}`">
         <svg-list-box class="apparel-svg" :style="{
         fill: 'hotpink',
@@ -32,6 +33,7 @@
         stroke: 'hotpink',
         }" />
       </template>
+      -->
     </scrollbar>
     <div class="details">
       <div class="row">
@@ -60,13 +62,11 @@
 import apparel from '../../data/apparel';
 // import { ui } from '../../sound';
 import Scrollbar from '../../components/Scrollbar.vue';
-import SvgListBox from '../../assets/img/ui/list/list-fo3-box.svg';
 
 export default {
   name: 'Apparel',
   components: {
     Scrollbar,
-    SvgListBox,
   },
   data() {
     return {

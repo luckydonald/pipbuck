@@ -1,5 +1,5 @@
 <template>
-  <div class="all-the-stuff">
+  <div class="all-the-stuff" :class="{ [`theme-${theme}`]: true }">
     <div class="bar-and-buttons" :class="scrollbarClass">
       <div class="button up" v-show="needScrollbar"/>
       <div class="button down" v-show="needScrollbar"/>
@@ -28,12 +28,24 @@
           </div>
           <!-- the selected/mouseover element -->
           <div v-if="item.id === selected" class="img active">
-            <slot name="active" />
+            <slot name="active">
+              <svg-list-box v-if="theme === 'fo3'" :style="{
+                fill: 'var(--color-front)',
+                stroke: 'var(--color-front)',
+              }" />
+            </slot>
           </div>
           <!-- the equipped element -->
           <div v-else-if="item.equipped" class="img equipped">
-            <slot name="equipped"  />
+            <slot name="equipped">
+              <svg-list-box v-if="theme === 'fo3'" :style="{
+                fill: 'transparent',
+                stroke: 'var(--color-front)',
+              }" />
+            </slot>
           </div>
+          <!-- equally sized placeholder if no svg was found-->
+          <div v-else class="img placeholder"></div>
         </li>
       </ul>
     </div>
@@ -41,9 +53,16 @@
 </template>
 
 <script>
+import SvgListBox from '../assets/img/ui/list/list-fo3-box.svg';
+
 export default {
   name: 'Scrollbar',
+  components: { SvgListBox },
   props: {
+    theme: {
+      default: 'fo3',
+      type: String,
+    },
     contentClass: {},
     scrollbarClass: {},
     items: {
@@ -408,11 +427,29 @@ $bar-width: 1vmin;
   li {
     width: 100%;
     display: flex;
+    flex-direction: row;
+
+    .label {
+      order: 1;
+    }
 
     .img {
-      order: 2;
+      order: 0;
+
+      > svg {
+        max-width: 2.5vmin;
+        max-height: 2.5vmin;
+        stroke-width: 2vmin;
+      }
+      &.placeholder {
+        width: 2.5vmin;
+        height: 2.5vmin;
+      }
     }
   }
+}
+
+.theme-fo3 {
 }
 
 </style>
