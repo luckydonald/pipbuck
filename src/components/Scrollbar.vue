@@ -13,49 +13,51 @@
         />
       </div>
     </div>
-    <div class="scrollable" ref="element">
-      <ul ref="list" class="list" :class="contentClass">
-        <li
-          v-for="item in items" :key="item.id"
-          :class="{ equipped: item.equipped, active: item.id === selected }"
-          @mouseover="select(item.id)"
-          @click="equip(item.id, !item.equipped)"
-          @keypress.enter="equip(item.id, !item.equipped)"
-        >
-          <!-- the text -->
-          <div class="label">
-            <slot v-bind="item"></slot>
-          </div>
-          <!-- the selected/mouseover element -->
-          <div v-show="item.id === selected" class="img active">
-            <slot name="active">
-              <svg-list-box v-if="theme === 'fo3'" :style="{
-                fill: 'var(--color-front)',
-                stroke: 'var(--color-front)',
-              }" preserveAspectRatio="xMidYMid meet" />
-              <svg-list-arrow v-if="theme === 'foe'" :style="{
-                fill: 'var(--color-front)',
-                stroke: 'var(--color-front)',
-              }" preserveAspectRatio="xMidYMid meet" />
-            </slot>
-          </div>
-          <!-- the equipped element -->
-          <div v-show="item.id !== selected && item.equipped" class="img equipped">
-            <slot name="equipped">
-              <svg-list-box v-if="theme === 'fo3'" :style="{
-                fill: 'transparent',
-                stroke: 'var(--color-front)',
-              }" preserveAspectRatio="xMidYMid meet" />
-              <svg-list-arrow v-if="theme === 'foe'" :style="{
-                fill: 'transparent',
-                stroke: 'var(--color-front)',
-              }" preserveAspectRatio="xMidYMid meet" />
-            </slot>
-          </div>
-          <!-- equally sized placeholder if no svg was found-->
-          <div v-show="item.id !== selected && !item.equipped" class="img placeholder" />
-        </li>
-      </ul>
+    <div class="hide-scroll"><!-- https://stackoverflow.com/a/23771140/3423324 -->
+      <div class="scrollable" ref="element">
+        <ul ref="list" class="list" :class="contentClass">
+          <li
+            v-for="item in items" :key="item.id"
+            :class="{ equipped: item.equipped, active: item.id === selected }"
+            @mouseover="select(item.id)"
+            @click="equip(item.id, !item.equipped)"
+            @keypress.enter="equip(item.id, !item.equipped)"
+          >
+            <!-- the text -->
+            <div class="label">
+              <slot v-bind="item"></slot>
+            </div>
+            <!-- the selected/mouseover element -->
+            <div v-show="item.id === selected" class="img active">
+              <slot name="active">
+                <svg-list-box v-if="theme === 'fo3'" :style="{
+                  fill: 'var(--color-front)',
+                  stroke: 'var(--color-front)',
+                }" preserveAspectRatio="xMidYMid meet" />
+                <svg-list-arrow v-if="theme === 'foe'" :style="{
+                  fill: 'var(--color-front)',
+                  stroke: 'var(--color-front)',
+                }" preserveAspectRatio="xMidYMid meet" />
+              </slot>
+            </div>
+            <!-- the equipped element -->
+            <div v-show="item.id !== selected && item.equipped" class="img equipped">
+              <slot name="equipped">
+                <svg-list-box v-if="theme === 'fo3'" :style="{
+                  fill: 'transparent',
+                  stroke: 'var(--color-front)',
+                }" preserveAspectRatio="xMidYMid meet" />
+                <svg-list-arrow v-if="theme === 'foe'" :style="{
+                  fill: 'transparent',
+                  stroke: 'var(--color-front)',
+                }" preserveAspectRatio="xMidYMid meet" />
+              </slot>
+            </div>
+            <!-- equally sized placeholder if no svg was found-->
+            <div v-show="item.id !== selected && !item.equipped" class="img placeholder" />
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -347,15 +349,35 @@ $bar-width: 1vmin;
     display: flex;
     flex-direction: column;
   }
-  .scrollable {
+  .hide-scroll {
     order: 1;
-
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+  }
+  .scrollable {
+    /* Pick an arbitrary margin/padding that should be bigger
+     * than the max width of all the scroll bars across
+     * the devices you are targeting.
+     * padding = -margin
+     */
+    height: 100%;
+    margin-right: -20%;
+    padding-right: 20%;
+
+    width: auto;
+
+    position: relative;
+    scroll-behavior: smooth;
     overflow-x: hidden;
     overflow-y: scroll;
-    scroll-behavior: smooth;
+    // try to hide the scrollbar
+    // https://stackoverflow.com/a/13184693/3423324#hiding-the-scrollbar
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+      display: none
+    }
   }
 }
 .all-the-stuff .bar-and-buttons .button {
