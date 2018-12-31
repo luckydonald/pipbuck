@@ -10,12 +10,7 @@
       v-model="activeId"
     >
       <template slot-scope="apparel">
-        <a
-          class="apparel"
-          :class="{
-            equipped: activeId === apparel.baseId
-          }"
-        >
+        <a class="apparel">
           {{ apparel.name }}
           <span v-if="apparel.amount > 1"> ({{apparel.amount}})</span>
         </a>
@@ -28,21 +23,33 @@
       </div>
       <div class="row">
         <div class="detail damage">
-          <div class="label">DAM</div>
-          <div class="value">{{activeItem['Damage per shot']}}</div>
+          <div class="label">DR</div>
+          <div class="value">{{activeItem['DR']}}</div>
         </div>
         <div class="detail weight">
           <div class="label">WG</div>
-          <div class="value">{{activeItem['Apparel weight']}}</div>
+          <div class="value">{{activeItem['Weight']}}</div>
         </div>
         <div class="detail value">
           <div class="label">VAL</div>
-          <div class="value">{{activeItem['Apparel value in caps']}}</div>
+          <div class="value">{{activeItem['Value']}}</div>
         </div>
       </div>
       <div class="row">
         <div class="detail condition">CND [####]</div>
-        <!--<div class="detail ammunition">{{ammunitionText}}</div>-->
+        <div class="detail blank" />
+        <div class="detail blank" />
+      </div>
+      <div class="row">
+        <div class="detail effect" v-show="hasEffect">
+          {{activeItem['Effects']}}
+        </div>
+        <div class="detail blank" v-show="!hasEffect">
+          &nbsp;
+        </div>
+      </div>
+      <div class="image">
+        <svg-unknown :style="{ fill: 'var(--color-front)' }"/>
       </div>
     </div>
   </div>
@@ -77,6 +84,9 @@ export default {
      */
     activeItem() {
       return apparel.filter(piece => piece.baseId === this.activeId)[0];
+    },
+    hasEffect() {
+      return (this.activeItem.Effects || '—') !== '—';
     },
   },
   methods: {
@@ -115,7 +125,7 @@ export default {
   flex-grow: 0;
   flex-shrink: 0;
   width: 70vmin;
-  padding-bottom: 20vmin;
+  padding-top: -10%;
   // right: 2vmin;
 
   display: flex;
@@ -124,33 +134,39 @@ export default {
   align-content: flex-end;
   justify-content: flex-end;
 
-  .image > svg {
-    max-height: 20vmin;
+  .image {
+    order: 0;
+    padding: 10vmin;
+    top:10vmin;
+    flex-shrink: 2;
+    box-sizing: border-box;
+    > svg {
+      box-sizing: border-box;
+    }
   }
 
   .row{
+    order: 1;
     display: flex;
     flex-direction: row;
     width: 100%;
   }
 
   .detail {
-    padding-bottom: 20vmin;
     padding: 0.5vmin 1vmin;
-
+    white-space: nowrap;
     width: (100% / 3);
-
     margin-left: 1.2vmin;
-    flex-grow: 1;
 
     display: block;
+    flex-grow: 1;
     justify-content: space-between;
 
     // right border is fading
     border-right-width: .75vmin;
     border-right-style: solid;
     border-right-color: transparent;
-     -webkit-border-image: -webkit-gradient(
+    -webkit-border-image: -webkit-gradient(
         linear, 0 0, 0 100%, from(var(--color-front)), to(rgba(0, 0, 0, 0))
     ) 1 100%;
     border-image: linear-gradient(
@@ -172,6 +188,13 @@ export default {
 
     &.ammunition {
       flex-grow: 2;
+    }
+    &.blank {
+      border-right-color: transparent;
+      border-image: none;
+      &:after {
+        background-color: transparent;
+      }
     }
   }
   .label, .value {

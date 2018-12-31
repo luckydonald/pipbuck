@@ -5,6 +5,8 @@
       content-class=""
       scrollbar-class="scroll"
       :items="itemSelection"
+      @equip.capture="onEquip"
+      @unequip.passive="onUnEquip"
       v-model="activeId"
     >
       <template slot-scope="weapon">
@@ -36,6 +38,9 @@
       <div class="row">
         <div class="detail condition">CND [####]</div>
         <div class="detail ammunition">{{ammunitionText}}</div>
+      </div>
+      <div class="image">
+        <svg-unknown :style="{ fill: 'var(--color-front)' }"/>
       </div>
     </div>
   </div>
@@ -107,7 +112,8 @@ export default {
   flex-grow: 0;
   flex-shrink: 0;
   width: 70vmin;
-  padding-bottom: 20vmin;
+  padding-top: -10%;
+  padding-bottom: 10%;
   // right: 2vmin;
 
   display: flex;
@@ -116,26 +122,32 @@ export default {
   align-content: flex-end;
   justify-content: flex-end;
 
-  .image > svg {
-    max-height: 20vmin;
+  .image {
+    order: 0;
+    padding: 10vmin;
+    top:10vmin;
+    flex-shrink: 2;
+    box-sizing: border-box;
+    > svg {
+      box-sizing: border-box;
+    }
   }
 
   .row{
+    order: 1;
     display: flex;
     flex-direction: row;
     width: 100%;
   }
 
   .detail {
-    padding-bottom: 20vmin;
     padding: 0.5vmin 1vmin;
-
+    white-space: nowrap;
     width: (100% / 3);
-
     margin-left: 1.2vmin;
-    flex-grow: 1;
 
     display: block;
+    flex-grow: 1;
     justify-content: space-between;
 
     // right border is fading
@@ -164,6 +176,13 @@ export default {
 
     &.ammunition {
       flex-grow: 2;
+    }
+    &.blank {
+      border-right-color: transparent;
+      border-image: none;
+      &:after {
+        background-color: transparent;
+      }
     }
   }
   .label, .value {
