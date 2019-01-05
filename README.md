@@ -115,3 +115,8 @@ https://www.deviantart.com/king-koder/art/ATG-Day1-Reflection-497883053
 SVG version by EM120X:
 https://www.deviantart.com/em120x/art/Littlepip-king-koder-style-vector-499037570
 https://sta.sh/0zk8ver1zys
+
+
+###### Fallout 4 Demodata
+Seems to be the demo mode data extracted from the Fallout 4 companion app.
+https://raw.githubusercontent.com/NimVek/pipboy/1087a1c820fae6265fbce2a614e62e85cd146442/DemoMode.json

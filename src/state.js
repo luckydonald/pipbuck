@@ -2,6 +2,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { hsl } from './lib/colorspace';
+import demodata from './data/demomode.json';
 
 Vue.use(Vuex);
 
@@ -92,6 +93,9 @@ const radio = {
   },
 };
 
+const game = {
+  state: demodata,
+};
 
 const store = new Vuex.Store({
   debug: process.env.NODE_ENV !== 'production',
@@ -99,6 +103,10 @@ const store = new Vuex.Store({
   modules: {
     radio: {
       ...radio,
+      namespaced: true,
+    },
+    game: {
+      ...game,
       namespaced: true,
     },
   },
