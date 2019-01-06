@@ -22,7 +22,7 @@
       <div class="image">
         <svg-unknown :style="{ fill: 'var(--color-front)' }"/>
       </div>
-      <slot is="div" class="row">Data would be here.</slot>
+      <slot name="rows" is="div">Data would be here.</slot>
     </div>
   </div>
 </template>
