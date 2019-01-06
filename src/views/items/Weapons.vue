@@ -4,15 +4,15 @@
       <div class="row">
         <div class="detail damage">
           <div class="label">DAM</div>
-          <div class="value">{{activeItem['Damage per shot']}}</div>
+          <div class="value">{{ activeItem['Damage per shot'] }}</div>
         </div>
         <div class="detail weight">
           <div class="label">WG</div>
-          <div class="value">{{activeItem['Weapon weight']}}</div>
+          <div class="value">{{ activeItem['Weapon weight'] }}</div>
         </div>
         <div class="detail value">
           <div class="label">VAL</div>
-          <div class="value">{{activeItem['Weapon value in caps']}}</div>
+          <div class="value">{{ activeItem['Weapon value in caps'] }}</div>
         </div>
       </div>
       <div class="row">

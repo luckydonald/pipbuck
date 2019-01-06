@@ -18,7 +18,7 @@ export default [
     baseId: '000207f7',
   },
   {
-    name: '.44 round, Magnum',
+    name: '.44',
     long: '.44 round, Magnum',
     value: 2,
     'Weapons using this ammunition': "Scoped .44 Magnum  Mysterious Stranger's .44 Magnum   Blackhawk  Lincoln's repeater  Callahan's Magnum   Paulson's revolver",
@@ -34,7 +34,7 @@ export default [
     baseId: '00004241',
   },
   {
-    name: 'shotgun shell',
+    name: 'Shell',
     long: '12 gauge shotgun shell',
     value: 2,
     'Weapons using this ammunition': "Pa's Fishing Aid    Double-barrel shotgun   Sawed-off shotgun  Combat shotgun  The Kneecapper  The Terrible Shotgun",
@@ -96,7 +96,7 @@ export default [
     baseId: '0006b53e',
   },
   {
-    name: 'SEC',
+    name: 'E Cell',
     long: 'Energy cell',
     value: 2,
     'Weapons using this ammunition': "Laser pistol  Smuggler's End  Protectron's Gaze  Plasma pistol  Colonel Autumn's laser pistol  MPLX Novasurge",
@@ -112,7 +112,7 @@ export default [
     baseId: '00029371',
   },
   {
-    name: 'Mesmetron power cell',
+    name: 'Mez power cell',
     long: 'Mesmetron power cell',
     value: 10,
     'Weapons using this ammunition': 'Mesmetron',
@@ -120,7 +120,7 @@ export default [
     baseId: '0006a80d',
   },
   {
-    name: 'MFC',
+    name: 'MF Cell',
     long: 'Microfusion cell',
     value: 3,
     'Weapons using this ammunition': "Laser rifle  Wazer Wifle  Plasma rifle  A3-21's plasma rifle  Scoped Gauss rifle   Tri-beam laser rifle   Microwave emitter   Metal Blaster",
