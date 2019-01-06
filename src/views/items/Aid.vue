@@ -68,15 +68,15 @@ export default {
     },
   },
   methods: {
-    toogleEquip(id, flag) {
+    toggleEquip(id, flag) {
       console.log('sending equip action', id, flag);
       this.itemSelection.filter(item => item.id === id)[0].equipped = flag;
     },
     onEquip(id) {
-      this.toogleEquip(id, true);
+      this.toggleEquip(id, true);
     },
     onUnEquip(id) {
-      this.toogleEquip(id, false);
+      this.toggleEquip(id, false);
     },
   },
 };
