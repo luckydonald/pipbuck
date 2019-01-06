@@ -7,7 +7,7 @@
       :items="itemSelection"
       @equip.capture="onEquip"
       @unequip.passive="onUnEquip"
-      v-model="activeId"
+      :selected="activeId"
     >
       <template slot-scope="item">
         <a class="item">
@@ -29,10 +29,17 @@
 <script>
 import Scrollbar from '../../components/Scrollbar.vue';
 import SvgUnknown from '../../assets/img/ui/items/unknown.svg';
+import InventoryMixin from './InventoryMixin';
 
 export default {
   name: 'Inventory',
   components: { Scrollbar, SvgUnknown },
+  mixins: [InventoryMixin],
+  delimiters: ['{{', '}}'],
+  model: {
+    prop: 'activeId',
+    event: 'select',
+  },
   props: {
     items: {
       type: Array,
@@ -42,38 +49,26 @@ export default {
       type: Number,
       default: -1,
     },
-  },
-  data() {
-    const hasItems = (
-      this.items !== undefined
-      && typeof this.items === 'object'
-      && Array.isArray(this.items)
-      && this.items.length > 0
-    );
-    return {
-      activeId: hasItems ? this.items[0].baseId : null,
-    };
+    activeId: {
+      default() {
+        const hasItems = (
+          this.items !== undefined
+          && typeof this.items === 'object'
+          && Array.isArray(this.items)
+          && this.items.length > 0
+        );
+        return hasItems ? this.items[0].baseId : null;
+      },
+    },
   },
   computed: {
-    limitedItems() {
-      if (typeof this.limit === 'number' && this.limit > 0) {
+    itemSelection() {
+      if (typeof this.limit === 'number' && this.limit >= 0) {
         return this.items.slice(0, this.limit);
       }
       return this.items;
     },
-    itemSelection() {
-      return this.limitedItems
-        .map(item => Object.assign(item, {
-          id: item.baseId,
-          equipped: (Math.floor(Math.random() * 10)) === 0,
-        }));
-    },
-    /**
-     * @return {{type: string, name: string, ammunition: string}}
-     */
-    activeItem() {
-      return this.items.filter(piece => piece.baseId === this.activeId)[0];
-    },
+
   },
   methods: {
     toogleEquip(id, flag) {
@@ -85,6 +80,11 @@ export default {
     },
     onUnEquip(id) {
       this.toogleEquip(id, false);
+    },
+  },
+  watch: {
+    activeId(newId) {
+      this.$emit('select', newId);
     },
   },
 };
