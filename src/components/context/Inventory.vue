@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Scrollbar from '../../components/Scrollbar.vue';
+import Scrollbar from './Scrollbar.vue';
 import SvgUnknown from '../../assets/img/ui/items/unknown.svg';
 import InventoryMixin from './InventoryMixin';
 

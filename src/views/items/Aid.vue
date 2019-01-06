@@ -19,14 +19,19 @@
           <div class="value">{{ activeItem.Effect }}</div>
         </div>
       </div>
+     <div class="row">
+        <div class="detail blank">
+          &nbsp;
+        </div>
+      </div>
     </div>
   </inventory>
 </template>
 
 <script>
 import aid from '../../data/aid';
-import Inventory from './Inventory.vue';
-import InventoryMixin from './InventoryMixin';
+import Inventory from '../../components/context/Inventory.vue';
+import InventoryMixin from '../../components/context/InventoryMixin';
 
 export default {
   name: 'Aid',
@@ -41,7 +46,7 @@ export default {
     );
     return {
       aid,
-      limit: 70,
+      limit: -1,
       activeId: hasItems ? aid[0].baseId : null,
     };
   },

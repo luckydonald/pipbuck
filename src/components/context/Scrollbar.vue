@@ -63,9 +63,9 @@
 </template>
 
 <script>
-import { ui } from '../sound';
-import SvgListBox from '../assets/img/ui/list/list-fo3-box.svg';
-import SvgListArrow from '../assets/img/ui/list/list-foe-arrow.svg';
+import { ui } from '../../sound';
+import SvgListBox from '../../assets/img/ui/list/list-fo3-box.svg';
+import SvgListArrow from '../../assets/img/ui/list/list-foe-arrow.svg';
 
 export default {
   name: 'Scrollbar',
