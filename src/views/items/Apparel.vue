@@ -16,7 +16,10 @@
         </div>
       </div>
       <div class="row">
-        <div class="detail condition">CND [####]</div>
+        <div class="detail condition">
+          <div class="label">CND</div>
+          <div class="value percentage"><percent class="percent" :value="condition"/></div>
+        </div>
         <div class="detail blank" />
         <div class="detail blank" />
       </div>
@@ -36,10 +39,11 @@
 import apparel from '../../data/apparel';
 import Inventory from '../../components/context/Inventory.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
+import Percent from '../../components/Percent.vue';
 
 export default {
   name: 'Apparel',
-  components: { Inventory },
+  components: { Inventory, Percent },
   mixins: [InventoryMixin],
   data() {
     const hasItems = (
@@ -52,6 +56,7 @@ export default {
       apparel,
       limit: -1,
       activeId: hasItems ? apparel[0].baseId : null,
+      condition: 0.75,
     };
   },
   computed: {

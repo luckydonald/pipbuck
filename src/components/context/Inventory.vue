@@ -192,6 +192,17 @@ export default {
     > .value {
       display: inline;
     }
+    > .value.percentage {
+      width: 100%;
+      height: 100%;
+      padding-left: 2vmin;
+      display: flex;
+      & > .bar {
+        height: 3.5vmin;
+        width: 100%;
+        align-self: center;
+      }
+    }
   }
 }
 </style>
