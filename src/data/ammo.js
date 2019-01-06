@@ -74,9 +74,10 @@ export default [
   },
   {
     name: 'BBs',
-    category: 'Small Guns',
+    long: 'BBs',
     value: 1,
     'Weapons using this ammunition': "B.B. gun  Black Bart's Bane",
+    category: 'Small Guns',
     baseId: '0002935b',
   },
   {
@@ -105,7 +106,7 @@ export default [
   },
   {
     name: 'Flamer fuel',
-    ling: 'Flamer fuel',
+    long: 'Flamer fuel',
     value: 1,
     'Weapons using this ammunition': 'Flamer  Burnmaster  Heavy incinerator   Rapid-torch flamer   Slo-burn flamer',
     category: 'Big Guns',
