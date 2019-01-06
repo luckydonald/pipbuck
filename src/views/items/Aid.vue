@@ -1,80 +1,71 @@
 <template>
-  <div class="page">
-    <scrollbar
-      class="scroll-wrapper"
-      content-class=""
-      scrollbar-class="scroll"
-      :items="itemSelection"
-      @equip.capture="onEquip"
-      @unequip.passive="onUnEquip"
-      :selected="activeId"
-      @select="$emit('select', $event)"
-    >
-      <template slot-scope="item">
-        <a class="item">
-          {{ item.name }}
-          <span v-if="item.amount > 1"> ({{item.amount}})</span>
-        </a>
-      </template>
-    </scrollbar>
-
-    <div class="details">
-      <div class="image">
-        <svg-unknown :style="{ fill: 'var(--color-front)' }"/>
+  <inventory :items="items" :limit="limit" v-model="activeId">
+    <template slot="row" v-if="activeItem">
+      <div class="detail damage">
+        <div class="label">DAM</div>
+        <div class="value">{{activeItem['Damage per shot']}}</div>
       </div>
-      <slot is="div" class="row">Data would be here.</slot>
-    </div>
-  </div>
+      <div class="detail weight">
+        <div class="label">WG</div>
+        <div class="value">{{activeItem['Weapon weight']}}</div>
+      </div>
+      <div class="detail value">
+        <div class="label">VAL</div>
+        <div class="value">{{activeItem['Weapon value in caps']}}</div>
+      </div>
+    </template>
+    <template slot="row" v-if="activeItem">
+      <div class="detail condition">CND [####]</div>
+      <div class="detail ammunition">{{ ammunitionText }}</div>
+    </template>
+  </inventory>
 </template>
 
 <script>
-import Scrollbar from '../../components/Scrollbar.vue';
-import SvgUnknown from '../../assets/img/ui/items/unknown.svg';
+import aid from '../../data/aid';
+import Inventory from './Inventory.vue';
 import InventoryMixin from './InventoryMixin';
 
 export default {
-  name: 'Inventory',
-  components: { Scrollbar, SvgUnknown },
+  name: 'Aid',
+  components: { Inventory },
   mixins: [InventoryMixin],
-  delimiters: ['{{', '}}'],
-  model: {
-    prop: 'activeId',
-    event: 'select',
-  },
-  props: {
-    items: {
-      type: Array,
-      default: () => [],
-    },
-    limit: {
-      type: Number,
-      default: -1,
-    },
-    activeId: {
-      default() {
-        const hasItems = (
-          this.items !== undefined
-          && typeof this.items === 'object'
-          && Array.isArray(this.items)
-          && this.items.length > 0
-        );
-        return hasItems ? this.items[0].baseId : null;
-      },
-    },
-  },
   data() {
+    const hasItems = (
+      aid !== undefined
+      && typeof aid === 'object'
+      && Array.isArray(aid)
+      && aid.length > 0
+    );
     return {
-      console,
+      aid,
+      limit: 70,
+      activeId: hasItems ? aid[0].baseId : null,
     };
   },
   computed: {
-    itemSelection() {
-      if (typeof this.limit === 'number' && this.limit >= 0) {
-        return this.items.slice(0, this.limit);
-      }
-      return this.items;
+    items() {
+      return this.aid
+        .map(item => Object.assign(item, {
+          id: item.baseId,
+          equipped: (Math.floor(Math.random() * 10)) === 0,
+        }));
     },
-
+    /**
+     * @return {{type: string, name: string, ammunition: string}}
+     */
+    ammunitionText() {
+      if (
+        this.activeItem
+        && Object.keys(this.activeItem).indexOf('Ammunition used')
+        && this.activeItem['Ammunition used']
+      ) {
+        const type = this.activeItem['Ammunition used'];
+        const capacity = this.activeItem['Magazine capacity (shots per reload)'];
+        return `${type} (1/${capacity})`;
+      }
+      return '--';
+    },
   },
   methods: {
     toogleEquip(id, flag) {
@@ -86,11 +77,6 @@ export default {
     },
     onUnEquip(id) {
       this.toogleEquip(id, false);
-    },
-  },
-  watch: {
-    activeId(newId) {
-      this.$emit('select', newId);
     },
   },
 };
@@ -118,6 +104,7 @@ export default {
   flex-shrink: 0;
   width: 70vmin;
   padding-top: -10%;
+  padding-bottom: 10%;
   // right: 2vmin;
 
   display: flex;
@@ -158,7 +145,7 @@ export default {
     border-right-width: .75vmin;
     border-right-style: solid;
     border-right-color: transparent;
-    -webkit-border-image: -webkit-gradient(
+     -webkit-border-image: -webkit-gradient(
         linear, 0 0, 0 100%, from(var(--color-front)), to(rgba(0, 0, 0, 0))
     ) 1 100%;
     border-image: linear-gradient(

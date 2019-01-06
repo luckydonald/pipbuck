@@ -4,7 +4,13 @@ export default {
      * @return {{type: string, name: string, ammunition: string}}
      */
     activeItem() {
-      return this.items.filter(piece => piece.baseId === this.activeId)[0];
+      console.log('activeItem', this);
+      console.log('activeItem', this.activeId, this.items);
+      const result = this.items.filter(piece => piece.id === this.activeId)[0];
+      if (result === undefined) {
+        return null;
+      }
+      return result;
     },
   },
 };

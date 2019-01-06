@@ -86,7 +86,7 @@ export default new Router({
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "main" */ './views/items/Weapons.vue'),
+          component: () => import(/* webpackChunkName: "items" */ './views/items/Weapons.vue'),
           // component: Weapons,
         },
         {
@@ -95,13 +95,17 @@ export default new Router({
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "main" */ './views/items/Apparel.vue'),
+          component: () => import(/* webpackChunkName: "items" */ './views/items/Apparel.vue'),
           // component: Apparel,
         },
         {
           path: '/items/aid',
           name: 'Aid',
-          component: Placeholder,
+          // route level code-splitting
+          // this generates a separate chunk (about.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import(/* webpackChunkName: "items" */ './views/items/Aid.vue'),
+          // component: Aid,
         },
         {
           path: '/items/misc',
