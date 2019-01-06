@@ -101,7 +101,13 @@ export default {
     },
     selected: {
       default() {
-        return this.items[0].id;
+        const hasItems = (
+          this.items !== undefined
+          && typeof this.items === 'object'
+          && Array.isArray(this.items)
+          && this.items.length > 0
+        );
+        return hasItems ? this.items[0].id : null;
       },
       type: String,
     },
