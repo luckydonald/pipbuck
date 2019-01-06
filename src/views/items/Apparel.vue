@@ -4,15 +4,15 @@
       <div class="row">
         <div class="detail damage">
           <div class="label">DR</div>
-          <div class="value">{{activeItem['DR']}}</div>
+          <div class="value">{{ activeItem['DR'] }}</div>
         </div>
         <div class="detail weight">
           <div class="label">WG</div>
-          <div class="value">{{activeItem['Weight']}}</div>
+          <div class="value">{{ activeItem.weight }}</div>
         </div>
         <div class="detail value">
           <div class="label">VAL</div>
-          <div class="value">{{activeItem['Value']}}</div>
+          <div class="value">{{ activeItem.value }}</div>
         </div>
       </div>
       <div class="row">
@@ -69,7 +69,9 @@ export default {
   methods: {
     toggleEquip(id, flag) {
       console.log('sending equip action', id, flag);
-      this.itemSelection.filter(item => item.id === id)[0].equipped = flag;
+      const selectedItem = apparel.filter(item => item.baseId === id)[0];
+      const index = apparel.indexOf(selectedItem);
+      this.$set(apparel[index], 'equipped', flag);
     },
     onEquip(id) {
       this.toggleEquip(id, true);

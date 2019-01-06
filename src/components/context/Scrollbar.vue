@@ -28,27 +28,27 @@
               <slot v-bind="item"></slot>
             </div>
             <!-- the selected/mouseover element -->
-            <div v-show="item.id === selected" class="img active">
+            <div v-show="item.id === selected && !item.equipped" class="img active">
               <slot name="active">
                 <svg-list-box v-if="theme === 'fo3'" :style="{
-                  fill: 'var(--color-front)',
+                  fill: 'transparent',
                   stroke: 'var(--color-front)',
                 }" preserveAspectRatio="xMidYMid meet" />
                 <svg-list-arrow v-if="theme === 'foe'" :style="{
-                  fill: 'var(--color-front)',
+                  fill: 'transparent',
                   stroke: 'var(--color-front)',
                 }" preserveAspectRatio="xMidYMid meet" />
               </slot>
             </div>
             <!-- the equipped element -->
-            <div v-show="item.id !== selected && item.equipped" class="img equipped">
+            <div v-show="item.equipped" class="img equipped">
               <slot name="equipped">
                 <svg-list-box v-if="theme === 'fo3'" :style="{
-                  fill: 'transparent',
+                  fill: 'var(--color-front)',
                   stroke: 'var(--color-front)',
                 }" preserveAspectRatio="xMidYMid meet" />
                 <svg-list-arrow v-if="theme === 'foe'" :style="{
-                  fill: 'transparent',
+                  fill: 'var(--color-front)',
                   stroke: 'var(--color-front)',
                 }" preserveAspectRatio="xMidYMid meet" />
               </slot>

@@ -150,7 +150,7 @@ export default {
     width: (100% / 3);
     margin-left: 1.2vmin;
 
-    display: block;
+    display: flex;
     flex-grow: 1;
     justify-content: space-between;
 
@@ -188,9 +188,10 @@ export default {
         background-color: transparent;
       }
     }
-  }
-  .label, .value {
-    display: inline;
+    > .label,
+    > .value {
+      display: inline;
+    }
   }
 }
 </style>
