@@ -18,7 +18,9 @@
       <div class="row">
         <div class="detail condition">
           <div class="label">CND</div>
-          <div class="value percentage"><percent class="percent" :value="condition"/></div>
+          <div class="value percentage">
+            <percent class="percent" :value="activeItem.condition"/>
+          </div>
         </div>
         <div class="detail ammunition cols-2">{{ ammunitionText }}</div>
       </div>
@@ -63,6 +65,7 @@ export default {
           id: item.baseId,
           equipped: (Math.floor(Math.random() * 10)) === 0,
           amount: Math.floor(Math.log(Math.random() * 4)),
+          condition: Math.random(),
         }))
         .filter(item => item.amount >= 1);
     },

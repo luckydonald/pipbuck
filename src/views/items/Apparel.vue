@@ -18,14 +18,17 @@
       <div class="row">
         <div class="detail condition">
           <div class="label">CND</div>
-          <div class="value percentage"><percent class="percent" :value="condition"/></div>
+          <div class="value percentage">
+            <percent class="percent" :value="activeItem.condition"/>
+          </div>
         </div>
         <div class="detail blank" />
         <div class="detail blank" />
       </div>
       <div class="row">
         <div class="detail effect" v-show="hasEffect">
-          {{ activeItem['Effects'] }}
+          <div class="label">EFFECTS</div>
+          <div class="value">{{ activeItem['Effects'] }}</div>
         </div>
         <div class="detail blank" v-show="!hasEffect">
           &nbsp;
@@ -56,7 +59,6 @@ export default {
       apparel,
       limit: -1,
       activeId: hasItems ? apparel[0].baseId : null,
-      condition: 0.75,
     };
   },
   computed: {
@@ -66,6 +68,7 @@ export default {
           id: item.baseId,
           equipped: (Math.floor(Math.random() * 10)) === 0,
           amount: Math.floor(Math.random() * 3),
+          condition: Math.random(),
         }))
         .filter(item => item.amount >= 1);
     },
