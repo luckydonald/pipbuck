@@ -84,7 +84,7 @@ export default new Router({
           path: '/items/weapons',
           name: 'Weapons',
           // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
+          // this generates a separate chunk (items.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
           component: () => import(/* webpackChunkName: "items" */ './views/items/Weapons.vue'),
           // component: Weapons,
@@ -93,7 +93,7 @@ export default new Router({
           path: '/items/apparel',
           name: 'Apparel',
           // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
+          // this generates a separate chunk (items.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
           component: () => import(/* webpackChunkName: "items" */ './views/items/Apparel.vue'),
           // component: Apparel,
@@ -102,7 +102,7 @@ export default new Router({
           path: '/items/aid',
           name: 'Aid',
           // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
+          // this generates a separate chunk (items.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
           component: () => import(/* webpackChunkName: "items" */ './views/items/Aid.vue'),
           // component: Aid,
@@ -110,13 +110,17 @@ export default new Router({
         {
           path: '/items/misc',
           name: 'Misc',
-          component: Placeholder,
+          // route level code-splitting
+          // this generates a separate chunk (items.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import(/* webpackChunkName: "items" */ './views/items/Misc.vue'),
+          // component: Misc,
         },
         {
           path: '/items/ammo',
           name: 'Ammo',
           // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
+          // this generates a separate chunk (items.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
           component: () => import(/* webpackChunkName: "items" */ './views/items/Ammo.vue'),
           // component: Ammo,
