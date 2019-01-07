@@ -25,4 +25,7 @@ const ignored = new Vue({
   render: h => h(App),
 }).$mount('#app');
 
+if (process.env.NODE_ENV !== 'production') {
+  global.$vm = ignored;
+}
 screenfull.request();

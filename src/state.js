@@ -2,7 +2,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { hsl } from './lib/colorspace';
-import demodata from './data/demomode.json';
+import game from './data/generators/Root';
 
 Vue.use(Vuex);
 
@@ -91,10 +91,6 @@ const radio = {
       return true;
     },
   },
-};
-
-const game = {
-  state: demodata,
 };
 
 const store = new Vuex.Store({
