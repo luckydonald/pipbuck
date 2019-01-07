@@ -1,37 +1,18 @@
 <template>
   <div class="page">
-    <stats-pony
-      class="img" :face-name="'auto'"
-      :mane="front" :body="front" :eyes="front" :bars="front" :white="front"
-      :hp="{ head, body, legFrontLeft, legFrontRight, legHindLeft, legHindRight }"
-    />
-    <div class="player">{{ name }} - Level {{ level }}</div>
+    <ul>
+      <li><router-link to="/stats/status/condition">CND</router-link></li>
+      <li><router-link to="/stats/status/radiation">RAD</router-link></li>
+      <li><router-link to="/stats/status/effects">EFF</router-link></li>
+    </ul>
+    <router-view />
   </div>
 </template>
 
 <script>
-import { betterMapGetters, mapState } from '../../lib/better-vuex-getter';
-import StatsPony from '../../components/StatsPony.vue';
 
 export default {
   name: 'Status',
-  components: { StatsPony },
-  computed: {
-    front() {
-      return this.$store.state.colorFront;
-    },
-    ...betterMapGetters('game/PlayerInfo/health/parts', [
-      'head', 'body',
-      'legFrontLeft',
-      'legFrontRight',
-      'legHindLeft',
-      'legHindRight',
-    ]),
-    ...mapState('game/PlayerInfo', {
-      level: 'XPLevel',
-      name: 'PlayerName',
-    }),
-  },
 };
 </script>
 

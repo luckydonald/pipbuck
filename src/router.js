@@ -46,7 +46,41 @@ export default new Router({
           // which is lazy-loaded when the route is visited.
           component: () => import(/* webpackChunkName: "main" */ './views/stats/Status.vue'),
           // component: Status,
-
+          redirect: { name: 'Condition' },
+          children: [
+            {
+              path: '/stats/status/condition',
+              name: 'Condition',
+              // route level code-splitting
+              // this generates a separate chunk (main.[hash].js) for this route
+              // which is lazy-loaded when the route is visited.
+              // eslint-disable-next-line max-len
+              component: () => import(/* webpackChunkName: "main" */ './views/stats/status/Condition.vue'),
+              // component: Condition,
+            },
+            {
+              path: '/stats/status/radiation',
+              name: 'Radiation',
+              // route level code-splitting
+              // this generates a separate chunk (main.[hash].js) for this route
+              // which is lazy-loaded when the route is visited.
+              // eslint-disable-next-line max-len
+              // component: () => import(/* webpackChunkName: "main" */ './views/stats/status/Radiation.vue'),
+              // component: Radiation,
+              component: Placeholder,
+            },
+            {
+              path: '/stats/status/effects',
+              name: 'Effects',
+              // route level code-splitting
+              // this generates a separate chunk (main.[hash].js) for this route
+              // which is lazy-loaded when the route is visited.
+              // eslint-disable-next-line max-len
+              // component: () => import(/* webpackChunkName: "main" */ './views/stats/status/Effects.vue'),
+              // component: Effects,
+              component: Placeholder,
+            },
+          ],
         },
         {
           path: '/stats/special',
