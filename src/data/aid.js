@@ -3,7 +3,8 @@
 export default [
   // Food
   {
-    name: 'Alien squid food Mothership Zeta',
+    name: 'Alien squid food',
+    dlc: 'Mothership Zeta',
     category: 'food',
     weight: 0,
     value: 1,
@@ -13,7 +14,8 @@ export default [
     baseId: 'xx000f8d',
   },
   {
-    name: 'Alien worm food Mothership Zeta',
+    name: 'Alien worm food',
+    dlc: 'Mothership Zeta',
     category: 'food',
     weight: 0,
     value: 1,
@@ -24,6 +26,7 @@ export default [
   },
   {
     name: 'Ant meat',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 4,
@@ -34,6 +37,7 @@ export default [
   },
   {
     name: 'Ant nectar',
+    dlc: null,
     category: 'food',
     weight: 0.25,
     value: 20,
@@ -44,6 +48,7 @@ export default [
   },
   {
     name: 'Ant queen pheromones',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 75,
@@ -54,6 +59,7 @@ export default [
   },
   {
     name: 'BlamCo Mac & Cheese',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -64,6 +70,7 @@ export default [
   },
   {
     name: 'Bloatfly meat',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 4,
@@ -74,6 +81,7 @@ export default [
   },
   {
     name: 'Brahmin steak',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -84,6 +92,7 @@ export default [
   },
   {
     name: 'Bubblegum',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 1,
@@ -94,6 +103,7 @@ export default [
   },
   {
     name: 'Cave fungus',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 50,
@@ -104,6 +114,7 @@ export default [
   },
   {
     name: 'Cram',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -114,6 +125,7 @@ export default [
   },
   {
     name: 'Crunchy mutfruit',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -124,6 +136,7 @@ export default [
   },
   {
     name: 'Crispy squirrel bits',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -134,6 +147,7 @@ export default [
   },
   {
     name: 'Dandy Boy Apples',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -144,6 +158,7 @@ export default [
   },
   {
     name: 'Dog meat',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 4,
@@ -154,6 +169,7 @@ export default [
   },
   {
     name: 'Fancy Lad Snack Cakes',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -164,6 +180,7 @@ export default [
   },
   {
     name: 'Fire ant nectar',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 20,
@@ -174,6 +191,7 @@ export default [
   },
   {
     name: 'Fresh apple',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -184,6 +202,7 @@ export default [
   },
   {
     name: 'Fresh carrot',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -194,6 +213,7 @@ export default [
   },
   {
     name: 'Fresh pear',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -204,6 +224,7 @@ export default [
   },
   {
     name: 'Fresh potato',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -214,6 +235,7 @@ export default [
   },
   {
     name: 'Gum drops',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 2,
@@ -224,6 +246,7 @@ export default [
   },
   {
     name: 'Hatchling mirelurk meat',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 4,
@@ -234,6 +257,7 @@ export default [
   },
   {
     name: 'Human flesh',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 0,
@@ -244,6 +268,7 @@ export default [
   },
   {
     name: 'Iguana bits',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -254,6 +279,7 @@ export default [
   },
   {
     name: 'Iguana-on-a-stick',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -264,6 +290,7 @@ export default [
   },
   {
     name: 'InstaMash',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -274,6 +301,7 @@ export default [
   },
   {
     name: 'Junk food',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -284,6 +312,7 @@ export default [
   },
   {
     name: 'Mirelurk meat',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 20,
@@ -294,6 +323,7 @@ export default [
   },
   {
     name: 'Mirelurk cakes',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -304,6 +334,7 @@ export default [
   },
   {
     name: 'Mississippi Quantum pie',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 20,
@@ -314,6 +345,7 @@ export default [
   },
   {
     name: 'Mole rat meat',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 4,
@@ -324,6 +356,7 @@ export default [
   },
   {
     name: 'Mole rat wonder meat',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 20,
@@ -334,6 +367,7 @@ export default [
   },
   {
     name: 'Mutfruit',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -344,6 +378,7 @@ export default [
   },
   {
     name: 'Noodles',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -354,6 +389,7 @@ export default [
   },
   {
     name: 'Nukalurk meat',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 7,
@@ -363,7 +399,9 @@ export default [
     baseId: '00095f48',
   },
   {
-    name: "Pork n' Beans",
+    name: 'Pork n\' Beans',
+    dlc: null,
+    category: 'food',
     weight: 1,
     value: 5,
     effectLong: '+3 Radiation, +5 Hit Points',
@@ -373,6 +411,7 @@ export default [
   },
   {
     name: 'Potato Crisps',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -383,6 +422,7 @@ export default [
   },
   {
     name: 'Radroach meat',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 4,
@@ -392,7 +432,8 @@ export default [
     baseId: '0009c957',
   },
   {
-    name: 'Refined punga fruit Point Lookout',
+    name: 'Refined punga fruit',
+    dlc: 'Point Lookout',
     category: 'food',
     weight: 1,
     value: 30,
@@ -403,6 +444,7 @@ export default [
   },
   {
     name: 'Salisbury Steak',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -413,6 +455,7 @@ export default [
   },
   {
     name: 'Softshell mirelurk meat',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 30,
@@ -423,6 +466,7 @@ export default [
   },
   {
     name: 'Slop The Pitt',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -433,6 +477,7 @@ export default [
   },
   {
     name: 'Squirrel on a stick',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -443,6 +488,7 @@ export default [
   },
   {
     name: 'Squirrel stew',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -453,6 +499,7 @@ export default [
   },
   {
     name: 'Strange meat',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 2,
@@ -463,6 +510,7 @@ export default [
   },
   {
     name: 'Strange meat pie',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 2,
@@ -473,6 +521,7 @@ export default [
   },
   {
     name: 'Sugar Bombs',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -483,6 +532,7 @@ export default [
   },
   {
     name: 'Sweetroll',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
@@ -492,7 +542,8 @@ export default [
     baseId: '00030a23',
   },
   {
-    name: 'Wild punga fruit Point Lookout',
+    name: 'Wild punga fruit',
+    dlc: 'Point Lookout',
     category: 'food',
     weight: 1,
     value: 10,
@@ -503,6 +554,7 @@ export default [
   },
   {
     name: 'Yao guai meat',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 30,
@@ -513,6 +565,7 @@ export default [
   },
   {
     name: 'YumYum Deviled Eggs',
+    dlc: null,
     category: 'food',
     weight: 1,
     value: 5,
