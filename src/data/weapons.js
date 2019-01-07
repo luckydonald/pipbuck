@@ -533,7 +533,6 @@ export default [
   },
   // Shotguns
   {
-    FIELD1: '',
     type: 'shotgun',
     name: 'Combat shotgun',
     amount: 1,
@@ -554,7 +553,6 @@ export default [
     baseId: '00004327',
   },
   {
-    FIELD1: '',
     type: 'shotgun',
     name: 'The Terrible Shotgun',
     amount: 1,
@@ -575,7 +573,6 @@ export default [
     baseId: '0006b534',
   },
   {
-    FIELD1: '',
     type: 'shotgun',
     name: 'Double-barrel shotgun',
     'Damage per shot': '85\n(9.4x9)',
@@ -595,7 +592,6 @@ export default [
     baseId: 'xx007473',
   },
   {
-    FIELD1: '',
     type: 'shotgun',
     name: 'Sawed-off shotgun',
     'Damage per shot': '50\n(5.6x9)',
@@ -615,7 +611,6 @@ export default [
     baseId: '0000434c',
   },
   {
-    FIELD1: '',
     type: 'shotgun',
     name: 'The Kneecapper',
     amount: 1,
@@ -637,7 +632,6 @@ export default [
   },
   // Submachine guns
   {
-    FIELD1: '',
     type: 'submachine gun',
     name: '10mm SMG',
     amount: 1,
@@ -658,7 +652,6 @@ export default [
     baseId: '00004321',
   },
   {
-    FIELD1: '',
     type: 'submachine gun',
     name: "Sydney's 10mm \"Ultra\" SMG",
     'Damage per shot': 9,
@@ -679,7 +672,6 @@ export default [
   },
   // Big Guns: Direct Fire
   {
-    FIELD1: '',
     type: 'direct fire big gun',
     name: 'Drone cannon',
     amount: 1,
@@ -700,7 +692,6 @@ export default [
     baseId: 'xx000845',
   },
   {
-    FIELD1: '',
     type: 'direct fire big gun',
     name: 'Drone cannon Ex-B',
     'Damage per shot': '40\n+100',
@@ -720,7 +711,6 @@ export default [
     baseId: 'xx00a77d',
   },
   {
-    FIELD1: '',
     type: 'direct fire big gun',
     name: 'Flamer',
     amount: 1,
@@ -741,7 +731,6 @@ export default [
     baseId: '0000432d',
   },
   {
-    FIELD1: '',
     type: 'direct fire big gun',
     name: 'Burnmaster',
     amount: 1,
@@ -762,7 +751,6 @@ export default [
     baseId: '000c80bd',
   },
   {
-    FIELD1: '',
     type: 'direct fire big gun',
     name: 'Rapid-torch flamer',
     'Damage per shot': '16\n+2/5s',
@@ -782,7 +770,6 @@ export default [
     baseId: 'xx0091b1',
   },
   {
-    FIELD1: '',
     type: 'direct fire big gun',
     name: 'Slo-burn flamer',
     'Damage per shot': '18\n+8/5s',
@@ -802,7 +789,6 @@ export default [
     baseId: 'xx0091b3',
   },
   {
-    FIELD1: '',
     type: 'direct fire big gun',
     name: 'Gatling laser',
     amount: 1,
@@ -823,7 +809,6 @@ export default [
     baseId: '0000432e',
   },
   {
-    FIELD1: '',
     type: 'direct fire big gun',
     name: 'Precision Gatling laser',
     amount: 1,
@@ -844,7 +829,6 @@ export default [
     baseId: 'xx008895',
   },
   {
-    FIELD1: '',
     type: 'direct fire big gun',
     name: 'Vengeance',
     amount: 1,
@@ -865,7 +849,6 @@ export default [
     baseId: '000cb547',
   },
   {
-    FIELD1: '',
     type: 'direct fire big gun',
     name: 'Heavy incinerator',
     amount: 1,
@@ -886,7 +869,6 @@ export default [
     baseId: 'xx001084',
   },
   {
-    FIELD1: '',
     type: 'direct fire big gun',
     name: 'Minigun',
     amount: 1,
@@ -907,7 +889,6 @@ export default [
     baseId: '0000433f',
   },
   {
-    FIELD1: '',
     type: 'direct fire big gun',
     name: 'Eugene',
     amount: 1,
@@ -928,7 +909,6 @@ export default [
     baseId: '0006b538',
   },
   {
-    FIELD1: '',
     type: 'direct fire big gun',
     name: 'Rock-It Launcher',
     'Damage per shot': '50',
@@ -949,7 +929,6 @@ export default [
   },
   // Big Guns: Area-of-Effect
   {
-    FIELD1: '',
     type: 'area of effect big gun',
     name: 'Fat Man',
     amount: 1,
@@ -968,7 +947,6 @@ export default [
     baseId: '0000432c',
   },
   {
-    FIELD1: '',
     type: 'area of effect big gun',
     name: 'Experimental MIRV',
     amount: 1,
@@ -987,7 +965,6 @@ export default [
     baseId: '0003422b',
   },
   {
-    FIELD1: '',
     type: 'area of effect big gun',
     name: 'Missile launcher',
     amount: 1,
@@ -1006,7 +983,6 @@ export default [
     baseId: '00004340',
   },
   {
-    FIELD1: '',
     type: 'area of effect big gun',
     name: 'Miss Launcher',
     amount: 1,
@@ -1026,7 +1002,6 @@ export default [
   },
   // Energy Pistols
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: 'Alien atomizer',
     amount: 1,
@@ -1047,7 +1022,6 @@ export default [
     baseId: 'xx00083f',
   },
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: 'Atomic pulverizer',
     amount: 1,
@@ -1068,7 +1042,6 @@ export default [
     baseId: 'xx00a77f',
   },
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: 'Alien blaster',
     amount: 1,
@@ -1089,7 +1062,6 @@ export default [
     baseId: '00004322',
   },
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: "Captain's Sidearm",
     'Damage per shot': '35\n(5.9x6)',
@@ -1109,7 +1081,6 @@ export default [
     baseId: 'xx00a9dd',
   },
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: 'Firelance',
     amount: 1,
@@ -1130,7 +1101,6 @@ export default [
     baseId: '000c80ba',
   },
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: 'Laser pistol',
     amount: 1,
@@ -1151,7 +1121,6 @@ export default [
     baseId: '00004335',
   },
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: "Colonel Autumn's laser pistol",
     'Damage per shot': '10',
@@ -1172,7 +1141,6 @@ export default [
   },
   /* // Broken Steal overwrites it, thus the duplicate
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: "Colonel Autumn's laser pistol (Broken Steel)",
     'Damage per shot': '18',
@@ -1193,7 +1161,6 @@ export default [
   },
   */
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: "Protectron's Gaze",
     'Damage per shot': '24\n(4.9x5)',
@@ -1213,7 +1180,6 @@ export default [
     baseId: '000c553f',
   },
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: "Smuggler's End",
     'Damage per shot': '18',
@@ -1233,7 +1199,6 @@ export default [
     baseId: '0006b536',
   },
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: 'Mesmetron',
     amount: 1,
@@ -1254,7 +1219,6 @@ export default [
     baseId: '00004339',
   },
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: 'Microwave emitter',
     amount: 1,
@@ -1275,7 +1239,6 @@ export default [
     baseId: 'xx00c1c3',
   },
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: 'Plasma pistol',
     amount: 1,
@@ -1296,7 +1259,6 @@ export default [
     baseId: '00004343',
   },
   {
-    FIELD1: '',
     type: 'energy pistol',
     name: 'MPLX Novasurge',
     amount: 1,
@@ -1318,7 +1280,6 @@ export default [
   },
   // Energy Rifle
   {
-    FIELD1: '',
     type: 'energy rifle',
     name: 'Alien disintegrator',
     amount: 1,
@@ -1339,7 +1300,6 @@ export default [
     baseId: 'xx000842',
   },
   {
-    FIELD1: '',
     type: 'energy rifle',
     name: 'Destabilizer',
     amount: 1,
@@ -1360,7 +1320,6 @@ export default [
     baseId: 'xx00a77e',
   },
   {
-    FIELD1: '',
     type: 'energy rifle',
     name: 'Gauss rifle',
     amount: 1,
@@ -1381,7 +1340,6 @@ export default [
     baseId: 'xx00c07d',
   },
   {
-    FIELD1: '',
     type: 'energy rifle',
     name: 'Laser rifle',
     amount: 1,
@@ -1402,7 +1360,6 @@ export default [
     baseId: '00004336',
   },
   {
-    FIELD1: '',
     type: 'energy rifle',
     name: 'Metal Blaster',
     amount: 1,
@@ -1423,7 +1380,6 @@ export default [
     baseId: 'xx00b513',
   },
   {
-    FIELD1: '',
     type: 'energy rifle',
     name: 'Wazer Wifle',
     amount: 1,
@@ -1444,7 +1400,6 @@ export default [
     baseId: '00061793',
   },
   {
-    FIELD1: '',
     type: 'energy rifle',
     name: 'Plasma rifle',
     amount: 1,
@@ -1465,7 +1420,6 @@ export default [
     baseId: '00004344',
   },
   {
-    FIELD1: '',
     type: 'energy rifle',
     name: "A3-21's plasma rifle",
     'Damage per shot': '50',
@@ -1485,7 +1439,6 @@ export default [
     baseId: '0006b539',
   },
   {
-    FIELD1: '',
     type: 'energy rifle',
     name: 'Tesla cannon',
     amount: 1,
@@ -1506,7 +1459,6 @@ export default [
     baseId: 'xx006725',
   },
   {
-    FIELD1: '',
     type: 'energy rifle',
     name: 'Tri-beam laser rifle',
     'Damage per shot': '75\n(25x3)',
@@ -1527,7 +1479,6 @@ export default [
   },
   // Explosive: Placed
   {
-    FIELD1: '',
     type: 'placed explosive',
     name: 'Bottlecap mine',
     amount: 1,
@@ -1544,7 +1495,6 @@ export default [
     Notes: '',
   },
   {
-    FIELD1: '',
     type: 'placed explosive',
     name: 'Cryo mine',
     amount: 1,
@@ -1561,7 +1511,6 @@ export default [
     Notes: 'Stun & freeze for 3s',
   },
   {
-    FIELD1: '',
     type: 'placed explosive',
     name: 'Frag mine',
     amount: 16,
@@ -1578,7 +1527,6 @@ export default [
     Notes: '',
   },
   {
-    FIELD1: '',
     type: 'placed explosive',
     name: 'Plasma mine',
     amount: 1,
@@ -1595,7 +1543,6 @@ export default [
     Notes: '',
   },
   {
-    FIELD1: '',
     type: 'placed explosive',
     name: 'Pulse mine',
     amount: 1,
@@ -1613,7 +1560,6 @@ export default [
   },
   // Explosives: Thrown
   {
-    FIELD1: '',
     type: 'thrown explosive',
     name: 'Cryo grenade',
     amount: 1,
@@ -1630,7 +1576,6 @@ export default [
     Notes: 'Stun & freeze for 3s',
   },
   {
-    FIELD1: '',
     type: 'thrown explosive',
     name: 'Frag grenade',
     amount: 7,
@@ -1647,7 +1592,6 @@ export default [
     Notes: '',
   },
   {
-    FIELD1: '',
     type: 'thrown explosive',
     name: 'Nuka-grenade',
     'Damage per attack': '1\n+500 \n+2 /5s',
@@ -1663,7 +1607,6 @@ export default [
     Notes: '+100',
   },
   {
-    FIELD1: '',
     type: 'thrown explosive',
     name: 'Plasma grenade',
     amount: 1,
@@ -1680,7 +1623,6 @@ export default [
     Notes: '',
   },
   {
-    FIELD1: '',
     type: 'thrown explosive',
     name: 'Pulse grenade',
     amount: 1,
@@ -1698,7 +1640,6 @@ export default [
   },
   // Melee: Bladed
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Auto axe',
     amount: 1,
@@ -1716,7 +1657,6 @@ export default [
     baseId: 'xx0032e1',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Man Opener',
     amount: 1,
@@ -1734,7 +1674,6 @@ export default [
     baseId: 'xx00b66c',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'The Mauler',
     amount: 1,
@@ -1752,7 +1691,6 @@ export default [
     baseId: 'xx00b514',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Axe',
     amount: 1,
@@ -1770,7 +1708,6 @@ export default [
     baseId: 'xx00838f',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'The Dismemberer',
     amount: 1,
@@ -1788,7 +1725,6 @@ export default [
     baseId: 'xx00ed0f',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: "Chinese officer's sword",
     'Damage per attack': '10',
@@ -1805,7 +1741,6 @@ export default [
     baseId: '0002b3cb',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: "Jingwei's shocksword",
     'Damage per attack': '35\n+2/5s',
@@ -1822,7 +1757,6 @@ export default [
     baseId: 'xx00c07c',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: "Vampire's Edge",
     'Damage per attack': '15',
@@ -1839,7 +1773,6 @@ export default [
     baseId: '00078441',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Combat knife',
     amount: 1,
@@ -1857,7 +1790,6 @@ export default [
     baseId: '00004326',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: "Occam's Razor",
     'Damage per attack': '10',
@@ -1874,7 +1806,6 @@ export default [
     baseId: '000cb602',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Stabhappy',
     amount: 1,
@@ -1892,7 +1823,6 @@ export default [
     baseId: '000c80be',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Trench knife',
     amount: 1,
@@ -1910,7 +1840,6 @@ export default [
     baseId: 'xx00c07b',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Knife',
     amount: 1,
@@ -1928,7 +1857,6 @@ export default [
     baseId: '00004334',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: "Ant's Sting",
     'Damage per attack': '4\n+4 /10s',
@@ -1945,7 +1873,6 @@ export default [
     baseId: '000c553e',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Ritual knife',
     amount: 1,
@@ -1963,7 +1890,6 @@ export default [
     baseId: 'xx01098a',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Slasher knife',
     amount: 1,
@@ -1981,7 +1907,6 @@ export default [
     baseId: '0002869c',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Toy knife',
     amount: 1,
@@ -1999,7 +1924,6 @@ export default [
     baseId: 'xx006ab7',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Ripper',
     amount: 1,
@@ -2017,7 +1941,6 @@ export default [
     baseId: '00004349',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Jack',
     amount: 1,
@@ -2035,7 +1958,6 @@ export default [
     baseId: '000c6e5b',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: "Samurai's sword",
     'Damage per attack': '24',
@@ -2052,7 +1974,6 @@ export default [
     baseId: 'xx00083b',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Shishkebab',
     amount: 1,
@@ -2070,7 +1991,6 @@ export default [
     baseId: '0000434e',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Shovel',
     amount: 1,
@@ -2088,7 +2008,6 @@ export default [
     baseId: 'xx0082b5',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Fertilizer shovel',
     amount: 1,
@@ -2106,7 +2025,6 @@ export default [
     baseId: 'xx00d5a8',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Steel saw',
     amount: 1,
@@ -2124,7 +2042,6 @@ export default [
     baseId: 'xx00b643',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Switchblade',
     amount: 1,
@@ -2142,7 +2059,6 @@ export default [
     baseId: '000289c3',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: "Butch's Toothpick",
     'Damage per attack': '10',
@@ -2160,7 +2076,6 @@ export default [
   },
   // Melee: Blunt
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Baseball bat',
     amount: 1,
@@ -2178,7 +2093,6 @@ export default [
     baseId: '0000421c',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Lead pipe',
     amount: 1,
@@ -2196,7 +2110,6 @@ export default [
     baseId: '00004337',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Nail board',
     amount: 1,
@@ -2214,7 +2127,6 @@ export default [
     baseId: '000a01dd',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Board of Education',
     amount: 1,
@@ -2232,7 +2144,6 @@ export default [
     baseId: '000c310f',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Police baton',
     amount: 1,
@@ -2250,7 +2161,6 @@ export default [
     baseId: '00004345',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Pool cue',
     amount: 1,
@@ -2268,7 +2178,6 @@ export default [
     baseId: '00004346',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'The Break',
     amount: 1,
@@ -2286,7 +2195,6 @@ export default [
     baseId: '00066c77',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Repellent stick',
     amount: 1,
@@ -2304,7 +2212,6 @@ export default [
     baseId: '0002d3b7',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Rolling pin',
     amount: 1,
@@ -2322,7 +2229,6 @@ export default [
     baseId: '000b2943',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Rolling pin (simulation)',
     'Damage per attack': '20',
@@ -2339,7 +2245,6 @@ export default [
     baseId: '00029769',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Shock baton',
     amount: 1,
@@ -2357,7 +2262,6 @@ export default [
     baseId: 'xx00083d',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Electro-Suppressor',
     'Damage per attack': '25',
@@ -2374,7 +2278,6 @@ export default [
     baseId: 'xx003c54',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Sledgehammer',
     amount: 1,
@@ -2392,7 +2295,6 @@ export default [
     baseId: '00004351',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'The Tenderizer',
     amount: 1,
@@ -2410,7 +2312,6 @@ export default [
     baseId: '000a874b',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Super sledge',
     amount: 1,
@@ -2428,7 +2329,6 @@ export default [
     baseId: '00004352',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: "Fawkes' super sledge",
     'Damage per attack': '32',
@@ -2445,7 +2345,6 @@ export default [
     baseId: '0007843f',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: 'Tire iron',
     amount: 1,
@@ -2463,7 +2362,6 @@ export default [
     baseId: '00004328',
   },
   {
-    FIELD1: '',
     type: 'bladed melee weapon',
     name: "Highwayman's Friend",
     'Damage per attack': '10',
@@ -2481,7 +2379,6 @@ export default [
   },
   // Unarmed
   {
-    FIELD1: '',
     type: 'unarmed weapon',
     name: 'Brass knuckles',
     amount: 1,
@@ -2499,7 +2396,6 @@ export default [
     baseId: '00004324',
   },
   {
-    FIELD1: '',
     type: 'unarmed weapon',
     name: 'Steel knuckles',
     amount: 1,
@@ -2517,7 +2413,6 @@ export default [
     baseId: 'xx00b4b3',
   },
   {
-    FIELD1: '',
     type: 'unarmed weapon',
     name: 'Deathclaw gauntlet',
     amount: 1,
@@ -2535,7 +2430,6 @@ export default [
     baseId: '0000432b',
   },
   {
-    FIELD1: '',
     type: 'unarmed weapon',
     name: 'Power fist',
     amount: 1,
@@ -2553,7 +2447,6 @@ export default [
     baseId: '00004347',
   },
   {
-    FIELD1: '',
     type: 'unarmed weapon',
     name: 'Fisto!',
     'Damage per attack': '25',
@@ -2570,7 +2463,6 @@ export default [
     baseId: '000cb601',
   },
   {
-    FIELD1: '',
     type: 'unarmed weapon',
     name: 'The Shocker',
     amount: 1,
@@ -2588,7 +2480,6 @@ export default [
     baseId: '000bff62',
   },
   {
-    FIELD1: '',
     type: 'unarmed weapon',
     name: 'Spiked knuckles',
     amount: 1,
@@ -2606,7 +2497,6 @@ export default [
     baseId: '00004354',
   },
   {
-    FIELD1: '',
     type: 'unarmed weapon',
     name: "Plunkett's Valid Points",
     'Damage per attack': '12',
