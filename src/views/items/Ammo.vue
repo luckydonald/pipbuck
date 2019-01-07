@@ -53,7 +53,9 @@ export default {
           id: item.baseId,
           name: item.long,
           short: item.name,
-        }));
+          amount: Math.floor(Math.random() * 50),
+        }))
+        .filter(item => item.amount >= 1);
     },
   },
 };

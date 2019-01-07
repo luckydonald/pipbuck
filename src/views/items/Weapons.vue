@@ -62,7 +62,9 @@ export default {
         .map(item => Object.assign(item, {
           id: item.baseId,
           equipped: (Math.floor(Math.random() * 10)) === 0,
-        }));
+          amount: Math.floor(Math.log(Math.random() * 4)),
+        }))
+        .filter(item => item.amount >= 1);
     },
     ammunitionText() {
       if (

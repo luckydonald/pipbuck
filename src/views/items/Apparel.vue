@@ -65,7 +65,9 @@ export default {
         .map(item => Object.assign(item, {
           id: item.baseId,
           equipped: (Math.floor(Math.random() * 10)) === 0,
-        }));
+          amount: Math.floor(Math.random() * 3),
+        }))
+        .filter(item => item.amount >= 1);
     },
     hasEffect() {
       return (this.activeItem.Effects || '—') !== '—';

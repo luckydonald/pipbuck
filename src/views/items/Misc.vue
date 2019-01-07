@@ -53,7 +53,9 @@ export default {
       return this.misc
         .map(item => Object.assign(item, {
           id: item.baseId,
-        }));
+          amount: Math.floor(Math.random() * 5),
+        }))
+        .filter(item => item.amount >= 1);
     },
   },
 };
