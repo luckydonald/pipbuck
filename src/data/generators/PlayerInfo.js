@@ -354,6 +354,48 @@ const theGetters = {
   'time/minutes'(state, getters) {
     return Math.floor((state.TimeHour % 1) * 60).toString().padStart(2, '0');
   },
+
+  /**
+   * The XP we needed to get to the start of the current level.
+   * Formula from http://fallout.wikia.com/wiki/Level#Fallout_4.
+   * @var {number}
+   */
+  'levelHP/last'(state, getters) {
+    return 37.5 * state.XPLevel * state.XPLevel + 87.5 * state.XPLevel - 124;
+  },
+
+  /**
+   * The XP we from the the start of the current level, to the start of the next level.
+   * Formula from http://fallout.wikia.com/wiki/Level#Fallout_4.
+   * @var {number}
+   */
+  'levelHP/delta'(state, getters) {
+    return 75 * (state.XPLevel - 1) + 200;
+  },
+
+  /**
+   * The XP where the level we will reach next starts.
+   * @var {number}
+   */
+  'levelHP/next'(state, getters) {
+    return getters['levelHP/last'] + getters['levelHP/delta'];
+  },
+
+  /**
+   * The current process in XP we got after the last level up.
+   * @var {number}
+   */
+  'levelHP/progress'(state, getters) {
+    return Math.floor(state.XPProgressPct * getters['levelHP/delta']);
+  },
+
+  /**
+   * The current XP we have in total.
+   * @var {number}
+   */
+  'levelHP/current'(state, getters) {
+    return getters['levelHP/last'] + getters['levelHP/progress'];
+  },
 };
 export default {
   state: theState, getters: theGetters,

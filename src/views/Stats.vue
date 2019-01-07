@@ -13,14 +13,14 @@
       <div class="stat">LVL {{ level }}</div>
       <div class="stat">HP {{ healthPoints }}/{{ maxHealthPoints }}</div>
       <div class="stat">AP {{ actionPoints }}/{{ maxActionPoints }}</div>
-      <div class="stat">XP {{ 4966 }}/{{ 5800 }}</div>
+      <div class="stat">XP {{ experiencePoints }}/{{ nextLevelXP }}</div>
     </template>
     <router-view />
   </Menu>
 </template>
 
 <script>
-import { betterMapState } from '../lib/better-vuex-getter';
+import { betterMapState, betterMapGetters } from '../lib/better-vuex-getter';
 import Menu from './Menu.vue';
 
 export default {
@@ -34,6 +34,10 @@ export default {
       actionPoints: ['CurrAP', Math.floor],
       maxActionPoints: ['MaxAP', Math.floor],
       bottlecaps: ['Caps', Math.floor],
+    }),
+    ...betterMapGetters('game/PlayerInfo/levelHP', {
+      experiencePoints: 'current',
+      nextLevelXP: 'next',
     }),
   },
 };
