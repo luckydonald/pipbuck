@@ -2669,3 +2669,16 @@ export default [
     baseId: 'xx003fa3',
   },
 ];
+
+export const empty = {
+  name: '',
+  dlc: null,
+  value: 0,
+  weight: 0,
+  'Value to weight ratio': 0,
+  isQuestItem: false,
+  'Related quest': '-',
+  'Component for': '-',
+  isRockItLaucherAmmo: false,
+  baseId: null,
+};

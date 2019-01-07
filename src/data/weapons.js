@@ -2987,3 +2987,21 @@ export default [
     },
   */
 ];
+
+export const empty = {
+  type: null,
+  name: '',
+  amount: 0,
+  'Damage per attack': '-',
+  'Damage per second': 0,
+  'Attacks per second': 0,
+  'Critical chance multiplier': 'x0',
+  'Critical hit Damage': 0,
+  'Action point cost': 0,
+  'Damage per Action Point': 0,
+  'Weapon durability in strikes until broken': 0,
+  'Weapon weight': 0,
+  'Weapon value in caps': 0,
+  'Value to weight ratio': 0,
+  baseId: null,
+};

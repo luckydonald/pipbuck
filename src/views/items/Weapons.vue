@@ -55,7 +55,7 @@ export default {
       weapons,
       limit: -1,
       activeId: hasItems ? weapons[0].baseId : null,
-      condition: 0.47,
+      emptyItem: empty,
     };
   },
   computed: {

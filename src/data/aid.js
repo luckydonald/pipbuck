@@ -919,3 +919,15 @@ export default [
     baseId: '00043e94',
   },
 ];
+
+export const empty = {
+  name: '',
+  dlc: null,
+  category: null,
+  weight: 0,
+  value: 0,
+  effectLong: '',
+  effect: '',
+  'Addiction chance': '',
+  baseId: null,
+};

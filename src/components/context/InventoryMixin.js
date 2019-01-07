@@ -6,7 +6,7 @@ export default {
     activeItem() {
       const result = this.items.filter(piece => piece.id === this.activeId)[0];
       if (result === undefined) {
-        return null;
+        return this.emptyItem;
       }
       return result;
     },

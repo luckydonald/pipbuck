@@ -153,3 +153,12 @@ export default [
     baseId: '00029384',
   },
 ];
+
+export const empty = {
+  name: '',
+  long: '',
+  value: 0,
+  'Weapons using this ammunition': '',
+  category: null,
+  baseId: null,
+};

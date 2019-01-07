@@ -2976,3 +2976,16 @@ export default [
     baseId: '0005dc82',
   },
 ];
+
+export const empty = {
+  name: '',
+  DR: 0,
+  weight: 0,
+  Health: '0',
+  effectLong: '—',
+  effect: '—',
+  value: 0,
+  Limit: '0',
+  slots: { body: false, eyes: false, head: false },
+  baseId: null,
+};

@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import apparel from '../../data/apparel';
+import apparel, { empty } from '../../data/apparel';
 import Inventory from '../../components/context/Inventory.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
 import Percent from '../../components/Percent.vue';
@@ -59,6 +59,7 @@ export default {
       apparel,
       limit: -1,
       activeId: hasItems ? apparel[0].baseId : null,
+      emptyItem: empty,
     };
   },
   computed: {

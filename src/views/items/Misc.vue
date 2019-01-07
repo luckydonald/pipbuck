@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import misc from '../../data/misc';
+import misc, { empty } from '../../data/misc';
 import { dashedZero } from '../../filters/inventory';
 import Inventory from '../../components/context/Inventory.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
@@ -45,7 +45,7 @@ export default {
       misc,
       limit: -1,
       activeId: hasItems ? misc[0].baseId : null,
-      condition: 0.47,
+      emptyItem: empty,
     };
   },
   computed: {

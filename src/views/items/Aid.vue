@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import aid from '../../data/aid';
+import aid, { empty } from '../../data/aid';
 import Inventory from '../../components/context/Inventory.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
 
@@ -48,6 +48,7 @@ export default {
       aid,
       limit: -1,
       activeId: hasItems ? aid[0].baseId : null,
+      emptyItem: empty,
     };
   },
   computed: {

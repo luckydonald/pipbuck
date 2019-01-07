@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import ammo from '../../data/ammo';
+import ammo, { empty } from '../../data/ammo';
 import Inventory from '../../components/context/Inventory.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
 
@@ -43,7 +43,7 @@ export default {
       ammo,
       limit: -1,
       activeId: hasItems ? ammo[0].baseId : null,
-      condition: 0.47,
+      emptyItem: empty,
     };
   },
   computed: {
