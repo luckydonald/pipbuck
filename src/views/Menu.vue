@@ -21,10 +21,10 @@
       <div class="edge left up" />
       <div class="hr" />
       <template v-for="link in links">
-        <router-link :key="link.label" class="item" :to="link.to" @click.native="playTab">
+        <router-link :key="`${link.label}_link`" class="item" :to="link.to" @click.native="playTab">
           {{ link.label }}
         </router-link>
-        <div :key="link.label" class="hr" />
+        <div :key="`${link.label}_hr`" class="hr" />
       </template>
       <div class="edge right up" />
     </div>
