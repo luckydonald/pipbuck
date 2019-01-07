@@ -13,7 +13,7 @@ export default {
     Log: demodata.Log,
     Map: demodata.Map,
     Perks: demodata.Perks,
-    // PlayerInfo: demodata.PlayerInfo, // that we do with a module.
+    // PlayerInfo: demodata.PlayerInfo, // we fill that one with a module.
     Quests: demodata.Quests,
     Radio: demodata.Radio,
     Special: demodata.Special,
