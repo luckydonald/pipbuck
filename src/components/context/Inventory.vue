@@ -5,8 +5,8 @@
       content-class=""
       scrollbar-class="scroll"
       :items="itemSelection"
-      @equip.capture="onEquip"
-      @unequip.passive="onUnEquip"
+      @equip="$emit('equip', $event)"
+      @unequip="$emit('unequip', $event)"
       :selected="activeId"
       @select="$emit('select', $event)"
     >
@@ -73,19 +73,6 @@ export default {
         return this.items.slice(0, this.limit);
       }
       return this.items;
-    },
-
-  },
-  methods: {
-    toggleEquip(id, flag) {
-      console.log('sending equip action', id, flag);
-      this.itemSelection.filter(item => item.id === id)[0].equipped = flag;
-    },
-    onEquip(id) {
-      this.toggleEquip(id, true);
-    },
-    onUnEquip(id) {
-      this.toggleEquip(id, false);
     },
   },
   watch: {
