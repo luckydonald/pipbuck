@@ -4,7 +4,7 @@
       <div class="row">
         <div class="edge left down" />
         <div class="hr left" />
-        <a class="title">Stats</a>
+        <a class="title">{{ title }}</a>
         <div class="hr middle" />
         <div class="grouping">
           <slot name="statistics">
