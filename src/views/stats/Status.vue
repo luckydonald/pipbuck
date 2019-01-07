@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <stats-pony
       class="img" :face-name="'auto'"
       :mane="front" :body="front" :eyes="front" :bars="front" :white="front"
@@ -36,8 +36,11 @@ export default {
 </script>
 
 <style scoped>
+.page {
+  height: 100%;
+}
 .img {
   max-width: 60vw;
-  max-height: 80vh;
+  max-height: 70vh;
 }
 </style>
