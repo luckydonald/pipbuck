@@ -10,18 +10,12 @@
 </template>
 
 <script>
-import { betterMapGetters } from '../../lib/better-vuex-getter';
+import { betterMapGetters, mapState } from '../../lib/better-vuex-getter';
 import StatsPony from '../../components/StatsPony.vue';
 
 export default {
   name: 'Status',
   components: { StatsPony },
-  data() {
-    return {
-      level: 1,
-      name: 'Littlepip',
-    };
-  },
   computed: {
     front() {
       return this.$store.state.colorFront;
@@ -33,6 +27,10 @@ export default {
       'legHindLeft',
       'legHindRight',
     ]),
+    ...mapState('game/PlayerInfo', {
+      level: 'XPLevel',
+      name: 'PlayerName',
+    }),
   },
 };
 </script>

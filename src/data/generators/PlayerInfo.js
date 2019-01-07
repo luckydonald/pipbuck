@@ -321,17 +321,7 @@ const theState = {
 };
 
 const theGetters = {
-  'health/total/max'(state, getters) {
-    return state.MaxHP;
-  },
-  'health/total/current'(state, getters) {
-    return state.CurrHP;
-  },
   'health/parts/head'(state, getters) {
-    console.log(
-      'head',
-      state.TotalDamages.filter(dmg => dmg.type === 1)[0].Value,
-    );
     return (100 - state.TotalDamages.filter(dmg => dmg.type === 1)[0].Value) / 100;
   },
   'health/parts/body'(state, getters) {
@@ -348,6 +338,9 @@ const theGetters = {
   },
   'health/parts/legHindRight'(state, getters) {
     return (100 - state.TotalDamages.filter(dmg => dmg.type === 6)[0].Value) / 100;
+  },
+  'health/parts/test'(state, getters) {
+    return 'yes';
   },
 };
 export default {

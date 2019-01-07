@@ -1,3 +1,5 @@
+import { mapState } from 'vuex';
+
 /** From vuex.esm.js */
 function normalizeNamespace(fn) {
   // eslint-disable-next-line func-names
@@ -49,8 +51,10 @@ const betterMapGetters = normalizeNamespace((namespace, getters) => {
 });
 
 export {
+  mapState,
   betterMapGetters,
 };
 export default {
+  mapState,
   betterMapGetters,
 };
