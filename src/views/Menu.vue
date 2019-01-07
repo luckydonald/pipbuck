@@ -137,6 +137,7 @@ export default {
       margin-left: 1.2vmin;
       &:first-child {
         margin-left: 0;
+        text-align: right;
       }
     }
   }

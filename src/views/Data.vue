@@ -45,7 +45,5 @@ export default {
 </script>
 
 <style scoped>
-.stat.location {
-  text-align: right;
-}
+
 </style>
