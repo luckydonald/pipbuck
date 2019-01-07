@@ -114,7 +114,7 @@ export default {
     max-width: 7.5vmin;
   }
   .hr.middle {
-    flex-grow: 3;
+    flex-grow: 4;
     flex-shrink: 2;
   }
   .hr.right {
@@ -132,6 +132,7 @@ export default {
 
     .stat {
       flex-shrink: 1;
+      flex-grow: 1;
       white-space: nowrap;
       margin-left: 1.2vmin;
       &:first-child {
