@@ -206,6 +206,11 @@ body {
   user-select: none;
   font-size: 4.266666667vmin;
   letter-spacing: -0.05em;
+  font-family: 'Monofonto', 'Droid Sans', 'Arial Rounded', 'Courier New', 'Courier', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: var(--color-front);
 }
 
 #app {
@@ -215,11 +220,6 @@ body {
   left: 0;
   right: 0;
   position: absolute;
-  font-family: 'Monofonto', 'Droid Sans', 'Arial Rounded', 'Courier New', 'Courier', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: var(--color-front);
 }
 a {
   color: var(--color-front);
