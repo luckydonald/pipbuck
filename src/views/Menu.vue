@@ -158,6 +158,7 @@ export default {
 }
 .title {
   text-transform: uppercase;
+  letter-spacing: +0.05em;
 }
 .stat {
   position: absolute;
