@@ -22,8 +22,8 @@ function normalizeMap(map) {
     : Object.keys(map).map(key => ({ key, val: map[key] }));
 }
 
-/** From vuex.esm.js */
-const mapGetters = normalizeNamespace((namespace, getters) => {
+/** From vuex.esm.js, disabled getModuleByNamespace check. */
+const betterMapGetters = normalizeNamespace((namespace, getters) => {
   const res = {};
   normalizeMap(getters).forEach((ref) => {
     const { key } = ref;
@@ -49,8 +49,8 @@ const mapGetters = normalizeNamespace((namespace, getters) => {
 });
 
 export {
-  mapGetters,
+  betterMapGetters,
 };
 export default {
-  mapGetters,
+  betterMapGetters,
 };

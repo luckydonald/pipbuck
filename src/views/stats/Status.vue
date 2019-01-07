@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapGetters } from '../../lib/better-vuex-getter';
+import { betterMapGetters } from '../../lib/better-vuex-getter';
 import StatsPony from '../../components/StatsPony.vue';
 
 export default {
@@ -26,7 +26,7 @@ export default {
     front() {
       return this.$store.state.colorFront;
     },
-    ...mapGetters('game/PlayerInfo/health/parts', [
+    ...betterMapGetters('game/PlayerInfo/health/parts', [
       'head', 'body',
       'legFrontLeft',
       'legFrontRight',
