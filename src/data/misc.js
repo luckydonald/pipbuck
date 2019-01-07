@@ -4,11 +4,12 @@ export default [
   // Quest items
   {
     name: 'Action Abe Action Figure',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
     isQuestItem: false,
-    'Related quest': "Lincoln's Profit Margins",
+    'Related quest': 'Lincoln\'s Profit Margins',
     'Component for': '-',
     isRockItLaucherAmmo: false,
     quest_item: true,
@@ -16,6 +17,7 @@ export default [
   },
   {
     name: 'Android Component',
+    dlc: null,
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -28,11 +30,12 @@ export default [
   },
   {
     name: 'Antique Lincoln Coin Collection',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
     isQuestItem: false,
-    'Related quest': "Lincoln's Profit Margins",
+    'Related quest': 'Lincoln\'s Profit Margins',
     'Component for': '-',
     isRockItLaucherAmmo: false,
     category: 'quest',
@@ -40,6 +43,7 @@ export default [
   },
   {
     name: 'Archives prize voucher',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -52,6 +56,7 @@ export default [
   },
   {
     name: 'Baby',
+    dlc: null,
     value: 0,
     weight: 5,
     'Value to weight ratio': '0',
@@ -64,6 +69,7 @@ export default [
   },
   {
     name: 'Bill of Rights',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -75,7 +81,8 @@ export default [
     baseId: '00003a82',
   },
   {
-    name: "Birch's Sap",
+    name: 'Birch\'s Sap',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -88,6 +95,7 @@ export default [
   },
   {
     name: 'Brotherhood of Steel holotag',
+    dlc: null,
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -100,6 +108,7 @@ export default [
   },
   {
     name: 'Card Catalog Holotape',
+    dlc: null,
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -111,7 +120,8 @@ export default [
     baseId: '0006ca2f',
   },
   {
-    name: "Charon's Employment Contract",
+    name: 'Charon\'s Employment Contract',
+    dlc: null,
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -123,7 +133,8 @@ export default [
     baseId: '0003713c',
   },
   {
-    name: 'Close assault requisition holo Operation: Anchorage',
+    name: 'Close assault requisition holo',
+    dlc: 'Operation: Anchorage',
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -135,7 +146,8 @@ export default [
     baseId: 'xx002f2c',
   },
   {
-    name: 'Cogwave jammer Point Lookout',
+    name: 'Cogwave jammer',
+    dlc: 'Point Lookout',
     value: 0,
     weight: 7,
     'Value to weight ratio': '0',
@@ -148,6 +160,7 @@ export default [
   },
   {
     name: 'Crumpled note',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -159,7 +172,8 @@ export default [
     baseId: '000151db',
   },
   {
-    name: 'Deathclaw control scrambler Broken Steel',
+    name: 'Deathclaw control scrambler',
+    dlc: 'Broken Steel',
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -172,6 +186,7 @@ export default [
   },
   {
     name: 'Declaration of Independence',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -183,19 +198,21 @@ export default [
     baseId: '00003a7f',
   },
   {
-    name: "Donovan's Wrench",
+    name: 'Donovan\'s Wrench',
+    dlc: null,
     value: 75,
     weight: 0,
     'Value to weight ratio': '-',
     isQuestItem: true,
-    'Related quest': "Reilly's Rangers",
+    'Related quest': 'Reilly\'s Rangers',
     'Component for': '-',
     isRockItLaucherAmmo: false,
     category: 'quest',
     baseId: '00070cd4',
   },
   {
-    name: 'Drone control device Mothership Zeta',
+    name: 'Drone control device',
+    dlc: 'Mothership Zeta',
     value: 300,
     weight: 3,
     'Value to weight ratio': '100',
@@ -208,6 +225,7 @@ export default [
   },
   {
     name: 'Empty sap container',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -219,7 +237,8 @@ export default [
     baseId: '000504d7',
   },
   {
-    name: 'Explosive charge Operation: Anchorage',
+    name: 'Explosive charge',
+    dlc: 'Operation: Anchorage',
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -231,7 +250,8 @@ export default [
     baseId: 'xx0015f3',
   },
   {
-    name: 'Fire team requisition holo Operation: Anchorage',
+    name: 'Fire team requisition holo',
+    dlc: 'Operation: Anchorage',
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -244,6 +264,7 @@ export default [
   },
   {
     name: 'Food Sanitizer',
+    dlc: null,
     value: 150,
     weight: 7,
     'Value to weight ratio': '21',
@@ -256,6 +277,7 @@ export default [
   },
   {
     name: 'Forged Declaration',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -268,6 +290,7 @@ export default [
   },
   {
     name: 'Fuse',
+    dlc: null,
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -280,6 +303,7 @@ export default [
   },
   {
     name: 'Fusion Pulse Charge',
+    dlc: null,
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -292,6 +316,7 @@ export default [
   },
   {
     name: 'G.E.C.K.',
+    dlc: null,
     value: 0,
     weight: 5,
     'Value to weight ratio': '0',
@@ -304,6 +329,7 @@ export default [
   },
   {
     name: 'Geomapper module',
+    dlc: null,
     value: 20,
     weight: 1,
     'Value to weight ratio': '20',
@@ -315,7 +341,8 @@ export default [
     baseId: '00040d4d',
   },
   {
-    name: 'Heavy weapons requisition holo Operation: Anchorage',
+    name: 'Heavy weapons requisition holo',
+    dlc: 'Operation: Anchorage',
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -328,6 +355,7 @@ export default [
   },
   {
     name: 'Holotape',
+    dlc: null,
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -340,6 +368,7 @@ export default [
   },
   {
     name: 'Ink Container',
+    dlc: null,
     value: 3,
     weight: 1,
     'Value to weight ratio': '3',
@@ -352,18 +381,20 @@ export default [
   },
   {
     name: 'John Wilkes Booth Wanted Poster',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
     isQuestItem: false,
-    'Related quest': "Lincoln's Profit Margins",
+    'Related quest': 'Lincoln\'s Profit Margins',
     'Component for': '-',
     isRockItLaucherAmmo: false,
     category: 'quest',
     baseId: '00045256',
   },
   {
-    name: "Junders Plunkett's finger",
+    name: 'Junders Plunkett\'s finger',
+    dlc: null,
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -375,19 +406,21 @@ export default [
     baseId: '000cafa2',
   },
   {
-    name: 'Kenny-bear Point Lookout',
+    name: 'Kenny-bear',
+    dlc: 'Point Lookout',
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
     isQuestItem: true,
-    'Related quest': "Kenny's Cave",
+    'Related quest': 'Kenny\'s Cave',
     'Component for': '-',
     isRockItLaucherAmmo: false,
     category: 'quest',
     baseId: 'xx008868',
   },
   {
-    name: 'Krivbeknih Point Lookout',
+    name: 'Krivbeknih',
+    dlc: 'Point Lookout',
     value: 15,
     weight: 0,
     'Value to weight ratio': '-',
@@ -399,7 +432,8 @@ export default [
     baseId: 'xx002f46',
   },
   {
-    name: 'Lab Access Card Point Lookout',
+    name: 'Lab Access Card',
+    dlc: 'Point Lookout',
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -412,6 +446,7 @@ export default [
   },
   {
     name: 'Lacy Underwear',
+    dlc: null,
     value: 3,
     weight: 0,
     'Value to weight ratio': '-',
@@ -423,7 +458,8 @@ export default [
     baseId: '000270f0',
   },
   {
-    name: "Laurel's Liniment",
+    name: 'Laurel\'s Liniment',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -436,6 +472,7 @@ export default [
   },
   {
     name: 'Lincoln Memorial Poster',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -447,24 +484,26 @@ export default [
     baseId: '00028ee9',
   },
   {
-    name: "Lincoln's Diary",
+    name: 'Lincoln\'s Diary',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
     isQuestItem: false,
-    'Related quest': "Lincoln's Profit Margins",
+    'Related quest': 'Lincoln\'s Profit Margins',
     'Component for': '-',
     isRockItLaucherAmmo: false,
     category: 'quest',
     baseId: '00045254',
   },
   {
-    name: "Lincoln's Voice",
+    name: 'Lincoln\'s Voice',
+    dlc: null,
     value: 5,
     weight: 2,
     'Value to weight ratio': '2.5',
     isQuestItem: false,
-    'Related quest': "Lincoln's Profit Margins",
+    'Related quest': 'Lincoln\'s Profit Margins',
     'Component for': '-',
     isRockItLaucherAmmo: false,
     category: 'quest',
@@ -472,6 +511,7 @@ export default [
   },
   {
     name: 'Lucky 8 Ball',
+    dlc: null,
     value: 4,
     weight: 1,
     'Value to weight ratio': '4',
@@ -483,7 +523,8 @@ export default [
     baseId: '0002edfb',
   },
   {
-    name: "Lucy's sealed envelope",
+    name: 'Lucy\'s sealed envelope',
+    dlc: null,
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -496,6 +537,7 @@ export default [
   },
   {
     name: 'Magna Carta',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -507,7 +549,8 @@ export default [
     baseId: '00003a80',
   },
   {
-    name: 'Main fuse Broken Steel',
+    name: 'Main fuse',
+    dlc: 'Broken Steel',
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -520,6 +563,7 @@ export default [
   },
   {
     name: 'Media Archives Holotape',
+    dlc: null,
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -532,6 +576,7 @@ export default [
   },
   {
     name: 'Military school brochure',
+    dlc: null,
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -544,6 +589,7 @@ export default [
   },
   {
     name: 'Modified FEV Virus',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -556,6 +602,7 @@ export default [
   },
   {
     name: 'Nuka-Cola Clear Formula',
+    dlc: null,
     value: 150,
     weight: 1,
     'Value to weight ratio': '150',
@@ -568,6 +615,7 @@ export default [
   },
   {
     name: 'Observer',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -579,7 +627,8 @@ export default [
     baseId: '00030663',
   },
   {
-    name: "Plik's journal Point Lookout",
+    name: 'Plik\'s journal',
+    dlc: 'Point Lookout',
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -592,6 +641,7 @@ export default [
   },
   {
     name: 'Pre-War book (green)',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -603,7 +653,8 @@ export default [
     baseId: '000c5d24',
   },
   {
-    name: 'Punga seeds Point Lookout',
+    name: 'Punga seeds',
+    dlc: 'Point Lookout',
     value: 25,
     weight: 0,
     'Value to weight ratio': '-',
@@ -615,7 +666,8 @@ export default [
     baseId: 'xx00a87a',
   },
   {
-    name: 'Recruitment marker Operation: Anchorage',
+    name: 'Recruitment marker',
+    dlc: 'Operation: Anchorage',
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -628,6 +680,7 @@ export default [
   },
   {
     name: 'Rivet City historical record',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -640,6 +693,7 @@ export default [
   },
   {
     name: 'RobCo processor widget',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -651,7 +705,8 @@ export default [
     baseId: '0002d3b4',
   },
   {
-    name: 'Senate employee ID Broken Steel',
+    name: 'Senate employee ID',
+    dlc: 'Broken Steel',
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -664,11 +719,12 @@ export default [
   },
   {
     name: 'Sheet Music Book',
+    dlc: null,
     value: 100,
     weight: 1,
     'Value to weight ratio': '100',
     isQuestItem: false,
-    'Related quest': "Agatha's Song",
+    'Related quest': 'Agatha\'s Song',
     'Component for': '-',
     isRockItLaucherAmmo: false,
     category: 'quest',
@@ -676,6 +732,7 @@ export default [
   },
   {
     name: 'Slave collar',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -687,7 +744,8 @@ export default [
     baseId: '00022ff0',
   },
   {
-    name: 'Sniper requisition holo Operation: Anchorage',
+    name: 'Sniper requisition holo',
+    dlc: 'Operation: Anchorage',
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -700,6 +758,7 @@ export default [
   },
   {
     name: 'Steel ingot The Pitt',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -712,18 +771,20 @@ export default [
   },
   {
     name: 'Soil Stradivarius',
+    dlc: null,
     value: 0,
     weight: 3,
     'Value to weight ratio': '0',
     isQuestItem: true,
-    'Related quest': "Agatha's Song",
+    'Related quest': 'Agatha\'s Song',
     'Component for': '-',
     isRockItLaucherAmmo: false,
     category: 'quest',
     baseId: '000033ff',
   },
   {
-    name: 'Submarine self-destruct codes Point Lookout',
+    name: 'Submarine self-destruct codes',
+    dlc: 'Point Lookout',
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -735,7 +796,8 @@ export default [
     baseId: 'xx006ab6',
   },
   {
-    name: 'Tesla coil Broken Steel',
+    name: 'Tesla coil',
+    dlc: 'Broken Steel',
     value: 0,
     weight: 3,
     'Value to weight ratio': '0',
@@ -747,7 +809,8 @@ export default [
     baseId: 'xx005687',
   },
   {
-    name: "Vance's Proposal",
+    name: 'Vance\'s Proposal',
+    dlc: null,
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -760,6 +823,7 @@ export default [
   },
   {
     name: 'Virgo II Dish',
+    dlc: null,
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -768,10 +832,11 @@ export default [
     'Component for': '-',
     isRockItLaucherAmmo: false,
     category: 'quest',
-    baseId: '0001cfaf',
+    baseId: '0002393c',
   },
   {
-    name: "Wernher's note to Midea The Pitt",
+    name: 'Wernher\'s note to Midea The Pitt',
+    dlc: null,
     value: 0,
     weight: 1,
     'Value to weight ratio': '0',
@@ -783,7 +848,8 @@ export default [
     baseId: '00000000',
   },
   {
-    name: "Yew's Bear Charm",
+    name: 'Yew\'s Bear Charm',
+    dlc: null,
     value: 50,
     weight: 1,
     'Value to weight ratio': '50',
@@ -797,6 +863,7 @@ export default [
   // Other Items
   {
     name: '10-Ball',
+    dlc: null,
     value: 2,
     weight: 1,
     'Value to weight ratio': '2',
@@ -809,6 +876,7 @@ export default [
   },
   {
     name: '13-Ball',
+    dlc: null,
     value: 2,
     weight: 1,
     'Value to weight ratio': '2',
@@ -821,6 +889,7 @@ export default [
   },
   {
     name: '2-Ball',
+    dlc: null,
     value: 2,
     weight: 1,
     'Value to weight ratio': '2',
@@ -833,6 +902,7 @@ export default [
   },
   {
     name: '5-Ball',
+    dlc: null,
     value: 2,
     weight: 1,
     'Value to weight ratio': '2',
@@ -845,6 +915,7 @@ export default [
   },
   {
     name: '8-Ball',
+    dlc: null,
     value: 2,
     weight: 1,
     'Value to weight ratio': '2',
@@ -857,6 +928,7 @@ export default [
   },
   {
     name: 'Abraxo cleaner',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
@@ -869,6 +941,7 @@ export default [
   },
   {
     name: 'Ashtray',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -881,6 +954,7 @@ export default [
   },
   {
     name: 'Baseball',
+    dlc: null,
     value: 2,
     weight: 1,
     'Value to weight ratio': '2',
@@ -893,6 +967,7 @@ export default [
   },
   {
     name: 'Baseball glove',
+    dlc: null,
     value: 4,
     weight: 1,
     'Value to weight ratio': '4',
@@ -905,6 +980,7 @@ export default [
   },
   {
     name: 'Basketball',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -917,6 +993,7 @@ export default [
   },
   {
     name: 'Bent tin can',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -929,6 +1006,7 @@ export default [
   },
   {
     name: 'Big spoon',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -941,6 +1019,7 @@ export default [
   },
   {
     name: 'Blue pass card',
+    dlc: null,
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -953,6 +1032,7 @@ export default [
   },
   {
     name: 'Bobby pin',
+    dlc: null,
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -965,6 +1045,7 @@ export default [
   },
   {
     name: 'Bonesaw',
+    dlc: null,
     value: 5,
     weight: 2,
     'Value to weight ratio': '2.5',
@@ -977,6 +1058,7 @@ export default [
   },
   {
     name: 'Bottle cap',
+    dlc: null,
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -989,6 +1071,7 @@ export default [
   },
   {
     name: 'Box of detergent',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1001,6 +1084,7 @@ export default [
   },
   {
     name: 'Brahmin skull',
+    dlc: null,
     value: 1,
     weight: 2,
     'Value to weight ratio': '0.5',
@@ -1012,19 +1096,8 @@ export default [
     baseId: '0003405e',
   },
   {
-    name: 'Brotherhood of Steel holotag',
-    value: 1,
-    weight: 0,
-    'Value to weight ratio': '-',
-    isQuestItem: false,
-    'Related quest': 'Collecting holotags',
-    'Component for': '*',
-    isRockItLaucherAmmo: false,
-    category: 'other',
-    baseId: '0001edc5',
-  },
-  {
     name: 'Butter knife (common)',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1037,6 +1110,7 @@ export default [
   },
   {
     name: 'Butter knife (uncommon)',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1048,7 +1122,8 @@ export default [
     baseId: '0005b63a',
   },
   {
-    name: 'Buttercup toy Mothership Zeta',
+    name: 'Buttercup toy',
+    dlc: 'Mothership Zeta',
     value: 150,
     weight: 2,
     'Value to weight ratio': '75',
@@ -1061,6 +1136,7 @@ export default [
   },
   {
     name: 'Camera',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
@@ -1073,6 +1149,7 @@ export default [
   },
   {
     name: 'Carton of cigarettes',
+    dlc: null,
     value: 50,
     weight: 2,
     'Value to weight ratio': '25',
@@ -1085,6 +1162,7 @@ export default [
   },
   {
     name: 'Ceramic dinner plate',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1097,6 +1175,7 @@ export default [
   },
   {
     name: 'Cherry bomb',
+    dlc: null,
     value: 5,
     weight: 0,
     'Value to weight ratio': '-',
@@ -1109,6 +1188,7 @@ export default [
   },
   {
     name: 'Chessboard',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1121,6 +1201,7 @@ export default [
   },
   {
     name: 'Cigarette',
+    dlc: null,
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -1133,6 +1214,7 @@ export default [
   },
   {
     name: 'Clipboard',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1145,6 +1227,7 @@ export default [
   },
   {
     name: 'Coffee mug',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1157,6 +1240,7 @@ export default [
   },
   {
     name: 'Coffee pot',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1169,6 +1253,7 @@ export default [
   },
   {
     name: 'Conductor',
+    dlc: null,
     value: 30,
     weight: 5,
     'Value to weight ratio': '6',
@@ -1181,6 +1266,7 @@ export default [
   },
   {
     name: 'Crutch',
+    dlc: null,
     value: 10,
     weight: 2,
     'Value to weight ratio': '5',
@@ -1193,6 +1279,7 @@ export default [
   },
   {
     name: 'Cue ball',
+    dlc: null,
     value: 3,
     weight: 1,
     'Value to weight ratio': '3',
@@ -1205,6 +1292,7 @@ export default [
   },
   {
     name: 'Cup',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1217,6 +1305,7 @@ export default [
   },
   {
     name: 'Cutting board',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1229,6 +1318,7 @@ export default [
   },
   {
     name: 'Damaged garden gnome',
+    dlc: null,
     value: 1,
     weight: 4,
     'Value to weight ratio': '0.25',
@@ -1240,7 +1330,8 @@ export default [
     baseId: '0005b635',
   },
   {
-    name: "Danielle's book",
+    name: 'Danielle\'s book',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '-',
@@ -1253,6 +1344,7 @@ export default [
   },
   {
     name: 'Deathclaw hand',
+    dlc: null,
     value: 25,
     weight: 1,
     'Value to weight ratio': '25',
@@ -1265,6 +1357,7 @@ export default [
   },
   {
     name: 'Dinner plate',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1277,6 +1370,7 @@ export default [
   },
   {
     name: 'Dog bowl',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1289,6 +1383,7 @@ export default [
   },
   {
     name: 'Door Component',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '-',
@@ -1301,6 +1396,7 @@ export default [
   },
   {
     name: 'Drinking glass',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1313,6 +1409,7 @@ export default [
   },
   {
     name: 'Earnings clipboard',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1325,6 +1422,7 @@ export default [
   },
   {
     name: 'Empty Nuka-Cola bottle',
+    dlc: null,
     value: 2,
     weight: 1,
     'Value to weight ratio': '2',
@@ -1337,6 +1435,7 @@ export default [
   },
   {
     name: 'Empty soda bottle',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1349,6 +1448,7 @@ export default [
   },
   {
     name: 'Empty syringe',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
@@ -1361,6 +1461,7 @@ export default [
   },
   {
     name: 'Empty whiskey bottle',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1373,6 +1474,7 @@ export default [
   },
   {
     name: 'Finance clipboard',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1385,6 +1487,7 @@ export default [
   },
   {
     name: 'Firehose nozzle',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
@@ -1396,7 +1499,8 @@ export default [
     baseId: '00022101',
   },
   {
-    name: 'Fishing pole Point Lookout',
+    name: 'Fishing pole',
+    dlc: 'Point Lookout',
     value: 10,
     weight: 1.5,
     'Value to weight ratio': '6.67',
@@ -1409,6 +1513,7 @@ export default [
   },
   {
     name: 'Fission battery',
+    dlc: null,
     value: 75,
     weight: 10,
     'Value to weight ratio': '7.5',
@@ -1421,6 +1526,7 @@ export default [
   },
   {
     name: 'Flour',
+    dlc: null,
     value: 2,
     weight: 1,
     'Value to weight ratio': '2',
@@ -1433,6 +1539,7 @@ export default [
   },
   {
     name: 'Forceps',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
@@ -1445,6 +1552,7 @@ export default [
   },
   {
     name: 'Fork',
+    dlc: null,
     value: 1,
     weight: 0.5,
     'Value to weight ratio': '2',
@@ -1457,6 +1565,7 @@ export default [
   },
   {
     name: 'Garden gnome',
+    dlc: null,
     value: 1,
     weight: 5,
     'Value to weight ratio': '0.2',
@@ -1469,6 +1578,7 @@ export default [
   },
   {
     name: 'Glass pitcher',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1481,6 +1591,7 @@ export default [
   },
   {
     name: 'Green plate',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1493,6 +1604,7 @@ export default [
   },
   {
     name: 'Hammer',
+    dlc: null,
     value: 3,
     weight: 2,
     'Value to weight ratio': '1.5',
@@ -1505,6 +1617,7 @@ export default [
   },
   {
     name: 'Harmonica',
+    dlc: null,
     value: 2,
     weight: 1,
     'Value to weight ratio': '2',
@@ -1517,6 +1630,7 @@ export default [
   },
   {
     name: 'Hot plate',
+    dlc: null,
     value: 5,
     weight: 2,
     'Value to weight ratio': '2.5',
@@ -1529,6 +1643,7 @@ export default [
   },
   {
     name: 'Intact garden gnome',
+    dlc: null,
     value: 1,
     weight: 5,
     'Value to weight ratio': '0.2',
@@ -1541,6 +1656,7 @@ export default [
   },
   {
     name: 'Iron',
+    dlc: null,
     value: 2,
     weight: 5,
     'Value to weight ratio': '0.4',
@@ -1552,7 +1668,8 @@ export default [
     baseId: '00034088',
   },
   {
-    name: 'Large alien crystal Mothership Zeta',
+    name: 'Large alien crystal',
+    dlc: 'Mothership Zeta',
     value: 20,
     weight: 0,
     'Value to weight ratio': '-',
@@ -1565,6 +1682,7 @@ export default [
   },
   {
     name: 'Large burned book',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1577,6 +1695,7 @@ export default [
   },
   {
     name: 'Large destroyed book',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1589,6 +1708,7 @@ export default [
   },
   {
     name: 'Large ruined book',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1601,6 +1721,7 @@ export default [
   },
   {
     name: 'Large scorched book',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1613,6 +1734,7 @@ export default [
   },
   {
     name: 'Large whiskey bottle',
+    dlc: null,
     value: 5,
     weight: 2,
     'Value to weight ratio': '2.5',
@@ -1625,6 +1747,7 @@ export default [
   },
   {
     name: 'Lawnmower blade',
+    dlc: null,
     value: 10,
     weight: 2,
     'Value to weight ratio': '5',
@@ -1637,6 +1760,7 @@ export default [
   },
   {
     name: 'Leaf blower',
+    dlc: null,
     value: 15,
     weight: 2,
     'Value to weight ratio': '7.5',
@@ -1649,6 +1773,7 @@ export default [
   },
   {
     name: 'Leather belt',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
@@ -1660,7 +1785,8 @@ export default [
     baseId: '0002210c',
   },
   {
-    name: 'Lighthouse bulb Point Lookout',
+    name: 'Lighthouse bulb',
+    dlc: 'Point Lookout',
     value: 60,
     weight: 5,
     'Value to weight ratio': '12',
@@ -1672,7 +1798,8 @@ export default [
     baseId: 'xx010bc5',
   },
   {
-    name: 'Lump of brain Point Lookout',
+    name: 'Lump of brain',
+    dlc: 'Point Lookout',
     value: 0,
     weight: 0,
     'Value to weight ratio': '-',
@@ -1685,6 +1812,7 @@ export default [
   },
   {
     name: 'Lunchbox',
+    dlc: null,
     value: 3,
     weight: 1,
     'Value to weight ratio': '3',
@@ -1697,6 +1825,7 @@ export default [
   },
   {
     name: 'Medical brace',
+    dlc: null,
     value: 10,
     weight: 2,
     'Value to weight ratio': '5',
@@ -1709,6 +1838,7 @@ export default [
   },
   {
     name: 'Medical brace (new)',
+    dlc: null,
     value: 2,
     weight: 1,
     'Value to weight ratio': '2',
@@ -1721,6 +1851,7 @@ export default [
   },
   {
     name: 'Medical clipboard',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1733,6 +1864,7 @@ export default [
   },
   {
     name: 'Metal cooking pan',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
@@ -1745,6 +1877,7 @@ export default [
   },
   {
     name: 'Metal cooking pot',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1757,6 +1890,7 @@ export default [
   },
   {
     name: 'Metal spoon',
+    dlc: null,
     value: 1,
     weight: 0.5,
     'Value to weight ratio': '2',
@@ -1769,6 +1903,7 @@ export default [
   },
   {
     name: 'Metro ticket',
+    dlc: null,
     value: 1,
     weight: 0,
     'Value to weight ratio': '*',
@@ -1781,6 +1916,7 @@ export default [
   },
   {
     name: 'Milk bottle',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1793,6 +1929,7 @@ export default [
   },
   {
     name: 'Motorcycle gas tank',
+    dlc: null,
     value: 25,
     weight: 5,
     'Value to weight ratio': '5',
@@ -1805,6 +1942,7 @@ export default [
   },
   {
     name: 'Motorcycle handbrake',
+    dlc: null,
     value: 15,
     weight: 1,
     'Value to weight ratio': '15',
@@ -1817,6 +1955,7 @@ export default [
   },
   {
     name: 'Mutilated arm',
+    dlc: null,
     value: 0,
     weight: 2,
     'Value to weight ratio': '0',
@@ -1829,6 +1968,7 @@ export default [
   },
   {
     name: 'Mutilated leg',
+    dlc: null,
     value: 0,
     weight: 2,
     'Value to weight ratio': '0',
@@ -1841,6 +1981,7 @@ export default [
   },
   {
     name: 'Mutilated organs',
+    dlc: null,
     value: 0,
     weight: 2,
     'Value to weight ratio': '0',
@@ -1853,6 +1994,7 @@ export default [
   },
   {
     name: 'Mutilated skull',
+    dlc: null,
     value: 0,
     weight: 2,
     'Value to weight ratio': '0',
@@ -1865,6 +2007,7 @@ export default [
   },
   {
     name: 'Mutilated torso',
+    dlc: null,
     value: 0,
     weight: 2,
     'Value to weight ratio': '0',
@@ -1877,6 +2020,7 @@ export default [
   },
   {
     name: 'Nuka-Cola truck',
+    dlc: null,
     value: 5,
     weight: 2,
     'Value to weight ratio': '2.5',
@@ -1889,6 +2033,7 @@ export default [
   },
   {
     name: 'Office employee ID',
+    dlc: null,
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -1901,6 +2046,7 @@ export default [
   },
   {
     name: 'Opthalmoscope',
+    dlc: null,
     value: 4,
     weight: 1,
     'Value to weight ratio': '4',
@@ -1913,6 +2059,7 @@ export default [
   },
   {
     name: 'Pack of cigarettes',
+    dlc: null,
     value: 10,
     weight: 0.5,
     'Value to weight ratio': '20',
@@ -1925,6 +2072,7 @@ export default [
   },
   {
     name: 'Paint gun',
+    dlc: null,
     value: 15,
     weight: 5,
     'Value to weight ratio': '3',
@@ -1937,6 +2085,7 @@ export default [
   },
   {
     name: 'Paperweight',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1949,6 +2098,7 @@ export default [
   },
   {
     name: 'Pencil',
+    dlc: null,
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -1961,6 +2111,7 @@ export default [
   },
   {
     name: 'Pilot light',
+    dlc: null,
     value: 14,
     weight: 1,
     'Value to weight ratio': '14',
@@ -1973,6 +2124,7 @@ export default [
   },
   {
     name: 'Plunger',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -1985,6 +2137,7 @@ export default [
   },
   {
     name: 'Pool ball',
+    dlc: null,
     value: 2,
     weight: 1,
     'Value to weight ratio': '2',
@@ -1997,6 +2150,7 @@ export default [
   },
   {
     name: 'Pot',
+    dlc: null,
     value: 0,
     weight: 2,
     'Value to weight ratio': '0',
@@ -2009,6 +2163,7 @@ export default [
   },
   {
     name: 'Pre-War book (blue)',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
@@ -2021,6 +2176,7 @@ export default [
   },
   {
     name: 'Pre-War money',
+    dlc: null,
     value: 10,
     weight: 0,
     'Value to weight ratio': '-',
@@ -2033,6 +2189,7 @@ export default [
   },
   {
     name: 'Pressure cooker',
+    dlc: null,
     value: 15,
     weight: 5,
     'Value to weight ratio': '3',
@@ -2045,6 +2202,7 @@ export default [
   },
   {
     name: 'Radscorpion poison gland',
+    dlc: null,
     value: 30,
     weight: 1,
     'Value to weight ratio': '30',
@@ -2057,6 +2215,7 @@ export default [
   },
   {
     name: 'Rake',
+    dlc: null,
     value: 1,
     weight: 2,
     'Value to weight ratio': '0.5',
@@ -2069,6 +2228,7 @@ export default [
   },
   {
     name: 'Red pass card',
+    dlc: null,
     value: 1,
     weight: 0,
     'Value to weight ratio': '-',
@@ -2081,6 +2241,7 @@ export default [
   },
   {
     name: 'Red plate',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -2092,7 +2253,8 @@ export default [
     baseId: '0005b63e',
   },
   {
-    name: 'Riverboat ticket Point Lookout',
+    name: 'Riverboat ticket',
+    dlc: 'Point Lookout',
     value: 300,
     weight: 0,
     'Value to weight ratio': '-',
@@ -2105,6 +2267,7 @@ export default [
   },
   {
     name: 'Scalpel',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
@@ -2117,6 +2280,7 @@ export default [
   },
   {
     name: 'Scissors',
+    dlc: null,
     value: 3,
     weight: 1,
     'Value to weight ratio': '3',
@@ -2129,11 +2293,12 @@ export default [
   },
   {
     name: 'Scrap metal',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
     isQuestItem: false,
-    'Related quest': "The Outcast Collection Agent\nThis Old House\nWalter's Scrap Metal\nAmmo Press",
+    'Related quest': 'The Outcast Collection Agent\nThis Old House\nWalter\'s Scrap Metal\nAmmo Press',
     'Component for': '*',
     isRockItLaucherAmmo: false,
     category: 'other',
@@ -2141,6 +2306,7 @@ export default [
   },
   {
     name: 'Sensor module',
+    dlc: null,
     value: 30,
     weight: 2,
     'Value to weight ratio': '15',
@@ -2153,6 +2319,7 @@ export default [
   },
   {
     name: 'Shot glass',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -2164,7 +2331,8 @@ export default [
     baseId: '000340b5',
   },
   {
-    name: 'Small alien crystal Mothership Zeta',
+    name: 'Small alien crystal',
+    dlc: 'Mothership Zeta',
     value: 10,
     weight: 0,
     'Value to weight ratio': '-',
@@ -2177,6 +2345,7 @@ export default [
   },
   {
     name: 'Small burned book',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -2189,6 +2358,7 @@ export default [
   },
   {
     name: 'Small destroyed book',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -2201,6 +2371,7 @@ export default [
   },
   {
     name: 'Small ruined book',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -2213,6 +2384,7 @@ export default [
   },
   {
     name: 'Small scorched book',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -2225,6 +2397,7 @@ export default [
   },
   {
     name: 'Spatula',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -2237,6 +2410,7 @@ export default [
   },
   {
     name: 'Spork',
+    dlc: null,
     value: 1,
     weight: 0.5,
     'Value to weight ratio': '2',
@@ -2249,6 +2423,7 @@ export default [
   },
   {
     name: 'Steam gauge assembly',
+    dlc: null,
     value: 25,
     weight: 10,
     'Value to weight ratio': '2.5',
@@ -2260,7 +2435,8 @@ export default [
     baseId: '00022112',
   },
   {
-    name: 'Super mutant blood sample Broken Steel',
+    name: 'Super mutant blood sample',
+    dlc: 'Broken Steel',
     value: 1,
     weight: 0,
     'Value to weight ratio': '1',
@@ -2269,10 +2445,11 @@ export default [
     'Component for': '*',
     isRockItLaucherAmmo: false,
     category: 'other',
-    baseId: '00031944',
+    baseId: 'xx009f95',
   },
   {
     name: 'Surgical tubing',
+    dlc: null,
     value: 10,
     weight: 1,
     'Value to weight ratio': '10',
@@ -2285,6 +2462,7 @@ export default [
   },
   {
     name: 'Teddy bear',
+    dlc: null,
     value: 3,
     weight: 1,
     'Value to weight ratio': '3',
@@ -2297,6 +2475,7 @@ export default [
   },
   {
     name: 'Tin can',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -2309,6 +2488,7 @@ export default [
   },
   {
     name: 'Tin plate',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -2321,6 +2501,7 @@ export default [
   },
   {
     name: 'Toaster (post-war)',
+    dlc: null,
     value: 3,
     weight: 5,
     'Value to weight ratio': '0.6',
@@ -2333,6 +2514,7 @@ export default [
   },
   {
     name: 'Toaster (pre-War)',
+    dlc: null,
     value: 3,
     weight: 5,
     'Value to weight ratio': '0.6',
@@ -2345,6 +2527,7 @@ export default [
   },
   {
     name: 'Toy car',
+    dlc: null,
     value: 5,
     weight: 1,
     'Value to weight ratio': '5',
@@ -2357,6 +2540,7 @@ export default [
   },
   {
     name: 'Triangle',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -2369,6 +2553,7 @@ export default [
   },
   {
     name: 'Turpentine',
+    dlc: null,
     value: 10,
     weight: 2,
     'Value to weight ratio': '5',
@@ -2381,6 +2566,7 @@ export default [
   },
   {
     name: 'Tweezers',
+    dlc: null,
     value: 3,
     weight: 1,
     'Value to weight ratio': '3',
@@ -2393,6 +2579,7 @@ export default [
   },
   {
     name: 'Vacuum cleaner',
+    dlc: null,
     value: 20,
     weight: 10,
     'Value to weight ratio': '2',
@@ -2405,6 +2592,7 @@ export default [
   },
   {
     name: 'Whetstone',
+    dlc: null,
     value: 1,
     weight: 2,
     'Value to weight ratio': '0.5',
@@ -2417,6 +2605,7 @@ export default [
   },
   {
     name: 'White plate',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -2429,6 +2618,7 @@ export default [
   },
   {
     name: 'Wood chipper',
+    dlc: null,
     value: 25,
     weight: 50,
     'Value to weight ratio': '0.5',
@@ -2441,6 +2631,7 @@ export default [
   },
   {
     name: 'Wonderglue',
+    dlc: null,
     value: 10,
     weight: 1,
     'Value to weight ratio': '10',
@@ -2453,6 +2644,7 @@ export default [
   },
   {
     name: 'Wrench',
+    dlc: null,
     value: 1,
     weight: 1,
     'Value to weight ratio': '1',
@@ -2464,7 +2656,8 @@ export default [
     baseId: '0005b6d0',
   },
   {
-    name: 'Yeast Point Lookout',
+    name: 'Yeast',
+    dlc: 'Point Lookout',
     value: 21,
     weight: 4,
     'Value to weight ratio': '*',
