@@ -13,13 +13,13 @@ const theState = {
    * Current Action Points
    * @var {number}
    */
-  CurrAP: 90.0,
+  CurrAP: 80.0,
 
   /**
    * Current (total) health
    * @var {number}
    */
-  CurrHP: 115.0,
+  CurrHP: 114.0,
 
   /**
    * Current weight of stuff you hauling.

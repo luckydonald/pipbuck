@@ -47,24 +47,25 @@
 </template>
 
 <script>
+import { betterMapState } from '../lib/better-vuex-getter';
 import { ui } from '../sound';
 
 export default {
   name: 'Stats',
-  data() {
-    return {
-      level: 6,
-      healthPoints: 114,
-      maxHealthPoints: 115,
-      actionPoints: 80,
-      maxActionPoints: 90,
-      bottlecaps: 510,
-    };
-  },
   methods: {
     playTab(event) {
       this.$emit('pipbuck-play', ui.sounds.nav_tab);
     },
+  },
+  computed: {
+    ...betterMapState('game/PlayerInfo', {
+      level: ['XPLevel', Math.floor],
+      healthPoints: ['CurrHP', Math.floor],
+      maxHealthPoints: ['MaxHP', Math.floor],
+      actionPoints: ['CurrAP', Math.floor],
+      maxActionPoints: ['MaxAP', Math.floor],
+      bottlecaps: ['Caps', Math.floor],
+    }),
   },
 };
 </script>

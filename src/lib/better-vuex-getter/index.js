@@ -24,6 +24,29 @@ function normalizeMap(map) {
     : Object.keys(map).map(key => ({ key, val: map[key] }));
 }
 
+/**
+ * Wraps vuex.esm.js's mapState, accepting a tuple value with a formatting func.
+ * @param namespace {string}
+ * @param states {Dictionary<string|function|[string, function]>}
+ * @return {Dictionary<function>}
+ * @example
+ * { localInt: ['stateNumber', Math.floor] }
+ */
+const betterMapState = normalizeNamespace((namespace, states) => {
+  console.log('betterMapState 0', states);
+  Object.keys(states).forEach((key) => {
+    const val = states[key];
+    console.log('betterMapState i', key, val);
+    // eslint-disable-next-line no-param-reassign
+    states[key] = !Array.isArray(val) ? val : function stateInner(state) {
+      console.log('betterMapState x', key, val[1], val[0]);
+      return val[1].call(this, state[val[0]]);
+    };
+  });
+  console.log('betterMapState 1', states);
+  return mapState(namespace, states);
+});
+
 /** From vuex.esm.js, disabled getModuleByNamespace check. */
 const betterMapGetters = normalizeNamespace((namespace, getters) => {
   const res = {};
@@ -51,10 +74,11 @@ const betterMapGetters = normalizeNamespace((namespace, getters) => {
 });
 
 export {
-  mapState,
+  betterMapState, mapState,
   betterMapGetters,
 };
 export default {
+  betterMapState,
   mapState,
   betterMapGetters,
 };
