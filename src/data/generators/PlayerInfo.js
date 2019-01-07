@@ -342,6 +342,18 @@ const theGetters = {
   'health/totalDamageResistance'(state, getters) {
     return state.TotalResists.reduce((old, item) => old + item.Value, 0);
   },
+  'time/fullYear'(state, getters) {
+    return 2000 + state.DateYear;
+  },
+  'time/halfYear'(state, getters) {
+    return getters['time/fullYear'].toString().slice(-2);
+  },
+  'time/hours'(state, getters) {
+    return Math.floor(state.TimeHour).toString().padStart(2, '0');
+  },
+  'time/minutes'(state, getters) {
+    return Math.floor((state.TimeHour % 1) * 60).toString().padStart(2, '0');
+  },
 };
 export default {
   state: theState, getters: theGetters,

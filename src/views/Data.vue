@@ -1,36 +1,51 @@
 <template>
-  <div>
-    <div id="nav">
-      <router-link to="/data/local_map" @click.native="playTab">Local Map</router-link>
-      <router-link to="/data/world_map" @click.native="playTab">World Map</router-link>
-      <router-link to="/data/quests" @click.native="playTab">Quests</router-link>
-      <router-link to="/data/notes" @click.native="playTab">Notes</router-link>
-      <router-link to="/data/radio" @click.native="playTab">Radio</router-link>
-      <router-link to="/settings" v-if="!showHardwareButtons">S</router-link>
-    </div>
+  <Menu
+    title="Data"
+    :links="[
+      { to: '/data/local_map', label: 'Local Map' },
+      { to: '/data/world_map', label: 'World Map' },
+      { to: '/data/quests', label: 'Quests' },
+      { to: '/data/notes', label: 'Notes' },
+      { to: '/data/radio', label: 'Radio' },
+    ]"
+  >
+    <template slot="statistics">
+      <div class="stat location">{{ location }}</div>
+      <div class="stat">{{ day }}.{{ month }}.{{ year }}, {{ hour }}:{{ minute }}</div>
+    </template>
     <router-view />
-  </div>
+  </Menu>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import { ui } from '../sound';
+import { mapState, betterMapGetters } from '../lib/better-vuex-getter';
+import Menu from './Menu.vue';
 
 export default {
   name: 'Data',
+  components: { Menu },
   computed: {
     ...mapState([
       'showHardwareButtons',
     ]),
-  },
-  methods: {
-    playTab(event) {
-      this.$emit('pipbuck-play', ui.sounds.nav_tab);
+    location() {
+      return this.$store.state.game.Map.CurrWorldspace;
     },
+    ...mapState('game/PlayerInfo', {
+      day: 'DateDay',
+      month: 'DateMonth',
+    }),
+    ...betterMapGetters('game/PlayerInfo/time', {
+      minute: 'minutes',
+      hour: 'hours',
+      year: 'halfYear',
+    }),
   },
 };
 </script>
 
 <style scoped>
-
+.stat.location {
+  text-align: right;
+}
 </style>
