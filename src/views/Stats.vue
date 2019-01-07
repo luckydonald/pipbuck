@@ -2,18 +2,18 @@
   <Menu
     title="Stats"
     :links="[
-      { label: 'Status', to:'/stats/status' },
-      { label: 'S.P.E.C.I.A.L.', to:'/stats/special' },
-      { label: 'Skills', to:'/stats/skills' },
-      { label: 'Perks', to:'/stats/perks' },
-      { label: 'General', to:'/stats/general' },
+      { to: '/stats/status', label: 'Status' },
+      { to: '/stats/special', label: 'S.P.E.C.I.A.L.' },
+      { to: '/stats/skills', label: 'Skills' },
+      { to: '/stats/perks', label: 'Perks' },
+      { to: '/stats/general', label: 'General' },
     ]"
   >
     <template slot="statistics">
       <div class="stat">LVL {{ level }}</div>
       <div class="stat">HP {{ healthPoints }}/{{ maxHealthPoints }}</div>
       <div class="stat">AP {{ actionPoints }}/{{ maxActionPoints }}</div>
-      <div class="stat">Caps {{ bottlecaps }}</div>
+      <div class="stat">XP {{ 4966 }}/{{ 5800 }}</div>
     </template>
     <router-view />
   </Menu>
@@ -21,17 +21,11 @@
 
 <script>
 import { betterMapState } from '../lib/better-vuex-getter';
-import { ui } from '../sound';
 import Menu from './Menu.vue';
 
 export default {
   name: 'Stats',
   components: { Menu },
-  methods: {
-    playTab(event) {
-      this.$emit('pipbuck-play', ui.sounds.nav_tab);
-    },
-  },
   computed: {
     ...betterMapState('game/PlayerInfo', {
       level: ['XPLevel', Math.floor],

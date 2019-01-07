@@ -8,10 +8,10 @@
         <div class="hr middle" />
         <div class="grouping">
           <slot name="statistics">
-            <div class="stat">LVL {{ level }}</div>
-            <div class="stat">HP {{ healthPoints }}/{{ maxHealthPoints }}</div>
-            <div class="stat">AP {{ actionPoints }}/{{ maxActionPoints }}</div>
-            <div class="stat">Caps {{ bottlecaps }}</div>
+            <div class="stat">Batz 42</div>
+            <div class="stat">Foo 1337</div>
+            <div class="stat">Bar 4458</div>
+            <div class="stat">BP L.Pip</div>
           </slot>
         </div>
         <div class="edge right down" />
@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import { betterMapState } from '../lib/better-vuex-getter';
 import { ui } from '../sound';
 import Placeholder from './Placeholder.vue';
 
@@ -58,16 +57,6 @@ export default {
     playTab(event) {
       this.$emit('pipbuck-play', ui.sounds.nav_tab);
     },
-  },
-  computed: {
-    ...betterMapState('game/PlayerInfo', {
-      level: ['XPLevel', Math.floor],
-      healthPoints: ['CurrHP', Math.floor],
-      maxHealthPoints: ['MaxHP', Math.floor],
-      actionPoints: ['CurrAP', Math.floor],
-      maxActionPoints: ['MaxAP', Math.floor],
-      bottlecaps: ['Caps', Math.floor],
-    }),
   },
 };
 </script>

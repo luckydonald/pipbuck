@@ -339,8 +339,8 @@ const theGetters = {
   'health/parts/legHindRight'(state, getters) {
     return (100 - state.TotalDamages.filter(dmg => dmg.type === 6)[0].Value) / 100;
   },
-  'health/parts/test'(state, getters) {
-    return 'yes';
+  'health/totalDamageResistance'(state, getters) {
+    return state.TotalResists.reduce((old, item) => old + item.Value, 0);
   },
 };
 export default {
