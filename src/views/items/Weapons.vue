@@ -20,7 +20,7 @@
           <div class="label">CND</div>
           <div class="value percentage"><percent class="percent" :value="condition"/></div>
         </div>
-        <div class="detail ammunition">{{ ammunitionText }}</div>
+        <div class="detail ammunition cols-2">{{ ammunitionText }}</div>
       </div>
       <div class="row">
         <div class="detail blank">

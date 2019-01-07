@@ -132,14 +132,26 @@ export default {
   }
 
   .detail {
+    display: flex;
+    justify-content: space-between;
+
     padding: 0.5vmin 1vmin;
     white-space: nowrap;
-    width: (100% / 3);
-    margin-left: 1.2vmin;
+    $detail-margin-left: 1.2vmin;
+    margin-left: $detail-margin-left;
 
-    display: flex;
+    width: (100% / 3);
     flex-grow: 1;
-    justify-content: space-between;
+
+    &.cols-2 {
+      width: calc(#{((100% / 3) * 2)} + #{$detail-margin-left});
+      flex-grow: 2;
+    }
+    &.cols-3 {
+      width: 100%;
+      flex-grow: 3;
+    }
+
 
     // right border is fading
     border-right-width: .75vmin;
@@ -165,9 +177,6 @@ export default {
       background-color: var(--color-front);
     }
 
-    &.ammunition {
-      flex-grow: 2;
-    }
     &.blank {
       border-right-color: transparent;
       border-image: none;
