@@ -12,17 +12,21 @@
         >{{ name }}</a>
       </li>
     </ul>
-    <oscilloscope
-      :color="colorFront"
-      :fftSize="fftSize"
-      :fftEach="fftEach"
-      :rounded="rounded"
-      :squared="squared"
-      :zigzagg="zigzagg"
-      class="right-content"
-      :audio-element="audioElement"
-    />
-    <div>Playing: <a :href="currentFile">{{ currentFile }}</a></div>
+    <div class="right-content">
+      <oscilloscope
+        class="oscilloscope"
+        :color="colorFront"
+        :fftSize="fftSize"
+        :fftEach="fftEach"
+        :rounded="rounded"
+        :squared="squared"
+        :zigzagg="zigzagg"
+        :canvasHeight="400"
+        :canvasWidth="400"
+        :audio-element="audioElement"
+      />
+      <!--<div>Playing: <a :href="currentFile">{{ currentFile }}</a></div>-->
+    </div>
   </div>
 </template>
 
@@ -51,7 +55,7 @@ export default {
     ...radioNamespace.mapState(['selected']),
     ...radioNamespace.mapGetters(['current', 'currentFile']),
     audioElement() {
-      return this.$parent.$parent.$refs.radio;
+      return this.$parent.$parent.$parent.$refs.radio;
     },
   },
   methods: {
@@ -78,23 +82,27 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .columns {
-    width: 100%;
-  }
-  .columns * {
-    padding: 0;
-  }
-  ul.left-list {
-    width: 50%;
-    float: left;
-    text-align: left;
+.columns {
+  //margin-left: 10vmin;
+  //margin-right: 10vmin;
+  padding-left: 5vmin;
+  padding-right: 3vmin;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+ul.left-list {
+  text-align: left;
 
-    li {
-      margin-top: 1rem;
-    }
+  li {
+    margin-top: 1rem;
   }
-  .right-content {
-    width: 50%;
-    float: right;
-  }
+}
+.right-content {
+}
+.oscilloscope {
+  max-width: 50vmin;
+  max-height: 50vmin;
+}
 </style>
