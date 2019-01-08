@@ -149,6 +149,9 @@ $border-width: 0.75vmin;
         margin-left: 0;
         text-align: right;
       }
+      &:last-child::after {
+        display: none;
+      }
     }
   }
 }
