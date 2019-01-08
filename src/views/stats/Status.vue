@@ -1,10 +1,10 @@
 <template>
   <div class="page">
-    <ul>
-      <li><router-link to="/stats/status/condition">CND</router-link></li>
-      <li><router-link to="/stats/status/radiation">RAD</router-link></li>
-      <li><router-link to="/stats/status/effects">EFF</router-link></li>
-    </ul>
+    <div class="tabs">
+      <router-link to="/stats/status/condition">CND</router-link>
+      <router-link to="/stats/status/radiation">RAD</router-link>
+      <router-link to="/stats/status/effects">EFF</router-link>
+    </div>
     <router-view />
   </div>
 </template>
@@ -16,12 +16,15 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .page {
   height: 100%;
 }
-.img {
-  max-width: 60vw;
-  max-height: 70vh;
+.tabs {
+  position: absolute;
+  left: 5vmin;
+  top: 0;
+  display: flex;
+  flex-direction: column;
 }
 </style>
