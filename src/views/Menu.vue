@@ -186,23 +186,15 @@ $border-width: 0.75vmin;
   justify-content: space-between;
 
   // right border is fading
-  border-top: $border-width solid transparent;
-  border-left-width: 0;
+  border: none;
   border-top-width: $border-width;
-  border-right-width: $border-width;
-  border-right-style: solid;
-  border-right-color: transparent;
-  -webkit-border-image: -webkit-gradient(
-      linear, 0 0, 0 100%, from(var(--color-front)), to(rgba(0, 0, 0, 0))
-  ) 1 100%;
-  border-image: linear-gradient(
-      to bottom, var(--color-front), rgba(0, 0, 0, 0)
-  ) 1 100%;
+  border-top-style: solid;
   // prepare for creating a top border per :before
   position: relative;
   margin-top: -$border-width;  // space for border top
+  padding-right: 2vmin;
 
-  &::before {
+  &::after {
     position: absolute;
     content: "";
     padding: 0;
@@ -211,11 +203,17 @@ $border-width: 0.75vmin;
     left: 0;
     right: 0;
     height: 100%;
-    border-top: $border-width solid;
-    margin-top: -$border-width;  // space for border top
-    //border-right: $border-width hotpink solid;
     //margin-right: -$border-width;  // space for border top
-    //background-color: rgba(hotpink, 0.75);
+
+    border-right-width: $border-width;
+    border-right-style: solid;
+    border-right-color: var(--color-front);
+    -webkit-border-image: -webkit-gradient(
+        linear, 0 0, 0 100%, from(var(--color-front)), to(rgba(0, 0, 0, 0))
+    ) 1 100%;
+    border-image: linear-gradient(
+        to bottom, var(--color-front), rgba(0, 0, 0, 0)
+    ) 1 100%;
 
   }
   &.ammunition {
