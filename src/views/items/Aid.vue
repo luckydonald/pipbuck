@@ -1,5 +1,5 @@
 <template>
-  <inventory :items="items" :limit="limit" v-model="activeId">
+  <inventory :items="items" :limit="limit" v-model="activeId" @equip="onEquip">
    <div slot="rows" class="rows">
      <div class="row">
       <div class="detail damage blank">
@@ -62,15 +62,9 @@ export default {
     },
   },
   methods: {
-    toggleEquip(id, flag) {
-      console.log('sending equip action', id, flag);
-      this.itemSelection.filter(item => item.id === id)[0].equipped = flag;
-    },
     onEquip(id) {
-      this.toggleEquip(id, true);
-    },
-    onUnEquip(id) {
-      this.toggleEquip(id, false);
+      console.log('aid use', id);
+      this.items.filter(item => item.id === id)[0].amount -= 1;
     },
   },
 };
