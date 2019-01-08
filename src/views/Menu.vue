@@ -6,7 +6,7 @@
         <div class="hr left" />
         <a class="title">{{ title }}</a>
         <div class="hr middle" />
-        <div class="grouping">
+        <div class="grouping" v-if="!disableStats">
           <slot name="statistics">
             <div class="stat">Batz 42</div>
             <div class="stat">Foo 1337</div>
@@ -51,6 +51,10 @@ export default {
         return [];
       },
       type: Array,
+    },
+    disableStats: {
+      default: false,
+      type: Boolean,
     },
   },
   methods: {

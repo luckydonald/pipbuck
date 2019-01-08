@@ -1,42 +1,54 @@
 <template>
-  <div class="page" @click="prepareBoot" @mouseup="screenfull.request()">
+  <div class="page" @click="preparePreparation">
     <div class="off" v-if="off">
       <button>Turn on</button>
     </div>
-    <div class="animation" v-if="!off && !loading">
-      <div class="headline">Pip-OS(R) v10 build 4458</div>
-      <typer-css
-        :chars="1"
-        :duration="3500"
-        :running="!off && !loading"
-        class="text"
-      >
-        Copyright 2075 Robronco(R)<br>
-        Loader V2.0<br>
-        Exec version 42.19<br>
-        64K RAM system<br>
-        38911 bytes free<br>
-        No holotape found<br>
-        Load ROM(1): MaReTrix 505<br>
-      </typer-css>
-    </div>
-    <div class="loader" v-if="!off" v-show="loading">
-      <stable-colt class="svg" />
-      <div>Initiating...</div>
-    </div>
+    <Menu
+      v-show="!off"
+      title="Pip-OS(R) v12 build 4458"
+      :links="[]"
+      :disableStats="true"
+    >
+      <template slot="statistics">&nbsp;</template>
+      <div class="animation" v-if="!off && !loading">
+        <typer-css
+          :chars="1"
+          :duration="3500"
+          :running="!off && !loading"
+          class="text"
+        >
+          Copyright 2075 Robronco(R)<br>
+          Loader V2.0<br>
+          Exec version 42.19<br>
+          64K RAM system<br>
+          38911 bytes free<br>
+          No holotape found<br>
+          Load ROM(1): MaReTrix 505<br>
+        </typer-css>
+      </div>
+      <div class="loader" v-else-if="!off" v-show="loading">
+        <div class="loading">
+          <stable-colt class="svg" />
+          <div>Initiating...</div>
+        </div>
+      </div>
+      <div v-else>&nbsp;</div>
+    </Menu>
   </div>
 </template>
 
 <script>
 import screenfull from 'screenfull';
+import Menu from './Menu.vue';
 import StableColt from '../components/StableColt.vue';
 import TyperCss from '../components/typer/TyperCss.vue';
 import { ui } from '../sound';
 
+
 // https://stackoverflow.com/a/40460122/3423324#showing-loading-spinner-for-async-vue-2-components
 export default {
   name: 'boot',
-  components: { StableColt, TyperCss },
+  components: { Menu, StableColt, TyperCss },
   data() {
     return {
       off: true,  // is turned off, waiting for turning on
@@ -46,6 +58,11 @@ export default {
     };
   },
   methods: {
+    preparePreparation() {
+      screenfull
+        .request()
+        .finally(() => requestAnimationFrame(() => this.$nextTick(this.prepareBoot)));
+    },
     prepareBoot() {
       /** @var {PlayingSprite} */
       const play = ui.play(ui.sounds.boot);
@@ -71,7 +88,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.page {
+.page, .animation {
+  height: 100%;
 }
 .off {
   width: 100%;
@@ -81,24 +99,19 @@ export default {
   top: 0;
   left: 0;
   transition: opacity 1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    border: var(--color-front) 0.75vmin solid;
+    color: var(--color-front);
+    padding: 0.75vmin 1vmin;
+    background-color: transparent;
+  }
 }
 .svg {
-  max-height: 200px;
-}
-.headline {
-  margin-top: 10vh;
-  position: relative;
-  display: inline-block;
-  &::before, &::after {
-    content: "***************";
-    position: absolute;
-  }
-  &::before {
-    right: 110%;
-  }
-  &::after {
-    left: 110%;
-  }
+  max-height: 70vmin;
 }
 .text {
   padding-left: 10vw;
@@ -106,17 +119,18 @@ export default {
   text-align: left;
 }
 .loader {
-  // display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding-left: 12vmin;
+  padding-bottom: 7vmin;
+  align-items: center;
+  justify-content: center;
+}
+.loader .loading {
   div {
     animation: loading 1000ms infinite linear;
   }
-}
-.loading .loader {
-  // display: block;
 }
 
 @keyframes loading {
