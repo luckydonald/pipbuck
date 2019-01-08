@@ -66,6 +66,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+$border-width: 0.75vmin;
 
 .page-wrapper {
   display: flex;
@@ -112,6 +113,10 @@ export default {
   width: 100%;
   justify-content: flex-start;
 
+  & > .row {
+    justify-content: flex-start;
+  }
+
   .hr.left {
     flex-grow: 1;
     flex-shrink: 1;
@@ -133,6 +138,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-content: stretch;
+    padding-top: $border-width;
 
     .stat {
       flex-shrink: 1;
@@ -154,7 +160,7 @@ export default {
 .item, .title, .stat {
   flex-shrink: 0;
   flex-grow: 0;
-  border: transparent 0.75vmin solid;
+  border: transparent $border-width solid;
 
   &.router-link-active, .active {
     border-color: var(--color-front);
@@ -166,9 +172,7 @@ export default {
   letter-spacing: +0.05em;
 }
 .stat {
-  position: absolute;
-  top: calc(50% - 1vmin);
-
+  top: 50%;
   padding: 0.5vmin 1vmin;
 
   width: (100% / 3);
@@ -179,8 +183,10 @@ export default {
   justify-content: space-between;
 
   // right border is fading
+  border-top: $border-width solid transparent;
   border-left-width: 0;
-  border-right-width: .75vmin;
+  border-top-width: $border-width;
+  border-right-width: $border-width;
   border-right-style: solid;
   border-right-color: transparent;
   -webkit-border-image: -webkit-gradient(
@@ -189,20 +195,26 @@ export default {
   border-image: linear-gradient(
       to bottom, var(--color-front), rgba(0, 0, 0, 0)
   ) 1 100%;
-  // prepare for creating a top border per :after
+  // prepare for creating a top border per :before
   position: relative;
-  margin-top: .75vmin;  // space for border top
+  margin-top: -$border-width;  // space for border top
 
-  &:after {
+  &::before {
     position: absolute;
     content: "";
-    top: -.5vmin;
+    padding: 0;
+    margin: 0;
+    top: 0;
     left: 0;
-    right: -.5vmin;
-    height: .5vmin;
-    background-color: var(--color-front);
-  }
+    right: 0;
+    height: 100%;
+    border-top: $border-width solid;
+    margin-top: -$border-width;  // space for border top
+    //border-right: $border-width hotpink solid;
+    //margin-right: -$border-width;  // space for border top
+    //background-color: rgba(hotpink, 0.75);
 
+  }
   &.ammunition {
     flex-grow: 2;
   }
@@ -210,7 +222,7 @@ export default {
 
 .hr {
   align-self: center;
-  border-bottom: .75vmin solid; /* whichever color you prefer */
+  border-top: $border-width solid;
   flex-shrink: 1;
   flex-grow: 1;
 }
@@ -237,7 +249,7 @@ export default {
   // prepare for creating a top border per :after
   position: relative;
   &.right {
-    border-right-width: 0.75vmin;
+    border-right-width: $border-width;
     border-right-style: solid;
     border-right-color: transparent;
     &.up {
@@ -248,7 +260,7 @@ export default {
     }
   }
   &.left {
-    border-left-width: 0.75vmin;
+    border-left-width: $border-width;
     border-left-style: solid;
     border-left-color: transparent;
     &.up {
