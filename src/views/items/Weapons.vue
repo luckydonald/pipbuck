@@ -8,11 +8,11 @@
         </div>
         <div class="detail weight">
           <div class="label">WG</div>
-          <div class="value">{{ activeItem['Weapon weight'] || '' }}</div>
+          <div class="value">{{ activeItem.weight || '--' }}</div>
         </div>
         <div class="detail value">
           <div class="label">VAL</div>
-          <div class="value">{{ activeItem['Weapon value in caps'] || ''}}</div>
+          <div class="value">{{ activeItem.value || '--'}}</div>
         </div>
       </div>
       <div class="row">
@@ -64,7 +64,7 @@ export default {
         .map(item => Object.assign(item, {
           id: item.baseId,
           equipped: (Math.floor(Math.random() * 10)) === 0,
-          amount: Math.floor(Math.log(Math.random() * 4)),
+          amount: Math.floor(Math.log(Math.random() * 10)),
           condition: Math.random(),
         }))
         .filter(item => item.amount >= 1);
@@ -79,7 +79,7 @@ export default {
       ) {
         const type = this.activeItem['Ammunition used'];
         const capacity = this.activeItem['Magazine capacity (shots per reload)'];
-        return `${type} (1/${capacity})`;
+        return `${type} (${capacity}/${Math.round(Math.random() * 500)})`;
       }
       return '--';
     },
