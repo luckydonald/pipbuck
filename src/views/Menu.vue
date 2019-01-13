@@ -187,7 +187,7 @@ $border-width: 0.75vmin;
 
   // right border is fading
   border: none;
-  border-top-width: $border-width;
+  border-top-width: calc(#{$border-width} - 0.25px);
   border-top-style: solid;
   // prepare for creating a top border per :before
   position: relative;
