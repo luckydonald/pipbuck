@@ -28,7 +28,7 @@
           }"
         ></div>
       </div>
-      <hardware-buttons
+      <virtual-buttons
           v-if="showHardwareButtons"
           class="hardware noscroll"
           :position="hardwareButtonPosition"
@@ -43,14 +43,14 @@ import { mapState, mapGetters } from 'vuex';
 import Shake from 'shake.js';
 import { ui } from './sound';
 import { HexToHSL, hsl } from './lib/colorspace';
-import HardwareButtons from './components/HardwareButtons.vue';
+import VirtualButtons from './components/VirtualButtons.vue';
 import Favicon from './components/Favicon.vue';
 import StableColt from './components/StableColt.vue';
 import ColorizedBg from './lib/vue-colorized/directive';
 
 const app = {
   name: 'app',
-  components: { HardwareButtons, Favicon, StableColt },
+  components: { VirtualButtons, Favicon, StableColt },
   directives: { ColorizedBg },
   head() {
     return {

@@ -27,7 +27,7 @@
 import { ui } from '../sound';
 
 export default {
-  name: 'HardwareButtons',
+  name: 'VirtualButtons',
   props: {
     position: {
       default: 'bottom',

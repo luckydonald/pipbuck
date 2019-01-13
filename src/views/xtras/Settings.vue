@@ -5,9 +5,9 @@
       <a @click="screenfull.toggle()" :class="{ active: screenfull.isFullscreen }">Fullscreen</a>
     </div>
     <div>
-      <label>Hardware buttons</label>
-      <a @click="leToggleHardwareButtons(true)" class="active">ON</a>
-      <a @click="leToggleHardwareButtons(false)" class="active">OFF</a>
+      <label>Virtual buttons</label>
+      <a @click="leToggleVirtualButtons(true)" class="active">ON</a>
+      <a @click="leToggleVirtualButtons(false)" class="active">OFF</a>
     </div>
     <div>
       <label>Color</label>
@@ -117,7 +117,7 @@ export default {
     },
   },
   methods: {
-    leToggleHardwareButtons(state) {
+    leToggleVirtualButtons(state) {
       console.log('commiting toggleHardwareButtons state: ', state);
       this.$store.commit('toggleHardwareButtons', state);
     },
