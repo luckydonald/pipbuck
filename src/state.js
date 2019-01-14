@@ -115,8 +115,8 @@ const store = new Vuex.Store({
     },
   },
   state: {
-    colorFront: hsl(147, 100, 55, '#1aff80'), // rgb(26, 255, 128)
-    colorBack: hsl(147, 78, 14, '#084021'),
+    colorFront: hsl(37, 100, 63, '#ffb642'),
+    colorBack: hsl(37, 78, 14, '#402a08'),
     // colorFront: '#a0f8c5', // '#9ef8bd',
     // colorBack: '#08401f',
 
