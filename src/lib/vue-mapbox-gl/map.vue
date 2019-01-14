@@ -323,5 +323,16 @@ export default {
     left: 0;
     position: absolute!important;
   }
+  .mapboxgl-ctrl-bottom-right {
+    position: absolute; pointer-events: none; z-index: 2;
+  }
+  .mapboxgl-ctrl-bottom-right {
+    right: 0; bottom: 0;
+    right: 5vmin; bottom: 2vmin;
+  }
+  .mapboxgl-ctrl-attrib {
+    font-size: 2vmin;
+    pointer-events: auto;
+  }
 }
 </style>

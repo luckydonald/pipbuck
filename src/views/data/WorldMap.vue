@@ -1,14 +1,16 @@
 <template>
   <div class="page">
-    <Map
-      :access-token="apiToken"
-      :map-options="{
-        style: 'mapbox://styles/luckydonald/cjqwaq8xs3x9j2sn2cbsdzyt6',
-        center: [-73.639724, 40.397293],
-        zoom: 6.3,
-      }"
-      :hide-credits="true"
-    />
+    <keep-alive>
+      <Map
+        :access-token="apiToken"
+        :map-options="{
+          style: 'mapbox://styles/luckydonald/cjqwaq8xs3x9j2sn2cbsdzyt6',
+          center: [-73.639724, 40.397293],
+          zoom: 6.3,
+        }"
+        :hide-credits="false"
+      />
+    </keep-alive>
   </div>
 </template>
 
