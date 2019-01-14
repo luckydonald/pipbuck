@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <Map
       :access-token="apiToken"
       :map-options="{
@@ -28,8 +28,9 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-
-.mapboxgl-ctrl-logo, .mapboxgl-ctrl-attrib {
-  display: none!important;
+.page {
+  padding-left: 5vmin;
+  padding-right: 3vmin;
+  padding-bottom: 2vmin;
 }
 </style>

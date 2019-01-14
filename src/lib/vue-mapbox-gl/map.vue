@@ -306,19 +306,22 @@ export default {
 //@import '~mapbox-gl/dist/mapbox-gl.css';
 
 .mapbox-map {
-  width: 100%;
   height: 100%;
-  margin-left: 10vmin;
-  margin-right: 20vmin;
+  width: 100%;
 
   &.hide-credits .mapboxgl-ctrl-logo,
   &.hide-credits .mapboxgl-ctrl-attrib {
     display: none !important;
     visibility: hidden !important;
   }
-
+  .mapboxgl-canvas-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
   .mapboxgl-canvas {
     left: 0;
+    position: absolute!important;
   }
 }
 </style>
