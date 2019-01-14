@@ -1,5 +1,5 @@
 <template>
-  <div class="hardware bottom" :class="position">
+  <div class="hardware" :class="position">
     <router-link :to="{ name: 'Stats' }"
       class="hardware-button" id="stats"
       @click.native="$emit('pipbuck-play', sounds.nav_mode)"
@@ -46,7 +46,10 @@ export default {
     justify-content: center;
     z-index: 20;
   }
-  .hardware.bottom, .hardware.top {
+  .hardware.top {
+    flex-direction: row-reverse;
+  }
+  .hardware.bottom {
     flex-direction: row;
   }
   .hardware.left {
@@ -153,15 +156,27 @@ export default {
         right: -25%;
       }
       .hardware.top > & {
-        top: auto;
         bottom: $button-margin;
+        top: auto;
         left: -25%;
         right: -25%;
+        transform: rotateZ(180deg);
       }
       .hardware.right > & {
-        top: $button-margin;
-        left: -25%;
-        right: -25%;
+        text-align: center;
+        width: 100%;
+        left: 110%;
+        top: 0;
+        bottom: 0;
+        transform: rotateZ(-90deg);
+      }
+      .hardware.left > & {
+        text-align: center;
+        width: 100%;
+        left: -100%;
+        top: 0;
+        bottom: 0;
+        transform: rotateZ(+90deg);
       }
     }
   }
