@@ -104,7 +104,7 @@ export default {
     }
     &::before {
       // yellow led
-      background: radial-gradient(#e79d00, #eca000, #d79200, black);
+      background: radial-gradient(#e79d00, #eca000, #d79200, #d79200);
       // animation: hardware-button-flicker;
       animation-duration: 4s;
       animation-iteration-count: infinite;
