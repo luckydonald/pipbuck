@@ -176,8 +176,8 @@ export default new Router({
           // route level code-splitting
           // this generates a separate chunk (main.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "main" */ './views/data/WorldMap.vue'),
-          // component: WorldMap,
+          component: () => import(/* webpackChunkName: "main" */ './views/data/LocalMap.vue'),
+          // component: LocalMap,
         },
         {
           path: '/data/world_map',

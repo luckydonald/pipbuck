@@ -6,7 +6,7 @@
         :map-options="{
           style: 'mapbox://styles/luckydonald/cjqwaq8xs3x9j2sn2cbsdzyt6',
           center: [-76.61703, 39.28529],
-          zoom: 10,
+          zoom: 16,
         }"
         :hide-credits="false"
       />
