@@ -1,25 +1,25 @@
 <template>
   <div class="hardware bottom" :class="position">
-    <div
+    <router-link :to="{ name: 'Stats' }"
       class="hardware-button" id="stats"
       @touchstart="multitabHandler"
-      @click="multitabHandler"
+      @click.prevent="multitabHandler"
     ><label for="stats">Stats</label>
-    </div>
+    </router-link>
 
-    <div
+    <router-link :to="{ name: 'Items' }"
       class="hardware-button" id="items"
       @touchstart="multitabHandler"
-      @click="multitabHandler"
+      @click.prevent="multitabHandler"
     ><label for="items">Items</label>
-    </div>
+    </router-link>
 
-    <div
+    <router-link :to="{ name: 'Data' }"
       class="hardware-button" id="data"
       @touchstart="multitabHandler"
-      @click="multitabHandler"
-    ><label for="data"> Data</label>
-    </div>
+      @click.prevent="multitabHandler"
+    ><label for="data">Data</label>
+    </router-link>
   </div>
 </template>
 
@@ -122,34 +122,88 @@ export default {
   .hardware.right {
     flex-direction: column-reverse;
   }
+  $button-size: 10vmin;
+  $button-margin: 10vmin;
   .hardware-button {
     user-select: none;
     // background/border
-    width: 32px;
-    height: 32px;
-    background: #000;
+    width: 10vmin;
+    height: 10vmin;
+    padding: 0;
+    background-color: #5e4d00;
     display: inline-block;
     position: relative;
-    border-radius: 150px;
+    border-radius: 100%;
+    box-sizing: content-box;
 
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 4vmin;
+    margin-left: 4vmin;
+    margin-right: 4vmin;
+    margin-bottom: 4vmin;
+    $margin-button-bottom: 1.60vmin;
+    $margin-button-sides: 0.75vmin;
 
     .hardware.top > & {
-      margin-top: 2rem;
+      margin-top: $button-margin;
     }
     .hardware.bottom > & {
-      margin-bottom: 2rem;
+      margin-bottom: $button-margin;
     }
     .hardware.left > & {
-      margin-left: 2rem;
-      transform: rotate(90deg);
+      margin-left: $button-margin;
     }
     .hardware.right > & {
-      margin-right: 2rem;
-      transform: rotate(-90deg);
+      margin-right: $button-margin;
+    }
+
+
+    &::before, &::after {
+      content: "";
+      display: block;
+      width: 9vmin;
+      height: 9vmin;
+      border-radius: 100%;
+      border: 0;
+      margin-left: 1.60vmin; // TODO: orient
+      margin-top: 0.75vmin; // TODO: orient
+      box-sizing: content-box;
+      position: absolute;
+    }
+    &::before {
+      // yellow led
+      background: radial-gradient(#e79d00, #eca000, #d79200, black);
+      // animation: hardware-button-flicker;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      //margin-left: 2vmin;
+      //box-shadow: x y blur scale color
+      box-shadow: -0.1vmin 0 0 -0.125vmin #b77c00,
+                  -0.2vmin 0 0 -0.125vmin #b77c00,
+                  -0.3vmin 0 0 -0.125vmin #b77c00,
+                  -0.4vmin 0 0 -0.125vmin #b77c00,
+                  -0.5vmin 0 0 -0.125vmin #b77c00,
+                  -0.6vmin 0 0 -0.125vmin #b77c00,
+                  -0.7vmin 0 0 -0.125vmin #b77c00,
+                  -0.8vmin 0 0 -0.125vmin #b77c00,
+      ;
+    }
+    &.router-link-active {
+      &::after {
+        margin-left: 1vmin; // TODO: orient
+        box-shadow: 0 0 2vmin 0.75vmin #ffd100;
+      }
+      &::before {
+        background: radial-gradient(white, yellow, #ffd700, orange);
+        box-shadow: -0.1vmin 0 0 -0.125vmin #efca00,
+                    -0.2vmin 0 0 -0.125vmin #efca00,
+                    -0.3vmin 0 0 -0.125vmin #efca00,
+                    -0.4vmin 0 0 -0.125vmin #efca00,
+                    -0.5vmin 0 0 -0.125vmin #efca00,
+                    -0.6vmin 0 0 -0.125vmin #efca00,
+                    -0.7vmin 0 0 -0.125vmin #efca00,
+                    -0.8vmin 0 0 -0.125vmin #efca00,
+        ;
+      }
     }
 
 
@@ -160,67 +214,43 @@ export default {
       color: #d8c99e;
 
       .hardware.bottom > & {
-        top: 2rem;
+        top: $button-margin;
         bottom: auto;
         left: -25%;
         right: -25%;
       }
       .hardware.top > & {
         top: auto;
-        bottom: 2rem;
+        bottom: $button-margin;
         left: -25%;
         right: -25%;
       }
       .hardware.right > & {
-        top: 2rem;
+        top: $button-margin;
         left: -25%;
         right: -25%;
       }
     }
   }
-  .hardware-button.power::before {
-    // label
-    content: "Power";
-    display: block;
-    position: absolute;
-    right: -29px;
-    top: 5px;
-    font-size: 8px;
-    transform: rotate(5deg);
-  }
-  .hardware-button::after {
-    // yellow led
-    content: "";
-    display: block;
-    width: 22px;
-    height: 22px;
-    background: radial-gradient(white,yellow,orange,red);
-    border-radius: 150px;
-    margin-left: 5px;
-    margin-top: 6px;
-    // animation: hardware-button-flicker;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-}
-@keyframes hardware-button-flicker {
-  0% {
-    box-shadow: 0 0 5px 0 orange;
-  }
-  5% {
-    box-shadow: 0 0 30px 2px orange;
-  }
-  60% {
-    box-shadow: 0 0 30px 2px orange;
-  }
-  80% {
-    box-shadow: 0 0 10px 0 orange;
-  }
-  90% {
-    box-shadow: 0 0 30px 2px orange;
-  }
-  100% {
-    box-shadow: 0 0 0 0 orange;
-  }
-}
 
+  @keyframes hardware-button-flicker {
+    0% {
+      box-shadow: 0 0 5px 0 orange;
+    }
+    5% {
+      box-shadow: 0 0 30px 2px orange;
+    }
+    60% {
+      box-shadow: 0 0 30px 2px orange;
+    }
+    80% {
+      box-shadow: 0 0 10px 0 orange;
+    }
+    90% {
+      box-shadow: 0 0 30px 2px orange;
+    }
+    100% {
+      box-shadow: 0 0 0 0 orange;
+    }
+  }
 </style>
