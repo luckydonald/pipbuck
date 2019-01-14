@@ -20,9 +20,26 @@
 
     <div class="details">
       <div class="image">
-        <svg-unknown :style="{ fill: 'var(--color-front)' }"/>
+        <slot name="image">
+          <svg-unknown :style="{ fill: 'var(--color-front)' }"/>
+        </slot>
       </div>
-      <slot name="rows" is="div">Data would be here.</slot>
+      <slot name="rows" is="div">
+        <!-- some example details -->
+        <div class="row">
+          <div class="detail">Data would be here.</div>
+        </div>
+        <div class="row">
+          <div class="detail blank"/>
+          <div class="detail weight">
+            <div class="label">Foobar</div>
+            <div class="value">4458</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="detail blank">&nbsp;</div>
+        </div>
+      </slot>
     </div>
   </div>
 </template>
