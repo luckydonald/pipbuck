@@ -1,12 +1,12 @@
 <template>
   <Menu
-    title="Items"
+    title="Items" :titleLink="{ path: '/items/extra' }"
     :links="[
-      { to: '/items/weapons', label: 'Weapons' },
-      { to: '/items/apparel', label: 'Apparel' },
-      { to: '/items/aid', label: 'Aid' },
-      { to: '/items/misc', label: 'Misc' },
-      { to: '/items/ammo', label: 'Ammo' },
+      { to: { path: '/items/weapons' }, label: 'Weapons' },
+      { to: { path: '/items/apparel' }, label: 'Apparel' },
+      { to: { path: '/items/aid' }, label: 'Aid' },
+      { to: { path: '/items/misc' }, label: 'Misc' },
+      { to: { path: '/items/ammo' }, label: 'Ammo' },
     ]"
   >
     <template slot="statistics">

@@ -1,12 +1,12 @@
 <template>
   <Menu
-    title="Stats"
+    title="Stats" :titleLink="{ path: '/stats/extra' }"
     :links="[
-      { to: '/stats/status', label: 'Status' },
-      { to: '/stats/special', label: 'S.P.E.C.I.A.L.' },
-      { to: '/stats/skills', label: 'Skills' },
-      { to: '/stats/perks', label: 'Perks' },
-      { to: '/stats/general', label: 'General' },
+      { to: { path: '/stats/status' }, label: 'Status' },
+      { to: { path: '/stats/special' }, label: 'S.P.E.C.I.A.L.' },
+      { to: { path: '/stats/skills' }, label: 'Skills' },
+      { to: { path: '/stats/perks' }, label: 'Perks' },
+      { to: { path: '/stats/general' }, label: 'General' },
     ]"
   >
     <template slot="statistics">

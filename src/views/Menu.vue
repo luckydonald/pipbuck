@@ -4,7 +4,7 @@
       <div class="row">
         <div class="edge left down" />
         <div class="hr left" />
-        <a class="title">{{ title }}</a>
+        <a class="title" @click="navigateToTitle">{{ title }}</a>
         <div class="hr middle" />
         <div class="grouping" v-if="!disableStats">
           <slot name="statistics">
@@ -46,6 +46,11 @@ export default {
       default: 'Info',
       type: String,
     },
+    /** You can specify a link to be navigated to when the title is clicked. */
+    titleLink: {
+      default: null,
+      type: Object,
+    },
     links: {
       default() {
         return [];
@@ -59,7 +64,14 @@ export default {
   },
   methods: {
     playTab(event) {
-      this.$emit('pipbuck-play', ui.sounds.nav_tab);
+      ui.audio.play(ui.sounds.nav_tab);
+    },
+    navigateToTitle() {
+      if (this.titleLink) {
+        this.playTab();
+        console.log(this.titleLink);
+        this.$router.push(this.titleLink);
+      }
     },
   },
 };

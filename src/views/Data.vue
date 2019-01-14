@@ -1,12 +1,12 @@
 <template>
   <Menu
-    title="Data"
+    title="Data" :titleLink="{ path: '/settings' }"
     :links="[
-      { to: '/data/local_map', label: 'Local Map' },
-      { to: '/data/world_map', label: 'World Map' },
-      { to: '/data/quests', label: 'Quests' },
-      { to: '/data/notes', label: 'Notes' },
-      { to: '/data/radio', label: 'Radio' },
+      { to: { path: '/data/local_map' }, label: 'Local Map' },
+      { to: { path: '/data/world_map' }, label: 'World Map' },
+      { to: { path: '/data/quests' }, label: 'Quests' },
+      { to: { path: '/data/notes' }, label: 'Notes' },
+      { to: { path: '/data/radio' }, label: 'Radio' },
     ]"
   >
     <template slot="statistics">

@@ -2,22 +2,19 @@
   <div class="hardware bottom" :class="position">
     <router-link :to="{ name: 'Stats' }"
       class="hardware-button" id="stats"
-      @touchstart="multitabHandler"
-      @click.prevent="multitabHandler"
+      @click.native="$emit('pipbuck-play', sounds.nav_mode)"
     ><label for="stats">Stats</label>
     </router-link>
 
     <router-link :to="{ name: 'Items' }"
       class="hardware-button" id="items"
-      @touchstart="multitabHandler"
-      @click.prevent="multitabHandler"
+      @click.native="$emit('pipbuck-play', sounds.nav_mode)"
     ><label for="items">Items</label>
     </router-link>
 
     <router-link :to="{ name: 'Data' }"
       class="hardware-button" id="data"
-      @touchstart="multitabHandler"
-      @click.prevent="multitabHandler"
+      @click.native="$emit('pipbuck-play', sounds.nav_mode)"
     ><label for="data">Data</label>
     </router-link>
   </div>
@@ -35,72 +32,8 @@ export default {
   },
   data() {
     return {
-      tab_counter: {
-        stats: { count: 0, timeout: null, last_type: null },
-        items: { count: 0, timeout: null, last_type: null },
-        data: { count: 0, timeout: null, last_type: null },
-      },
-      tab_timeouts: {},
-      tab_timeout_ms: 500,
-      tab_needs: 5,
+      sounds: ui.sounds,
     };
-  },
-  methods: {
-    multitabHandler(event) {
-      this.$emit('pipbuck-play', ui.sounds.nav_mode);
-      const key = event.target.id;
-      this.$router.push({ path: `/${key}` });
-      console.log(
-        'inner', {
-          key, event, self: this, counter: this.tab_counter[key],
-        },
-      );
-      if (this.tab_counter[key] === undefined) {
-        this.$set(this.tab_counter, key, { count: 0, timeout: null, last_type: event.type });
-      }
-      if (
-        this.tab_counter[key].last_type === null
-        || this.tab_counter[key].last_type === undefined
-      ) {
-        this.$set(this.tab_counter[key], 'last_type', event.type);
-        this.tab_counter[key].last_type = event.type;
-      } else if (
-        this.tab_counter[key].last_type !== event.type
-      ) {
-        console.log(
-          `ignoring event: last event was type ${this.tab_counter[key].last_type},`
-          + `but we got ${event.type}.`,
-        );
-        return false;
-      }
-      this.tab_counter[key].count = this.tab_counter[key].count + 1;
-      // this.$set(this.tab_counter, `${key}.count`, this.tab_counter[key].count + 1);
-
-      if (this.tab_counter[key].count < this.tab_needs) {
-        // we are still counting
-        clearTimeout(this.tab_counter[key].timeout);
-        this.tab_counter[key].timeout = setTimeout(() => {
-          // failed counting
-          this.tab_counter[key] = { count: 0, timeout: null, last_type: null };
-          this.$emit(event.type, event);
-          this.multitabFail(event, key);
-        }, this.tab_timeout_ms);
-        return false; // needs another round
-      }
-      // action on successful multi-tap goes below
-      clearTimeout(this.tab_counter[key].timeout);
-      this.tab_counter[key] = { count: 0, timeout: null };
-      event.preventDefault();
-      this.multitabSucceed(event, key);
-      return true;
-    },
-    multitabSucceed(event, key) { // (event, key)
-      console.log('success', event, key);
-      this.$router.push({ path: `/${key}/extra` });
-    },
-    multitabFail(event, key) {
-      console.log('fail', event, key);
-    },
   },
 };
 </script>
@@ -130,7 +63,7 @@ export default {
     width: 10vmin;
     height: 10vmin;
     padding: 0;
-    background-color: #5e4d00;
+    background-color: rgba(1, 1, 1, 0.60);
     display: inline-block;
     position: relative;
     border-radius: 100%;
