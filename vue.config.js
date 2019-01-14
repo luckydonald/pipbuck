@@ -6,4 +6,6 @@ module.exports = {
       .use('vue-svg-loader')
       .loader('vue-svg-loader');
   },
+  /* ... other config ... */
+  transpileDependencies: ['vuex-persist'],
 };

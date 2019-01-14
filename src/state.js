@@ -1,10 +1,17 @@
 /* eslint no-param-reassign: ["error", { "props": false }] */
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VuexPersistence from 'vuex-persist';
 import { hsl } from './lib/colorspace';
 import game from './data/generators/Root';
 
 Vue.use(Vuex);
+
+const vuexLocal = new VuexPersistence({
+  storage: window.sessionStorage, // window.localStorage,
+  strictMode: process.env.NODE_ENV !== 'production',
+  key: 'pipbuck-gamedata',
+});
 
 const radio = {
   debug: process.env.NODE_ENV !== 'production',
@@ -96,6 +103,7 @@ const radio = {
 const store = new Vuex.Store({
   debug: process.env.NODE_ENV !== 'production',
   strict: process.env.NODE_ENV !== 'production',
+  plugins: [vuexLocal.plugin],
   modules: {
     radio: {
       ...radio,
@@ -135,6 +143,7 @@ const store = new Vuex.Store({
     // colorBack2: '#1d2c24',
   },
   mutations: {
+    RESTORE_MUTATION: vuexLocal.RESTORE_MUTATION,
     setColorFront(state, color) {
       state.colorFront = color;
     },
