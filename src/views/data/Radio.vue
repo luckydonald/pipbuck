@@ -21,8 +21,8 @@
         :rounded="rounded"
         :squared="squared"
         :zigzagg="zigzagg"
-        :canvasHeight="400"
-        :canvasWidth="400"
+        :canvasHeight="128"
+        :canvasWidth="128"
         :audio-element="audioElement"
       />
       <!--<div>Playing: <a :href="currentFile">{{ currentFile }}</a></div>-->

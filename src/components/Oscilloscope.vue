@@ -28,6 +28,13 @@
 import { mapGetters } from 'vuex';
 // import { hsl } from '../lib/colorspace';
 
+// calculate the median, https://stackoverflow.com/a/39639518/3423324
+function median(arr) {
+  const arr2 = arr.sort((a, b) => a - b);
+  const i = arr2.length / 2;
+  return i % 1 === 0 ? (arr2[i - 1] + arr2[i]) / 2 : arr2[Math.floor(i)];
+}
+
 export default {
   name: 'oscilloscope',
   props: {
@@ -48,6 +55,7 @@ export default {
     canvasWidth: { default: 400 },   // Pixel of the render.
     fftSize: { default: 32 }, // Increases Audio resolution. Must be power of 2, range [32, 32768].
     fftEach: { default: 1 },  // Decreases Audio resolution. Use only every x data point.
+    size: { default: 12 },  // how many values should be plotted
   },
   data() {
     return {
@@ -63,7 +71,8 @@ export default {
       src: null, // audio element's createMediaElementSource
       context: null, // audio context
       analyser: null, // audio analyser
-      audioData: null, // audio data
+      audioData: [], // summarized audio data
+      rawAudioData: null, // current audio data
       // canvas_2d: COMPUTED
       loopRunning: false,  // if the loop function is running. Set false to stop the loop.
       loopRequest: null,  // to be able to cancel the next loop request.
@@ -104,7 +113,8 @@ export default {
       this.analyser.fftSize = this.fftSize;
       console.log('AnalyserNode: connect');
       this.analyser.connect(this.context.destination);
-      this.audioData = new Uint8Array(this.analyser.frequencyBinCount);
+      this.rawAudioData = new Uint8Array(this.analyser.frequencyBinCount);
+      this.adaptAudioDataLenght(this.size);
       if (startLoop) {
         this.loopRunning = true;
         this.$nextTick(() => requestAnimationFrame(this.mainLoop));
@@ -152,7 +162,11 @@ export default {
       }
     },
     mainLoop() {
-      this.analyser.getByteTimeDomainData(this.audioData);
+      this.analyser.getByteTimeDomainData(this.rawAudioData);
+      const audioValue = median(this.rawAudioData);
+      // const audioValue = this.rawAudioData.reduce((a, b) => a + b) / this.rawAudioData.length;
+      this.audioData.shift();
+      this.audioData.push(audioValue);
 
       this.clearCanvas();
       this.drawCanvas();
@@ -296,6 +310,21 @@ export default {
 
       return (v - n) > (n - x) ? x : v;
     },
+    adaptAudioDataLenght(newSize) {
+      while (newSize > this.audioData.length) {
+        // fill with missing values at beginning (oldest)
+        // [1, 2, 3, 4, 5]  =>  [0, 0, 0, 1, 2, 3, 4, 5]
+        console.log('size fill', JSON.stringify(this.audioData));
+        this.audioData.unshift(0);
+      }
+      while (this.audioData.length > newSize) {
+        // cut data at beginning (oldest)
+        // [1, 2, 3, 4, 5]  =>  [3, 4, 5]
+        console.log('size cut', JSON.stringify(this.audioData));
+        this.audioData = this.audioData.shift();
+      }
+      console.log('size done', JSON.stringify(this.audioData));
+    },
   },
   computed: {
     ...mapGetters({ isPlaying: 'radio/isPlaying' }),
@@ -327,13 +356,16 @@ export default {
     },
     correctedFftSize(newSize) {
       this.analyser.fftSize = newSize;
-      this.audioData = new Uint8Array(this.analyser.frequencyBinCount);
+      this.rawAudioData = new Uint8Array(this.analyser.frequencyBinCount);
     },
     canvasWidth(newVal) {
       console.log('new size:', newVal, this.canvasElement.clientWidth);
     },
     canvasHeight(newVal) {
       console.log('new size:', newVal, this.canvasElement.clientHeight);
+    },
+    size(newSize) {
+      this.adaptAudioDataLenght(newSize);
     },
   },
   mounted() {
