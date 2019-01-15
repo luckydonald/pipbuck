@@ -11,7 +11,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Boot',
       // route level code-splitting
       // this generates a separate chunk (boot.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
@@ -208,7 +208,7 @@ export default new Router({
           // component: Radio,
         },
         {
-          path: '/settings',
+          path: '/data/settings',
           name: 'Settings',
           // route level code-splitting
           // this generates a separate chunk (main.[hash].js) for this route
@@ -239,6 +239,11 @@ export default new Router({
     {
       path: '/data/extra',
       name: 'Data Extra',
+      redirect: { name: 'Settings' },
+    },
+    {
+      path: '/settings',
+      name: 'Old Settings',
       redirect: { name: 'Settings' },
     },
   ],
