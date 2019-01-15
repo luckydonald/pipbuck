@@ -1,8 +1,13 @@
 <template>
   <div>
-    <div><a @click="location.reload()" href="/">Reload</a></div>
     <div>
-      <a @click="screenfull.toggle()" :class="{ active: screenfull.isFullscreen }">Fullscreen</a>
+      <a href="/">Reload</a>
+    </div>
+    <div>
+      <router-link :to="{ name: 'Boot' }">Turn Off</router-link>
+    </div>
+    <div>
+      <a @click="toggleFullscreen" :class="{ active: screenfull.isFullscreen }">Fullscreen</a>
     </div>
     <div>
       <label>Virtual buttons</label>
@@ -30,6 +35,7 @@
 import * as screenfull from 'screenfull';
 import { hsl, HexToHSL } from '../../lib/colorspace';
 import StableColt from '../../components/StableColt.vue';
+import { ui } from '../../sound';
 
 
 export default {
@@ -120,6 +126,10 @@ export default {
     leToggleVirtualButtons(state) {
       console.log('commiting toggleHardwareButtons state: ', state);
       this.$store.commit('toggleHardwareButtons', state);
+    },
+    toggleFullscreen() {
+      ui.play(ui.sounds.nav_fullscreen);
+      screenfull.toggle();
     },
     setColor(color) {
       console.log('commiting setColorFront state: ', color);
