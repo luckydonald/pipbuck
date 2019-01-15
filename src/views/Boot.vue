@@ -1,7 +1,8 @@
 <template>
-  <div class="page" @click="preparePreparation">
+  <div class="page" >
     <div class="off" v-if="off">
-      <button>Turn on</button>
+      <button @click="preparePreparation">Fullscreen</button>
+      <button @click="prepareBoot">Turn on</button>
     </div>
     <Menu
       v-show="!off"
@@ -59,9 +60,10 @@ export default {
   },
   methods: {
     preparePreparation() {
+      ui.play(ui.sounds.nav_fullscreen);
       screenfull
         .request()
-        .finally(() => requestAnimationFrame(() => this.$nextTick(this.prepareBoot)));
+        .catch(() => { ui.play('ui_karma_down'); });
     },
     prepareBoot() {
       /** @var {PlayingSprite} */
