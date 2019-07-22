@@ -172,6 +172,47 @@ const app = {
     });
     this.shake_instance.start();
     window.addEventListener('orientationchange', this.updateHardwareButtonPosition.bind(this));
+    const vm = this;
+    window.addEventListener('keyup', (event) => {
+      // If a special navigation key was pressed...
+      /*
+      h:         Display Help.
+      q|tab:     Quit.
+      a|s:       STATS button.
+      b|i:       ITEMS button.
+      c|d:       DATA  button.
+      1-5:       Select Tabs.
+      +|up:      Scroll up.
+      -|down:    Scroll down.
+      8-0: Change colors.
+       */
+      // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code/code_values
+      if (event.key === 'a' || event.key === 's') {
+        vm.$router.push({ name: 'Stats' });
+      } else if (event.key === 'b' || event.key === 'i') {
+        vm.$router.push({ name: 'Items' });
+      } else if (event.key === 'c' || event.key === 'd') {
+        vm.$router.push({ name: 'Data' });
+      } else if (event.key === '.' || event.key === 'Escape') {
+        vm.$router.push({ name: 'Boot' });
+      } else if (event.key === ',' || event.key === 'p') {
+        vm.$router.push({ name: 'Settings' });
+      } else if (event.key === 'm') {
+        vm.$router.push({ name: 'Local Map' });
+      } else if (event.key === 'h') {
+        vm.$router.push({ name: 'About' });
+      } else if (event.key === 'r') {
+        vm.$router.push({ name: 'Radio' });
+      } else if (event.key === '+' || event.key === 'ArrowUp') {
+        vm.$broadcast('navigate-UP');
+      } else if (event.key === '-' || event.key === 'ArrowDown') {
+        vm.$broadcast('navigate-DOWN');
+      } else if (event.key === '<' || event.key === 'ArrowLeft') {
+        vm.$broadcast('navigate-LEFT');
+      } else if (event.key === '>' || event.key === 'ArrowRight') {
+        vm.$broadcast('navigate-RIGHT');
+      }
+    });
   },
   beforeDestroy() {
     if (this.scroll_prevent !== null) {
