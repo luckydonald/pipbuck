@@ -1,20 +1,5 @@
 <template>
   <div>
-    <!--<av-line v-if="isPlaying" :lineColor="color"
-      :ref-element="radioElement"
-      :audioClass="audioClass"
-      :audioControls="audioControls"
-      :audioSrc="audioSrc"
-      :canvClass="canvClass"
-      :canvFillColor="canvFillColor"
-      :canvHeight="canvHeight"
-      :canvTop="canvTop"
-      :canvWidth="canvWidth"
-      :corsAnonym="corsAnonym"
-      :fftSize="fftSize"
-      :lineWidth="lineWidth"
-      :refLink="refLink"
-    />-->
     <canvas
       ref="canvas"
       :style="{ borderBottom: canvasBorderStyle, 'border-right': canvasBorderStyle }"
@@ -26,7 +11,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-// import { hsl } from '../lib/colorspace';
 
 // calculate the median, https://stackoverflow.com/a/39639518/3423324
 function median(arr) {

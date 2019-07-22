@@ -25,7 +25,6 @@
         :canvasWidth="128"
         :audio-element="audioElement"
       />
-      <!--<div>Playing: <a :href="currentFile">{{ currentFile }}</a></div>-->
     </div>
   </div>
 </template>
