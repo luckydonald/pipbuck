@@ -3,6 +3,8 @@
     <div class="off" v-if="off">
       <button @click="preparePreparation">Fullscreen</button>
       <button @click="prepareBoot">Turn on</button>
+      <br>
+      <a href="http://github.com/luckydonald/pipbuck">Source code on Github</a>
     </div>
     <Menu
       v-show="!off"
