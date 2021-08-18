@@ -9,6 +9,7 @@
     "now-build": "yarn run build"
   },
   "dependencies": {
+    "caldav-client-typescript": "https://github.com/TheJLifeX/simple-caldav-client#a962e6dda203b459dc868b9a3326b430435cb7e5",
     "howler": "^2.1.1",
     "mapbox-gl": "^0.52.0",
     "screenfull": "^4.0.0",
