@@ -1,6 +1,22 @@
 <template>
   <div class="page">
-    Sample text
+    <scrollbar
+      class="scroll-wrapper"
+      content-class=""
+      scrollbar-class="scroll"
+      :items="itemSelection"
+      @equip="$emit('equip', $event)"
+      @unequip="$emit('unequip', $event)"
+      :selected="activeId"
+      @select="$emit('select', $event)"
+    >
+      <template slot-scope="item">
+        <a class="item">
+          {{ item.name }}
+          <span v-if="item.amount > 1"> ({{item.amount}})</span>
+        </a>
+      </template>
+    </scrollbar>
   </div>
 </template>
 
@@ -18,7 +34,7 @@ const calendarClient = new CalendarClient(calendarUrl, username, password);
 export default {
   name: 'Quests',
   // eslint-disable-next-line vue/no-unused-components
-  components: { },
+  components: { Scrollbar },
   data() {
     return {
     };
