@@ -9,6 +9,7 @@ Demo at https://pip.bonbotics.com.
 
 ## Project setup
 ```
+nvm use 12
 yarn install
 ```
 
