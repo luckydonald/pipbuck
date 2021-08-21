@@ -25,6 +25,7 @@
 <script>
 import { SimpleCalDAV } from 'simple-caldav';
 import Scrollbar from '../../components/context/Scrollbar.vue';
+import base64 from '../../base64';
 
 
 export default {
@@ -54,7 +55,7 @@ export default {
         return null;
       }
       const headers = new Headers();
-      const basicAuth = btoa(`${this.username}:${this.password}`);
+      const basicAuth = base64.encode(`${this.username}:${this.password}`);
       headers.append('Authorization', `Basic ${basicAuth}`);
       // TODo:
       return new SimpleCalDAV(this.calendarUrl, { credentials: 'include', mode: 'cors', headers });
