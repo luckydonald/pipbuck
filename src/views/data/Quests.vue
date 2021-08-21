@@ -37,7 +37,7 @@ export default {
   name: 'Quests',
   components: { Scrollbar },
   props: {
-   calendar_url: {
+    calendarUrl: {
       default: null,
       type: String,
     },
@@ -56,10 +56,10 @@ export default {
   },
   computed: {
     client() {
-      if (!this.calendar_url || !this.username || !this.password) {
+      if (!this.calendarUrl || !this.username || !this.password) {
         return null;
       }
-      return new CalendarClient(calendarUrl, username, password);
+      return new CalendarClient(this.calendarUrl, username, password);
     },
   },
 };
