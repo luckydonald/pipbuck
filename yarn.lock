@@ -2239,15 +2239,6 @@ cache-loader@^1.2.5:
     neo-async "^2.5.0"
     schema-utils "^0.4.2"
 
-"caldav-client-typescript@https://github.com/TheJLifeX/simple-caldav-client#a962e6dda203b459dc868b9a3326b430435cb7e5":
-  version "0.0.1"
-  resolved "https://github.com/TheJLifeX/simple-caldav-client#a962e6dda203b459dc868b9a3326b430435cb7e5"
-  dependencies:
-    express "^4.17.1"
-    ical.js "^1.1.2"
-    moment "^2.12.0"
-    xml2js "^0.4.17"
-
 call-me-maybe@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/call-me-maybe/-/call-me-maybe-1.0.1.tgz#26d208ea89e37b5cbde60250a15f031c16a4d66b"
@@ -4570,6 +4561,15 @@ ignore@^3.3.3, ignore@^3.3.5:
 ignore@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
+
+"imple-caldav-client@https://github.com/TheJLifeX/simple-caldav-client#a962e6dda203b459dc868b9a3326b430435cb7e5":
+  version "0.0.1"
+  resolved "https://github.com/TheJLifeX/simple-caldav-client#a962e6dda203b459dc868b9a3326b430435cb7e5"
+  dependencies:
+    express "^4.17.1"
+    ical.js "^1.1.2"
+    moment "^2.12.0"
+    xml2js "^0.4.17"
 
 import-cwd@^2.0.0:
   version "2.1.0"
@@ -7471,6 +7471,15 @@ shell-quote@^1.6.1:
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
+
+"simple-caldav-client@https://github.com/TheJLifeX/simple-caldav-client.git#a962e6dda203b459dc868b9a3326b430435cb7e5":
+  version "0.0.1"
+  resolved "https://github.com/TheJLifeX/simple-caldav-client.git#a962e6dda203b459dc868b9a3326b430435cb7e5"
+  dependencies:
+    express "^4.17.1"
+    ical.js "^1.1.2"
+    moment "^2.12.0"
+    xml2js "^0.4.17"
 
 simple-swizzle@^0.2.2:
   version "0.2.2"

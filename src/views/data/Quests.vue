@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    Client: [{{ this.client.getCalendarInformation() }}]
     <scrollbar
       class="scroll-wrapper"
       content-class=""
@@ -11,6 +12,7 @@
       @select="$emit('select', $event)"
     >
       <template slot-scope="item">
+
         <a class="item">
           {{ item.name }}
           <span v-if="item.amount > 1"> ({{item.amount}})</span>
@@ -21,23 +23,44 @@
 </template>
 
 <script>
-import { CalendarClient } from 'caldav-client-typescript/src/calendar-client';
 import Scrollbar from '../../components/context/Scrollbar';
+import { CalendarClient } from 'simple-caldav-client';
 
 const startDate = new Date();
 const calendarUrl = 'https://owncloud10.ocloud.de/remote.php/dav/calendars/admin/personal/';
 const username = 'admin';
 const password = 'demo123';
 
-const calendarClient = new CalendarClient(calendarUrl, username, password);
+
 
 export default {
   name: 'Quests',
-  // eslint-disable-next-line vue/no-unused-components
   components: { Scrollbar },
+  props: {
+   calendar_url: {
+      default: null,
+      type: String,
+    },
+    username: {
+      default: null,
+      type: String,
+    },
+    password: {
+      default: null,
+      type: String,
+    },
+  },
   data() {
     return {
     };
+  },
+  computed: {
+    client() {
+      if (!this.calendar_url || !this.username || !this.password) {
+        return null;
+      }
+      return new CalendarClient(calendarUrl, username, password);
+    },
   },
 };
 </script>

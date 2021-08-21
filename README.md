@@ -5,11 +5,12 @@ Pipboy mobile webapp, with a hint of Fallout Equestria.
 ## Try it out
 
 Demo at https://pip.bonbotics.com.
-
+    
 
 ## Project setup
 ```
 yarn install
+cd node_modules/simple-caldav-client/ && yarn install ; cd ..
 ```
 
 ### Compiles and hot-reloads for development
