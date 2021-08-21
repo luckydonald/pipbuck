@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    Client: [{{ this.client.getCalendarInformation() }}]
+    Client: [{ this.client.getCalendarInformation() }]
     <scrollbar
       class="scroll-wrapper"
       content-class=""
@@ -23,14 +23,8 @@
 </template>
 
 <script>
-import Scrollbar from '../../components/context/Scrollbar';
-import { CalendarClient } from 'simple-caldav-client';
-
-const startDate = new Date();
-const calendarUrl = 'https://owncloud10.ocloud.de/remote.php/dav/calendars/admin/personal/';
-const username = 'admin';
-const password = 'demo123';
-
+import { SimpleCalDAV } from 'simple-caldav';
+import Scrollbar from '../../components/context/Scrollbar.vue';
 
 
 export default {
@@ -59,7 +53,11 @@ export default {
       if (!this.calendarUrl || !this.username || !this.password) {
         return null;
       }
-      return new CalendarClient(this.calendarUrl, username, password);
+      const headers = new Headers();
+      const basicAuth = btoa(`${this.username}:${this.password}`);
+      headers.append('Authorization', `Basic ${basicAuth}`);
+      // TODo:
+      return new SimpleCalDAV(this.calendarUrl, { credentials: 'include', mode: 'cors', headers });
     },
   },
 };

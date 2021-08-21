@@ -13,7 +13,7 @@
     "mapbox-gl": "^0.52.0",
     "screenfull": "^4.0.0",
     "shake.js": "^1.2.2",
-    "simple-caldav-client": "https://github.com/TheJLifeX/simple-caldav-client.git#a962e6dda203b459dc868b9a3326b430435cb7e5",
+    "simple-caldav": "^0.7.1",
     "vue": "^2.5.17",
     "vue-analytics": "^5.16.1",
     "vue-meta": "^1.5.8",
