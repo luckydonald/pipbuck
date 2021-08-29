@@ -92,16 +92,16 @@ export default {
       console.debug('client it is...');
       return new BetterSimpleCalDAV(this.url, { credentials: 'include', mode: 'cors', headers });
     },
-  },
-  events() {
-    if (!this.client) {
-      return [];
-    }
-    const oneWeekAgo = new Date();
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-    return this.client.listEventsSince(
-      /* startDate */ oneWeekAgo,
-    );
+    events() {
+      if (!this.client) {
+        return [];
+      }
+      const oneWeekAgo = new Date();
+      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+      return this.client.listEventsSince(
+        /* startDate */ oneWeekAgo,
+      );
+    },
   },
 };
 </script>
