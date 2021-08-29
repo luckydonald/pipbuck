@@ -90,7 +90,14 @@ export default {
         Authorization: `Basic ${basicAuth}`,
       };
       console.debug('client it is...');
-      return new BetterSimpleCalDAV(this.url, { credentials: 'include', mode: 'cors', headers });
+      return new BetterSimpleCalDAV(
+        this.url,
+        {
+          credentials: 'include',
+          mode: 'cors',
+          headers,
+        },
+      );
     },
     events() {
       if (!this.client) {
