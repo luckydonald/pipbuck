@@ -1,4 +1,4 @@
 export default {
-  encode: btoa,
-  decode: atob,
+  encode: data => btoa(data),
+  decode: string => atob(string),
 };
