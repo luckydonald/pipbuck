@@ -9,8 +9,8 @@ export default class BetterSimpleCalDAV extends SimpleCalDAV {
     endDate = undefined,
     transform = SimpleCalDAV.simplifyEvent,
   ) {
-    let startDateFilter = null;
-    let endDateFilter = null;
+    let startDateFilter = '';
+    let endDateFilter = '';
     if (startDate) {
       const startDateString = moment(startDate).utc().format('YYYYMMDD[T]HHmmss[Z]');
       startDateFilter = `start="${startDateString}"`;
