@@ -1,6 +1,28 @@
 <template>
   <div class="page">
-    Client: [{ this.client.getCalendarInformation() }]
+    <table>
+      <!-- URL -->
+      <tr>
+        <td>URL:</td>
+        <td><input type="text" v-model="url" placeholder="URL" id="url" /><br></td>
+      </tr>
+      <!-- User -->
+      <tr>
+        <td>User:</td>
+        <td><input type="text" v-model="username" placeholder="User" id="username" /><br></td>
+      </tr>
+      <!-- Password -->
+      <tr>
+        <td>Password:</td>
+        <!-- eslint-disable-next-line max-len -->
+        <td><input type="password" v-model="password" placeholder="Password" id="password" /><br></td>
+      </tr>
+      <!-- Debug -->
+      <tr>
+        <td>Client:</td>
+        <td>[{{ "" + this.client }}]<br></td>
+      </tr>
+    </table>
     <scrollbar
       class="scroll-wrapper"
       content-class=""
@@ -32,21 +54,24 @@ export default {
   name: 'Quests',
   components: { Scrollbar },
   props: {
-    calendarUrl: {
-      default: null,
-      type: String,
-    },
-    username: {
-      default: null,
-      type: String,
-    },
-    password: {
-      default: null,
-      type: String,
-    },
+    // url: {
+    //   default: null,
+    //   type: String,
+    // },
+    // username: {
+    //   default: null,
+    //   type: String,
+    // },
+    // password: {
+    //   default: null,
+    //   type: String,
+    // },
   },
   data() {
     return {
+      url: '',
+      username: '',
+      password: '',
     };
   },
   computed: {
