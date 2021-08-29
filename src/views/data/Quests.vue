@@ -76,20 +76,14 @@ export default {
   },
   computed: {
     client() {
-      console.debug('calculating client...');
       if (!this.url || !this.username || !this.password) {
-        console.debug('client is none.');
         return null;
       }
-      console.debug('client is calc.');
       const basicAuthInput = `${this.username}:${this.password}`;
-      console.debug('basic auth soon:', basicAuthInput);
       const basicAuth = base64.encode(basicAuthInput);
-      console.debug('got the basic auth.');
       const headers = {
         Authorization: `Basic ${basicAuth}`,
       };
-      console.debug('client it is...');
       return new BetterSimpleCalDAV(
         this.url,
         {
