@@ -76,13 +76,15 @@ export default {
   },
   computed: {
     client() {
-      if (!this.calendarUrl || !this.username || !this.password) {
+      if (!this.url || !this.username || !this.password) {
         return null;
       }
-      const headers = new Headers();
-      const basicAuth = base64.encode(`${this.username}:${this.password}`);
-      headers.append('Authorization', `Basic ${basicAuth}`);
-      return new BetterSimpleCalDAV(this.calendarUrl, { credentials: 'include', mode: 'cors', headers });
+      const basicAuthInput = `${this.username}:${this.password}`;
+      const basicAuth = base64.encode(basicAuthInput);
+      const headers = {
+        Authorization: `Basic ${basicAuth}`,
+      };
+      return new BetterSimpleCalDAV(this.url, { credentials: 'include', mode: 'cors', headers });
     },
   },
 };
