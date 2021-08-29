@@ -27,7 +27,7 @@
       class="scroll-wrapper"
       content-class=""
       scrollbar-class="scroll"
-      :items="itemSelection"
+      :items="events"
       @equip="$emit('equip', $event)"
       @unequip="$emit('unequip', $event)"
       :selected="activeId"
@@ -86,6 +86,16 @@ export default {
       };
       return new BetterSimpleCalDAV(this.url, { credentials: 'include', mode: 'cors', headers });
     },
+  },
+  events() {
+    if (!this.client) {
+      return [];
+    }
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    return this.client.listEventsSince(
+      /* startDate */ oneWeekAgo,
+    );
   },
 };
 </script>
