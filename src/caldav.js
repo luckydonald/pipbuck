@@ -5,9 +5,9 @@ import moment from 'moment';
 // eslint-disable-next-line no-unused-vars
 export default class BetterSimpleCalDAV extends SimpleCalDAV {
   async listEventsSince(
-    transform = SimpleCalDAV.simplifyEvent,
     startDate = undefined,
     endDate = undefined,
+    transform = SimpleCalDAV.simplifyEvent,
   ) {
     let startDateFilter = null;
     let endDateFilter = null;
