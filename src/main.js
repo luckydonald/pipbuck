@@ -23,6 +23,7 @@ Vue.use(Meta, {
 Vue.use(VueAnalytics, {
   id: process.env.NODE_ENV !== 'production' ? 'UA-47744366-5' : 'UA-47744366-4',
   router,
+  enabled: true,
   autoTracking: {
     pageviewOnLoad: true,
     // page: false,
