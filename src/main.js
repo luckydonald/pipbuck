@@ -5,10 +5,15 @@ import Vue from 'vue';
 import Meta from 'vue-meta';
 import VueAnalytics from 'vue-analytics';
 import screenfull from 'screenfull';
+import axios from 'axios';
+
 import './lib/audiocontect-patch';
 import App from './App.vue';
 import router from './router';
 import store from './state';
+
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'http://localhost:8080/';  // the FastAPI backend
 
 
 Vue.config.productionTip = false;
