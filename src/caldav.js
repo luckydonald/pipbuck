@@ -60,7 +60,7 @@ export default class BetterSimpleCalDAV extends SimpleCalDAV {
       evt = SimpleCalDAV.parseICS(evt);
       return transform(evt, href);
     });
-
+    console.log(['events', events]);
     return events;
   }
 }
