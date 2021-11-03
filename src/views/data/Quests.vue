@@ -30,7 +30,7 @@
       :items="events"
       @equip="$emit('equip', $event)"
       @unequip="$emit('unequip', $event)"
-      :selected="activeId"
+      :selected="null"
       @select="$emit('select', $event)"
     >
       <template slot-scope="item">
@@ -66,12 +66,17 @@ export default {
     //   default: null,
     //   type: String,
     // },
+    // events: {
+    //   default: [],
+    //   type: Array,
+    // },
   },
   data() {
     return {
       url: '',
       username: '',
       password: '',
+      events: [],
     };
   },
   computed: {
@@ -93,15 +98,20 @@ export default {
         },
       );
     },
-    events() {
+  },
+  watch: {
+    client() {
       if (!this.client) {
-        return [];
+        return;
       }
       const oneWeekAgo = new Date();
       oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-      return this.client.listEventsSince(
-        /* startDate */ oneWeekAgo,
-      );
+      const eventPromise = this.client.listEvents();
+      // const eventPromise = this.client.listEventsSince(
+      //  // /* startDate */ oneWeekAgo,
+      // );
+      const self = this;
+      eventPromise.then((value) => { self.events = value; });
     },
   },
 };
