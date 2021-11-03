@@ -117,6 +117,8 @@ SVG version by EM120X:
 https://www.deviantart.com/em120x/art/Littlepip-king-koder-style-vector-499037570
 https://sta.sh/0zk8ver1zys
 
+Modified slightly by luckydonald to fit with the pipboy style.
+
 
 ###### Fallout 4 Demodata
 Seems to be the demo mode data extracted from the Fallout 4 companion app.
