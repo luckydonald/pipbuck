@@ -123,3 +123,16 @@ Modified slightly by luckydonald to fit with the pipboy style.
 ###### Fallout 4 Demodata
 Seems to be the demo mode data extracted from the Fallout 4 companion app.
 https://raw.githubusercontent.com/NimVek/pipboy/1087a1c820fae6265fbce2a614e62e85cd146442/DemoMode.json
+
+
+###### Map 
+Based on the works of muniversalarts:
+https://www.deviantart.com/muniversalarts/art/Map-of-the-Equestrian-Wasteland-330132466
+For location, I referenced [a labeled version](https://www.deviantart.com/muniversalarts/art/Labeled-Map-of-the-Equestrian-Wasteland-330132643).
+> These locations reflect the FoE universe about 2 years after the Single Pegasus Project came online, but before Gardens of Equestria was activated, as a relative timeframe.
+
+
+###### Map Symbols
+Based on the works of muniversalarts:
+https://www.deviantart.com/muniversalarts/art/Fallout-Equestria-Cartography-Symbols-330132786
+
