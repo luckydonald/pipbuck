@@ -1,7 +1,7 @@
 /**
  * Main app; data store. Loads App.vue.
  */
-import Vue from 'vue';
+import Vue, { createApp } from 'vue';
 import Meta from 'vue-meta';
 import VueAnalytics from 'vue-analytics';
 import screenfull from 'screenfull';
@@ -10,8 +10,6 @@ import App from './App.vue';
 import router from './router';
 import store from './state';
 
-
-Vue.config.productionTip = false;
 
 Vue.use(Meta, {
   keyName: 'head', // the component option name that vue-meta looks for meta info on.
@@ -35,12 +33,7 @@ Vue.use(VueAnalytics, {
   },
 });
 
-const ignored = new Vue({
-  router,
-  store,
-  // el: '#app',
-  render: h => h(App),
-}).$mount('#app');
+const ignored = createApp(App).use(router).use(store).mount('#app');
 
 if (process.env.NODE_ENV !== 'production') {
   global.$vm = ignored;

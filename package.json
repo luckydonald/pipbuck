@@ -13,11 +13,11 @@
     "mapbox-gl": "^0.52.0",
     "screenfull": "^4.0.0",
     "shake.js": "^1.2.2",
-    "vue": "^2.5.17",
+    "vue": "^3.0.0-beta.1",
     "vue-analytics": "^5.16.1",
     "vue-meta": "^1.5.8",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1",
+    "vuex": "^4.0.0-alpha.1",
     "vuex-persist": "^2.0.0"
   },
   "devDependencies": {
@@ -26,14 +26,15 @@
     "@vue/cli-plugin-babel": "^3.1.1",
     "@vue/cli-plugin-eslint": "^3.1.1",
     "@vue/cli-service": "^3.1.1",
+    "@vue/compiler-sfc": "^3.0.0-beta.1",
     "@vue/eslint-config-airbnb": "^4.0.0",
     "audiosprite": "^0.7.1",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0-0",
+    "eslint-plugin-vue": "^7.0.0-alpha.0",
     "node-sass": "^4.13.1",
     "sass-loader": "^7.0.1",
-    "vue-svg-loader": "^0.11.0",
-    "vue-template-compiler": "^2.5.17"
+    "vue-cli-plugin-vue-next": "~0.1.4",
+    "vue-svg-loader": "^0.11.0"
   }
 }
