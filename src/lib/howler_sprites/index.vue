@@ -64,7 +64,7 @@ export default {
       type: String,
     },
     orientation: {
-      default: 'right', // 'left', 'right', 'down', 'up'
+      default: 'right',  // 'left', 'right', 'down', 'up'
       type: String,
     },
   },
@@ -72,7 +72,7 @@ export default {
     return {
       sounds: this.createSoundsArray(),
       plays: [],
-      buffer: null, // the audio buffer
+      buffer: null,  // the audio buffer
     };
   },
   methods: {
@@ -235,13 +235,13 @@ export default {
         const time = i * lineGap;
         const ampl = leftChannel[audioBuffKey] * maxAmpl / 2;
         switch (this.orientation) {
-          case 'up': // invert ?
+          case 'up':  // invert ?
           case 'down':
             context.moveTo(ampl, time);
             context.lineTo((ampl * -1), time);
             break;
           default:
-          case 'left': // invert ?
+          case 'left':  // invert ?
           case 'right':
             context.moveTo(time, ampl);
             context.lineTo(time, (ampl * -1));
@@ -250,7 +250,7 @@ export default {
       }
       // draw center line
       switch (this.orientation) {
-        case 'up': // invert ?
+        case 'up':  // invert ?
         case 'down':
           context.moveTo(0, 0);
           context.lineTo(maxTime, 0);
@@ -258,7 +258,7 @@ export default {
           context.lineTo(0, 1);
           break;
         default:
-        case 'left': // invert ?
+        case 'left':  // invert ?
         case 'right':
           context.moveTo(0, 0);
           context.lineTo(0, maxTime);

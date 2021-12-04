@@ -295,7 +295,7 @@ export default {
       console.log(
         'measureElement',
         available, // the part we display
-        needed, // the total length we could go
+        needed,  // the total length we could go
         this.$refs.track.clientHeight,
       );
       // needed space / available space

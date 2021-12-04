@@ -23,7 +23,7 @@ export default {
   name: 'oscilloscope',
   props: {
     // needed settings
-    audioElement: {}, // supply a reference to an audio element.
+    audioElement: {},  // supply a reference to an audio element.
 
     // display settings
     rounded: { default: true },
@@ -34,11 +34,11 @@ export default {
     lineWidth: { default: 2 },
 
     // canvas settings
-    canvasHeight: { default: 200 }, // Pixel of the render.
-    canvasWidth: { default: 400 }, // Pixel of the render.
+    canvasHeight: { default: 200 },  // Pixel of the render.
+    canvasWidth: { default: 400 },   // Pixel of the render.
     fftSize: { default: 32 }, // Increases Audio resolution. Must be power of 2, range [32, 32768].
-    fftEach: { default: 1 }, // Decreases Audio resolution. Use only every x data point.
-    size: { default: 12 }, // how many values should be plotted
+    fftEach: { default: 1 },  // Decreases Audio resolution. Use only every x data point.
+    size: { default: 12 },  // how many values should be plotted
   },
   data() {
     return {
@@ -57,8 +57,8 @@ export default {
       audioData: [], // summarized audio data
       rawAudioData: null, // current audio data
       // canvas_2d: COMPUTED
-      loopRunning: false, // if the loop function is running. Set false to stop the loop.
-      loopRequest: null, // to be able to cancel the next loop request.
+      loopRunning: false,  // if the loop function is running. Set false to stop the loop.
+      loopRequest: null,  // to be able to cancel the next loop request.
 
       // styling
       // color: PROPERTY

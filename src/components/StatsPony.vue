@@ -309,7 +309,7 @@ export default {
       return keys.map((key) => this.hp[key]).reduce((old, current) => old + current) / keys.length;
     },
     autoFace() {
-      if (this.averageHealth === 1.0) { // wowsa
+      if (this.averageHealth === 1.0) {  // wowsa
         return 'cat-smirk';
       }
       return this.healthFaces[Math.round(this.averageHealth * (this.healthFaces.length - 1))];
