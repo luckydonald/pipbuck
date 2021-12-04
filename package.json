@@ -10,21 +10,17 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "core-js": "^3.6.5",
     "howler": "^2.1.1",
     "mapbox-gl": "^0.52.0",
+    "register-service-worker": "^1.7.1",
     "screenfull": "^4.0.0",
     "shake.js": "^1.2.2",
-
-    "core-js": "^3.6.5",
-    "register-service-worker": "^1.7.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
-    "audiosprite": "^0.7.1",
-    "vue-svg-loader": "^0.11.0",
-
     "@types/chai": "^4.2.11",
     "@types/mocha": "^5.2.4",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
@@ -42,6 +38,7 @@
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^2.0.0-0",
+    "audiosprite": "^0.7.2",
     "chai": "^4.1.2",
     "chromedriver": "91",
     "eslint": "^6.7.2",
@@ -51,7 +48,10 @@
     "lint-staged": "^9.5.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
-    "typescript": "~4.1.5"
+    "typescript": "~4.1.5",
+    "vue-loader": "^15.9.8",
+    "vue-svg-loader": "^0.16.0",
+    "vue-template-compiler": "^2.6.14"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
