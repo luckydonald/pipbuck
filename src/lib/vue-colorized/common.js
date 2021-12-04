@@ -18,14 +18,14 @@ const common = {
   },
   updateImage(img, src, onDone, ...args) {
     // update src to force loading
-    img.src = src;                                    // eslint-disable-line no-param-reassign
-    img.onload = this.createCallback(onDone, ...args);  // eslint-disable-line no-param-reassign, max-len
+    img.src = src; // eslint-disable-line no-param-reassign
+    img.onload = this.createCallback(onDone, ...args); // eslint-disable-line no-param-reassign, max-len
 
     // check if already loaded
     if (img.complete) {
       // if already loaded, no onload event will be triggered.
       // we handle that case here, by calling the function directly.
-      img.onload = undefined;                         // eslint-disable-line no-param-reassign
+      img.onload = undefined; // eslint-disable-line no-param-reassign
       onDone(...args);
     }
   },
@@ -53,7 +53,6 @@ const common = {
     canvas.height = height;
     const ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0, width, height);
-
 
     const imgData = ctx.getImageData(0, 0, width, height);
     const pixels = imgData.data;

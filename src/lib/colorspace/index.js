@@ -259,7 +259,7 @@ export function hsl(h, s, l, a) {
     return hsl(h.h, h.s, h.l, h.a || undefined);
   }
   const HSL = {
-    h: Number.isFinite(h) ? h % 360 : 0,  // 0° - 359°, 360° == 0°
+    h: Number.isFinite(h) ? h % 360 : 0, // 0° - 359°, 360° == 0°
     s: Number.isFinite(s) ? Math.min(Math.max(s, 0), 100) : 0, // 0% - 100%
     l: Number.isFinite(l) ? Math.min(Math.max(l, 0), 100) : 0, // 0% - 100%
   };

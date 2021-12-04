@@ -2,14 +2,14 @@ import common from './common';
 
 const directive = {
   name: 'colorized-bg',
-  inserted(el, binding, vnode) {                     // eslint-disable-line no-unused-vars
+  inserted(el, binding, vnode) { // eslint-disable-line no-unused-vars
     // eslint-disable-next-line no-param-reassign
     el.colorized = {
       img: common.createImage(),
     };
     this.update(el, binding, vnode, null);
   },
-  update(el, binding, vnode, oldVnode) {             // eslint-disable-line no-unused-vars
+  update(el, binding, vnode, oldVnode) { // eslint-disable-line no-unused-vars
     // Implementing the following:
     // ```js
     // watch: {

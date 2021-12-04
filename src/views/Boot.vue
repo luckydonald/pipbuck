@@ -53,8 +53,8 @@ export default {
   components: { Menu, StableColt, TyperCss },
   data() {
     return {
-      off: true,  // is turned off, waiting for turning on
-      loading: false,  // is turned on, and the animation has ended. Now displays 'Initialising...'
+      off: true, // is turned off, waiting for turning on
+      loading: false, // is turned on, and the animation has ended. Now displays 'Initialising...'
       bootTextDuration: 4000, // default: 4s in ms
       screenfull,
     };

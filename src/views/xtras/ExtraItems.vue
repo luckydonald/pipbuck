@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       ui,
-      orientation: 'down',  // 'left', 'right', 'down', 'up'
+      orientation: 'down', // 'left', 'right', 'down', 'up'
     };
   },
   computed: {

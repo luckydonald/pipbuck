@@ -83,8 +83,8 @@ export default {
           case 4:
             this.hp.legHindLeft = Math.random();
             break;
-          case 5:  // 5.0 - 5.99999•••
-          case 6:  // 6.0
+          case 5: // 5.0 - 5.99999•••
+          case 6: // 6.0
           default:
             this.hp.legHindRight = Math.random();
             break;
