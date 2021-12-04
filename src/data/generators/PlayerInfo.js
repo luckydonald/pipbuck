@@ -322,22 +322,22 @@ const theState = {
 
 const theGetters = {
   'health/parts/head'(state, getters) {
-    return (100 - state.TotalDamages.filter(dmg => dmg.type === 1)[0].Value) / 100;
+    return (100 - state.TotalDamages.filter((dmg) => dmg.type === 1)[0].Value) / 100;
   },
   'health/parts/body'(state, getters) {
-    return (100 - state.TotalDamages.filter(dmg => dmg.type === 2)[0].Value) / 100;
+    return (100 - state.TotalDamages.filter((dmg) => dmg.type === 2)[0].Value) / 100;
   },
   'health/parts/legFrontLeft'(state, getters) {
-    return (100 - state.TotalDamages.filter(dmg => dmg.type === 3)[0].Value) / 100;
+    return (100 - state.TotalDamages.filter((dmg) => dmg.type === 3)[0].Value) / 100;
   },
   'health/parts/legFrontRight'(state, getters) {
-    return (100 - state.TotalDamages.filter(dmg => dmg.type === 4)[0].Value) / 100;
+    return (100 - state.TotalDamages.filter((dmg) => dmg.type === 4)[0].Value) / 100;
   },
   'health/parts/legHindLeft'(state, getters) {
-    return (100 - state.TotalDamages.filter(dmg => dmg.type === 5)[0].Value) / 100;
+    return (100 - state.TotalDamages.filter((dmg) => dmg.type === 5)[0].Value) / 100;
   },
   'health/parts/legHindRight'(state, getters) {
-    return (100 - state.TotalDamages.filter(dmg => dmg.type === 6)[0].Value) / 100;
+    return (100 - state.TotalDamages.filter((dmg) => dmg.type === 6)[0].Value) / 100;
   },
   'health/totalDamageResistance'(state, getters) {
     return state.TotalResists.reduce((old, item) => old + item.Value, 0);

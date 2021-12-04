@@ -1,3 +1,9 @@
+# own
+node_modules.*.bak
+**/tmp.js
+
+# python and co
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -100,9 +106,23 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# --------------
+# --------------
+# --------------
+# --------------
+# vue preset
+
 .DS_Store
 node_modules
 /dist
+
+
+/tests/e2e/reports/
+selenium-debug.log
+chromedriver.log
+geckodriver.log
+
 
 # local env files
 .env.local
@@ -112,6 +132,7 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # Editor directories and files
 .idea
@@ -120,4 +141,4 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
-*.sw*
+*.sw?

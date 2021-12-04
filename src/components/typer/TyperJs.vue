@@ -68,7 +68,7 @@ export default {
   mounted() {
     this.startTyping();
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.stopTyping();
   },
 };

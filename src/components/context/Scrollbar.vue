@@ -337,7 +337,7 @@ export default {
       this.measureElement();
     });
   },
-  beforeDestroy() {
+  beforeUnmount() {
     console.log('beforeDestroy');
     this.unregisterElement();
     this.element = null;

@@ -295,7 +295,7 @@ export default {
       }
     },
   },
-  beforeDestroy() {
+  beforeUnmount() {
     // eslint-disable-next-line no-underscore-dangle
     this._map.remove();
   },

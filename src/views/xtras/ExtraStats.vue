@@ -97,7 +97,7 @@ export default {
       this.intervalId = setInterval(this.switchColors, 500);
     }
   },
-  beforeDestroy() {
+  beforeUnmount() {
     if (this.intervalId !== null) {
       clearInterval(this.intervalId);
       this.intervalId = null;

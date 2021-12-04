@@ -57,14 +57,14 @@ export default {
      * @returns {Array<String>} List of trimmed strings.
      */
     lines() {
-      return this.slotText.split('\n').map(line => line.trim());
+      return this.slotText.split('\n').map((line) => line.trim());
     },
     /**
      * Contains the length of the lines
      * @returns {Array<Number>} List of lengths.
      */
     lengths() {
-      return this.lines.map(line => line.length);
+      return this.lines.map((line) => line.length);
     },
     /**
      * The full length up until this element.
@@ -87,21 +87,21 @@ export default {
      * @return {Array<Number>} List of decimal length percentages. 0.0 = 0%, 0.5 = 50%, 1.0 = 100%.
      */
     percentages() {
-      return this.lengths.map(length => length / this.fullLength);
+      return this.lengths.map((length) => length / this.fullLength);
     },
     /**
      * How much time a line got to be animated, in milliseconds.
      * @return {Array<Number>} List of animation duration milliseconds.
      */
     durationMilliseconds() {
-      return this.lengths.map(length => this.duration * (length / this.fullLength));
+      return this.lengths.map((length) => this.duration * (length / this.fullLength));
     },
     /**
      * How much time a line got to be animated, in decimal seconds.
      * @return {Array<Number>} List of animation duration seconds.
      */
     durationSeconds() {
-      return this.durationMilliseconds.map(ms => ms / 1000);
+      return this.durationMilliseconds.map((ms) => ms / 1000);
     },
     /**
      * How much time a line must wait until all the previous lines are done animating,
@@ -109,7 +109,7 @@ export default {
      * @return {Array<Number>} List of animation offset milliseconds.
      */
     offsetMilliseconds() {
-      return this.incrLength.map(offset => this.duration * (offset / this.fullLength));
+      return this.incrLength.map((offset) => this.duration * (offset / this.fullLength));
     },
     /**
      * How much time a line must wait until all the previous lines are done animating,
@@ -117,7 +117,7 @@ export default {
      * @return {Array<Number>} List of animation offset seconds.
      */
     offsetSeconds() {
-      return this.offsetMilliseconds.map(ms => ms / 1000);
+      return this.offsetMilliseconds.map((ms) => ms / 1000);
     },
   },
   watch: {

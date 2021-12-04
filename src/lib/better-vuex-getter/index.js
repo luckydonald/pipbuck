@@ -20,8 +20,8 @@ function normalizeNamespace(fn) {
 /** From vuex.esm.js */
 function normalizeMap(map) {
   return Array.isArray(map)
-    ? map.map(key => ({ key, val: key }))
-    : Object.keys(map).map(key => ({ key, val: map[key] }));
+    ? map.map((key) => ({ key, val: key }))
+    : Object.keys(map).map((key) => ({ key, val: map[key] }));
 }
 
 /**

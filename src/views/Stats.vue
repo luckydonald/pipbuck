@@ -9,7 +9,7 @@
       { to: { path: '/stats/general' }, label: 'General' },
     ]"
   >
-    <template slot="statistics">
+    <template v-slot:statistics>
       <div class="stat">LVL {{ level }}</div>
       <div class="stat">HP {{ healthPoints }}/{{ maxHealthPoints }}</div>
       <div class="stat">AP {{ actionPoints }}/{{ maxActionPoints }}</div>

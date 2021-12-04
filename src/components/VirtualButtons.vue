@@ -92,7 +92,6 @@ export default {
       margin-right: $button-margin;
     }
 
-
     &::before, &::after {
       content: "";
       display: block;
@@ -141,7 +140,6 @@ export default {
         ;
       }
     }
-
 
     label {
       position: absolute;

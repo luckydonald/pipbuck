@@ -27,7 +27,6 @@ import ammo, { empty } from '../../data/ammo';
 import Inventory from '../../components/context/Inventory.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
 
-
 export default {
   name: 'Ammo',
   components: { Inventory },
@@ -49,13 +48,13 @@ export default {
   computed: {
     items() {
       return this.ammo
-        .map(item => Object.assign(item, {
+        .map((item) => Object.assign(item, {
           id: item.baseId,
           name: item.long,
           short: item.name,
           amount: Math.floor(Math.random() * 50),
         }))
-        .filter(item => item.amount >= 1);
+        .filter((item) => item.amount >= 1);
     },
   },
 };

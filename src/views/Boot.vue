@@ -12,7 +12,7 @@
       :links="[]"
       :disableStats="true"
     >
-      <template slot="statistics">&nbsp;</template>
+      <template v-slot:statistics>&nbsp;</template>
       <div class="animation" v-if="!off && !loading">
         <typer-css
           :chars="1"
@@ -46,7 +46,6 @@ import Menu from './Menu.vue';
 import StableColt from '../components/StableColt.vue';
 import TyperCss from '../components/typer/TyperCss.vue';
 import { ui } from '../sound';
-
 
 // https://stackoverflow.com/a/40460122/3423324#showing-loading-spinner-for-async-vue-2-components
 export default {

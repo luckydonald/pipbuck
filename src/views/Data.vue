@@ -9,7 +9,7 @@
       { to: { path: '/data/radio' }, label: 'Radio' },
     ]"
   >
-    <template slot="statistics">
+    <template v-slot:statistics>
       <div class="stat location">{{ location }}</div>
       <div class="stat">{{ day }}.{{ month }}.{{ year }}, {{ hour }}:{{ minute }}</div>
     </template>

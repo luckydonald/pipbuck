@@ -54,17 +54,17 @@ export default {
   computed: {
     items() {
       return this.aid
-        .map(item => Object.assign(item, {
+        .map((item) => Object.assign(item, {
           id: item.baseId,
           amount: Math.floor(Math.random() * 10),
         }))
-        .filter(item => item.amount >= 1);
+        .filter((item) => item.amount >= 1);
     },
   },
   methods: {
     onEquip(id) {
       console.log('aid use', id);
-      this.items.filter(item => item.id === id)[0].amount -= 1;
+      this.items.filter((item) => item.id === id)[0].amount -= 1;
     },
   },
 };

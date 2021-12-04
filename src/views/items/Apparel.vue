@@ -65,13 +65,13 @@ export default {
   computed: {
     items() {
       return this.apparel
-        .map(item => Object.assign(item, {
+        .map((item) => Object.assign(item, {
           id: item.baseId,
           equipped: (Math.floor(Math.random() * 10)) === 0,
           amount: Math.floor(Math.random() * 3),
           condition: Math.random(),
         }))
-        .filter(item => item.amount >= 1);
+        .filter((item) => item.amount >= 1);
     },
     hasEffect() {
       return (this.activeItem.Effects || '—') !== '—';
@@ -80,7 +80,7 @@ export default {
   methods: {
     toggleEquip(id, flag) {
       console.log('sending equip action', id, flag);
-      const selectedItem = apparel.filter(item => item.baseId === id)[0];
+      const selectedItem = apparel.filter((item) => item.baseId === id)[0];
       const index = apparel.indexOf(selectedItem);
       this.$set(apparel[index], 'equipped', flag);
     },

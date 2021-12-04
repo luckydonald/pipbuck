@@ -28,7 +28,6 @@ import { dashedZero } from '../../filters/inventory';
 import Inventory from '../../components/context/Inventory.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
 
-
 export default {
   name: 'Misc',
   components: { Inventory },
@@ -51,11 +50,11 @@ export default {
   computed: {
     items() {
       return this.misc
-        .map(item => Object.assign(item, {
+        .map((item) => Object.assign(item, {
           id: item.baseId,
           amount: Math.floor(Math.random() * 5),
         }))
-        .filter(item => item.amount >= 1);
+        .filter((item) => item.amount >= 1);
     },
   },
 };

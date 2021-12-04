@@ -306,7 +306,7 @@ export default {
   computed: {
     averageHealth() {
       const keys = Object.keys(this.hp);
-      return keys.map(key => this.hp[key]).reduce((old, current) => old + current) / keys.length;
+      return keys.map((key) => this.hp[key]).reduce((old, current) => old + current) / keys.length;
     },
     autoFace() {
       if (this.averageHealth === 1.0) {  // wowsa

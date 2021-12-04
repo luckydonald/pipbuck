@@ -37,7 +37,6 @@ import { hsl, HexToHSL } from '../../lib/colorspace';
 import StableColt from '../../components/StableColt.vue';
 import { ui } from '../../sound';
 
-
 export default {
   name: 'Settings',
   components: { StableColt },

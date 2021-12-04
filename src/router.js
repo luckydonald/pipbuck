@@ -2,7 +2,6 @@ import Router from 'vue-router';
 import Vue from 'vue';
 import Placeholder from './views/Placeholder.vue';
 
-
 Vue.use(Router);
 
 export default new Router({

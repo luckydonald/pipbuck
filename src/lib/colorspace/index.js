@@ -44,7 +44,6 @@ export function HexToRGB(hex) {
   } : null;
 }
 
-
 /**
  * Converts an RGB color value to HSL. Conversion formula
  * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
@@ -96,7 +95,6 @@ export function RGBtoHSL(r, g, b) {
   l = Math.floor(l * 100);
   return { h, s, l };
 }
-
 
 /**
  * Converts an HSL color value to RGB. Conversion formula
@@ -245,7 +243,6 @@ function HSBtoRGB(h, s, v) {
 
   return { r: r * 255, g: g * 255, b: b * 255 };
 }
-
 
 /**
  * Converts HSL to a css string.

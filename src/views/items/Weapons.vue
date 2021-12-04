@@ -39,7 +39,6 @@ import Inventory from '../../components/context/Inventory.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
 import Percent from '../../components/Percent.vue';
 
-
 export default {
   name: 'Weapons',
   components: { Inventory, Percent },
@@ -61,13 +60,13 @@ export default {
   computed: {
     items() {
       return this.weapons
-        .map(item => Object.assign(item, {
+        .map((item) => Object.assign(item, {
           id: item.baseId,
           equipped: (Math.floor(Math.random() * 10)) === 0,
           amount: Math.floor(Math.log(Math.random() * 10)),
           condition: Math.random(),
         }))
-        .filter(item => item.amount >= 1);
+        .filter((item) => item.amount >= 1);
     },
     ammunitionText() {
       if (
@@ -87,7 +86,7 @@ export default {
   methods: {
     toggleEquip(id, flag) {
       console.log('sending equip action', id, flag);
-      this.itemSelection.filter(item => item.id === id)[0].equipped = flag;
+      this.itemSelection.filter((item) => item.id === id)[0].equipped = flag;
     },
     onEquip(id) {
       this.toggleEquip(id, true);

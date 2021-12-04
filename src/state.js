@@ -124,7 +124,6 @@ const store = new Vuex.Store({
     // color_hair_normal: '#1bff80',
     // color_outlines: '#1bff80',
 
-
     color_hair_bright: '#48f564',
     color_hair_normal: '#39c64b',
     color_hair_dark: '#299432',
@@ -136,7 +135,6 @@ const store = new Vuex.Store({
     color_body_dark: '#063016',
 
     color_bg: '#021709',
-
 
     showHardwareButtons: true,
     // colorFront2: '#1bff80',

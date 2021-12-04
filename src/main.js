@@ -10,7 +10,6 @@ import App from './App.vue';
 import router from './router';
 import store from './state';
 
-
 Vue.use(Meta, {
   keyName: 'head', // the component option name that vue-meta looks for meta info on.
   attribute: 'data-vue-meta', // the attribute name vue-meta adds to the tags it observes

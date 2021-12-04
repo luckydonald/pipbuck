@@ -33,7 +33,6 @@ export default {
     color: { default: '#dc5990' },
     lineWidth: { default: 2 },
 
-
     // canvas settings
     canvasHeight: { default: 200 },  // Pixel of the render.
     canvasWidth: { default: 400 },   // Pixel of the render.
@@ -355,7 +354,7 @@ export default {
   mounted() {
     this.attachAnalyser(true);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.detachAnalyser();
   },
 };

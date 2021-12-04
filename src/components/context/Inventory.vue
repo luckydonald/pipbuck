@@ -10,7 +10,7 @@
       :selected="activeId"
       @select="$emit('select', $event)"
     >
-      <template slot-scope="item">
+      <template v-slot="item">
         <a class="item">
           {{ item.name }}
           <span v-if="item.amount > 1"> ({{item.amount}})</span>
@@ -168,7 +168,6 @@ export default {
       width: 100%;
       flex-grow: 3;
     }
-
 
     // right border is fading
     border-right-width: .75vmin;

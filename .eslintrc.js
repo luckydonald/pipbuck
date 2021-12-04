@@ -6,16 +6,28 @@ module.exports = {
   extends: [
     'plugin:vue/vue3-essential',
     '@vue/airbnb',
+    '@vue/typescript/recommended',
   ],
+  parserOptions: {
+    ecmaVersion: 2020,
+  },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-plusplus': [2, { allowForLoopAfterthoughts: true }], // https://stackoverflow.com/a/47996411
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
     'no-unused-vars': ['error', { varsIgnorePattern: '^(ignored)$', argsIgnorePattern: '^(ignored|event)$' }],
     'vue/no-use-v-if-with-v-for': 'off',
   },
-  parserOptions: {
-    parser: 'babel-eslint',
-  },
+  overrides: [
+    {
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)',
+      ],
+      env: {
+        mocha: true,
+      },
+    },
+  ],
 };

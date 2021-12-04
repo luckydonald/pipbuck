@@ -9,7 +9,7 @@
       { to: { path: '/items/ammo' }, label: 'Ammo' },
     ]"
   >
-    <template slot="statistics">
+    <template v-slot:statistics>
       <div class="stat">Wg {{ weight }}/{{ maxWeight }}</div>
       <div class="stat">HP {{ healthPoints }}/{{ maxHealthPoints }}</div>
       <div class="stat">DR {{ damageResistance }}</div>
