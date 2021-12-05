@@ -1,5 +1,7 @@
 import { Howl, Howler } from 'howler';
 
+import pipbuckConfig from './assets/sprites/pipbuck_sprites.json';
+
 class PlayingSprite {
   constructor({
     audio,
@@ -111,8 +113,6 @@ const sounds = {
     'UI_PipBoy_BurstStatic_16', 'UI_PipBoy_BurstStatic_17',
   ],
 };
-
-const pipbuckConfig = require('./assets/sprites/pipbuck_sprites.json');
 
 // Setup the new Howl.
 const pipbuckSprites = new Howl({
