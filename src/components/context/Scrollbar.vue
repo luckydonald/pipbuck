@@ -100,14 +100,14 @@ export default {
       type: Array,
     },
     selected: {
-      default() {
+      default(props) {
         const hasItems = (
-          this.items !== undefined
-          && typeof this.items === 'object'
-          && Array.isArray(this.items)
-          && this.items.length > 0
+          props.items !== undefined
+          && typeof props.items === 'object'
+          && Array.isArray(props.items)
+          && props.items.length > 0
         );
-        return hasItems ? this.items[0].id : null;
+        return hasItems ? props.items[0].id : null;
       },
       type: String,
     },
