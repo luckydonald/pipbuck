@@ -228,7 +228,7 @@ export default {
   methods: {
     select(id) {
       this.$emit('select', id);
-      console.log('SelectSound', ui.sounds.select, id, this.$listeners);
+      console.log('SelectSound', ui.sounds.select, id);
       ui.audio.play(ui.sounds.select);
       // this.$emit('pipbuck-play', ui.sounds.select);
     },
