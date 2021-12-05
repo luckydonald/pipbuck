@@ -2,19 +2,19 @@
   <div class="hardware" :class="position">
     <router-link :to="{ name: 'Stats' }"
       class="hardware-button" id="stats"
-      @click.native="$emit('pipbuck-play', sounds.nav_mode)"
+      @click="$emit('pipbuck-play', sounds.nav_mode)"
     ><label for="stats">Stats</label>
     </router-link>
 
     <router-link :to="{ name: 'Items' }"
       class="hardware-button" id="items"
-      @click.native="$emit('pipbuck-play', sounds.nav_mode)"
+      @click="$emit('pipbuck-play', sounds.nav_mode)"
     ><label for="items">Items</label>
     </router-link>
 
     <router-link :to="{ name: 'Data' }"
       class="hardware-button" id="data"
-      @click.native="$emit('pipbuck-play', sounds.nav_mode)"
+      @click="$emit('pipbuck-play', sounds.nav_mode)"
     ><label for="data">Data</label>
     </router-link>
   </div>
