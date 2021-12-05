@@ -75,13 +75,16 @@ export default {
     mapInit() {
       // Mapbox GL access token
       mapboxgl.accessToken = this.accessToken;
+
+      const newMapOptions = { ...this.mapOptions };
       // Add container to options object
       // eslint-disable-next-line no-prototype-builtins
-      if (!this.mapOptions.hasOwnProperty('container')) {
-        this.mapOptions.container = 'map';
+      if (!newMapOptions.hasOwnProperty('container')) {
+        newMapOptions.container = 'map';
       }
+
       // New Mapbox Instance
-      const map = new mapboxgl.Map(this.mapOptions);
+      const map = new mapboxgl.Map(newMapOptions);
       // Emit init event passing map object
       this.$emit('map-init', map);
       return map;
