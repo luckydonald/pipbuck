@@ -74,9 +74,6 @@ const app = {
       'colorFront', 'colorBack', 'showHardwareButtons', 'radio',
     ]),
     ...mapGetters({ currentRadio: 'radio/current', currentFile: 'radio/currentFile' }),
-    currentRadioAnonymousCrossorigin() {
-
-    },
     hair() {
       return HexToHSL(this.$store.state.colorFront);
     },
@@ -391,7 +388,6 @@ audio {
   border-radius: 50% / 5%;
 }
 
-
 @keyframes scanline {
   0% { // 0%
     top: -40%;
@@ -520,6 +516,5 @@ audio {
     opacity: 0.24387;
   }
 }
-
 
 </style>
