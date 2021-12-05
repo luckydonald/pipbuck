@@ -19,7 +19,7 @@ export default {
   methods: {
     calculateData() {
       // get svg data
-      console.log('data:', this.$slots.default[0].elm);
+      console.log('data:', this.$slots.default()[0].elm);
       const svg = this.$el.getElementsByTagName('svg')[0];
       if (svg === undefined || svg === null) {
         return '';
