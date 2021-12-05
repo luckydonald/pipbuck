@@ -54,7 +54,6 @@ const common = {
     const ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0, width, height);
 
-
     const imgData = ctx.getImageData(0, 0, width, height);
     const pixels = imgData.data;
 
