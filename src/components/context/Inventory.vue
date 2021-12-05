@@ -24,7 +24,7 @@
           <svg-unknown :style="{ fill: 'var(--color-front)' }"/>
         </slot>
       </div>
-      <slot name="rows" is="div">
+      <div><slot name="rows">
         <!-- some example details -->
         <div class="row">
           <div class="detail">Data would be here.</div>
@@ -39,7 +39,7 @@
         <div class="row">
           <div class="detail blank">&nbsp;</div>
         </div>
-      </slot>
+      </slot></div>
     </div>
   </div>
 </template>
