@@ -1,6 +1,7 @@
 <template>
   <inventory :items="items" :limit="limit" v-model="activeId">
-    <div v-slot:rows class="rows">
+    <template v-slot:rows>
+    <div class="rows">
       <div class="row">
         <div class="detail damage">
           <div class="label">DR</div>
