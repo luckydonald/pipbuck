@@ -233,7 +233,7 @@ export default {
       for (let i = 0; i <= drawLines; i++) {
         const audioBuffKey = Math.floor(eachBlock * i);
         const time = i * lineGap;
-        const ampl = leftChannel[audioBuffKey] * maxAmpl / 2;
+        const ampl = (leftChannel[audioBuffKey] * maxAmpl) / 2;
         switch (this.orientation) {
           case 'up':  // invert ?
           case 'down':
