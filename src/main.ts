@@ -10,14 +10,17 @@ import App from './App.vue';
 import router from './router';
 import store from './state';
 
-Vue.use(Meta, {
+const app = createApp(App);
+app.use(router).use(store);
+
+app.use(Meta, {
   keyName: 'head', // the component option name that vue-meta looks for meta info on.
   attribute: 'data-vue-meta', // the attribute name vue-meta adds to the tags it observes
   ssrAttribute: 'data-vue-meta-server-rendered', // the attribute name that lets vue-meta know that meta info has already been server-rendered
   tagIDKeyName: 'm-key', // the property name that vue-meta uses to determine whether to overwrite or append a tag
 });
 
-Vue.use(VueAnalytics, {
+app.use(VueAnalytics, {
   id: process.env.NODE_ENV !== 'production' ? 'UA-47744366-5' : 'UA-47744366-4',
   router,
   autoTracking: {
@@ -31,10 +34,9 @@ Vue.use(VueAnalytics, {
     delay: 500, // delay in milliseconds
   },
 });
-
-const ignored = createApp(App).use(router).use(store).mount('#app');
+app.mount('#app');
 
 if (process.env.NODE_ENV !== 'production') {
-  global.$vm = ignored;
+  global.$vm = app;
 }
 screenfull.request();
