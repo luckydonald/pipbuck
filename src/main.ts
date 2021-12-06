@@ -3,7 +3,7 @@
  */
 import Vue, { createApp } from 'vue';
 import Meta from 'vue-meta';
-import VueAnalytics from 'vue-analytics';
+import VueGtag from "vue-gtag";
 import screenfull from 'screenfull';
 import './lib/audiocontect-patch';
 import App from './App.vue';
@@ -20,20 +20,15 @@ app.use(Meta, {
   tagIDKeyName: 'm-key', // the property name that vue-meta uses to determine whether to overwrite or append a tag
 });
 
-app.use(VueAnalytics, {
-  id: process.env.NODE_ENV !== 'production' ? 'UA-47744366-5' : 'UA-47744366-4',
-  router,
-  autoTracking: {
-    pageviewOnLoad: true,
-    // page: false,
-    screenview: true,
+app.use(VueGtag, {
+  config: {
+    id: process.env.NODE_ENV !== 'production' ? 'UA-47744366-5' : 'UA-47744366-4',
+    params: {
+      send_page_view: true,
+    },
   },
-  batch: {
-    enabled: true, // enable/disable
-    amount: 2, // amount of events fired
-    delay: 500, // delay in milliseconds
-  },
-});
+  pageTrackerScreenviewEnabled: true,
+}, router);
 app.mount('#app');
 
 if (process.env.NODE_ENV !== 'production') {

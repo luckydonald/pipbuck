@@ -15,6 +15,7 @@
     "screenfull": "^6.0.0",
     "shake.js": "^1.2.2",
     "vue": "^3.0.0",
+    "vue-gtag": "^2.0.1",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0",
     "vuex-persist": "^3.1.3"
