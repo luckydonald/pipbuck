@@ -40,9 +40,7 @@
     "lint-staged": "^9.5.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
-    "typescript": "~4.1.5",
-    "vue-svg-loader": "^0.16.0",
-    "vue-template-compiler": "^2.6.14"
+    "typescript": "~4.1.5"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
