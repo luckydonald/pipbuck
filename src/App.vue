@@ -52,14 +52,12 @@ const app = {
   name: 'app',
   components: { VirtualButtons, Favicon, StableColt },
   directives: { ColorizedBg },
-  head() {
+  metaInfo() {
     return {
-      meta: [
-        // Theme Color for Chrome, Firefox OS and Opera
-        { 'm-key': 'theme-color', name: 'theme-color', content: this.colorFront },
-        // Color for windows tiles
-        { 'm-key': 'msapplication-TileColor', name: 'msapplication-TileColor', content: this.colorFront },
-      ],
+      // Theme Color for Chrome, Firefox OS and Opera
+      'theme-color': this.colorFront,
+      // Color for windows tiles
+      'msapplication-TileColor': this.colorFront,
     };
   },
   data() {
