@@ -24,7 +24,7 @@
         <router-link class="item" :to="link.to" @click="playTab">
           {{ link.label }}
         </router-link>
-        <div :key="`${link.label}_hr`" class="hr" />
+        <div :data-key="`${link.label}_hr`" class="hr" />
       </template>
       <div class="edge right up" />
     </div>
