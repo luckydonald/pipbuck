@@ -1,11 +1,8 @@
-import Router from 'vue-router';
-import Vue from 'vue';
+import { createRouter, createWebHistory } from 'vue-router';
 import Placeholder from './views/Placeholder.vue';
 
-Vue.use(Router);
-
-export default new Router({
-  mode: 'history',
+export default createRouter({
+  history: createWebHistory(),
   base: process.env.BASE_URL,
   routes: [
     {
