@@ -36,6 +36,7 @@
         </div>
       </div>
     </div>
+    </template>
   </inventory>
 </template>
 
