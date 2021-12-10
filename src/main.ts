@@ -1,7 +1,7 @@
 /**
  * Main app; data store. Loads App.vue.
  */
-import Vue, { createApp } from 'vue';
+import { createApp } from 'vue';
 import { plugin as vueMetaPlugin } from 'vue-meta';
 import VueGtag from "vue-gtag";
 import screenfull from 'screenfull';
