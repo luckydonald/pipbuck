@@ -1,11 +1,8 @@
 /* eslint no-param-reassign: ["error", { "props": false }] */
-import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersistence from 'vuex-persist';
 import { hsl } from './lib/colorspace';
 import game from './data/generators/Root';
-
-Vue.use(Vuex);
 
 const vuexLocal = new VuexPersistence({
   storage: window.sessionStorage, // window.localStorage,
@@ -100,7 +97,7 @@ const radio = {
   },
 };
 
-const store = new Vuex.Store({
+const store = Vuex.createStore({
   debug: process.env.NODE_ENV !== 'production',
   strict: process.env.NODE_ENV !== 'production',
   plugins: [vuexLocal.plugin],
