@@ -1,5 +1,10 @@
 <template>
-  <inventory :items="items" :limit="limit" v-model="activeId">
+  <select v-model="current_lootbox_id">
+    <option v-for="lootbox in lootboxes" :key="lootbox.id" :value="lootbox.id">
+      {{lootbox.name}}
+    </option>
+  </select>
+  <inventory :items="currentLootbox.items" :limit="limit" v-model="activeId">
     <div slot="rows" class="rows">
       <div class="row">
         <div class="detail blank"/>
@@ -23,40 +28,80 @@
 </template>
 
 <script>
-import ammo, { empty } from '../../data/ammo';
+import axios from 'axios';
+import { empty } from '../../data/ammo';
 import Inventory from '../../components/context/Inventory.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
 
 
 export default {
-  name: 'Ammo',
+  name: 'Lootlist',
   components: { Inventory },
   mixins: [InventoryMixin],
   data() {
-    const hasItems = (
-      ammo !== undefined
-      && typeof ammo === 'object'
-      && Array.isArray(ammo)
-      && ammo.length > 0
-    );
     return {
-      ammo,
+      lootboxes: [
+        /*
+        {
+          "id": 1,
+          "name": "Here's your Loot!",
+          "owned_by": 1,
+          "party": 1,
+          "items": [
+            {
+              "id": 12,
+              "name": "Foraged berries/fruit (per hoof-full)",
+              "category": "food",
+              "weight": 1,
+              "value": 1,
+              "description": null,
+              "effect": "Food: 5 hp (depending on local plants (DM) [Survival/10] hoof-fulls found)"
+            }
+          ]
+        }
+        */
+      ],
       limit: -1,
-      activeId: hasItems ? ammo[0].baseId : null,
+      activeId: null,
+      currentLootboxId: null,
       emptyItem: empty,
     };
   },
+  // Fetches posts when the component is created.
+  created() {
+    const playerId = 1;
+    axios.get(`http://localhost:8080/api/v1/lootbox/player/${playerId}`)
+      .then((response) => {
+      // JSON responses are automatically parsed.
+        this.lootboxes = response.data;
+      }).catch((e) => {
+        this.errors.push(e);
+      });
+  },
   computed: {
+    currentLootbox() {
+      const lootboxes = this.lootboxes.filter(lootbox => lootbox.id === this.currentLootboxId);
+      if (lootboxes.length === 0) {
+        return null;
+      }
+      return lootboxes[0];
+    },
     items() {
-      return this.ammo
+      if (!this.currentLootbox) {
+        return [];
+      }
+      return this.currentLootbox.items
         .map(item => Object.assign(item, {
-          id: item.baseId,
-          name: item.long,
-          short: item.name,
-          amount: Math.floor(Math.random() * 50),
+          amount: item.count,
         }))
         .filter(item => item.amount >= 1);
     },
   },
 };
 </script>
+
+<style lang="scss">
+select {
+
+}
+</style>
