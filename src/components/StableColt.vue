@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import {hsl} from '../lib/colorspace';
+import { hsl } from '../lib/colorspace';
 
 export default {
   name: 'StableColt',
@@ -91,13 +91,13 @@ export default {
     hair: {
       type: Object,
       default() {
-        return {h: 145, s: 85, l: 79};
+        return { h: 145, s: 85, l: 79 };
       },
     },
     back: {
       type: Object,
       default() {
-        return {h: 145, s: 78, l: 14};
+        return { h: 145, s: 78, l: 14 };
       },
     },
   },
