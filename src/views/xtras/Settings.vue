@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <div>
       <a href="/">Reload</a>
     </div>
@@ -141,6 +141,10 @@ export default {
 </script>
 
 <style scoped>
+  .page {
+    overflow: auto;
+    height: 100%;
+  }
   div {
     margin-top: 1rem;
   }
