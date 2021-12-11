@@ -19,6 +19,12 @@
     </scrollbar>
 
     <div class="details">
+      <div class="actions">
+        <slot name="actions">
+          <!--<a>Some Button yo</a>
+          <a>Another Button yo</a>-->
+        </slot>
+      </div>
       <div class="image">
         <slot name="image">
           <svg-unknown :style="{ fill: 'var(--color-front)' }"/>
