@@ -363,6 +363,7 @@ audio {
   border-radius: 50%;
   top: 2.5vh;
   right: -14vw;
+  overflow: hidden;
 
   width: 100vw;
   height: 15vh;
