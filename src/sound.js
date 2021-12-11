@@ -1,4 +1,7 @@
 import { Howl, Howler } from 'howler';
+import unmuteAudio from 'unmute-ios-audio';
+
+unmuteAudio();
 
 class PlayingSprite {
   constructor({
