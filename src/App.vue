@@ -287,10 +287,12 @@ ul li {
   flex-direction: column-reverse;
 }
 .wrapper {
-  //width: 100%;
-  //height: 100%;
-  height: 100vmin;
-  width: 133vmin;
+  // resizable mode:
+  width: 100%;
+  height: 100%;
+  // phone mode:
+  //height: 100vmin;
+  //width: 133vmin;
   overflow: hidden;
   position: relative;
 }
