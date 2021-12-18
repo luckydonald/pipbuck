@@ -175,6 +175,16 @@ export default new Router({
           component: () => import(/* webpackChunkName: "items" */ './views/items/Ammo.vue'),
           // component: Ammo,
         },
+        {
+          path: '/items/loot',
+          name: 'Loot',
+          // index: [1, 4],
+          // route level code-splitting
+          // this generates a separate chunk (items.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import(/* webpackChunkName: "items" */ './views/items/Loot.vue'),
+          // component: Loot,
+        },
       ],
     },
     {
