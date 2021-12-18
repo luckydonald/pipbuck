@@ -34,7 +34,7 @@ export default {
       type: String,
     },
     showPlaceholderInDropdown: {
-      default: true,
+      default: false,
       type: Boolean,
     },
   },
