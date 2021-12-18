@@ -1,10 +1,7 @@
 <template>
-  <select v-model="current_lootbox_id">
-    <option v-for="lootbox in lootboxes" :key="lootbox.id" :value="lootbox.id">
-      {{lootbox.name}}
-    </option>
-  </select>
-  <inventory :items="currentLootbox.items" :limit="limit" v-model="activeId">
+  <div>
+  <Select v-model="activeLootboxId" :items="lootboxes" />
+  <inventory :items="activeLootbox.items" :limit="limit" v-model="activeId">
     <div slot="rows" class="rows">
       <div class="row">
         <div class="detail blank"/>
@@ -25,18 +22,20 @@
       </div>
     </div>
   </inventory>
+  </div>
 </template>
 
 <script>
 import axios from 'axios';
 import { empty } from '../../data/ammo';
 import Inventory from '../../components/context/Inventory.vue';
+import Select from '../../components/Select.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
 
 
 export default {
   name: 'Loot',
-  components: { Inventory },
+  components: { Inventory, Select },
   mixins: [InventoryMixin],
   data() {
     return {
@@ -63,7 +62,7 @@ export default {
       ],
       limit: -1,
       activeId: null,
-      currentLootboxId: null,
+      activeLootboxId: null,
       emptyItem: empty,
     };
   },
@@ -74,23 +73,34 @@ export default {
       .then((response) => {
       // JSON responses are automatically parsed.
         this.lootboxes = response.data;
+        if (this.activeLootboxId != null && this.lootboxIds.indexOf(this.activeLootboxId) === -1) {
+          // in case something no longer present is selected -> remove selection
+          this.activeLootboxId = null;
+        }
+        if (this.activeLootboxId == null && this.lootboxes.length > 0) {
+          // in case nothing is selected yet -> select first one
+          this.activeLootboxId = this.lootboxes[0].id;
+        }
       }).catch((e) => {
         this.errors.push(e);
       });
   },
   computed: {
-    currentLootbox() {
-      const lootboxes = this.lootboxes.filter(lootbox => lootbox.id === this.currentLootboxId);
+    lootboxIds() {
+      return this.lootboxes.map(lootbox => lootbox.id);
+    },
+    activeLootbox() {
+      const lootboxes = this.lootboxes.filter(lootbox => lootbox.id === this.activeLootboxId);
       if (lootboxes.length === 0) {
         return null;
       }
       return lootboxes[0];
     },
     items() {
-      if (!this.currentLootbox) {
+      if (!this.activeLootbox) {
         return [];
       }
-      return this.currentLootbox.items
+      return this.activeLootbox.items
         .map(item => Object.assign(item, {
           amount: item.count,
         }))
@@ -101,7 +111,4 @@ export default {
 </script>
 
 <style lang="scss">
-select {
-
-}
 </style>

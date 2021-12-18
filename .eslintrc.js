@@ -14,6 +14,7 @@ module.exports = {
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
     'no-unused-vars': ['error', { varsIgnorePattern: '^(ignored)$', argsIgnorePattern: '^(ignored|event)$' }],
     'vue/no-use-v-if-with-v-for': 'off',
+    'max-len': ['error', { ignorePattern: ";base64," }],
   },
   parserOptions: {
     parser: 'babel-eslint',
