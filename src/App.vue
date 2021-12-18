@@ -275,6 +275,18 @@ a {
 
   }
 }
+input[type='text'], input[type='password'] {
+  border-bottom: 0.75vmin solid var(--color-front);
+  color: var(--color-front);
+  background: transparent;
+  margin-bottom: 0.75vmin;
+  margin-top: -0.75vmin;
+  &::placeholder {
+    color: var(--color-front);
+    text-align: center;
+    opacity: 0.4;
+  }
+}
 ul li {
   list-style: none;
 }
