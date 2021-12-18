@@ -35,7 +35,7 @@ import InventoryMixin from '../../components/context/InventoryMixin';
 
 
 export default {
-  name: 'Lootlist',
+  name: 'Loot',
   components: { Inventory },
   mixins: [InventoryMixin],
   data() {
