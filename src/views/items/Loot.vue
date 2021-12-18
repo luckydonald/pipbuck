@@ -73,7 +73,7 @@ export default {
   // Fetches posts when the component is created.
   created() {
     const playerId = 1;
-    axios.get(`http://${window.location.hostname}:8080/api/v1/lootbox/player/${playerId}`)
+    axios.get(`http://${window.location.hostname}:8080/api/v1/loot/player/${playerId}`)
       .then((response) => {
       // JSON responses are automatically parsed.
         this.lootboxes = response.data;
