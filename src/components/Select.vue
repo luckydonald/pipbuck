@@ -9,7 +9,6 @@
           <label :key="item.id" :class="{ disabled: item.disabled || false }">
             <input
               type="radio" class="hidden-radio"
-              :name="`select_${hash}_[${item.id}]`"
               :value="item.id"  :key="item.id"
               @input="$emit('change', item.id); isOpen = false"
             />{{ item.name }}<span class="bg"/></label>
@@ -45,7 +44,6 @@ export default {
   },
   data() {
     return {
-      hash: Math.random().toString(16).substr(2, 8),
       isOpen: false,
     };
   },
