@@ -1,6 +1,10 @@
 <template>
   <div>
-  <Select v-model="activeLootboxId" :items="lootboxes" />
+    <Select
+      v-model="activeLootboxId"
+      :items="lootboxes"
+      placeholder="Select Lootlist"
+    />
   <inventory :items="activeLootbox.items" :limit="limit" v-model="activeId">
     <div slot="rows" class="rows">
       <div class="row">
