@@ -52,7 +52,7 @@
 
 <script>
 import Scrollbar from './Scrollbar.vue';
-import SvgUnknown from '../Svg/ItemUnknown.vue';
+import SvgUnknown from '../svg/ItemUnknown.vue';
 import InventoryMixin from './InventoryMixin';
 
 export default {

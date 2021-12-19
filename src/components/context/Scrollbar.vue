@@ -64,8 +64,8 @@
 
 <script>
 import { ui } from '../../sound';
-import SvgListBox from '../Svg/ListBox.vue';
-import SvgListArrow from '../Svg/ListArrow.vue';
+import SvgListBox from '../svg/ListBox.vue';
+import SvgListArrow from '../svg/ListArrow.vue';
 
 export default {
   name: 'Scrollbar',
