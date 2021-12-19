@@ -28,6 +28,10 @@ export default {
     },
     items: {
       default: [],
+      /* List of objects.
+      Needed fields are 'id': Any and 'name': str.
+      Optionally you can add 'disabled': bool.
+      */
     },
     placeholder: {
       default: 'Select…',
