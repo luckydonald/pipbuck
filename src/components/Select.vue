@@ -1,9 +1,7 @@
 <template>
   <div class="select">
     <a @click="isOpen = true"><slot v-if="currentLabel === null" name="button">{{ placeholder }}</slot><span v-else>{{ currentLabel }}</span></a>
-    <div class="dropdown" v-if="isOpen">
-      <div class="background" @click="isOpen = false"/>
-      <div class="inner">
+    <Overlay class="dropdown" v-model="isOpen">
         <label class="disabled" @click=" isOpen = false" v-if="showPlaceholderInDropdown"><slot name="button">{{ placeholder }}</slot><span class="bg"/></label>
         <slot name="item" v-for="item in items">
           <label :key="item.id" :class="{ disabled: item.disabled || false }">
@@ -13,14 +11,16 @@
               @input="$emit('change', item.id); isOpen = false"
             />{{ item.name }}<span class="bg"/></label>
         </slot>
-      </div>
-    </div>
+    </Overlay>
   </div>
 </template>
 
 <script>
+import Overlay from './Overlay.vue';
+
 export default {
   name: 'Select',
+  components: { Overlay },
   props: {
     selectedId: {
       default: null,
@@ -76,15 +76,11 @@ input {
 
 .select {
   display: inline-block;
-  // width: 160px;
-  // height: 34px;
-  // line-height: 30px;
   position: relative;
   padding-right: 0.5em;
 
 
   &::after {
-    // content: " ";
     content: '\25BC';
     // background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzIgMzIiPjxwYXRoIGQ9Im0yNCAxMi04IDEwLTgtMTB6Ii8+PHBhdGggZD0iTTAgMGgzMnYzMkgweiIgc3R5bGU9ImZpbGw6bm9uZSIvPjwvc3ZnPgo=) no-repeat right 0.8em center / 1.4em;
     position: absolute;
@@ -95,66 +91,35 @@ input {
     //padding-left: 1em;
   }
 }
-.dropdown {
-  position: fixed;
-  // left: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
+label {
+  position: relative;
+  display: table;
+  width: 100% !important;
 
-  .background {
-    background: rgba(0,0,0,0.4);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  border: 0.75vmin solid transparent;
+  padding: 0.5em;
+
+  &.disabled {
+    opacity: 0.5;
   }
+  &:hover {
+    border-color: var(--color-front);
 
-  .inner {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.75vmin solid var(--color-front);
-    border-image: linear-gradient(to top, var(--color-front) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, var(--color-front) 90%);
-    border-image-slice: 1;
-    padding: 0.5em 1em;
-    background: rgba(0,0,0,0.75);
+    span.bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--color-front);
+      opacity: 0.2;
+    }
 
-    label {
-      position: relative;
-      display: table;
-      width: 100% !important;
+    &.disabled {
+      border-color: transparent;
 
-      border: 0.75vmin solid transparent;
-      padding: 0.5em;
-
-      &.disabled {
-        opacity: 0.5;
-      }
-      &:hover {
-        border-color: var(--color-front);
-
-        span.bg {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: var(--color-front);
-          opacity: 0.2;
-        }
-
-        &.disabled {
-          border-color: transparent;
-
-          span.bg {
-            opacity: 0.1;
-          }
-        }
+      span.bg {
+        opacity: 0.1;
       }
     }
   }
