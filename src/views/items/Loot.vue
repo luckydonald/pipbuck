@@ -11,7 +11,7 @@
           />
         </li>
         <li>
-          <label>Take Item E)</label>
+          <label>Take Item <Keybind akey="E" /></label>
         </li>
       </ul>
     </div>
@@ -41,13 +41,14 @@
 import axios from 'axios';
 import { empty } from '../../data/ammo';
 import Inventory from '../../components/context/Inventory.vue';
-import Select from '../../components/Select.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
+import Select from '../../components/Select.vue';
+import Keybind from '../../components/Keybind.vue';
 
 
 export default {
   name: 'Loot',
-  components: { Inventory, Select },
+  components: { Inventory, Select, Keybind },
   mixins: [InventoryMixin],
   data() {
     return {
