@@ -5,6 +5,7 @@
         v-model="activeLootboxId"
         :items="lootboxes"
         placeholder="Select Lootlist"
+        @click="loadLoot()"
       />
     </div>
     <div slot="rows" class="rows">
@@ -43,6 +44,7 @@ export default {
   mixins: [InventoryMixin],
   data() {
     return {
+      playerId: 1,
       lootboxes: [
         /*
         {
@@ -72,22 +74,26 @@ export default {
   },
   // Fetches posts when the component is created.
   created() {
-    const playerId = 1;
-    axios.get(`http://${window.location.hostname}:8080/api/v1/loot/player/${playerId}`)
-      .then((response) => {
-      // JSON responses are automatically parsed.
-        this.lootboxes = response.data;
-        if (this.activeLootboxId != null && this.lootboxIds.indexOf(this.activeLootboxId) === -1) {
-          // in case something no longer present is selected -> remove selection
-          this.activeLootboxId = null;
-        }
-        if (this.activeLootboxId == null && this.lootboxes.length > 0) {
-          // in case nothing is selected yet -> select first one
-          this.activeLootboxId = this.lootboxes[0].id;
-        }
-      }).catch((e) => {
-        this.errors.push(e);
-      });
+    this.loadLoot();
+  },
+  methods: {
+    loadLoot() {
+      axios.get(`http://${window.location.hostname}:8080/api/v1/loot/player/${this.playerId}`)
+        .then((response) => {
+          // JSON responses are automatically parsed.
+          this.lootboxes = response.data;
+          if (this.activeLootboxId != null && this.lootboxIds.indexOf(this.activeLootboxId) === -1) {
+            // in case something no longer present is selected -> remove selection
+            this.activeLootboxId = null;
+          }
+          if (this.activeLootboxId == null && this.lootboxes.length > 0) {
+            // in case nothing is selected yet -> select first one
+            this.activeLootboxId = this.lootboxes[0].id;
+          }
+        }).catch((e) => {
+          this.errors.push(e);
+        });
+    },
   },
   computed: {
     lootboxIds() {
