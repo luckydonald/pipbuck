@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import { hsl } from '../lib/colorspace';
+import { hsl } from '../../lib/colorspace';
 
 export default {
   name: 'StableColt',
