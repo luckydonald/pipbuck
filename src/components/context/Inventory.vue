@@ -30,22 +30,24 @@
           <svg-unknown :style="{ fill: 'var(--color-front)' }"/>
         </slot>
       </div>
-      <slot name="rows" is="div">
-        <!-- some example details -->
-        <div class="row">
-          <div class="detail">Data would be here.</div>
-        </div>
-        <div class="row">
-          <div class="detail blank"/>
-          <div class="detail weight">
-            <div class="label">Foobar</div>
-            <div class="value">4458</div>
+      <div class="table">
+        <slot name="rows" is="div">
+          <!-- some example details -->
+          <div class="row">
+            <div class="detail">Data would be here.</div>
           </div>
-        </div>
-        <div class="row">
-          <div class="detail blank">&nbsp;</div>
-        </div>
-      </slot>
+          <div class="row">
+            <div class="detail blank"/>
+            <div class="detail weight">
+              <div class="label">Foobar</div>
+              <div class="value">4458</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="detail blank">&nbsp;</div>
+          </div>
+        </slot>
+      </div>
     </div>
   </div>
 </template>
@@ -126,100 +128,115 @@ export default {
   order: 2;
   flex-grow: 0;
   flex-shrink: 0;
-  width: 70vmin;
-  padding-top: -10%;
-  // right: 2vmin;
+  max-width: 70vmin;
+  min-width: 50vmin;
+  height: 100%;
+  position: relative;
 
   display: flex;
   flex-direction: column;
   align-items: stretch;
   align-content: flex-end;
-  justify-content: flex-end;
+  justify-content: space-between;
+
+  .actions {
+    order: 1;
+    text-align: right;
+    padding: 1em 0;
+    justify-content: flex-start;
+    flex-shrink: 0;
+  }
 
   .image {
-    order: 0;
-    padding: 10vmin;
+    order: 2;
     top:10vmin;
-    flex-shrink: 2;
+    flex-shrink: 1;
     box-sizing: border-box;
     > svg {
       box-sizing: border-box;
     }
   }
 
-  .row{
-    order: 1;
-    display: flex;
-    flex-direction: row;
+  .table {
+    order: 3;
     width: 100%;
-  }
+    flex-shrink: 0;
 
-  .detail {
-    display: flex;
-    justify-content: space-between;
-
-    padding: 0.5vmin 1vmin;
-    white-space: nowrap;
-    $detail-margin-left: 1.2vmin;
-    margin-left: $detail-margin-left;
-
-    width: (100% / 3);
-    flex-grow: 1;
-
-    &.cols-2 {
-      width: calc(#{((100% / 3) * 2)} + #{$detail-margin-left});
-      flex-grow: 2;
-    }
-    &.cols-3 {
-      width: 100%;
-      flex-grow: 3;
-    }
-
-
-    // right border is fading
-    border-right-width: .75vmin;
-    border-right-style: solid;
-    border-right-color: transparent;
-    -webkit-border-image: -webkit-gradient(
-        linear, 0 0, 0 100%, from(var(--color-front)), to(rgba(0, 0, 0, 0))
-    ) 1 100%;
-    border-image: linear-gradient(
-        to bottom, var(--color-front), rgba(0, 0, 0, 0)
-    ) 1 100%;
-    // prepare for creating a top border per :after
-    position: relative;
-    margin-top: .75vmin;  // space for border top
-
-    &:after {
-      position: absolute;
-      content: "";
-      top: -.5vmin;
-      left: 0;
-      right: -.5vmin;
-      height: .5vmin;
-      background-color: var(--color-front);
-    }
-
-    &.blank {
-      border-right-color: transparent;
-      border-image: none;
-      &:after {
-        background-color: transparent;
-      }
-    }
-    > .label,
-    > .value {
-      display: inline;
-    }
-    > .value.percentage {
-      width: 100%;
-      height: 100%;
-      padding-left: 2vmin;
+    .row{
+      order: 2;
       display: flex;
-      & > .bar {
-        height: 3.5vmin;
-        width: 100%;
-        align-self: center;
+      flex-direction: row;
+      width: 100%;
+
+      .detail {
+        order: 3;
+        display: flex;
+        justify-content: space-between;
+
+        padding: 0.5vmin 1vmin;
+        white-space: nowrap;
+        $detail-margin-left: 1.2vmin;
+        margin-left: $detail-margin-left;
+
+        width: (100% / 3);
+        flex-grow: 1;
+
+        &.cols-2 {
+          width: calc(#{((100% / 3) * 2)} + #{$detail-margin-left});
+          flex-grow: 2;
+        }
+        &.cols-3 {
+          width: 100%;
+          flex-grow: 3;
+        }
+
+
+        // right border is fading
+        border-right-width: .75vmin;
+        border-right-style: solid;
+        border-right-color: transparent;
+        -webkit-border-image: -webkit-gradient(
+            linear, 0 0, 0 100%, from(var(--color-front)), to(rgba(0, 0, 0, 0))
+        ) 1 100%;
+        border-image: linear-gradient(
+            to bottom, var(--color-front), rgba(0, 0, 0, 0)
+        ) 1 100%;
+        // prepare for creating a top border per :after
+        position: relative;
+        margin-top: .75vmin;  // space for border top
+
+        &:after {
+          position: absolute;
+          content: "";
+          top: -.5vmin;
+          left: 0;
+          right: -.5vmin;
+          height: .5vmin;
+          background-color: var(--color-front);
+        }
+
+        &.blank {
+          border-right-color: transparent;
+          border-image: none;
+          &:after {
+            background-color: transparent;
+          }
+        }
+        > .label,
+        > .value {
+          display: inline;
+        }
+        > .value.percentage {
+          width: 100%;
+          height: 100%;
+          padding-left: 2vmin;
+          display: flex;
+          & > .bar {
+            height: 3.5vmin;
+            width: 100%;
+            align-self: center;
+          }
+        }
       }
     }
   }
