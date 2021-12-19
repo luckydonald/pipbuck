@@ -82,13 +82,10 @@ input {
 
   &::after {
     content: '\25BC';
-    // background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzIgMzIiPjxwYXRoIGQ9Im0yNCAxMi04IDEwLTgtMTB6Ii8+PHBhdGggZD0iTTAgMGgzMnYzMkgweiIgc3R5bGU9ImZpbGw6bm9uZSIvPjwvc3ZnPgo=) no-repeat right 0.8em center / 1.4em;
     position: absolute;
     top: 0;
     right: 0;
     height: 100%;
-
-    //padding-left: 1em;
   }
 }
 label {
