@@ -29,6 +29,7 @@ export default [
     name: '10mm',
     long: '10mm round',
     value: 1,
+    // eslint-disable-next-line max-len
     'Weapons using this ammunition': "Backwater rifle   Lever-action rifle   Chinese pistol  Silenced 10mm pistol  10mm pistol  Zhu-Rong v418 Chinese pistol  Colonel Autumn's 10mm pistol  10mm SMG  Sydney's 10mm \"Ultra\" SMG",
     category: 'Small Guns',
     baseId: '00004241',
