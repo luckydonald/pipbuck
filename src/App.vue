@@ -45,7 +45,7 @@ import { ui } from './sound';
 import { HexToHSL, hsl } from './lib/colorspace';
 import VirtualButtons from './components/VirtualButtons.vue';
 import Favicon from './components/Favicon.vue';
-import StableColt from './components/StableColt.vue';
+import StableColt from './components/svg/StableColt.vue';
 import ColorizedBg from './lib/vue-colorized/directive';
 
 const app = {

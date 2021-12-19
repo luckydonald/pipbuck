@@ -17,7 +17,7 @@
 
 <script>
 import { hsl } from '../../lib/colorspace';
-import StatsPony from '../../components/StatsPony.vue';
+import StatsPony from '../../components/svg/StatsPony.vue';
 import Checkbox from '../../components/Checkbox.vue';
 
 export default {

@@ -11,7 +11,7 @@
 
 <script>
 import { betterMapGetters, mapState } from '../../../lib/better-vuex-getter';
-import StatsPony from '../../../components/StatsPony.vue';
+import StatsPony from '../../../components/svg/StatsPony.vue';
 
 export default {
   name: 'Condition',

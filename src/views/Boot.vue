@@ -43,7 +43,7 @@
 <script>
 import screenfull from 'screenfull';
 import Menu from './Menu.vue';
-import StableColt from '../components/StableColt.vue';
+import StableColt from '../components/svg/StableColt.vue';
 import TyperCss from '../components/typer/TyperCss.vue';
 import { ui } from '../sound';
 

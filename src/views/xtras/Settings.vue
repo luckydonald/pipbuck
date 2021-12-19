@@ -34,7 +34,7 @@
 <script>
 import * as screenfull from 'screenfull';
 import { hsl, HexToHSL } from '../../lib/colorspace';
-import StableColt from '../../components/StableColt.vue';
+import StableColt from '../../components/svg/StableColt.vue';
 import { ui } from '../../sound';
 
 
