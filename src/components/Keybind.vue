@@ -136,6 +136,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -156,6 +160,9 @@ export default {
   },
   methods: {
     onKeyDown(e) {
+      if (this.disabled) {
+        return;
+      }
       const isOurKey = this.keyCodes.indexOf(e.keyCode) !== -1;
       if (isOurKey) {
         // basically this.$emit('keybind', e.keyCode, this.keyCodes, e);
