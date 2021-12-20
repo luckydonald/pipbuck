@@ -265,7 +265,7 @@ body {
   right: 0;
   position: absolute;
 }
-a {
+a, button {
   color: var(--color-front);
   text-decoration: none;
 
@@ -275,7 +275,50 @@ a {
   &.active, &.router-link-exact-active {
     border: var(--color-front) 0.75vmin solid;
     background-color: rgba(255,225,255, 0.1);
+  }
+}
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
 
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+
+  /* additional */
+  text-align: inherit;
+  outline: none;
+  border-radius: 0;
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+  &:focus:not(:-moz-focusring) {
+    outline: none;
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+  }
+
+  /* Remove excess padding and border in Firefox 4+ */
+  &::-moz-focus-inner {
+      border: 0;
+      padding: 0;
   }
 }
 input[type='text'], input[type='password'] {
