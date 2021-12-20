@@ -5,7 +5,7 @@
         <li>
           <Select
             v-model="activeLootboxId"
-            :items="lootboxes"
+            :items="lootboxLabels"
             placeholder="Select Lootlist"
             @click="loadLoot()"
           />
@@ -131,6 +131,12 @@ export default {
   computed: {
     lootboxIds() {
       return this.lootboxes.map(lootbox => lootbox.id);
+    },
+    lootboxLabels() {
+      return this.lootboxes.map(lootbox => ({
+        id: lootbox.id,
+        name: lootbox.name + (lootbox.is_own ? ' [Own]' : ''),
+      }));
     },
     activeLootbox() {
       const lootboxes = this.lootboxes.filter(lootbox => lootbox.id === this.activeLootboxId);
