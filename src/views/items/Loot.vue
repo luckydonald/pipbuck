@@ -11,7 +11,7 @@
           />
         </li>
         <li>
-          <label>Take Item <Keybind akey="E" /></label>
+          <label>Take Item <Keybind key-label="E" /></label>
         </li>
       </ul>
     </div>
