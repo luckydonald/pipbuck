@@ -11,7 +11,7 @@
           />
         </li>
         <li>
-          <label>Take Item <Keybind key-label="E" /></label>
+          <a @click="takeItem()">Take Item <Keybind key-label="E"/></a>
         </li>
       </ul>
     </div>
@@ -97,6 +97,31 @@ export default {
           if (this.activeLootboxId == null && this.lootboxes.length > 0) {
             // in case nothing is selected yet -> select first one
             this.activeLootboxId = this.lootboxes[0].id;
+          }
+        }).catch((e) => {
+          this.errors.push(e);
+        });
+    },
+    takeItem(countArg) {
+      const count = countArg === undefined ? 1 : countArg;
+      axios.get(`http://${window.location.hostname}:8080/api/v1/loot/${this.activeLootboxId}/player/${this.playerId}/take/${this.activeId}/${count}`)
+        .then((response) => {
+          // JSON responses are automatically parsed and in response.data.
+
+          // eslint-disable-next-line camelcase
+          const lootlistItemCount = response.data.lootlist_item_count;
+          // eslint-disable-next-line camelcase
+          // const personalItemCount = response.data.personal_item_count;
+
+          // apply new item count to the lootlist item.
+          const lootboxIndex = this.lootboxes.indexOf(this.activeLootbox);
+          const { items } = this.lootboxes[lootboxIndex];
+          const selectedItem = items.filter(item => item.id === this.activeId)[0];
+          const itemIndex = items.indexOf(selectedItem);
+          if (lootlistItemCount > 1) {
+            this.lootboxes[lootboxIndex].items[itemIndex].count = lootlistItemCount;
+          } else {
+            delete this.lootboxes[lootboxIndex].items[itemIndex];
           }
         }).catch((e) => {
           this.errors.push(e);
