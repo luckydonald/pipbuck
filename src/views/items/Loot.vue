@@ -11,7 +11,7 @@
           />
         </li>
         <li>
-          <a @click="takeItem()">Take Item <Keybind key-label="E"/></a>
+          <button @click="takeItem()" :disabled="takeItemDisabled">Take Item <Keybind key-label="E" :disabled="takeItemDisabled"/></button>
         </li>
       </ul>
     </div>
@@ -148,6 +148,9 @@ export default {
           amount: item.count,
         }))
         .filter(item => item.amount >= 1);
+    },
+    takeItemDisabled() {
+      return this.activeId === null || this.items.length === 0;
     },
   },
 };
