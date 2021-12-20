@@ -217,10 +217,14 @@ export default {
         this.registerElement(newVal);
       }
     },
-    items() {
+    items(newVal) {
       this.$nextTick(() => {
         console.log('items updated');
         this.measureElement();
+        // if the currently selected element went poof, make sure we revert to null.
+        if (this.selected !== null && newVal.filter(item => item.id === this.selected).length === 0) {
+          this.$emit('select', null);
+        }
       });
     },
   },
