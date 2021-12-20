@@ -1,6 +1,6 @@
 <template>
   <div class="select">
-    <a @click="isOpen = true"><slot v-if="currentLabel === null" name="button">{{ placeholder }}</slot><span v-else>{{ currentLabel }}</span></a>
+    <a @click="isOpen = true" class="clicker"><slot v-if="currentLabel === null" name="button">{{ placeholder }}</slot><span v-else>{{ currentLabel }}</span></a>
     <Overlay class="dropdown" v-model="isOpen">
         <label class="disabled" @click=" isOpen = false" v-if="showPlaceholderInDropdown"><slot name="button">{{ placeholder }}</slot><span class="bg"/></label>
         <slot name="item" v-for="item in items">
@@ -77,14 +77,15 @@ input {
 .select {
   display: inline-block;
   position: relative;
-  padding-right: 0.5em;
+  padding-right: 1em;
+  border: 0.75vmin solid var(--color-front);
 
 
   &::after {
     content: '\25BC';
     position: absolute;
     top: 0;
-    right: 0;
+    right: 0.45em;
     height: 100%;
   }
 }
