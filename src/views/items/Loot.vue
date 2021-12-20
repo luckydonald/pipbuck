@@ -121,7 +121,7 @@ export default {
           if (lootlistItemCount > 1) {
             this.lootboxes[lootboxIndex].items[itemIndex].count = lootlistItemCount;
           } else {
-            delete this.lootboxes[lootboxIndex].items[itemIndex];
+            this.lootboxes[lootboxIndex].items.splice(itemIndex, 1);
           }
         }).catch((e) => {
           this.errors.push(e);
