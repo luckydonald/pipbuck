@@ -156,7 +156,12 @@ export default {
         .filter(item => item.amount >= 1);
     },
     takeItemDisabled() {
-      return this.activeId === null || this.items.length === 0;
+      return (
+        this.activeId === null
+        || this.items.length === 0
+        || this.activeLootbox === null
+        || this.activeLootbox.has_access === false
+      );
     },
   },
 };
