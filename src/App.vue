@@ -211,6 +211,8 @@ const app = {
         vm.$broadcast('navigate-LEFT');
       } else if (event.key === '>' || event.key === 'ArrowRight') {
         vm.$broadcast('navigate-RIGHT');
+      } else {
+        this.emitter.emit('keyup', event);
       }
     });
   },

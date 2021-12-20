@@ -8,12 +8,15 @@ import screenfull from 'screenfull';
 import axios from 'axios';
 
 import './lib/audiocontect-patch';
+import mitt from 'mitt';
 import App from './App.vue';
 import router from './router';
 import store from './state';
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = 'http://localhost:8080/';  // the FastAPI backend
+
+const emitter = mitt();
 
 
 Vue.config.productionTip = false;
@@ -46,6 +49,17 @@ const ignored = new Vue({
   // el: '#app',
   render: h => h(App),
 }).$mount('#app');
+
+// noinspection PointlessBooleanExpressionJS
+// eslint-disable-next-line no-constant-condition
+if (false) {
+  // vue3
+  // noinspection JSUnresolvedVariable,UnreachableCodeJS
+  ignored.config.globalProperties.emitter = emitter;
+} else {
+  // vue2
+  Vue.prototype.emitter = emitter;
+}
 
 if (process.env.NODE_ENV !== 'production') {
   global.$vm = ignored;
