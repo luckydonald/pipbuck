@@ -1,5 +1,12 @@
 <template>
   <inventory :items="items" :limit="limit" v-model="activeId">
+    <div slot="actions">
+     <ul>
+       <li>
+          <a @click="$router.push({ name: 'Loot' })">Loot <Keybind key-label="L"/></a>
+        </li>
+      </ul>
+   </div>
     <div slot="rows" class="rows">
       <div class="row">
         <div class="detail blank"/>
@@ -27,11 +34,12 @@ import misc, { empty } from '../../data/misc';
 import { dashedZero } from '../../filters/inventory';
 import Inventory from '../../components/context/Inventory.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
+import Keybind from '../../components/Keybind.vue';
 
 
 export default {
   name: 'Misc',
-  components: { Inventory },
+  components: { Inventory, Keybind },
   filters: { dashedZero },
   mixins: [InventoryMixin],
   data() {

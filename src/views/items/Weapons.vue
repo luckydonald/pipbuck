@@ -1,5 +1,12 @@
 <template>
   <inventory :items="items" :limit="limit" v-model="activeId">
+    <div slot="actions">
+     <ul>
+       <li>
+          <a @click="$router.push({ name: 'Loot' })">Loot <Keybind key-label="L"/></a>
+        </li>
+      </ul>
+   </div>
     <div slot="rows" class="rows">
       <div class="row">
         <div class="detail damage">
@@ -38,11 +45,12 @@ import weapons, { empty } from '../../data/weapons';
 import Inventory from '../../components/context/Inventory.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
 import Percent from '../../components/Percent.vue';
+import Keybind from '../../components/Keybind.vue';
 
 
 export default {
   name: 'Weapons',
-  components: { Inventory, Percent },
+  components: { Inventory, Percent, Keybind },
   mixins: [InventoryMixin],
   data() {
     const hasItems = (

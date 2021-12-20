@@ -185,6 +185,7 @@ const app = {
       +|up:      Scroll up.
       -|down:    Scroll down.
       8-0: Change colors.
+      L:         ITEMS > loot. (implemented on the items pages)
        */
       // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code/code_values
       if (event.key === 'a' || event.key === 's') {
