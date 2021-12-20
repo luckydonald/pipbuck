@@ -109,7 +109,6 @@ export default {
         );
         return hasItems ? this.items[0].id : null;
       },
-      type: String,
     },
   },
   model: {
