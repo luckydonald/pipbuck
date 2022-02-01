@@ -40,6 +40,14 @@ import aid, { empty } from '../../data/aid';
 import Inventory from '../../components/context/Inventory.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
 import Keybind from '../../components/Keybind.vue';
+import pnpState from '../../state/pnp';
+
+const demoAid = (
+  aid.map(item => Object.assign(item, {
+    id: item.baseId,
+    amount: Math.floor(Math.random() * 10),
+  })).filter(item => item.amount >= 1)
+);
 
 export default {
   name: 'Aid',
@@ -47,32 +55,27 @@ export default {
   mixins: [InventoryMixin],
   data() {
     const hasItems = (
-      aid !== undefined
-      && typeof aid === 'object'
-      && Array.isArray(aid)
-      && aid.length > 0
+      demoAid !== undefined
+      && typeof demoAid === 'object'
+      && Array.isArray(demoAid)
+      && demoAid.length > 0
     );
     return {
-      aid,
+      aid: [],
       limit: -1,
-      activeId: hasItems ? aid[0].baseId : null,
+      activeId: hasItems ? demoAid[0].baseId : null,
       emptyItem: empty,
     };
   },
   computed: {
     items() {
-      return this.aid
-        .map(item => Object.assign(item, {
-          id: item.baseId,
-          amount: Math.floor(Math.random() * 10),
-        }))
-        .filter(item => item.amount >= 1);
+      return pnpState.player.items;
     },
   },
   methods: {
     onEquip(id) {
       console.log('aid use', id);
-      this.items.filter(item => item.id === id)[0].amount -= 1;
+      pnpState.dispatch('player.equip', { itemId: id });
     },
   },
 };
