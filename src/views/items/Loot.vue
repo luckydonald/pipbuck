@@ -52,7 +52,7 @@ export default {
   mixins: [InventoryMixin],
   data() {
     return {
-      playerId: 1,
+      characterId: 1,
       lootboxes: [
         /*
         {
@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     loadLoot() {
-      axios.get(`http://${window.location.hostname}:8080/api/v1/loot/player/${this.playerId}`)
+      axios.get(`http://${window.location.hostname}:8080/api/v1/loot/character/${this.characterId}`)
         .then((response) => {
           // JSON responses are automatically parsed.
           this.lootboxes = response.data;
@@ -104,7 +104,7 @@ export default {
     },
     takeItem(countArg) {
       const count = countArg === undefined ? 1 : countArg;
-      axios.get(`http://${window.location.hostname}:8080/api/v1/loot/${this.activeLootboxId}/player/${this.playerId}/take/${this.activeId}/${count}`)
+      axios.get(`http://${window.location.hostname}:8080/api/v1/loot/${this.activeLootboxId}/character/${this.characterId}/take/${this.activeId}/${count}`)
         .then((response) => {
           // JSON responses are automatically parsed and in response.data.
 
