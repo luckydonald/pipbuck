@@ -15,6 +15,7 @@
     "keycode-js": "^3.1.0",
     "mapbox-gl": "^0.52.0",
     "mitt": "^3.0.0",
+    "pinia": "^2.0.14",
     "screenfull": "^4.0.0",
     "shake.js": "^1.2.2",
     "unmute-ios-audio": "3.3.0",
