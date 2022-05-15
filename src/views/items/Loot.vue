@@ -39,11 +39,13 @@
 
 <script>
 import axios from 'axios';
+import { mapStores } from 'pinia';
 import { empty } from '../../data/ammo';
 import Inventory from '../../components/context/Inventory.vue';
 import InventoryMixin from '../../components/context/InventoryMixin';
 import Select from '../../components/Select.vue';
 import Keybind from '../../components/Keybind.vue';
+import useUserStore from '../../state/api';
 
 
 export default {
@@ -52,7 +54,6 @@ export default {
   mixins: [InventoryMixin],
   data() {
     return {
-      characterId: 1,
       lootboxes: [
         /*
         {
@@ -129,6 +130,12 @@ export default {
     },
   },
   computed: {
+    // note we are not passing an array, just one store after the other
+    // each store will be accessible as its id + 'Store'
+    ...mapStores(useUserStore),
+    characterId() {
+      return this.useUserStore.selectedCharacterId;
+    },
     lootboxIds() {
       return this.lootboxes.map(lootbox => lootbox.id);
     },
